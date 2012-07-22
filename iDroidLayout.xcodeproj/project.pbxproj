@@ -1,0 +1,1022 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		79A642A215BC2CFA00FEA9FC /* iDroidLayoutAggregate */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 79A642A315BC2CFA00FEA9FC /* Build configuration list for PBXAggregateTarget "iDroidLayoutAggregate" */;
+			buildPhases = (
+				79A642A615BC2D0500FEA9FC /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = iDroidLayoutAggregate;
+			productName = iDroidLayoutAggregate;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		79A6425615BC288700FEA9FC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A6425515BC288700FEA9FC /* UIKit.framework */; };
+		79A6425815BC288700FEA9FC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A6425715BC288700FEA9FC /* Foundation.framework */; };
+		79A6425A15BC288700FEA9FC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A6425915BC288700FEA9FC /* CoreGraphics.framework */; };
+		79A6426015BC288700FEA9FC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79A6425E15BC288700FEA9FC /* InfoPlist.strings */; };
+		79A6426215BC288700FEA9FC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A6426115BC288700FEA9FC /* main.m */; };
+		79A6426615BC288700FEA9FC /* IDLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A6426515BC288700FEA9FC /* IDLAppDelegate.m */; };
+		79A6426E15BC288700FEA9FC /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A6426D15BC288700FEA9FC /* SenTestingKit.framework */; };
+		79A6426F15BC288700FEA9FC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A6425515BC288700FEA9FC /* UIKit.framework */; };
+		79A6427015BC288700FEA9FC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A6425715BC288700FEA9FC /* Foundation.framework */; };
+		79A6427815BC288700FEA9FC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79A6427615BC288700FEA9FC /* InfoPlist.strings */; };
+		79A6427B15BC288700FEA9FC /* iDroidLayoutTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A6427A15BC288700FEA9FC /* iDroidLayoutTests.m */; };
+		79A6429115BC2A6800FEA9FC /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A6429015BC2A6800FEA9FC /* CoreFoundation.framework */; };
+		79A6429715BC2A6800FEA9FC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79A6429515BC2A6800FEA9FC /* InfoPlist.strings */; };
+		79A642B215BC2E9400FEA9FC /* IDLGravity.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A642B015BC2E9400FEA9FC /* IDLGravity.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79A642B315BC2E9400FEA9FC /* IDLGravity.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A642B115BC2E9400FEA9FC /* IDLGravity.m */; };
+		79A642B415BC2F3800FEA9FC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A6425915BC288700FEA9FC /* CoreGraphics.framework */; };
+		79A642B615BC316E00FEA9FC /* IDLPool.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A642B515BC316E00FEA9FC /* IDLPool.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79A642B815BC318500FEA9FC /* IDLPoolable.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A642B715BC318500FEA9FC /* IDLPoolable.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79A642BA15BC319200FEA9FC /* IDLPoolableManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A642B915BC319200FEA9FC /* IDLPoolableManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79A642BD15BC31A900FEA9FC /* IDLPools.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A642BB15BC31A900FEA9FC /* IDLPools.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79A642BE15BC31A900FEA9FC /* IDLPools.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A642BC15BC31A900FEA9FC /* IDLPools.m */; };
+		79A642C115BC31B900FEA9FC /* IDLFinitePool.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A642BF15BC31B900FEA9FC /* IDLFinitePool.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79A642C215BC31B900FEA9FC /* IDLFinitePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A642C015BC31B900FEA9FC /* IDLFinitePool.m */; };
+		79A642C515BC31C800FEA9FC /* IDLSynchronizedPool.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A642C315BC31C800FEA9FC /* IDLSynchronizedPool.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79A642C615BC31C800FEA9FC /* IDLSynchronizedPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A642C415BC31C800FEA9FC /* IDLSynchronizedPool.m */; };
+		79A642C915BC32D000FEA9FC /* IDLLayoutBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A642C715BC32D000FEA9FC /* IDLLayoutBridge.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79A642CA15BC32D000FEA9FC /* IDLLayoutBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A642C815BC32D000FEA9FC /* IDLLayoutBridge.m */; };
+		79A642CB15BC32F500FEA9FC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A6425515BC288700FEA9FC /* UIKit.framework */; };
+		79A642CE15BC335600FEA9FC /* UIView+IDL_Layout.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A642CC15BC335600FEA9FC /* UIView+IDL_Layout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79A642CF15BC335600FEA9FC /* UIView+IDL_Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A642CD15BC335600FEA9FC /* UIView+IDL_Layout.m */; };
+		79A642D215BC33CF00FEA9FC /* UIView+IDL_ViewGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A642D015BC33CF00FEA9FC /* UIView+IDL_ViewGroup.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79A642D315BC33CF00FEA9FC /* UIView+IDL_ViewGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A642D115BC33CF00FEA9FC /* UIView+IDL_ViewGroup.m */; };
+		79A642D615BC341500FEA9FC /* IDLLayoutParams.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A642D415BC341500FEA9FC /* IDLLayoutParams.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79A642D715BC341500FEA9FC /* IDLLayoutParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A642D515BC341500FEA9FC /* IDLLayoutParams.m */; };
+		79A642DA15BC345400FEA9FC /* IDLViewGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A642D815BC345400FEA9FC /* IDLViewGroup.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79A642DB15BC345400FEA9FC /* IDLViewGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A642D915BC345400FEA9FC /* IDLViewGroup.m */; };
+		79A642E315BC34F500FEA9FC /* IDLLayoutInflater.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A642E115BC34F500FEA9FC /* IDLLayoutInflater.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79A642E415BC34F500FEA9FC /* IDLLayoutInflater.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A642E215BC34F500FEA9FC /* IDLLayoutInflater.m */; };
+		79A642E815BC354600FEA9FC /* TBXML.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A642E615BC354600FEA9FC /* TBXML.h */; settings = {ATTRIBUTES = (); }; };
+		79A642E915BC354600FEA9FC /* TBXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A642E715BC354600FEA9FC /* TBXML.m */; };
+		79A642EC15BC363F00FEA9FC /* UIColor+IDL_ColorParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A642EA15BC363F00FEA9FC /* UIColor+IDL_ColorParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79A642ED15BC363F00FEA9FC /* UIColor+IDL_ColorParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A642EB15BC363F00FEA9FC /* UIColor+IDL_ColorParser.m */; };
+		79A642F015BC367F00FEA9FC /* IDLMarginLayoutParams.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A642EE15BC367F00FEA9FC /* IDLMarginLayoutParams.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79A642F115BC367F00FEA9FC /* IDLMarginLayoutParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A642EF15BC367F00FEA9FC /* IDLMarginLayoutParams.m */; };
+		79A642F915BC371400FEA9FC /* IDLDependencyGraph.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A642F715BC371400FEA9FC /* IDLDependencyGraph.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79A642FA15BC371400FEA9FC /* IDLDependencyGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A642F815BC371400FEA9FC /* IDLDependencyGraph.m */; };
+		79A642FD15BC372A00FEA9FC /* IDLDependencyGraphNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A642FB15BC372A00FEA9FC /* IDLDependencyGraphNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79A642FE15BC372A00FEA9FC /* IDLDependencyGraphNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A642FC15BC372A00FEA9FC /* IDLDependencyGraphNode.m */; };
+		79A6430215BC374200FEA9FC /* IDLRelativeLayoutLayoutParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A6430015BC374200FEA9FC /* IDLRelativeLayoutLayoutParams.m */; };
+		79A6430515BC376200FEA9FC /* IDLRelativeLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A6430315BC376200FEA9FC /* IDLRelativeLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79A6430615BC376200FEA9FC /* IDLRelativeLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A6430415BC376200FEA9FC /* IDLRelativeLayout.m */; };
+		79A6430A15BC38B400FEA9FC /* IDLLinearLayoutLayoutParams.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A6430815BC38B400FEA9FC /* IDLLinearLayoutLayoutParams.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79A6430B15BC38B400FEA9FC /* IDLLinearLayoutLayoutParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A6430915BC38B400FEA9FC /* IDLLinearLayoutLayoutParams.m */; };
+		79A6430E15BC38EF00FEA9FC /* IDLLinearLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A6430C15BC38EF00FEA9FC /* IDLLinearLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79A6430F15BC38EF00FEA9FC /* IDLLinearLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A6430D15BC38EF00FEA9FC /* IDLLinearLayout.m */; };
+		79A6431815BC39FA00FEA9FC /* IDLFrameLayoutLayoutParams.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A6431615BC39FA00FEA9FC /* IDLFrameLayoutLayoutParams.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79A6431915BC39FA00FEA9FC /* IDLFrameLayoutLayoutParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A6431715BC39FA00FEA9FC /* IDLFrameLayoutLayoutParams.m */; };
+		79A6431C15BC3A5C00FEA9FC /* UIScrollView+IDL_ViewGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A6431A15BC3A5C00FEA9FC /* UIScrollView+IDL_ViewGroup.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79A6431D15BC3A5C00FEA9FC /* UIScrollView+IDL_ViewGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A6431B15BC3A5C00FEA9FC /* UIScrollView+IDL_ViewGroup.m */; };
+		79A6432015BC3AC000FEA9FC /* UIButton+IDL_View.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A6431E15BC3AC000FEA9FC /* UIButton+IDL_View.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79A6432115BC3AC000FEA9FC /* UIButton+IDL_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A6431F15BC3AC000FEA9FC /* UIButton+IDL_View.m */; };
+		79A6432415BC3AD100FEA9FC /* UIControl+IDL_View.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A6432215BC3AD100FEA9FC /* UIControl+IDL_View.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79A6432515BC3AD100FEA9FC /* UIControl+IDL_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A6432315BC3AD100FEA9FC /* UIControl+IDL_View.m */; };
+		79A6432815BC3AE300FEA9FC /* UIImageView+IDL_View.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A6432615BC3AE300FEA9FC /* UIImageView+IDL_View.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79A6432915BC3AE300FEA9FC /* UIImageView+IDL_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A6432715BC3AE300FEA9FC /* UIImageView+IDL_View.m */; };
+		79A6432C15BC3AFF00FEA9FC /* UILabel+IDL_View.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A6432A15BC3AFF00FEA9FC /* UILabel+IDL_View.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79A6432D15BC3AFF00FEA9FC /* UILabel+IDL_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A6432B15BC3AFF00FEA9FC /* UILabel+IDL_View.m */; };
+		79A6433015BC3B1700FEA9FC /* UIWebView+IDL_View.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A6432E15BC3B1700FEA9FC /* UIWebView+IDL_View.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79A6433115BC3B1700FEA9FC /* UIWebView+IDL_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A6432F15BC3B1700FEA9FC /* UIWebView+IDL_View.m */; };
+		79A6433415BC3C0800FEA9FC /* IDLTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A6433215BC3C0700FEA9FC /* IDLTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79A6433515BC3C0800FEA9FC /* IDLTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A6433315BC3C0800FEA9FC /* IDLTextView.m */; };
+		79A6433815BC3D8700FEA9FC /* iDroidLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A6433615BC3D5A00FEA9FC /* iDroidLayout.framework */; };
+		79A6433915BC3DDA00FEA9FC /* iDroidLayout.framework in Resources */ = {isa = PBXBuildFile; fileRef = 79A6433615BC3D5A00FEA9FC /* iDroidLayout.framework */; };
+		79A6433D15BC41E000FEA9FC /* IDLRelativeLayoutLayoutParams.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A6433C15BC41E000FEA9FC /* IDLRelativeLayoutLayoutParams.h */; };
+		79A6434015BC43CA00FEA9FC /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A6433F15BC43CA00FEA9FC /* MainViewController.m */; };
+		79A6434315BC44C700FEA9FC /* IDLTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A6434115BC44C600FEA9FC /* IDLTableViewCell.h */; };
+		79A6434415BC44C700FEA9FC /* IDLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A6434215BC44C700FEA9FC /* IDLTableViewCell.m */; };
+		79A6434615BC456500FEA9FC /* iDroidLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A6434515BC456300FEA9FC /* iDroidLayout.h */; };
+		79A6434815BC45B100FEA9FC /* IDLFrameLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A6434715BC45B100FEA9FC /* IDLFrameLayout.h */; };
+		79A6434A15BC45EC00FEA9FC /* IDLLayouts.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A6434915BC45EC00FEA9FC /* IDLLayouts.h */; };
+		79A6434D15BC498800FEA9FC /* mainCell.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79A6434B15BC486300FEA9FC /* mainCell.xml */; };
+		79A6434F15BC501100FEA9FC /* formular.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79A6434E15BC501100FEA9FC /* formular.xml */; };
+		79A6435215BC52FE00FEA9FC /* FormularViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A6435115BC52FE00FEA9FC /* FormularViewController.m */; };
+		79A6435615BC5E8E00FEA9FC /* formular~ipad.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79A6435515BC5E8D00FEA9FC /* formular~ipad.xml */; };
+		79A6435E15BC6B0200FEA9FC /* IDLViewFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A6435D15BC6B0200FEA9FC /* IDLViewFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79A6436115BC6B4000FEA9FC /* IDLBaseViewFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A6435F15BC6B3F00FEA9FC /* IDLBaseViewFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79A6436215BC6B4000FEA9FC /* IDLBaseViewFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A6436015BC6B3F00FEA9FC /* IDLBaseViewFactory.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		79A6427115BC288700FEA9FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 79A6424815BC288700FEA9FC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 79A6425015BC288700FEA9FC;
+			remoteInfo = iDroidLayout;
+		};
+		79A6435715BC5FF200FEA9FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 79A6424815BC288700FEA9FC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 79A6428E15BC2A6800FEA9FC;
+			remoteInfo = iDroidLayout;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		79A6425115BC288700FEA9FC /* iDroidLayoutExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iDroidLayoutExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		79A6425515BC288700FEA9FC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		79A6425715BC288700FEA9FC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		79A6425915BC288700FEA9FC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		79A6425D15BC288700FEA9FC /* iDroidLayout-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iDroidLayout-Info.plist"; sourceTree = "<group>"; };
+		79A6425F15BC288700FEA9FC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		79A6426115BC288700FEA9FC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		79A6426315BC288700FEA9FC /* iDroidLayout-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iDroidLayout-Prefix.pch"; sourceTree = "<group>"; };
+		79A6426415BC288700FEA9FC /* IDLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IDLAppDelegate.h; sourceTree = "<group>"; };
+		79A6426515BC288700FEA9FC /* IDLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IDLAppDelegate.m; sourceTree = "<group>"; };
+		79A6426C15BC288700FEA9FC /* iDroidLayoutTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iDroidLayoutTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		79A6426D15BC288700FEA9FC /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		79A6427515BC288700FEA9FC /* iDroidLayoutTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iDroidLayoutTests-Info.plist"; sourceTree = "<group>"; };
+		79A6427715BC288700FEA9FC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		79A6427915BC288700FEA9FC /* iDroidLayoutTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iDroidLayoutTests.h; sourceTree = "<group>"; };
+		79A6427A15BC288700FEA9FC /* iDroidLayoutTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iDroidLayoutTests.m; sourceTree = "<group>"; };
+		79A6428F15BC2A6800FEA9FC /* iDroidLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iDroidLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		79A6429015BC2A6800FEA9FC /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		79A6429415BC2A6800FEA9FC /* iDroidLayout-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iDroidLayout-Info.plist"; sourceTree = "<group>"; };
+		79A6429615BC2A6800FEA9FC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		79A642B015BC2E9400FEA9FC /* IDLGravity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLGravity.h; sourceTree = "<group>"; };
+		79A642B115BC2E9400FEA9FC /* IDLGravity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLGravity.m; sourceTree = "<group>"; };
+		79A642B515BC316E00FEA9FC /* IDLPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLPool.h; sourceTree = "<group>"; };
+		79A642B715BC318500FEA9FC /* IDLPoolable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLPoolable.h; sourceTree = "<group>"; };
+		79A642B915BC319200FEA9FC /* IDLPoolableManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLPoolableManager.h; sourceTree = "<group>"; };
+		79A642BB15BC31A900FEA9FC /* IDLPools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLPools.h; sourceTree = "<group>"; };
+		79A642BC15BC31A900FEA9FC /* IDLPools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLPools.m; sourceTree = "<group>"; };
+		79A642BF15BC31B900FEA9FC /* IDLFinitePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLFinitePool.h; sourceTree = "<group>"; };
+		79A642C015BC31B900FEA9FC /* IDLFinitePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLFinitePool.m; sourceTree = "<group>"; };
+		79A642C315BC31C800FEA9FC /* IDLSynchronizedPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLSynchronizedPool.h; sourceTree = "<group>"; };
+		79A642C415BC31C800FEA9FC /* IDLSynchronizedPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLSynchronizedPool.m; sourceTree = "<group>"; };
+		79A642C715BC32D000FEA9FC /* IDLLayoutBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLLayoutBridge.h; sourceTree = "<group>"; };
+		79A642C815BC32D000FEA9FC /* IDLLayoutBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLLayoutBridge.m; sourceTree = "<group>"; };
+		79A642CC15BC335600FEA9FC /* UIView+IDL_Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+IDL_Layout.h"; sourceTree = "<group>"; };
+		79A642CD15BC335600FEA9FC /* UIView+IDL_Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+IDL_Layout.m"; sourceTree = "<group>"; };
+		79A642D015BC33CF00FEA9FC /* UIView+IDL_ViewGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+IDL_ViewGroup.h"; sourceTree = "<group>"; };
+		79A642D115BC33CF00FEA9FC /* UIView+IDL_ViewGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+IDL_ViewGroup.m"; sourceTree = "<group>"; };
+		79A642D415BC341500FEA9FC /* IDLLayoutParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLLayoutParams.h; sourceTree = "<group>"; };
+		79A642D515BC341500FEA9FC /* IDLLayoutParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLLayoutParams.m; sourceTree = "<group>"; };
+		79A642D815BC345400FEA9FC /* IDLViewGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLViewGroup.h; sourceTree = "<group>"; };
+		79A642D915BC345400FEA9FC /* IDLViewGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLViewGroup.m; sourceTree = "<group>"; };
+		79A642E115BC34F500FEA9FC /* IDLLayoutInflater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLLayoutInflater.h; sourceTree = "<group>"; };
+		79A642E215BC34F500FEA9FC /* IDLLayoutInflater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLLayoutInflater.m; sourceTree = "<group>"; };
+		79A642E615BC354600FEA9FC /* TBXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBXML.h; sourceTree = "<group>"; };
+		79A642E715BC354600FEA9FC /* TBXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBXML.m; sourceTree = "<group>"; };
+		79A642EA15BC363F00FEA9FC /* UIColor+IDL_ColorParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+IDL_ColorParser.h"; sourceTree = "<group>"; };
+		79A642EB15BC363F00FEA9FC /* UIColor+IDL_ColorParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+IDL_ColorParser.m"; sourceTree = "<group>"; };
+		79A642EE15BC367F00FEA9FC /* IDLMarginLayoutParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLMarginLayoutParams.h; sourceTree = "<group>"; };
+		79A642EF15BC367F00FEA9FC /* IDLMarginLayoutParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLMarginLayoutParams.m; sourceTree = "<group>"; };
+		79A642F715BC371400FEA9FC /* IDLDependencyGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLDependencyGraph.h; sourceTree = "<group>"; };
+		79A642F815BC371400FEA9FC /* IDLDependencyGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLDependencyGraph.m; sourceTree = "<group>"; };
+		79A642FB15BC372A00FEA9FC /* IDLDependencyGraphNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLDependencyGraphNode.h; sourceTree = "<group>"; };
+		79A642FC15BC372A00FEA9FC /* IDLDependencyGraphNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLDependencyGraphNode.m; sourceTree = "<group>"; };
+		79A6430015BC374200FEA9FC /* IDLRelativeLayoutLayoutParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLRelativeLayoutLayoutParams.m; sourceTree = "<group>"; };
+		79A6430315BC376200FEA9FC /* IDLRelativeLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLRelativeLayout.h; sourceTree = "<group>"; };
+		79A6430415BC376200FEA9FC /* IDLRelativeLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLRelativeLayout.m; sourceTree = "<group>"; };
+		79A6430815BC38B400FEA9FC /* IDLLinearLayoutLayoutParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLLinearLayoutLayoutParams.h; sourceTree = "<group>"; };
+		79A6430915BC38B400FEA9FC /* IDLLinearLayoutLayoutParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLLinearLayoutLayoutParams.m; sourceTree = "<group>"; };
+		79A6430C15BC38EF00FEA9FC /* IDLLinearLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLLinearLayout.h; sourceTree = "<group>"; };
+		79A6430D15BC38EF00FEA9FC /* IDLLinearLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLLinearLayout.m; sourceTree = "<group>"; };
+		79A6431615BC39FA00FEA9FC /* IDLFrameLayoutLayoutParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLFrameLayoutLayoutParams.h; sourceTree = "<group>"; };
+		79A6431715BC39FA00FEA9FC /* IDLFrameLayoutLayoutParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLFrameLayoutLayoutParams.m; sourceTree = "<group>"; };
+		79A6431A15BC3A5C00FEA9FC /* UIScrollView+IDL_ViewGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+IDL_ViewGroup.h"; sourceTree = "<group>"; };
+		79A6431B15BC3A5C00FEA9FC /* UIScrollView+IDL_ViewGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+IDL_ViewGroup.m"; sourceTree = "<group>"; };
+		79A6431E15BC3AC000FEA9FC /* UIButton+IDL_View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+IDL_View.h"; sourceTree = "<group>"; };
+		79A6431F15BC3AC000FEA9FC /* UIButton+IDL_View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+IDL_View.m"; sourceTree = "<group>"; };
+		79A6432215BC3AD100FEA9FC /* UIControl+IDL_View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+IDL_View.h"; sourceTree = "<group>"; };
+		79A6432315BC3AD100FEA9FC /* UIControl+IDL_View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+IDL_View.m"; sourceTree = "<group>"; };
+		79A6432615BC3AE300FEA9FC /* UIImageView+IDL_View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+IDL_View.h"; sourceTree = "<group>"; };
+		79A6432715BC3AE300FEA9FC /* UIImageView+IDL_View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+IDL_View.m"; sourceTree = "<group>"; };
+		79A6432A15BC3AFF00FEA9FC /* UILabel+IDL_View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+IDL_View.h"; sourceTree = "<group>"; };
+		79A6432B15BC3AFF00FEA9FC /* UILabel+IDL_View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+IDL_View.m"; sourceTree = "<group>"; };
+		79A6432E15BC3B1700FEA9FC /* UIWebView+IDL_View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+IDL_View.h"; sourceTree = "<group>"; };
+		79A6432F15BC3B1700FEA9FC /* UIWebView+IDL_View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+IDL_View.m"; sourceTree = "<group>"; };
+		79A6433215BC3C0700FEA9FC /* IDLTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLTextView.h; sourceTree = "<group>"; };
+		79A6433315BC3C0800FEA9FC /* IDLTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLTextView.m; sourceTree = "<group>"; };
+		79A6433615BC3D5A00FEA9FC /* iDroidLayout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iDroidLayout.framework; path = Products/iDroidLayout.framework; sourceTree = "<group>"; };
+		79A6433C15BC41E000FEA9FC /* IDLRelativeLayoutLayoutParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLRelativeLayoutLayoutParams.h; sourceTree = "<group>"; };
+		79A6433E15BC43CA00FEA9FC /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		79A6433F15BC43CA00FEA9FC /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		79A6434115BC44C600FEA9FC /* IDLTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLTableViewCell.h; sourceTree = "<group>"; };
+		79A6434215BC44C700FEA9FC /* IDLTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLTableViewCell.m; sourceTree = "<group>"; };
+		79A6434515BC456300FEA9FC /* iDroidLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iDroidLayout.h; sourceTree = "<group>"; };
+		79A6434715BC45B100FEA9FC /* IDLFrameLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLFrameLayout.h; sourceTree = "<group>"; };
+		79A6434915BC45EC00FEA9FC /* IDLLayouts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLLayouts.h; sourceTree = "<group>"; };
+		79A6434B15BC486300FEA9FC /* mainCell.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = mainCell.xml; sourceTree = "<group>"; };
+		79A6434E15BC501100FEA9FC /* formular.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = formular.xml; sourceTree = "<group>"; };
+		79A6435015BC52FE00FEA9FC /* FormularViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormularViewController.h; sourceTree = "<group>"; };
+		79A6435115BC52FE00FEA9FC /* FormularViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormularViewController.m; sourceTree = "<group>"; };
+		79A6435515BC5E8D00FEA9FC /* formular~ipad.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "formular~ipad.xml"; sourceTree = "<group>"; };
+		79A6435D15BC6B0200FEA9FC /* IDLViewFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLViewFactory.h; sourceTree = "<group>"; };
+		79A6435F15BC6B3F00FEA9FC /* IDLBaseViewFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLBaseViewFactory.h; sourceTree = "<group>"; };
+		79A6436015BC6B3F00FEA9FC /* IDLBaseViewFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLBaseViewFactory.m; sourceTree = "<group>"; };
+		79A6436315BC717800FEA9FC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		79A6424E15BC288700FEA9FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				79A6433815BC3D8700FEA9FC /* iDroidLayout.framework in Frameworks */,
+				79A6425615BC288700FEA9FC /* UIKit.framework in Frameworks */,
+				79A6425815BC288700FEA9FC /* Foundation.framework in Frameworks */,
+				79A6425A15BC288700FEA9FC /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		79A6426815BC288700FEA9FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				79A6426E15BC288700FEA9FC /* SenTestingKit.framework in Frameworks */,
+				79A6426F15BC288700FEA9FC /* UIKit.framework in Frameworks */,
+				79A6427015BC288700FEA9FC /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		79A6428C15BC2A6800FEA9FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				79A642CB15BC32F500FEA9FC /* UIKit.framework in Frameworks */,
+				79A642B415BC2F3800FEA9FC /* CoreGraphics.framework in Frameworks */,
+				79A6429115BC2A6800FEA9FC /* CoreFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		79A6424615BC288700FEA9FC = {
+			isa = PBXGroup;
+			children = (
+				79A6425B15BC288700FEA9FC /* iDroidLayoutExample */,
+				79A6427315BC288700FEA9FC /* iDroidLayoutTests */,
+				79A6429215BC2A6800FEA9FC /* iDroidLayout */,
+				79A6425415BC288700FEA9FC /* Frameworks */,
+				79A6425215BC288700FEA9FC /* Products */,
+				79A6436315BC717800FEA9FC /* README.md */,
+			);
+			sourceTree = "<group>";
+		};
+		79A6425215BC288700FEA9FC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				79A6425115BC288700FEA9FC /* iDroidLayoutExample.app */,
+				79A6426C15BC288700FEA9FC /* iDroidLayoutTests.octest */,
+				79A6428F15BC2A6800FEA9FC /* iDroidLayout.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		79A6425415BC288700FEA9FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				79A6433615BC3D5A00FEA9FC /* iDroidLayout.framework */,
+				79A6425515BC288700FEA9FC /* UIKit.framework */,
+				79A6425715BC288700FEA9FC /* Foundation.framework */,
+				79A6425915BC288700FEA9FC /* CoreGraphics.framework */,
+				79A6426D15BC288700FEA9FC /* SenTestingKit.framework */,
+				79A6429015BC2A6800FEA9FC /* CoreFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		79A6425B15BC288700FEA9FC /* iDroidLayoutExample */ = {
+			isa = PBXGroup;
+			children = (
+				79A6426415BC288700FEA9FC /* IDLAppDelegate.h */,
+				79A6426515BC288700FEA9FC /* IDLAppDelegate.m */,
+				79A6425C15BC288700FEA9FC /* Supporting Files */,
+				79A6433E15BC43CA00FEA9FC /* MainViewController.h */,
+				79A6433F15BC43CA00FEA9FC /* MainViewController.m */,
+				79A6434B15BC486300FEA9FC /* mainCell.xml */,
+				79A6434E15BC501100FEA9FC /* formular.xml */,
+				79A6435515BC5E8D00FEA9FC /* formular~ipad.xml */,
+				79A6435015BC52FE00FEA9FC /* FormularViewController.h */,
+				79A6435115BC52FE00FEA9FC /* FormularViewController.m */,
+			);
+			path = iDroidLayoutExample;
+			sourceTree = "<group>";
+		};
+		79A6425C15BC288700FEA9FC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				79A6425D15BC288700FEA9FC /* iDroidLayout-Info.plist */,
+				79A6425E15BC288700FEA9FC /* InfoPlist.strings */,
+				79A6426115BC288700FEA9FC /* main.m */,
+				79A6426315BC288700FEA9FC /* iDroidLayout-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		79A6427315BC288700FEA9FC /* iDroidLayoutTests */ = {
+			isa = PBXGroup;
+			children = (
+				79A6427915BC288700FEA9FC /* iDroidLayoutTests.h */,
+				79A6427A15BC288700FEA9FC /* iDroidLayoutTests.m */,
+				79A6427415BC288700FEA9FC /* Supporting Files */,
+			);
+			path = iDroidLayoutTests;
+			sourceTree = "<group>";
+		};
+		79A6427415BC288700FEA9FC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				79A6427515BC288700FEA9FC /* iDroidLayoutTests-Info.plist */,
+				79A6427615BC288700FEA9FC /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		79A6429215BC2A6800FEA9FC /* iDroidLayout */ = {
+			isa = PBXGroup;
+			children = (
+				79A6429315BC2A6800FEA9FC /* Supporting Files */,
+				79A642E515BC354600FEA9FC /* TBXML */,
+				79A642A715BC2E5F00FEA9FC /* Utils */,
+				79A642A815BC2E5F00FEA9FC /* View */,
+				79A642A915BC2E5F00FEA9FC /* Widgets */,
+				79A6434515BC456300FEA9FC /* iDroidLayout.h */,
+			);
+			path = iDroidLayout;
+			sourceTree = "<group>";
+		};
+		79A6429315BC2A6800FEA9FC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				79A6429415BC2A6800FEA9FC /* iDroidLayout-Info.plist */,
+				79A6429515BC2A6800FEA9FC /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		79A642A715BC2E5F00FEA9FC /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				79A642B515BC316E00FEA9FC /* IDLPool.h */,
+				79A642B715BC318500FEA9FC /* IDLPoolable.h */,
+				79A642B915BC319200FEA9FC /* IDLPoolableManager.h */,
+				79A642BB15BC31A900FEA9FC /* IDLPools.h */,
+				79A642BC15BC31A900FEA9FC /* IDLPools.m */,
+				79A642BF15BC31B900FEA9FC /* IDLFinitePool.h */,
+				79A642C015BC31B900FEA9FC /* IDLFinitePool.m */,
+				79A642C315BC31C800FEA9FC /* IDLSynchronizedPool.h */,
+				79A642C415BC31C800FEA9FC /* IDLSynchronizedPool.m */,
+				79A642EA15BC363F00FEA9FC /* UIColor+IDL_ColorParser.h */,
+				79A642EB15BC363F00FEA9FC /* UIColor+IDL_ColorParser.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		79A642A815BC2E5F00FEA9FC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				79A642E015BC34F500FEA9FC /* Inflater */,
+				79A642B015BC2E9400FEA9FC /* IDLGravity.h */,
+				79A642B115BC2E9400FEA9FC /* IDLGravity.m */,
+				79A642C715BC32D000FEA9FC /* IDLLayoutBridge.h */,
+				79A642C815BC32D000FEA9FC /* IDLLayoutBridge.m */,
+				79A642CC15BC335600FEA9FC /* UIView+IDL_Layout.h */,
+				79A642CD15BC335600FEA9FC /* UIView+IDL_Layout.m */,
+				79A642D015BC33CF00FEA9FC /* UIView+IDL_ViewGroup.h */,
+				79A642D115BC33CF00FEA9FC /* UIView+IDL_ViewGroup.m */,
+				79A642D415BC341500FEA9FC /* IDLLayoutParams.h */,
+				79A642D515BC341500FEA9FC /* IDLLayoutParams.m */,
+				79A642D815BC345400FEA9FC /* IDLViewGroup.h */,
+				79A642D915BC345400FEA9FC /* IDLViewGroup.m */,
+				79A642EE15BC367F00FEA9FC /* IDLMarginLayoutParams.h */,
+				79A642EF15BC367F00FEA9FC /* IDLMarginLayoutParams.m */,
+				79A6434115BC44C600FEA9FC /* IDLTableViewCell.h */,
+				79A6434215BC44C700FEA9FC /* IDLTableViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		79A642A915BC2E5F00FEA9FC /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				79A642AA15BC2E5F00FEA9FC /* Categories */,
+				79A642AB15BC2E5F00FEA9FC /* Layout */,
+				79A6433215BC3C0700FEA9FC /* IDLTextView.h */,
+				79A6433315BC3C0800FEA9FC /* IDLTextView.m */,
+			);
+			path = Widgets;
+			sourceTree = "<group>";
+		};
+		79A642AA15BC2E5F00FEA9FC /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				79A6431E15BC3AC000FEA9FC /* UIButton+IDL_View.h */,
+				79A6431F15BC3AC000FEA9FC /* UIButton+IDL_View.m */,
+				79A6432215BC3AD100FEA9FC /* UIControl+IDL_View.h */,
+				79A6432315BC3AD100FEA9FC /* UIControl+IDL_View.m */,
+				79A6432615BC3AE300FEA9FC /* UIImageView+IDL_View.h */,
+				79A6432715BC3AE300FEA9FC /* UIImageView+IDL_View.m */,
+				79A6432A15BC3AFF00FEA9FC /* UILabel+IDL_View.h */,
+				79A6432B15BC3AFF00FEA9FC /* UILabel+IDL_View.m */,
+				79A6431A15BC3A5C00FEA9FC /* UIScrollView+IDL_ViewGroup.h */,
+				79A6431B15BC3A5C00FEA9FC /* UIScrollView+IDL_ViewGroup.m */,
+				79A6432E15BC3B1700FEA9FC /* UIWebView+IDL_View.h */,
+				79A6432F15BC3B1700FEA9FC /* UIWebView+IDL_View.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		79A642AB15BC2E5F00FEA9FC /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				79A6431115BC399800FEA9FC /* FrameLayout */,
+				79A6430715BC389E00FEA9FC /* LinearLayout */,
+				79A642F615BC371400FEA9FC /* RelativeLayout */,
+				79A6434915BC45EC00FEA9FC /* IDLLayouts.h */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		79A642E015BC34F500FEA9FC /* Inflater */ = {
+			isa = PBXGroup;
+			children = (
+				79A642E115BC34F500FEA9FC /* IDLLayoutInflater.h */,
+				79A642E215BC34F500FEA9FC /* IDLLayoutInflater.m */,
+				79A6435D15BC6B0200FEA9FC /* IDLViewFactory.h */,
+				79A6435F15BC6B3F00FEA9FC /* IDLBaseViewFactory.h */,
+				79A6436015BC6B3F00FEA9FC /* IDLBaseViewFactory.m */,
+			);
+			path = Inflater;
+			sourceTree = "<group>";
+		};
+		79A642E515BC354600FEA9FC /* TBXML */ = {
+			isa = PBXGroup;
+			children = (
+				79A642E615BC354600FEA9FC /* TBXML.h */,
+				79A642E715BC354600FEA9FC /* TBXML.m */,
+			);
+			path = TBXML;
+			sourceTree = "<group>";
+		};
+		79A642F615BC371400FEA9FC /* RelativeLayout */ = {
+			isa = PBXGroup;
+			children = (
+				79A642F715BC371400FEA9FC /* IDLDependencyGraph.h */,
+				79A642F815BC371400FEA9FC /* IDLDependencyGraph.m */,
+				79A642FB15BC372A00FEA9FC /* IDLDependencyGraphNode.h */,
+				79A642FC15BC372A00FEA9FC /* IDLDependencyGraphNode.m */,
+				79A6430315BC376200FEA9FC /* IDLRelativeLayout.h */,
+				79A6430415BC376200FEA9FC /* IDLRelativeLayout.m */,
+				79A6433C15BC41E000FEA9FC /* IDLRelativeLayoutLayoutParams.h */,
+				79A6430015BC374200FEA9FC /* IDLRelativeLayoutLayoutParams.m */,
+			);
+			path = RelativeLayout;
+			sourceTree = "<group>";
+		};
+		79A6430715BC389E00FEA9FC /* LinearLayout */ = {
+			isa = PBXGroup;
+			children = (
+				79A6430815BC38B400FEA9FC /* IDLLinearLayoutLayoutParams.h */,
+				79A6430915BC38B400FEA9FC /* IDLLinearLayoutLayoutParams.m */,
+				79A6430C15BC38EF00FEA9FC /* IDLLinearLayout.h */,
+				79A6430D15BC38EF00FEA9FC /* IDLLinearLayout.m */,
+			);
+			path = LinearLayout;
+			sourceTree = "<group>";
+		};
+		79A6431115BC399800FEA9FC /* FrameLayout */ = {
+			isa = PBXGroup;
+			children = (
+				79A6431615BC39FA00FEA9FC /* IDLFrameLayoutLayoutParams.h */,
+				79A6431715BC39FA00FEA9FC /* IDLFrameLayoutLayoutParams.m */,
+				79A6434715BC45B100FEA9FC /* IDLFrameLayout.h */,
+			);
+			path = FrameLayout;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		79A642A015BC2C2300FEA9FC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				79A642B215BC2E9400FEA9FC /* IDLGravity.h in Headers */,
+				79A642B615BC316E00FEA9FC /* IDLPool.h in Headers */,
+				79A642B815BC318500FEA9FC /* IDLPoolable.h in Headers */,
+				79A642BA15BC319200FEA9FC /* IDLPoolableManager.h in Headers */,
+				79A642BD15BC31A900FEA9FC /* IDLPools.h in Headers */,
+				79A642C115BC31B900FEA9FC /* IDLFinitePool.h in Headers */,
+				79A642C515BC31C800FEA9FC /* IDLSynchronizedPool.h in Headers */,
+				79A642C915BC32D000FEA9FC /* IDLLayoutBridge.h in Headers */,
+				79A642CE15BC335600FEA9FC /* UIView+IDL_Layout.h in Headers */,
+				79A642D215BC33CF00FEA9FC /* UIView+IDL_ViewGroup.h in Headers */,
+				79A642D615BC341500FEA9FC /* IDLLayoutParams.h in Headers */,
+				79A642DA15BC345400FEA9FC /* IDLViewGroup.h in Headers */,
+				79A642E315BC34F500FEA9FC /* IDLLayoutInflater.h in Headers */,
+				79A642E815BC354600FEA9FC /* TBXML.h in Headers */,
+				79A642F015BC367F00FEA9FC /* IDLMarginLayoutParams.h in Headers */,
+				79A642F915BC371400FEA9FC /* IDLDependencyGraph.h in Headers */,
+				79A642FD15BC372A00FEA9FC /* IDLDependencyGraphNode.h in Headers */,
+				79A6430515BC376200FEA9FC /* IDLRelativeLayout.h in Headers */,
+				79A6430A15BC38B400FEA9FC /* IDLLinearLayoutLayoutParams.h in Headers */,
+				79A6430E15BC38EF00FEA9FC /* IDLLinearLayout.h in Headers */,
+				79A6431815BC39FA00FEA9FC /* IDLFrameLayoutLayoutParams.h in Headers */,
+				79A6431C15BC3A5C00FEA9FC /* UIScrollView+IDL_ViewGroup.h in Headers */,
+				79A6432015BC3AC000FEA9FC /* UIButton+IDL_View.h in Headers */,
+				79A6432415BC3AD100FEA9FC /* UIControl+IDL_View.h in Headers */,
+				79A6432815BC3AE300FEA9FC /* UIImageView+IDL_View.h in Headers */,
+				79A6432C15BC3AFF00FEA9FC /* UILabel+IDL_View.h in Headers */,
+				79A6433015BC3B1700FEA9FC /* UIWebView+IDL_View.h in Headers */,
+				79A642EC15BC363F00FEA9FC /* UIColor+IDL_ColorParser.h in Headers */,
+				79A6433415BC3C0800FEA9FC /* IDLTextView.h in Headers */,
+				79A6433D15BC41E000FEA9FC /* IDLRelativeLayoutLayoutParams.h in Headers */,
+				79A6434315BC44C700FEA9FC /* IDLTableViewCell.h in Headers */,
+				79A6434615BC456500FEA9FC /* iDroidLayout.h in Headers */,
+				79A6434815BC45B100FEA9FC /* IDLFrameLayout.h in Headers */,
+				79A6434A15BC45EC00FEA9FC /* IDLLayouts.h in Headers */,
+				79A6435E15BC6B0200FEA9FC /* IDLViewFactory.h in Headers */,
+				79A6436115BC6B4000FEA9FC /* IDLBaseViewFactory.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		79A6425015BC288700FEA9FC /* iDroidLayoutExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 79A6427E15BC288700FEA9FC /* Build configuration list for PBXNativeTarget "iDroidLayoutExample" */;
+			buildPhases = (
+				79A6424D15BC288700FEA9FC /* Sources */,
+				79A6424E15BC288700FEA9FC /* Frameworks */,
+				79A6424F15BC288700FEA9FC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				79A6435815BC5FF200FEA9FC /* PBXTargetDependency */,
+			);
+			name = iDroidLayoutExample;
+			productName = iDroidLayout;
+			productReference = 79A6425115BC288700FEA9FC /* iDroidLayoutExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+		79A6426B15BC288700FEA9FC /* iDroidLayoutTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 79A6428115BC288700FEA9FC /* Build configuration list for PBXNativeTarget "iDroidLayoutTests" */;
+			buildPhases = (
+				79A6426715BC288700FEA9FC /* Sources */,
+				79A6426815BC288700FEA9FC /* Frameworks */,
+				79A6426915BC288700FEA9FC /* Resources */,
+				79A6426A15BC288700FEA9FC /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				79A6427215BC288700FEA9FC /* PBXTargetDependency */,
+			);
+			name = iDroidLayoutTests;
+			productName = iDroidLayoutTests;
+			productReference = 79A6426C15BC288700FEA9FC /* iDroidLayoutTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+		79A6428E15BC2A6800FEA9FC /* iDroidLayout */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 79A6429915BC2A6800FEA9FC /* Build configuration list for PBXNativeTarget "iDroidLayout" */;
+			buildPhases = (
+				79A6428B15BC2A6800FEA9FC /* Sources */,
+				79A6428C15BC2A6800FEA9FC /* Frameworks */,
+				79A6428D15BC2A6800FEA9FC /* Resources */,
+				79A642A015BC2C2300FEA9FC /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iDroidLayout;
+			productName = iDroidLayout;
+			productReference = 79A6428F15BC2A6800FEA9FC /* iDroidLayout.framework */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		79A6424815BC288700FEA9FC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = "Tom Quist";
+			};
+			buildConfigurationList = 79A6424B15BC288700FEA9FC /* Build configuration list for PBXProject "iDroidLayout" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 79A6424615BC288700FEA9FC;
+			productRefGroup = 79A6425215BC288700FEA9FC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				79A6425015BC288700FEA9FC /* iDroidLayoutExample */,
+				79A6426B15BC288700FEA9FC /* iDroidLayoutTests */,
+				79A6428E15BC2A6800FEA9FC /* iDroidLayout */,
+				79A642A215BC2CFA00FEA9FC /* iDroidLayoutAggregate */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		79A6424F15BC288700FEA9FC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				79A6426015BC288700FEA9FC /* InfoPlist.strings in Resources */,
+				79A6433915BC3DDA00FEA9FC /* iDroidLayout.framework in Resources */,
+				79A6434D15BC498800FEA9FC /* mainCell.xml in Resources */,
+				79A6434F15BC501100FEA9FC /* formular.xml in Resources */,
+				79A6435615BC5E8E00FEA9FC /* formular~ipad.xml in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		79A6426915BC288700FEA9FC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				79A6427815BC288700FEA9FC /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		79A6428D15BC2A6800FEA9FC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				79A6429715BC2A6800FEA9FC /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		79A6426A15BC288700FEA9FC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		79A642A615BC2D0500FEA9FC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Sets the target folders and the final framework product.\nFMK_NAME=iDroidLayout\nFMK_VERSION=A\n\n# Install dir will be the final output to the framework.\n# The following line create it in the root folder of the current project.\nINSTALL_DIR=${SRCROOT}/Products/${FMK_NAME}.framework\n\n# Working dir will be deleted after the framework creation.\nWRK_DIR=build\nDEVICE_DIR=${WRK_DIR}/Release-iphoneos/${FMK_NAME}.framework\nSIMULATOR_DIR=${WRK_DIR}/Release-iphonesimulator/${FMK_NAME}.framework\n\n# Building both architectures.\nxcodebuild -configuration \"Release\" -target \"${FMK_NAME}\" -sdk iphoneos\nxcodebuild -configuration \"Release\" -target \"${FMK_NAME}\" -sdk iphonesimulator\n\n# Cleaning the oldest.\nif [ -d \"${INSTALL_DIR}\" ]\nthen\nrm -rf \"${INSTALL_DIR}\"\nfi\n\n# Creates and renews the final product folder.\nmkdir -p \"${INSTALL_DIR}\"\nmkdir -p \"${INSTALL_DIR}/Versions\"\nmkdir -p \"${INSTALL_DIR}/Versions/${FMK_VERSION}\"\nmkdir -p \"${INSTALL_DIR}/Versions/${FMK_VERSION}/Resources\"\nmkdir -p \"${INSTALL_DIR}/Versions/${FMK_VERSION}/Headers\"\n\n# Creates the internal links.\n# It MUST uses relative path, otherwise will not work when the folder is copied/moved.\nln -s \"${FMK_VERSION}\" \"${INSTALL_DIR}/Versions/Current\"\nln -s \"Versions/Current/Headers\" \"${INSTALL_DIR}/Headers\"\nln -s \"Versions/Current/Resources\" \"${INSTALL_DIR}/Resources\"\nln -s \"Versions/Current/${FMK_NAME}\" \"${INSTALL_DIR}/${FMK_NAME}\"\n\n# Copies the headers and resources files to the final product folder.\ncp -R \"${DEVICE_DIR}/Headers/\" \"${INSTALL_DIR}/Versions/${FMK_VERSION}/Headers/\"\ncp -R \"${DEVICE_DIR}/\" \"${INSTALL_DIR}/Versions/${FMK_VERSION}/Resources/\"\n\n# Removes the binary and header from the resources folder.\nrm -r \"${INSTALL_DIR}/Versions/${FMK_VERSION}/Resources/Headers\" \"${INSTALL_DIR}/Versions/${FMK_VERSION}/Resources/${FMK_NAME}\"\n\n# Uses the Lipo Tool to merge both binary files (i386 + armv6/armv7) into one Universal final product.\nlipo -create \"${DEVICE_DIR}/${FMK_NAME}\" \"${SIMULATOR_DIR}/${FMK_NAME}\" -output \"${INSTALL_DIR}/Versions/${FMK_VERSION}/${FMK_NAME}\"\n\nrm -r \"${WRK_DIR}\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		79A6424D15BC288700FEA9FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				79A6426215BC288700FEA9FC /* main.m in Sources */,
+				79A6426615BC288700FEA9FC /* IDLAppDelegate.m in Sources */,
+				79A6434015BC43CA00FEA9FC /* MainViewController.m in Sources */,
+				79A6435215BC52FE00FEA9FC /* FormularViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		79A6426715BC288700FEA9FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				79A6427B15BC288700FEA9FC /* iDroidLayoutTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		79A6428B15BC2A6800FEA9FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				79A642B315BC2E9400FEA9FC /* IDLGravity.m in Sources */,
+				79A642BE15BC31A900FEA9FC /* IDLPools.m in Sources */,
+				79A642C215BC31B900FEA9FC /* IDLFinitePool.m in Sources */,
+				79A642C615BC31C800FEA9FC /* IDLSynchronizedPool.m in Sources */,
+				79A642CA15BC32D000FEA9FC /* IDLLayoutBridge.m in Sources */,
+				79A642CF15BC335600FEA9FC /* UIView+IDL_Layout.m in Sources */,
+				79A642D315BC33CF00FEA9FC /* UIView+IDL_ViewGroup.m in Sources */,
+				79A642D715BC341500FEA9FC /* IDLLayoutParams.m in Sources */,
+				79A642DB15BC345400FEA9FC /* IDLViewGroup.m in Sources */,
+				79A642E415BC34F500FEA9FC /* IDLLayoutInflater.m in Sources */,
+				79A642E915BC354600FEA9FC /* TBXML.m in Sources */,
+				79A642ED15BC363F00FEA9FC /* UIColor+IDL_ColorParser.m in Sources */,
+				79A642F115BC367F00FEA9FC /* IDLMarginLayoutParams.m in Sources */,
+				79A642FA15BC371400FEA9FC /* IDLDependencyGraph.m in Sources */,
+				79A642FE15BC372A00FEA9FC /* IDLDependencyGraphNode.m in Sources */,
+				79A6430215BC374200FEA9FC /* IDLRelativeLayoutLayoutParams.m in Sources */,
+				79A6430615BC376200FEA9FC /* IDLRelativeLayout.m in Sources */,
+				79A6430B15BC38B400FEA9FC /* IDLLinearLayoutLayoutParams.m in Sources */,
+				79A6430F15BC38EF00FEA9FC /* IDLLinearLayout.m in Sources */,
+				79A6431915BC39FA00FEA9FC /* IDLFrameLayoutLayoutParams.m in Sources */,
+				79A6431D15BC3A5C00FEA9FC /* UIScrollView+IDL_ViewGroup.m in Sources */,
+				79A6432115BC3AC000FEA9FC /* UIButton+IDL_View.m in Sources */,
+				79A6432515BC3AD100FEA9FC /* UIControl+IDL_View.m in Sources */,
+				79A6432915BC3AE300FEA9FC /* UIImageView+IDL_View.m in Sources */,
+				79A6432D15BC3AFF00FEA9FC /* UILabel+IDL_View.m in Sources */,
+				79A6433115BC3B1700FEA9FC /* UIWebView+IDL_View.m in Sources */,
+				79A6433515BC3C0800FEA9FC /* IDLTextView.m in Sources */,
+				79A6434415BC44C700FEA9FC /* IDLTableViewCell.m in Sources */,
+				79A6436215BC6B4000FEA9FC /* IDLBaseViewFactory.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		79A6427215BC288700FEA9FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 79A6425015BC288700FEA9FC /* iDroidLayoutExample */;
+			targetProxy = 79A6427115BC288700FEA9FC /* PBXContainerItemProxy */;
+		};
+		79A6435815BC5FF200FEA9FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 79A6428E15BC2A6800FEA9FC /* iDroidLayout */;
+			targetProxy = 79A6435715BC5FF200FEA9FC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		79A6425E15BC288700FEA9FC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				79A6425F15BC288700FEA9FC /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		79A6427615BC288700FEA9FC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				79A6427715BC288700FEA9FC /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		79A6429515BC2A6800FEA9FC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				79A6429615BC2A6800FEA9FC /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		79A6427C15BC288700FEA9FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		79A6427D15BC288700FEA9FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		79A6427F15BC288700FEA9FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Products\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iDroidLayoutExample/iDroidLayout-Prefix.pch";
+				INFOPLIST_FILE = "iDroidLayoutExample/iDroidLayout-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		79A6428015BC288700FEA9FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Products\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iDroidLayoutExample/iDroidLayout-Prefix.pch";
+				INFOPLIST_FILE = "iDroidLayoutExample/iDroidLayout-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		79A6428215BC288700FEA9FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iDroidLayout.app/iDroidLayout";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iDroidLayout/iDroidLayout-Prefix.pch";
+				INFOPLIST_FILE = "iDroidLayoutTests/iDroidLayoutTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		79A6428315BC288700FEA9FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iDroidLayout.app/iDroidLayout";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iDroidLayout/iDroidLayout-Prefix.pch";
+				INFOPLIST_FILE = "iDroidLayoutTests/iDroidLayoutTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+		79A6429A15BC2A6800FEA9FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					"$(ARCHS_STANDARD_32_BIT)",
+					armv6,
+				);
+				COPY_PHASE_STRIP = YES;
+				DEAD_CODE_STRIPPING = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				INFOPLIST_FILE = "iDroidLayout/iDroidLayout-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				LINK_WITH_STANDARD_LIBRARIES = NO;
+				MACH_O_TYPE = mh_object;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		79A6429B15BC2A6800FEA9FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					"$(ARCHS_STANDARD_32_BIT)",
+					armv6,
+				);
+				DEAD_CODE_STRIPPING = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				INFOPLIST_FILE = "iDroidLayout/iDroidLayout-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				LINK_WITH_STANDARD_LIBRARIES = NO;
+				MACH_O_TYPE = mh_object;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+		79A642A415BC2CFA00FEA9FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		79A642A515BC2CFA00FEA9FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		79A6424B15BC288700FEA9FC /* Build configuration list for PBXProject "iDroidLayout" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				79A6427C15BC288700FEA9FC /* Debug */,
+				79A6427D15BC288700FEA9FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		79A6427E15BC288700FEA9FC /* Build configuration list for PBXNativeTarget "iDroidLayoutExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				79A6427F15BC288700FEA9FC /* Debug */,
+				79A6428015BC288700FEA9FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		79A6428115BC288700FEA9FC /* Build configuration list for PBXNativeTarget "iDroidLayoutTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				79A6428215BC288700FEA9FC /* Debug */,
+				79A6428315BC288700FEA9FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		79A6429915BC2A6800FEA9FC /* Build configuration list for PBXNativeTarget "iDroidLayout" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				79A6429A15BC2A6800FEA9FC /* Debug */,
+				79A6429B15BC2A6800FEA9FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		79A642A315BC2CFA00FEA9FC /* Build configuration list for PBXAggregateTarget "iDroidLayoutAggregate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				79A642A415BC2CFA00FEA9FC /* Debug */,
+				79A642A515BC2CFA00FEA9FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 79A6424815BC288700FEA9FC /* Project object */;
+}
