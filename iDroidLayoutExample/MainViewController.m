@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 #import "iDroidLayout.h"
 #import "FormularViewController.h"
+#import "LayoutAnimationsViewController.h"
 
 @implementation MainViewController
 
@@ -89,7 +90,10 @@
     UIViewController *vc = nil;
     switch (indexPath.row) {
         case 0:
-            vc = [[[FormularViewController alloc] init] autorelease];
+            vc = [[[FormularViewController alloc] initWithLayoutName:@"formular" bundle:nil] autorelease];
+            break;
+        case 1:
+            vc = [[[LayoutAnimationsViewController alloc] initWithLayoutName:@"animations" bundle:nil] autorelease];
             break;
         default:
             break;

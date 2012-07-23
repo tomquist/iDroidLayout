@@ -1,5 +1,5 @@
 //
-//  FormularViewController.h
+//  LayoutAnimationsViewController.h
 //  iDroidLayout
 //
 //  Created by Tom Quist on 22.07.12.
@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "IDLLayoutViewController.h"
 
-@interface FormularViewController : IDLLayoutViewController
+@interface LayoutAnimationsViewController : IDLLayoutViewController
 
 @end

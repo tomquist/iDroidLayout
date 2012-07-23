@@ -12,31 +12,10 @@
 
 @implementation FormularViewController
 
-- (id)init {
-    self = [super initWithNibName:nil bundle:nil];
-    if (self) {
-        
-    }
-    return self;
-}
-
-- (void)loadView {
-    IDLLayoutBridge *bridge = [[IDLLayoutBridge alloc] init];
-    bridge.resizeOnKeyboard = TRUE;
-    bridge.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    self.view = bridge;
-    [bridge release];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    IDLLayoutInflater *inflater = [[IDLLayoutInflater alloc] init];
-    [inflater inflateURL:[[NSBundle mainBundle] URLForResource:@"formular" withExtension:@"xml"] intoRootView:self.view attachToRoot:TRUE];
-    
     UIButton *submitButton = (UIButton *)[self.view findViewById:@"submitButton"];
     [submitButton addTarget:self action:@selector(didPressSubmitButton) forControlEvents:UIControlEventTouchUpInside];
-    
-    [inflater release];
 }
 
 - (void)didPressSubmitButton {
@@ -50,10 +29,6 @@
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alertView show];
     [alertView release];
-}
-
-- (void)viewDidUnload {
-    [super viewDidUnload];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {

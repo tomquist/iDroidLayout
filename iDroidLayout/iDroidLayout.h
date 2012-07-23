@@ -26,3 +26,4 @@
 #import "IDLLayoutInflater.h"
 #import "IDLLayoutBridge.h"
 #import "IDLTableViewCell.h"
+#import "IDLLayoutViewController.h"

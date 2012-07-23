@@ -108,6 +108,10 @@
 		79A6435E15BC6B0200FEA9FC /* IDLViewFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A6435D15BC6B0200FEA9FC /* IDLViewFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		79A6436115BC6B4000FEA9FC /* IDLBaseViewFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A6435F15BC6B3F00FEA9FC /* IDLBaseViewFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		79A6436215BC6B4000FEA9FC /* IDLBaseViewFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A6436015BC6B3F00FEA9FC /* IDLBaseViewFactory.m */; };
+		79A6436815BD228B00FEA9FC /* LayoutAnimationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A6436715BD228A00FEA9FC /* LayoutAnimationsViewController.m */; };
+		79A6436915BD228F00FEA9FC /* animations.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79A6436415BD21D100FEA9FC /* animations.xml */; };
+		79A6436C15BDF70800FEA9FC /* IDLLayoutViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A6436A15BDF70500FEA9FC /* IDLLayoutViewController.h */; };
+		79A6436D15BDF70800FEA9FC /* IDLLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A6436B15BDF70600FEA9FC /* IDLLayoutViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -222,6 +226,11 @@
 		79A6435F15BC6B3F00FEA9FC /* IDLBaseViewFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLBaseViewFactory.h; sourceTree = "<group>"; };
 		79A6436015BC6B3F00FEA9FC /* IDLBaseViewFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLBaseViewFactory.m; sourceTree = "<group>"; };
 		79A6436315BC717800FEA9FC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		79A6436415BD21D100FEA9FC /* animations.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = animations.xml; sourceTree = "<group>"; };
+		79A6436615BD228A00FEA9FC /* LayoutAnimationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayoutAnimationsViewController.h; sourceTree = "<group>"; };
+		79A6436715BD228A00FEA9FC /* LayoutAnimationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LayoutAnimationsViewController.m; sourceTree = "<group>"; };
+		79A6436A15BDF70500FEA9FC /* IDLLayoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLLayoutViewController.h; sourceTree = "<group>"; };
+		79A6436B15BDF70600FEA9FC /* IDLLayoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLLayoutViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -307,6 +316,9 @@
 				79A6435515BC5E8D00FEA9FC /* formular~ipad.xml */,
 				79A6435015BC52FE00FEA9FC /* FormularViewController.h */,
 				79A6435115BC52FE00FEA9FC /* FormularViewController.m */,
+				79A6436615BD228A00FEA9FC /* LayoutAnimationsViewController.h */,
+				79A6436715BD228A00FEA9FC /* LayoutAnimationsViewController.m */,
+				79A6436415BD21D100FEA9FC /* animations.xml */,
 			);
 			path = iDroidLayoutExample;
 			sourceTree = "<group>";
@@ -401,6 +413,8 @@
 				79A642EF15BC367F00FEA9FC /* IDLMarginLayoutParams.m */,
 				79A6434115BC44C600FEA9FC /* IDLTableViewCell.h */,
 				79A6434215BC44C700FEA9FC /* IDLTableViewCell.m */,
+				79A6436A15BDF70500FEA9FC /* IDLLayoutViewController.h */,
+				79A6436B15BDF70600FEA9FC /* IDLLayoutViewController.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -546,6 +560,7 @@
 				79A6434A15BC45EC00FEA9FC /* IDLLayouts.h in Headers */,
 				79A6435E15BC6B0200FEA9FC /* IDLViewFactory.h in Headers */,
 				79A6436115BC6B4000FEA9FC /* IDLBaseViewFactory.h in Headers */,
+				79A6436C15BDF70800FEA9FC /* IDLLayoutViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -646,6 +661,7 @@
 				79A6434D15BC498800FEA9FC /* mainCell.xml in Resources */,
 				79A6434F15BC501100FEA9FC /* formular.xml in Resources */,
 				79A6435615BC5E8E00FEA9FC /* formular~ipad.xml in Resources */,
+				79A6436915BD228F00FEA9FC /* animations.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -705,6 +721,7 @@
 				79A6426615BC288700FEA9FC /* IDLAppDelegate.m in Sources */,
 				79A6434015BC43CA00FEA9FC /* MainViewController.m in Sources */,
 				79A6435215BC52FE00FEA9FC /* FormularViewController.m in Sources */,
+				79A6436815BD228B00FEA9FC /* LayoutAnimationsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -749,6 +766,7 @@
 				79A6433515BC3C0800FEA9FC /* IDLTextView.m in Sources */,
 				79A6434415BC44C700FEA9FC /* IDLTableViewCell.m in Sources */,
 				79A6436215BC6B4000FEA9FC /* IDLBaseViewFactory.m in Sources */,
+				79A6436D15BDF70800FEA9FC /* IDLLayoutViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
