@@ -88,7 +88,7 @@ Questions & Answers
 Yes, you can use native views. Simply use the class name of the view as the xml tag name (e.g. ``<UIButton/>``). However, for some of the native views the ``onMeasureWithWidthMeasureSpec:heightMeasureSpec:`` selector is not yet implemented, so you should not use ``wrap_content`` for the view's width and height.
 
 ##### Can I use custom views?
-Yes, simply use the class name of the view as the xml tag name (e.g. <MyCustomView/>). However, you should implement the ``onMeasureWithWidthMeasureSpec:heightMeasureSpec:`` selector. Otherwise you should not use ``wrap_content`` for the views' width and height.
+Yes, simply use the class name of the view as the xml tag name (e.g. ``<MyCustomView/>``). However, you should implement the ``onMeasureWithWidthMeasureSpec:heightMeasureSpec:`` selector. Otherwise you should not use ``wrap_content`` for the views' width and height.
 
 ##### My custom view should not be initialized using init (like the ``IDLLayoutInflater`` usually does). How can I implement a custom initialization?
 ``IDLLayoutInflater`` creates view objects using a default implementation of the ``IDLViewFactory`` protocol. You can implement a custom view factory by implementing the protocol and setting the ``viewFactory`` property of the ``IDLLayoutInflater``.
