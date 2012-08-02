@@ -9,14 +9,49 @@
 #import "IDLLayoutBridge.h"
 #import "UIView+IDL_Layout.h"
 
+@implementation UIView (IDLLayoutBridge)
+
+- (UIView *)findAndScrollToFirstResponder {
+    UIView *ret = nil;
+    if (self.isFirstResponder) {
+        ret = self;
+    }
+    for (UIView *subView in self.subviews) {
+        UIView *firstResponder = [subView findAndScrollToFirstResponder];
+        if (firstResponder) {
+            if ([self isKindOfClass:[UIScrollView class]]) {
+                UIScrollView *sv = (UIScrollView *)self;
+                CGRect r = [self convertRect:firstResponder.frame fromView:firstResponder];
+                [sv scrollRectToVisible:r animated:FALSE];
+                ret = self;
+            } else {
+                ret = firstResponder;
+            }
+            break;
+        }
+    }
+    return ret;
+}
+
+@end
+
 @implementation IDLLayoutBridge
 
 @synthesize resizeOnKeyboard = _resizeOnKeyboard;
+@synthesize scrollToTextField = _scrollToTextField;
 
 - (void)dealloc {
 	if (_resizeOnKeyboard) {
         [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
         [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+    }
+    if (_scrollToTextField) {
+        NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+        [center removeObserver:self name:UITextFieldTextDidBeginEditingNotification object:nil];
+        [center removeObserver:self name:UITextFieldTextDidEndEditingNotification object:nil];
+        [center removeObserver:self name:UITextViewTextDidBeginEditingNotification object:nil];
+        [center removeObserver:self name:UITextViewTextDidEndEditingNotification object:nil];
     }
 	[super dealloc];
 }
@@ -84,8 +119,13 @@
     f.size.height = kbLocalFrame.origin.y;
     self.frame = f;
     [UIView animateWithDuration:0.3 animations:^{
-        [self layoutSubviews];
+        [self layoutIfNeeded];
+        
     }];
+}
+
+- (void)didShowKeyboard:(NSNotification *)notification {
+
 }
 
 - (void)willHideKeyboard:(NSNotification *)notification {
@@ -96,17 +136,48 @@
     f.size.height = kbLocalFrame.origin.y;
     self.frame = f;
     [UIView animateWithDuration:0.3 animations:^{
-        [self layoutSubviews];
+        [self layoutIfNeeded];
     }];
+}
+
+- (void)didBeginEditing:(NSNotification *)notification {
+    [UIView animateWithDuration:0.3 animations:^{
+        [self findAndScrollToFirstResponder];        
+    }];
+}
+
+- (void)didEndEditing:(NSNotification *)notification {
+    
+}
+
+- (void)setScrollToTextField:(BOOL)scrollToTextField {
+    if (scrollToTextField && !_scrollToTextField) {
+        NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+        [center addObserver:self selector:@selector(didBeginEditing:) name:UITextFieldTextDidBeginEditingNotification object:nil];
+        [center addObserver:self selector:@selector(didEndEditing:) name:UITextFieldTextDidEndEditingNotification object:nil];
+        [center addObserver:self selector:@selector(didBeginEditing:) name:UITextViewTextDidBeginEditingNotification object:nil];
+        [center addObserver:self selector:@selector(didEndEditing:) name:UITextViewTextDidEndEditingNotification object:nil];
+    } else if (!scrollToTextField && _scrollToTextField) {
+        NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+        [center removeObserver:self name:UITextFieldTextDidBeginEditingNotification object:nil];
+        [center removeObserver:self name:UITextFieldTextDidEndEditingNotification object:nil];
+        [center removeObserver:self name:UITextViewTextDidBeginEditingNotification object:nil];
+        [center removeObserver:self name:UITextViewTextDidEndEditingNotification object:nil];
+    }
+    _scrollToTextField = scrollToTextField;
 }
 
 - (void)setResizeOnKeyboard:(BOOL)resizeOnKeyboard {
     if (resizeOnKeyboard && !_resizeOnKeyboard) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willShowKeyboard:) name:UIKeyboardWillShowNotification object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willHideKeyboard:) name:UIKeyboardWillHideNotification object:nil];
+        NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+        [center addObserver:self selector:@selector(willShowKeyboard:) name:UIKeyboardWillShowNotification object:nil];
+        [center addObserver:self selector:@selector(didShowKeyboard:) name:UIKeyboardDidShowNotification object:nil];
+        [center addObserver:self selector:@selector(willHideKeyboard:) name:UIKeyboardWillHideNotification object:nil];
     } else if (!resizeOnKeyboard && _resizeOnKeyboard) {
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+        NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+        [center removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+        [center removeObserver:self name:UIKeyboardDidShowNotification object:nil];
+        [center removeObserver:self name:UIKeyboardWillHideNotification object:nil];
     }
     _resizeOnKeyboard = resizeOnKeyboard;
 }

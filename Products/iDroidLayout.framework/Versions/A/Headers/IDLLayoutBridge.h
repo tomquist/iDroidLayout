@@ -11,8 +11,10 @@
 @interface IDLLayoutBridge : IDLViewGroup {
     CGRect _lastFrame;
     BOOL _resizeOnKeyboard;
+    BOOL _scrollToTextField;
 }
 
-@property (nonatomic, assign) BOOL resizeOnKeyboard;
+@property (nonatomic, assign, getter = isResizingOnKeyboard) BOOL resizeOnKeyboard;
+@property (nonatomic, assign, getter = isScrollingToTextField) BOOL scrollToTextField;
 
 @end

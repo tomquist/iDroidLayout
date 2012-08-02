@@ -58,6 +58,7 @@
 - (void)loadView {
     IDLLayoutBridge *bridge = [[IDLLayoutBridge alloc] init];
     bridge.resizeOnKeyboard = TRUE;
+    bridge.scrollToTextField = TRUE;
     bridge.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.view = bridge;
     

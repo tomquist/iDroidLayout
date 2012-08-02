@@ -112,6 +112,7 @@
 		79A6436915BD228F00FEA9FC /* animations.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79A6436415BD21D100FEA9FC /* animations.xml */; };
 		79A6436C15BDF70800FEA9FC /* IDLLayoutViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A6436A15BDF70500FEA9FC /* IDLLayoutViewController.h */; };
 		79A6436D15BDF70800FEA9FC /* IDLLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A6436B15BDF70600FEA9FC /* IDLLayoutViewController.m */; };
+		79D88FCB15CB18AB00174D04 /* android.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 79D88FCA15CB18AB00174D04 /* android.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -231,6 +232,7 @@
 		79A6436715BD228A00FEA9FC /* LayoutAnimationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LayoutAnimationsViewController.m; sourceTree = "<group>"; };
 		79A6436A15BDF70500FEA9FC /* IDLLayoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLLayoutViewController.h; sourceTree = "<group>"; };
 		79A6436B15BDF70600FEA9FC /* IDLLayoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLLayoutViewController.m; sourceTree = "<group>"; };
+		79D88FCA15CB18AB00174D04 /* android.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = android.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -306,6 +308,7 @@
 		79A6425B15BC288700FEA9FC /* iDroidLayoutExample */ = {
 			isa = PBXGroup;
 			children = (
+				79D88FCA15CB18AB00174D04 /* android.jpg */,
 				79A6426415BC288700FEA9FC /* IDLAppDelegate.h */,
 				79A6426515BC288700FEA9FC /* IDLAppDelegate.m */,
 				79A6425C15BC288700FEA9FC /* Supporting Files */,
@@ -662,6 +665,7 @@
 				79A6434F15BC501100FEA9FC /* formular.xml in Resources */,
 				79A6435615BC5E8E00FEA9FC /* formular~ipad.xml in Resources */,
 				79A6436915BD228F00FEA9FC /* animations.xml in Resources */,
+				79D88FCB15CB18AB00174D04 /* android.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1033,6 +1037,7 @@
 				79A642A515BC2CFA00FEA9FC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

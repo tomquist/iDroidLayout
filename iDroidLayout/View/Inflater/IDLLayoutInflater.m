@@ -50,8 +50,15 @@
     if ([name isEqualToString:@"view"]) {
         name = [attrs objectForKey:@"class"];
     }
-    return [self.viewFactory onCreateViewWithName:name attributes:attrs];
-    
+    UIView *ret = nil;
+    @try {
+        ret = [self.viewFactory onCreateViewWithName:name attributes:attrs];
+    }
+    @catch (NSException *exception) {
+        NSLog(@"Warning!!!!! Class for view with name %@ does not exist. Creating UIView instead.", name);
+        ret = [self.viewFactory onCreateViewWithName:@"UIView" attributes:attrs];
+    }
+    return ret;
 }
 
 - (void)rInflateWithXmlElement:(TBXMLElement *)element parentView:(UIView *)parentView attributes:(NSMutableDictionary *)attrs finishInflate:(BOOL)finishInflate {

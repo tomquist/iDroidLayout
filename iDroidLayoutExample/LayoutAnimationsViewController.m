@@ -16,9 +16,7 @@
     [super viewDidLoad];
     UIButton *button = (UIButton *)[self.view findViewById:@"button"];
     [button addTarget:self action:@selector(didPressButton) forControlEvents:UIControlEventTouchUpInside];
-    UILabel *textLabel = (UILabel *)[self.view findViewById:@"text"];
     UILabel *otherLabel = (UILabel *)[self.view findViewById:@"otherText"];
-    textLabel.contentMode = UIViewContentModeCenter;
     otherLabel.contentMode = UIViewContentModeScaleToFill;
 }
 
