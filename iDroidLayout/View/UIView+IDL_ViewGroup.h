@@ -57,6 +57,26 @@
  */
 - (void)addView:(UIView *)child withSize:(CGSize)size;
 
+/**
+ * Removes the specified child from the group.
+ * 
+ * @param view to remove from the group
+ */
+- (void)removeView:(UIView *)view;
+
+/**
+ * Removes the view at the specified position in the group.
+ *
+ * @param index the position in the group of the view to remove
+ */
+- (void)removeViewAtIndex:(NSUInteger)index;
+
+/**
+ * Is called whenever a view has been removed through the 
+ * removeView methods.
+ */
+- (void)onViewRemoved:(UIView *)view;
+
 @property (nonatomic, readonly) BOOL isViewGroup;
 
 @end

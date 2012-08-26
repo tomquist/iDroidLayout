@@ -163,7 +163,7 @@
 
 - (void)addView:(UIView *)child atIndex:(NSInteger)index withLayoutParams:(IDLLayoutParams *)lp {
     if (!self.isViewGroup) {
-        @throw [NSException exceptionWithName:@"UnssuportedOperationException" reason:@"Views can only be added on ViewGroup objects" userInfo:nil];
+        @throw [NSException exceptionWithName:@"UnsuportedOperationException" reason:@"Views can only be added on ViewGroup objects" userInfo:nil];
     }
     if (![self checkLayoutParams:lp]) {
         if (lp != nil) {
@@ -207,6 +207,33 @@
     lp.width = size.width;
     lp.height = size.height;
     [self addView:child atIndex:-1 withLayoutParams:lp];
+}
+
+- (void)removeViewInternal:(UIView *)view {
+    if (!self.isViewGroup) {
+        @throw [NSException exceptionWithName:@"UnsuportedOperationException" reason:@"Views can only be removed from ViewGroup objects" userInfo:nil];
+    }
+    if (view.superview == self) {
+        [view removeFromSuperview];
+        [self onViewRemoved:view];
+    }
+}
+
+- (void)removeView:(UIView *)view {
+    [self removeViewInternal:view];
+    [self requestLayout];
+    [self setNeedsDisplay];
+}
+
+- (void)removeViewAtIndex:(NSUInteger)index {
+    NSArray *subviews = self.subviews;
+    if (index > 0 && index < [subviews count]) {
+        [self removeView:[subviews objectAtIndex:index]];
+    }
+}
+
+- (void)onViewRemoved:(UIView *)view {
+    
 }
 
 @end
