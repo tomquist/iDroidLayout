@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		799F62D115EA2EFD003A4988 /* scrollviews.xml in Resources */ = {isa = PBXBuildFile; fileRef = 799F62D015EA2EFD003A4988 /* scrollviews.xml */; };
 		79A6425615BC288700FEA9FC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A6425515BC288700FEA9FC /* UIKit.framework */; };
 		79A6425815BC288700FEA9FC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A6425715BC288700FEA9FC /* Foundation.framework */; };
 		79A6425A15BC288700FEA9FC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A6425915BC288700FEA9FC /* CoreGraphics.framework */; };
@@ -133,6 +134,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		799F62D015EA2EFD003A4988 /* scrollviews.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = scrollviews.xml; sourceTree = "<group>"; };
 		79A6425115BC288700FEA9FC /* iDroidLayoutExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iDroidLayoutExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79A6425515BC288700FEA9FC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		79A6425715BC288700FEA9FC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -322,6 +324,7 @@
 				79A6436615BD228A00FEA9FC /* LayoutAnimationsViewController.h */,
 				79A6436715BD228A00FEA9FC /* LayoutAnimationsViewController.m */,
 				79A6436415BD21D100FEA9FC /* animations.xml */,
+				799F62D015EA2EFD003A4988 /* scrollviews.xml */,
 			);
 			path = iDroidLayoutExample;
 			sourceTree = "<group>";
@@ -666,6 +669,7 @@
 				79A6435615BC5E8E00FEA9FC /* formular~ipad.xml in Resources */,
 				79A6436915BD228F00FEA9FC /* animations.xml in Resources */,
 				79D88FCB15CB18AB00174D04 /* android.jpg in Resources */,
+				799F62D115EA2EFD003A4988 /* scrollviews.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -901,7 +905,6 @@
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "iDroidLayout/iDroidLayout-Prefix.pch";
 				INFOPLIST_FILE = "iDroidLayoutTests/iDroidLayoutTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -918,7 +921,6 @@
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "iDroidLayout/iDroidLayout-Prefix.pch";
 				INFOPLIST_FILE = "iDroidLayoutTests/iDroidLayoutTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";

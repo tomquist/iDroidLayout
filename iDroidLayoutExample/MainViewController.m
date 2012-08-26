@@ -42,10 +42,12 @@
     
     _titles = [[NSArray alloc] initWithObjects:
                @"Formular",
-               @"Animations", nil];
+               @"Animations",
+               @"ScrollViews", nil];
     _descriptions = [[NSArray alloc] initWithObjects:
                      @"Shows a simple formular implemented using a combination of RelativeLayout and LinearLayout",
-                     @"Shows simple layout animations", nil];
+                     @"Shows simple layout animations",
+                     @"Horizontal and vertical scroll views", nil];
 }
 
 - (void)viewDidUnload {
@@ -94,6 +96,9 @@
             break;
         case 1:
             vc = [[[LayoutAnimationsViewController alloc] initWithLayoutName:@"animations" bundle:nil] autorelease];
+            break;
+        case 2:
+            vc = [[[IDLLayoutViewController alloc] initWithLayoutName:@"scrollviews" bundle:nil] autorelease];
             break;
         default:
             break;
