@@ -58,7 +58,6 @@ typedef struct IDLLayoutMeasuredWidthHeightState {
 
 
 - (void)onLayoutWithFrame:(CGRect)frame didFrameChange:(BOOL)changed;
-- (void)measureWithWidthMeasureSpec:(IDLLayoutMeasureSpec)widthMeasureSpec heightMeasureSpec:(IDLLayoutMeasureSpec)heightMeasureSpec;
 - (void)setMeasuredDimensionWidth:(IDLLayoutMeasuredDimension)width height:(IDLLayoutMeasuredDimension)height;
 - (void)requestLayout;
 - (void)onFinishInflate;

@@ -7,7 +7,7 @@
 //
 
 #import "MainViewController.h"
-#import "iDroidLayout.h"
+#import <iDroidLayout/iDroidLayout.h>
 #import "FormularViewController.h"
 #import "LayoutAnimationsViewController.h"
 
