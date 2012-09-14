@@ -75,7 +75,9 @@
     CGFloat heightSize = heightMeasureSpec.size;
     
     IDLLayoutMeasuredDimension width;
+    width.state = IDLLayoutMeasuredStateNone;
     IDLLayoutMeasuredDimension height;
+    height.state = IDLLayoutMeasuredStateNone;
     
     if (widthMode == IDLLayoutMeasureSpecModeExactly) {
         width.size = widthSize;

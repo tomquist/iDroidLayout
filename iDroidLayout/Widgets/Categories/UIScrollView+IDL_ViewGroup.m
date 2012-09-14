@@ -62,6 +62,8 @@ static char matchParentChildrenKey;
     CGFloat maxWidth = 0;
     UIEdgeInsets padding = self.padding;
     IDLLayoutMeasuredWidthHeightState childState;
+    childState.heightState = IDLLayoutMeasuredStateNone;
+    childState.widthState = IDLLayoutMeasuredStateNone;
     
     for (int i = 0; i < count; i++) {
         UIView *child = [self.subviews objectAtIndex:i];

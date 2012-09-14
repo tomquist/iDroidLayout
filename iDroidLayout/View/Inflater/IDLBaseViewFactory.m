@@ -56,11 +56,10 @@
     if (![viewClass isSubclassOfClass:[UIView class]]) {
         @throw [NSException exceptionWithName:@"InvalidViewClass" reason:[NSString stringWithFormat:@"Class %@ is not a view.", name] userInfo:nil];
     }
-    UIView *viewInstance = [viewClass alloc];
-    if (![viewInstance respondsToSelector:@selector(initWithAttributes:)]) {
+    if (![viewClass instancesRespondToSelector:@selector(initWithAttributes:)]) {
         @throw [NSException exceptionWithName:@"InvalidViewClass" reason:[NSString stringWithFormat:@"Class %@ could not be instantiated. Missing selector initWithAttributes:", name] userInfo:nil];
     }
-    return [[viewInstance initWithAttributes:attrs] autorelease];
+    return [[[viewClass alloc] initWithAttributes:attrs] autorelease];
 }
 
 @end

@@ -102,6 +102,9 @@
 		79642CF01603D7060095D5A2 /* testLayout2.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79642CEF1603D7060095D5A2 /* testLayout2.xml */; };
 		79642CF21603D8BA0095D5A2 /* testLayout3.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79642CF11603D8BA0095D5A2 /* testLayout3.xml */; };
 		79642CF41603D9B30095D5A2 /* testLayout4.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79642CF31603D9B30095D5A2 /* testLayout4.xml */; };
+		79642CF71603E2920095D5A2 /* IDLViewGroupTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642CF61603E2920095D5A2 /* IDLViewGroupTest.m */; };
+		79642CF91603E4610095D5A2 /* viewgroupchildren.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79642CF81603E4610095D5A2 /* viewgroupchildren.xml */; };
+		79642CFC1603E8560095D5A2 /* IDLViewAsserts.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642CFB1603E8560095D5A2 /* IDLViewAsserts.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -228,6 +231,11 @@
 		79642CEF1603D7060095D5A2 /* testLayout2.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = testLayout2.xml; sourceTree = "<group>"; };
 		79642CF11603D8BA0095D5A2 /* testLayout3.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = testLayout3.xml; sourceTree = "<group>"; };
 		79642CF31603D9B30095D5A2 /* testLayout4.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = testLayout4.xml; sourceTree = "<group>"; };
+		79642CF51603E2920095D5A2 /* IDLViewGroupTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLViewGroupTest.h; sourceTree = "<group>"; };
+		79642CF61603E2920095D5A2 /* IDLViewGroupTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLViewGroupTest.m; sourceTree = "<group>"; };
+		79642CF81603E4610095D5A2 /* viewgroupchildren.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = viewgroupchildren.xml; sourceTree = "<group>"; };
+		79642CFA1603E8560095D5A2 /* IDLViewAsserts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLViewAsserts.h; sourceTree = "<group>"; };
+		79642CFB1603E8560095D5A2 /* IDLViewAsserts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLViewAsserts.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -328,6 +336,10 @@
 				79642CE11603D0620095D5A2 /* IDLLayoutInflaterTest.m */,
 				79642C031603C4A30095D5A2 /* Supporting Files */,
 				79642CE31603D1B20095D5A2 /* TestResources */,
+				79642CF51603E2920095D5A2 /* IDLViewGroupTest.h */,
+				79642CF61603E2920095D5A2 /* IDLViewGroupTest.m */,
+				79642CFA1603E8560095D5A2 /* IDLViewAsserts.h */,
+				79642CFB1603E8560095D5A2 /* IDLViewAsserts.m */,
 			);
 			path = iDroidLayoutTests;
 			sourceTree = "<group>";
@@ -543,6 +555,7 @@
 		79642CE31603D1B20095D5A2 /* TestResources */ = {
 			isa = PBXGroup;
 			children = (
+				79642CF81603E4610095D5A2 /* viewgroupchildren.xml */,
 				79642CE41603D1B20095D5A2 /* testLayout1.xml */,
 				79642CEF1603D7060095D5A2 /* testLayout2.xml */,
 				79642CF11603D8BA0095D5A2 /* testLayout3.xml */,
@@ -706,6 +719,7 @@
 				79642CF01603D7060095D5A2 /* testLayout2.xml in Resources */,
 				79642CF21603D8BA0095D5A2 /* testLayout3.xml in Resources */,
 				79642CF41603D9B30095D5A2 /* testLayout4.xml in Resources */,
+				79642CF91603E4610095D5A2 /* viewgroupchildren.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -823,6 +837,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				79642CE21603D0620095D5A2 /* IDLLayoutInflaterTest.m in Sources */,
+				79642CF71603E2920095D5A2 /* IDLViewGroupTest.m in Sources */,
+				79642CFC1603E8560095D5A2 /* IDLViewAsserts.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

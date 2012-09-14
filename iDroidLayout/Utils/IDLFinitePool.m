@@ -45,7 +45,7 @@
         _root = [element.nextPoolable retain];
         _poolCount--;
     } else {
-        element = _manager.newInstance;
+        element = [_manager newInstance];
     }
     
     if (element != nil) {
@@ -53,7 +53,7 @@
         [_manager onAcquiredElement:element];
     }
     
-    return element;
+    return [element autorelease];
 }
 
 

@@ -60,8 +60,10 @@
     CGSize imageSize = self.image.size;
     IDLLayoutMeasuredDimension width;
     width.size = imageSize.width;
+    width.state = IDLLayoutMeasuredStateNone;
     IDLLayoutMeasuredDimension height;
     height.size = imageSize.height;
+    height.state = IDLLayoutMeasuredStateNone;
     //UIEdgeInsets padding = self.padding;
     switch (widthMode) {
         case IDLLayoutMeasureSpecModeExactly: {

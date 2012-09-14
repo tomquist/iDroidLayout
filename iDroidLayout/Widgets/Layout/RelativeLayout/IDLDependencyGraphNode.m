@@ -28,7 +28,7 @@
 }
 
 - (id<IDLPoolable>)newInstance {
-    return [[[_class alloc] init] autorelease];
+    return [[_class alloc] init];
 }
 
 - (void)onAcquiredElement:(id<IDLPoolable>)element {
