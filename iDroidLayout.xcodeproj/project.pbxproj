@@ -9,11 +9,8 @@
 /* Begin PBXBuildFile section */
 		79642BF01603C4A30095D5A2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79642BEE1603C4A30095D5A2 /* InfoPlist.strings */; };
 		79642BFA1603C4A30095D5A2 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79642BF91603C4A30095D5A2 /* SenTestingKit.framework */; };
-		79642BFC1603C4A30095D5A2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79642BFB1603C4A30095D5A2 /* UIKit.framework */; };
-		79642BFE1603C4A30095D5A2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79642BFD1603C4A30095D5A2 /* Foundation.framework */; };
 		79642C011603C4A30095D5A2 /* iDroidLayout.framework in Resources */ = {isa = PBXBuildFile; fileRef = 79642BE91603C4A20095D5A2 /* iDroidLayout.framework */; };
 		79642C071603C4A30095D5A2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79642C051603C4A30095D5A2 /* InfoPlist.strings */; };
-		79642C0A1603C4A30095D5A2 /* iDroidLayoutTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C091603C4A30095D5A2 /* iDroidLayoutTests.m */; };
 		79642C191603C4E80095D5A2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79642BFB1603C4A30095D5A2 /* UIKit.framework */; };
 		79642C1A1603C4E80095D5A2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79642BFD1603C4A30095D5A2 /* Foundation.framework */; };
 		79642C1C1603C4E80095D5A2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79642C1B1603C4E80095D5A2 /* CoreGraphics.framework */; };
@@ -97,6 +94,14 @@
 		79642CD51603C5DB0095D5A2 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642CCB1603C5DB0095D5A2 /* MainViewController.m */; };
 		79642CD61603C5DB0095D5A2 /* scrollviews.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79642CCC1603C5DB0095D5A2 /* scrollviews.xml */; };
 		79642CDA1603CA1D0095D5A2 /* iDroidLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79642CD81603CA1D0095D5A2 /* iDroidLayout.framework */; };
+		79642CE21603D0620095D5A2 /* IDLLayoutInflaterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642CE11603D0620095D5A2 /* IDLLayoutInflaterTest.m */; };
+		79642CE51603D1B20095D5A2 /* testLayout1.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79642CE41603D1B20095D5A2 /* testLayout1.xml */; };
+		79642CEB1603D3F20095D5A2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79642CEA1603D3F20095D5A2 /* UIKit.framework */; };
+		79642CED1603D3F80095D5A2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79642CEC1603D3F80095D5A2 /* Foundation.framework */; };
+		79642CEE1603D3FE0095D5A2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79642C1B1603C4E80095D5A2 /* CoreGraphics.framework */; };
+		79642CF01603D7060095D5A2 /* testLayout2.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79642CEF1603D7060095D5A2 /* testLayout2.xml */; };
+		79642CF21603D8BA0095D5A2 /* testLayout3.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79642CF11603D8BA0095D5A2 /* testLayout3.xml */; };
+		79642CF41603D9B30095D5A2 /* testLayout4.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79642CF31603D9B30095D5A2 /* testLayout4.xml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,8 +132,6 @@
 		79642BFD1603C4A30095D5A2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		79642C041603C4A30095D5A2 /* iDroidLayoutTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iDroidLayoutTests-Info.plist"; sourceTree = "<group>"; };
 		79642C061603C4A30095D5A2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		79642C081603C4A30095D5A2 /* iDroidLayoutTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iDroidLayoutTests.h; sourceTree = "<group>"; };
-		79642C091603C4A30095D5A2 /* iDroidLayoutTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iDroidLayoutTests.m; sourceTree = "<group>"; };
 		79642C171603C4E80095D5A2 /* iDroidLayoutExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iDroidLayoutExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79642C1B1603C4E80095D5A2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		79642C1F1603C4E80095D5A2 /* iDroidLayout-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iDroidLayout-Info.plist"; sourceTree = "<group>"; };
@@ -217,6 +220,14 @@
 		79642CCB1603C5DB0095D5A2 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		79642CCC1603C5DB0095D5A2 /* scrollviews.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = scrollviews.xml; sourceTree = "<group>"; };
 		79642CD81603CA1D0095D5A2 /* iDroidLayout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iDroidLayout.framework; sourceTree = "<group>"; };
+		79642CE01603D0620095D5A2 /* IDLLayoutInflaterTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLLayoutInflaterTest.h; sourceTree = "<group>"; };
+		79642CE11603D0620095D5A2 /* IDLLayoutInflaterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLLayoutInflaterTest.m; sourceTree = "<group>"; };
+		79642CE41603D1B20095D5A2 /* testLayout1.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = testLayout1.xml; sourceTree = "<group>"; };
+		79642CEA1603D3F20095D5A2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		79642CEC1603D3F80095D5A2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		79642CEF1603D7060095D5A2 /* testLayout2.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = testLayout2.xml; sourceTree = "<group>"; };
+		79642CF11603D8BA0095D5A2 /* testLayout3.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = testLayout3.xml; sourceTree = "<group>"; };
+		79642CF31603D9B30095D5A2 /* testLayout4.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = testLayout4.xml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,9 +242,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79642CEE1603D3FE0095D5A2 /* CoreGraphics.framework in Frameworks */,
+				79642CED1603D3F80095D5A2 /* Foundation.framework in Frameworks */,
+				79642CEB1603D3F20095D5A2 /* UIKit.framework in Frameworks */,
 				79642BFA1603C4A30095D5A2 /* SenTestingKit.framework in Frameworks */,
-				79642BFC1603C4A30095D5A2 /* UIKit.framework in Frameworks */,
-				79642BFE1603C4A30095D5A2 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,11 +310,13 @@
 		79642BF81603C4A30095D5A2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				79642C1B1603C4E80095D5A2 /* CoreGraphics.framework */,
+				79642CEC1603D3F80095D5A2 /* Foundation.framework */,
+				79642BFD1603C4A30095D5A2 /* Foundation.framework */,
 				79642CD71603CA1D0095D5A2 /* iDroidLayout.embeddedframework */,
 				79642BF91603C4A30095D5A2 /* SenTestingKit.framework */,
+				79642CEA1603D3F20095D5A2 /* UIKit.framework */,
 				79642BFB1603C4A30095D5A2 /* UIKit.framework */,
-				79642BFD1603C4A30095D5A2 /* Foundation.framework */,
-				79642C1B1603C4E80095D5A2 /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -310,9 +324,10 @@
 		79642C021603C4A30095D5A2 /* iDroidLayoutTests */ = {
 			isa = PBXGroup;
 			children = (
-				79642C081603C4A30095D5A2 /* iDroidLayoutTests.h */,
-				79642C091603C4A30095D5A2 /* iDroidLayoutTests.m */,
+				79642CE01603D0620095D5A2 /* IDLLayoutInflaterTest.h */,
+				79642CE11603D0620095D5A2 /* IDLLayoutInflaterTest.m */,
 				79642C031603C4A30095D5A2 /* Supporting Files */,
+				79642CE31603D1B20095D5A2 /* TestResources */,
 			);
 			path = iDroidLayoutTests;
 			sourceTree = "<group>";
@@ -525,6 +540,17 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		79642CE31603D1B20095D5A2 /* TestResources */ = {
+			isa = PBXGroup;
+			children = (
+				79642CE41603D1B20095D5A2 /* testLayout1.xml */,
+				79642CEF1603D7060095D5A2 /* testLayout2.xml */,
+				79642CF11603D8BA0095D5A2 /* testLayout3.xml */,
+				79642CF31603D9B30095D5A2 /* testLayout4.xml */,
+			);
+			path = TestResources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -676,6 +702,10 @@
 			files = (
 				79642C011603C4A30095D5A2 /* iDroidLayout.framework in Resources */,
 				79642C071603C4A30095D5A2 /* InfoPlist.strings in Resources */,
+				79642CE51603D1B20095D5A2 /* testLayout1.xml in Resources */,
+				79642CF01603D7060095D5A2 /* testLayout2.xml in Resources */,
+				79642CF21603D8BA0095D5A2 /* testLayout3.xml in Resources */,
+				79642CF41603D9B30095D5A2 /* testLayout4.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -792,7 +822,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79642C0A1603C4A30095D5A2 /* iDroidLayoutTests.m in Sources */,
+				79642CE21603D0620095D5A2 /* IDLLayoutInflaterTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -95,7 +95,9 @@
         }
         temp.layoutParams = layoutParams;
     }
-    [self rInflateWithXmlElement:rootElement->firstChild parentView:temp attributes:attrs finishInflate:TRUE];
+    if (rootElement->firstChild != NULL) {
+        [self rInflateWithXmlElement:rootElement->firstChild parentView:temp attributes:attrs finishInflate:TRUE];
+    }
     if (attachToRoot && rootView != nil) {
         [rootView addSubview:temp];
     }
