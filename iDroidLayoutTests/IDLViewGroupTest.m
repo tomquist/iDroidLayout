@@ -84,4 +84,40 @@
     STAssertNil([view superview], @"Superview of remove view is not nil");
 }
 
+- (void)testRemoveChildren {
+    NSMutableArray *views = [NSMutableArray arrayWithCapacity:24];
+    
+    for (int i = 0; i < 24; i++) {
+        UIView *v = [self createViewWithText:[NSString stringWithFormat:@"%d", (i + 1)]];
+        [views addObject:v];
+        [_group addView:v];
+    }
+    
+    for (int i = [views count] - 1; i >= 0; i--) {
+        UIView *v = [views objectAtIndex:i];
+        [_group removeViewAtIndex:i];
+        [self assertGroup:_group notContains:v];
+        STAssertNil([v superview], @"Removed view still has a parent");
+    }
+    
+    STAssertEquals((NSUInteger)0, [[_group subviews] count], @"ViewGroup still has subviews");
+}
+
+-(void)testRemoveChildAtFront {
+    NSMutableArray *views = [NSMutableArray arrayWithCapacity:24];
+    
+    for (int i = 0; i < 24; i++) {
+        UIView *v = [self createViewWithText:[NSString stringWithFormat:@"%d", (i+1)]];
+        [views addObject:v];
+        [_group addView:v];
+    }
+    
+    UIView *v = [views objectAtIndex:0];
+    [_group removeViewAtIndex:0];
+    [self assertGroup:_group notContains:v];
+    STAssertNil([v superview], @"View still has a superview");
+    
+    STAssertEquals([views count] - 1, [[_group subviews] count], @"ViewGroup has the wrong number of subviews");
+}
+
 @end

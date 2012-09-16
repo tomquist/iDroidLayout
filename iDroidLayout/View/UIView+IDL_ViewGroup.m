@@ -227,7 +227,7 @@
 
 - (void)removeViewAtIndex:(NSUInteger)index {
     NSArray *subviews = self.subviews;
-    if (index > 0 && index < [subviews count]) {
+    if (index < [subviews count]) {
         [self removeView:[subviews objectAtIndex:index]];
     }
 }
