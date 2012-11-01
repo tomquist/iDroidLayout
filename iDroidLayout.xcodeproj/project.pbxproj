@@ -105,6 +105,8 @@
 		79642CF71603E2920095D5A2 /* IDLViewGroupTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642CF61603E2920095D5A2 /* IDLViewGroupTest.m */; };
 		79642CF91603E4610095D5A2 /* viewgroupchildren.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79642CF81603E4610095D5A2 /* viewgroupchildren.xml */; };
 		79642CFC1603E8560095D5A2 /* IDLViewAsserts.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642CFB1603E8560095D5A2 /* IDLViewAsserts.m */; };
+		79642CFE1605E1790095D5A2 /* framelayout_gravity.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79642CFD1605E1790095D5A2 /* framelayout_gravity.xml */; };
+		79642D011605E24E0095D5A2 /* IDLFrameLayoutGravityTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642D001605E24E0095D5A2 /* IDLFrameLayoutGravityTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -236,6 +238,9 @@
 		79642CF81603E4610095D5A2 /* viewgroupchildren.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = viewgroupchildren.xml; sourceTree = "<group>"; };
 		79642CFA1603E8560095D5A2 /* IDLViewAsserts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLViewAsserts.h; sourceTree = "<group>"; };
 		79642CFB1603E8560095D5A2 /* IDLViewAsserts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLViewAsserts.m; sourceTree = "<group>"; };
+		79642CFD1605E1790095D5A2 /* framelayout_gravity.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = framelayout_gravity.xml; sourceTree = "<group>"; };
+		79642CFF1605E24E0095D5A2 /* IDLFrameLayoutGravityTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLFrameLayoutGravityTest.h; sourceTree = "<group>"; };
+		79642D001605E24E0095D5A2 /* IDLFrameLayoutGravityTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLFrameLayoutGravityTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -340,6 +345,8 @@
 				79642CF61603E2920095D5A2 /* IDLViewGroupTest.m */,
 				79642CFA1603E8560095D5A2 /* IDLViewAsserts.h */,
 				79642CFB1603E8560095D5A2 /* IDLViewAsserts.m */,
+				79642CFF1605E24E0095D5A2 /* IDLFrameLayoutGravityTest.h */,
+				79642D001605E24E0095D5A2 /* IDLFrameLayoutGravityTest.m */,
 			);
 			path = iDroidLayoutTests;
 			sourceTree = "<group>";
@@ -560,6 +567,7 @@
 				79642CEF1603D7060095D5A2 /* testLayout2.xml */,
 				79642CF11603D8BA0095D5A2 /* testLayout3.xml */,
 				79642CF31603D9B30095D5A2 /* testLayout4.xml */,
+				79642CFD1605E1790095D5A2 /* framelayout_gravity.xml */,
 			);
 			path = TestResources;
 			sourceTree = "<group>";
@@ -678,7 +686,7 @@
 		79642BDC1603C4A20095D5A2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0440;
+				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "Tom Quist";
 			};
 			buildConfigurationList = 79642BDF1603C4A20095D5A2 /* Build configuration list for PBXProject "iDroidLayout" */;
@@ -720,6 +728,7 @@
 				79642CF21603D8BA0095D5A2 /* testLayout3.xml in Resources */,
 				79642CF41603D9B30095D5A2 /* testLayout4.xml in Resources */,
 				79642CF91603E4610095D5A2 /* viewgroupchildren.xml in Resources */,
+				79642CFE1605E1790095D5A2 /* framelayout_gravity.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -839,6 +848,7 @@
 				79642CE21603D0620095D5A2 /* IDLLayoutInflaterTest.m in Sources */,
 				79642CF71603E2920095D5A2 /* IDLViewGroupTest.m in Sources */,
 				79642CFC1603E8560095D5A2 /* IDLViewAsserts.m in Sources */,
+				79642D011605E24E0095D5A2 /* IDLFrameLayoutGravityTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -955,6 +965,7 @@
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iDroidLayout/iDroidLayout-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "iDroidLayout/iDroidLayout-Info.plist";
 				INFOPLIST_PATH = "$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/Info.plist";
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
@@ -981,6 +992,7 @@
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iDroidLayout/iDroidLayout-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "iDroidLayout/iDroidLayout-Info.plist";
 				INFOPLIST_PATH = "$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/Info.plist";
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";

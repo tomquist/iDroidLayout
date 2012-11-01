@@ -13,5 +13,9 @@
 
 - (void)assertGroup:(UIView *)parent contains:(UIView *)child;
 - (void)assertGroup:(UIView *)parent notContains:(UIView *)child;
+- (void)assertView:(UIView *)first isLeftAlignedToView:(UIView *)second;
+- (void)assertView:(UIView *)first isRightAlignedToView:(UIView *)second;
+- (void)assertView:(UIView *)first isTopAlignedToView:(UIView *)second;
+- (void)assertView:(UIView *)first isBottomAlignedToView:(UIView *)second;
 
 @end

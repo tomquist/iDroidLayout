@@ -138,7 +138,9 @@
     int size = [self.subviews count];
     for (int i = 0; i < size; ++i) {
         UIView *child = [self.subviews objectAtIndex:i];
-        [self measureChild:child withParentWidthMeasureSpec:widthMeasureSpec parentHeightMeasureSpec:heightMeasureSpec];
+        if (child.visibility != IDLViewVisibilityGone) {
+            [self measureChild:child withParentWidthMeasureSpec:widthMeasureSpec parentHeightMeasureSpec:heightMeasureSpec];
+        }
     }
 }
 

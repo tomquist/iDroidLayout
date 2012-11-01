@@ -103,7 +103,7 @@
     STAssertEquals((NSUInteger)0, [[_group subviews] count], @"ViewGroup still has subviews");
 }
 
--(void)testRemoveChildAtFront {
+- (void)testRemoveChildAtFront {
     NSMutableArray *views = [NSMutableArray arrayWithCapacity:24];
     
     for (int i = 0; i < 24; i++) {
@@ -114,6 +114,23 @@
     
     UIView *v = [views objectAtIndex:0];
     [_group removeViewAtIndex:0];
+    [self assertGroup:_group notContains:v];
+    STAssertNil([v superview], @"View still has a superview");
+    
+    STAssertEquals([views count] - 1, [[_group subviews] count], @"ViewGroup has the wrong number of subviews");
+}
+
+- (void)testRemoveChildInMiddle {
+    NSMutableArray *views = [NSMutableArray arrayWithCapacity:24];
+    
+    for (int i = 0; i < 24; i++) {
+        UIView *v = [self createViewWithText:[NSString stringWithFormat:@"%d", (i+1)]];
+        [views addObject:v];
+        [_group addView:v];
+    }
+    
+    UIView *v = [views objectAtIndex:12];
+    [_group removeViewAtIndex:12];
     [self assertGroup:_group notContains:v];
     STAssertNil([v superview], @"View still has a superview");
     

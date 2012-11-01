@@ -37,6 +37,12 @@ typedef struct IDLLayoutMeasuredWidthHeightState {
     IDLLayoutMeasuredState heightState;
 } IDLLayoutMeasuredWidthHeightState;
 
+typedef enum IDLViewVisibility {
+    IDLViewVisibilityVisible = 0x00000000,
+    IDLViewVisibilityInvisible = 0x00000004,
+    IDLViewVisibilityGone = 0x00000008
+} IDLViewVisibility;
+
 @interface UIView (IDL_Layout)
 
 @property (nonatomic, retain) IDLLayoutParams *layoutParams;
@@ -48,6 +54,7 @@ typedef struct IDLLayoutMeasuredWidthHeightState {
 @property (nonatomic, readonly) CGFloat baseline;
 @property (nonatomic, readonly) BOOL isLayoutRequested;
 @property (nonatomic, assign) NSString *identifier;
+@property (nonatomic, assign) IDLViewVisibility visibility;
 
 - (id)initWithAttributes:(NSDictionary *)attrs;
 - (void)setupFromAttributes:(NSDictionary *)attrs;

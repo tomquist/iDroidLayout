@@ -67,13 +67,13 @@
                   (_alignTop==nil?null:_alignTop),
                   (_alignRight==nil?null:_alignRight),
                   (_alignBottom==nil?null:_alignBottom),
-                  [NSNumber numberWithBool:_alignParentLeft],
-                  [NSNumber numberWithBool:_alignParentTop],
-                  [NSNumber numberWithBool:_alignParentRight],
-                  [NSNumber numberWithBool:_alignParentBottom],
-                  [NSNumber numberWithBool:_centerInParent],
-                  [NSNumber numberWithBool:_centerHorizontal],
-                  [NSNumber numberWithBool:_centerVertical], nil];
+                  @(_alignParentLeft),
+                  @(_alignParentTop),
+                  @(_alignParentRight),
+                  @(_alignParentBottom),
+                  @(_centerInParent),
+                  @(_centerHorizontal),
+                  @(_centerVertical), nil];
 	}
 	return self;
 }

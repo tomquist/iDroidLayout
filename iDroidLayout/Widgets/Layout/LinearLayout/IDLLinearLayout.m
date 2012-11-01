@@ -168,6 +168,10 @@
     uniformMeasureSpec.mode = IDLLayoutMeasureSpecModeExactly;
     for (int i = 0; i< count; ++i) {
         UIView *child = [[self subviews] objectAtIndex:i];
+        if (child.visibility == IDLViewVisibilityGone) {
+            continue;
+        }
+        
         IDLLinearLayoutLayoutParams *lp = (IDLLinearLayoutLayoutParams *)child.layoutParams;
         
         if (lp.width == IDLLayoutParamsSizeMatchParent) {
@@ -222,6 +226,11 @@
     // See how tall everyone is. Also remember max width.
     for (int i = 0; i < count; ++i) {
         UIView *child = [self.subviews objectAtIndex:i];
+        
+        if (child.visibility == IDLViewVisibilityGone) {
+            i += [self childrenSkipCountAfterChild:child atIndex:i];
+            continue;
+        }
         
         IDLLinearLayoutLayoutParams *lp = (IDLLinearLayoutLayoutParams *) child.layoutParams;
         
@@ -317,6 +326,10 @@
         for (int i = 0; i < count; ++i) {
             UIView *child = [[self subviews] objectAtIndex:i];
             
+            if (child.visibility == IDLViewVisibilityGone) {
+                i += [self childrenSkipCountAfterChild:child atIndex:i];
+            }
+            
             IDLLinearLayoutLayoutParams *lp = (IDLLinearLayoutLayoutParams *) child.layoutParams;
             // Account for negative margins
             CGFloat totalLength = _totalLength;
@@ -347,6 +360,10 @@
         
         for (int i = 0; i < count; ++i) {
             UIView *child = [[self subviews] objectAtIndex:i];
+            
+            if (child.visibility == IDLViewVisibilityGone) {
+                continue;
+            }
             
             IDLLinearLayoutLayoutParams *lp = (IDLLinearLayoutLayoutParams *) child.layoutParams;
             
@@ -411,6 +428,10 @@
             for (int i = 0; i < count; i++) {
                 UIView *child = [[self subviews] objectAtIndex:i];
                 
+                if (child.visibility == IDLViewVisibilityGone) {
+                    continue;
+                }
+                
                 IDLLinearLayoutLayoutParams *lp = (IDLLinearLayoutLayoutParams *) child.layoutParams;
                 
                 float childExtra = lp.weight;
@@ -453,6 +474,11 @@
     uniformMeasureSpec.mode = IDLLayoutMeasureSpecModeExactly;
     for (int i = 0; i < count; ++i) {
         UIView *child = [[self subviews] objectAtIndex:i];
+        
+        if (child.visibility == IDLViewVisibilityGone) {
+            continue;
+        }
+        
         IDLLinearLayoutLayoutParams *lp = (IDLLinearLayoutLayoutParams *) child.layoutParams;
         
         if (lp.height == IDLLayoutParamsSizeMatchParent) {
@@ -512,6 +538,11 @@
     // See how wide everyone is. Also remember max height.
     for (int i = 0; i < count; ++i) {
         UIView *child = [[self subviews] objectAtIndex:i];
+        
+        if (child.visibility == IDLViewVisibilityGone) {
+            i += [self childrenSkipCountAfterChild:child atIndex:i];
+            continue;
+        }
         
         IDLLinearLayoutLayoutParams *lp = (IDLLinearLayoutLayoutParams *) child.layoutParams;
         
@@ -641,6 +672,11 @@
         for (int i = 0; i < count; ++i) {
             UIView *child = [[self subviews] objectAtIndex:i];
             
+            if (child.visibility == IDLViewVisibilityGone) {
+                i += [self childrenSkipCountAfterChild:child atIndex:i];
+                continue;
+            }
+            
             IDLLinearLayoutLayoutParams *lp = (IDLLinearLayoutLayoutParams *)
             child.layoutParams;
             if (isExactly) {
@@ -678,6 +714,10 @@
         
         for (int i = 0; i < count; ++i) {
             UIView *child = [[self subviews] objectAtIndex:i];
+            
+            if (child.visibility == IDLViewVisibilityGone) {
+                continue;
+            }
             
             IDLLinearLayoutLayoutParams *lp = (IDLLinearLayoutLayoutParams *) child.layoutParams;
             
@@ -777,6 +817,10 @@
             for (int i = 0; i < count; i++) {
                 UIView *child = [[self subviews] objectAtIndex:i];
                 
+                if (child.visibility == IDLViewVisibilityGone) {
+                    continue;
+                }
+                
                 IDLLinearLayoutLayoutParams *lp = (IDLLinearLayoutLayoutParams *) child.layoutParams;
                 
                 float childExtra = lp.weight;
@@ -875,35 +919,37 @@
     
     for (int i = 0; i < count; i++) {
         UIView *child = [self.subviews objectAtIndex:i];
-        CGSize childSize = child.measuredSize;
-        
-        IDLLinearLayoutLayoutParams *lp = (IDLLinearLayoutLayoutParams *)child.layoutParams;
-        
-        IDLViewContentGravity gravity = lp.gravity;
-        if (gravity < IDLViewContentGravityNone) {
-            gravity = minorGravity;
+        if (child.visibility != IDLViewVisibilityGone) {
+            CGSize childSize = child.measuredSize;
+            
+            IDLLinearLayoutLayoutParams *lp = (IDLLinearLayoutLayoutParams *)child.layoutParams;
+            
+            IDLViewContentGravity gravity = lp.gravity;
+            if (gravity < IDLViewContentGravityNone) {
+                gravity = minorGravity;
+            }
+            switch (gravity & HORIZONTAL_GRAVITY_MASK) {
+                case IDLViewContentGravityCenterHorizontal:
+                    childLeft = padding.left + ((childSpace - childSize.width) / 2)
+                    + lp.margin.left - lp.margin.right;
+                    break;
+                    
+                case IDLViewContentGravityRight:
+                    childLeft = childRight - childSize.width - lp.margin.right;
+                    break;
+                    
+                case IDLViewContentGravityLeft:
+                default:
+                    childLeft = padding.left + lp.margin.left;
+                    break;
+            }
+            
+            childTop += lp.margin.top;
+            [self setChildFrameOfChild:child withFrame:CGRectMake(childLeft, childTop + [self locationOffsetOfChild:child], childSize.width, childSize.height)];
+            childTop += childSize.height + lp.margin.bottom + [self nextLocationOffsetOfChild:child];
+            
+            i += [self childrenSkipCountAfterChild:child atIndex:i];
         }
-        switch (gravity & HORIZONTAL_GRAVITY_MASK) {
-            case IDLViewContentGravityCenterHorizontal:
-                childLeft = padding.left + ((childSpace - childSize.width) / 2)
-                + lp.margin.left - lp.margin.right;
-                break;
-                
-            case IDLViewContentGravityRight:
-                childLeft = childRight - childSize.width - lp.margin.right;
-                break;
-                
-            case IDLViewContentGravityLeft:
-            default:
-                childLeft = padding.left + lp.margin.left;
-                break;
-        }
-        
-        childTop += lp.margin.top;
-        [self setChildFrameOfChild:child withFrame:CGRectMake(childLeft, childTop + [self locationOffsetOfChild:child], childSize.width, childSize.height)];
-        childTop += childSize.height + lp.margin.bottom + [self nextLocationOffsetOfChild:child];
-        
-        i += [self childrenSkipCountAfterChild:child atIndex:i];
     }
 }
 
@@ -949,50 +995,53 @@
     
     for (NSInteger i = 0; i < count; i++) {
         UIView *child = [self.subviews objectAtIndex:i];
-        CGSize childSize = child.measuredSize;
-        CGFloat childBaseline = -1;
-        
-        IDLLinearLayoutLayoutParams *lp = (IDLLinearLayoutLayoutParams *)child.layoutParams;
-        
-        if (baselineAligned && lp.height != IDLLayoutParamsSizeMatchParent) {
-            childBaseline = child.baseline;
+        if (child.visibility != IDLViewVisibilityGone) {
+            
+            CGSize childSize = child.measuredSize;
+            CGFloat childBaseline = -1;
+            
+            IDLLinearLayoutLayoutParams *lp = (IDLLinearLayoutLayoutParams *)child.layoutParams;
+            
+            if (baselineAligned && lp.height != IDLLayoutParamsSizeMatchParent) {
+                childBaseline = child.baseline;
+            }
+            
+            IDLViewContentGravity gravity = lp.gravity;
+            if (gravity < IDLViewContentGravityNone) {
+                gravity = minorGravity;
+            }
+            
+            switch (gravity & VERTICAL_GRAVITY_MASK) {
+                case IDLViewContentGravityTop:
+                    childTop = padding.top + lp.margin.top;
+                    if (childBaseline != -1) {
+                        childTop += _maxAscent[MAX_ASCENT_DESCENT_INDEX_TOP] - childBaseline;
+                    }
+                    break;
+                    
+                case IDLViewContentGravityCenterVertical:
+                    childTop = padding.top + ((childSpace - childSize.height) / 2) + lp.margin.top - lp.margin.bottom;
+                    break;
+                    
+                case IDLViewContentGravityBottom:
+                    childTop = childBottom - childSize.height - lp.margin.bottom;
+                    if (childBaseline != -1) {
+                        int descent = childSize.height - childBaseline;
+                        childTop -= (_maxDescent[MAX_ASCENT_DESCENT_INDEX_BOTTOM] - descent);
+                    }
+                    break;
+                default:
+                    childTop = padding.top;
+                    break;
+            }
+            
+            childLeft += lp.margin.left;
+            [self setChildFrameOfChild:child withFrame:CGRectMake(childLeft + [self locationOffsetOfChild:child], childTop,
+                                                                  childSize.width, childSize.height)];
+            childLeft += childSize.width + lp.margin.right + [self nextLocationOffsetOfChild:child];
+            
+            i += [self childrenSkipCountAfterChild:child atIndex:i];
         }
-        
-        IDLViewContentGravity gravity = lp.gravity;
-        if (gravity < IDLViewContentGravityNone) {
-            gravity = minorGravity;
-        }
-        
-        switch (gravity & VERTICAL_GRAVITY_MASK) {
-            case IDLViewContentGravityTop:
-                childTop = padding.top + lp.margin.top;
-                if (childBaseline != -1) {
-                    childTop += _maxAscent[MAX_ASCENT_DESCENT_INDEX_TOP] - childBaseline;
-                }
-                break;
-                
-            case IDLViewContentGravityCenterVertical:
-                childTop = padding.top + ((childSpace - childSize.height) / 2) + lp.margin.top - lp.margin.bottom;
-                break;
-                
-            case IDLViewContentGravityBottom:
-                childTop = childBottom - childSize.height - lp.margin.bottom;
-                if (childBaseline != -1) {
-                    int descent = childSize.height - childBaseline;
-                    childTop -= (_maxDescent[MAX_ASCENT_DESCENT_INDEX_BOTTOM] - descent);
-                }
-                break;
-            default:
-                childTop = padding.top;
-                break;
-        }
-        
-        childLeft += lp.margin.left;
-        [self setChildFrameOfChild:child withFrame:CGRectMake(childLeft + [self locationOffsetOfChild:child], childTop,
-                                                              childSize.width, childSize.height)];
-        childLeft += childSize.width + lp.margin.right + [self nextLocationOffsetOfChild:child];
-        
-        i += [self childrenSkipCountAfterChild:child atIndex:i];
     }
 }
 

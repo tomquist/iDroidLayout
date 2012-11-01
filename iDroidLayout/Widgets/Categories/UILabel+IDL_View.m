@@ -46,14 +46,21 @@
 - (IDLViewContentGravity)gravity {
     IDLViewContentGravity ret;
     switch (self.textAlignment) {
-        case UITextAlignmentLeft:
+        case NSTextAlignmentLeft:
             ret = IDLViewContentGravityLeft;
             break;
-        case UITextAlignmentRight:
+        case NSTextAlignmentRight:
             ret = IDLViewContentGravityRight;
             break;
-        case UITextAlignmentCenter:
+        case NSTextAlignmentCenter:
             ret = IDLViewContentGravityCenterHorizontal;
+            break;
+        case NSTextAlignmentJustified:
+            ret = IDLViewContentGravityFillHorizontal;
+            break;
+        default:
+            ret = IDLViewContentGravityNone;
+            break;
     }
     return ret;
 }

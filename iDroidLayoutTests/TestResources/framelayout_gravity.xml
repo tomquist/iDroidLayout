@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    id="parent"
+    layout_width="match_parent"
+    layout_height="match_parent">
+    
+    <Button
+        id="left"
+        layout_gravity="left"
+        text="View"
+        layout_width="wrap_content"
+        layout_height="wrap_content" />
+    
+    <Button
+        id="right"
+        layout_gravity="right"
+        text="View"
+        layout_width="wrap_content"
+        layout_height="wrap_content" />
+    
+    <Button
+        id="center_horizontal"
+        layout_gravity="center_horizontal"
+        text="View"
+        layout_width="wrap_content"
+        layout_height="wrap_content" />
+    
+    <Button
+        id="left_center_vertical"
+        layout_gravity="center_vertical|left"
+        text="View"
+        layout_width="wrap_content"
+        layout_height="wrap_content" />
+    
+    <Button
+        id="right_center_vertical"
+        layout_gravity="center_vertical|right"
+        text="View"
+        layout_width="wrap_content"
+        layout_height="wrap_content" />
+    
+    <Button
+        id="center"
+        layout_gravity="center"
+        text="View"
+        layout_width="wrap_content"
+        layout_height="wrap_content" />
+    
+    <Button
+        id="left_bottom"
+        layout_gravity="bottom|left"
+        text="View"
+        layout_width="wrap_content"
+        layout_height="wrap_content" />
+    
+    <Button
+        id="right_bottom"
+        layout_gravity="bottom|right"
+        text="View"
+        layout_width="wrap_content"
+        layout_height="wrap_content" />
+    
+    <Button
+        id="center_horizontal_bottom"
+        layout_gravity="bottom|center_horizontal"
+        text="View"
+        layout_width="wrap_content"
+        layout_height="wrap_content" />
+    
+</FrameLayout>

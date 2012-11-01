@@ -7,6 +7,7 @@
         layout_height="wrap_content"
         orientation="vertical">
         <UIImageView
+            id="android"
             layout_width="match_parent"
             layout_height="100"
             scaleType="centerInside"
@@ -73,11 +74,28 @@
             borderWidth="1"
             borderColor="#000000"
             cornerRadius="5"/>
-        <UIButton
-            id="submitButton"
-            layout_width="100"
-            layout_height="30"
-            layout_gravity="center_horizontal"
-            text="Submit"/>
+        <TextView
+            id="androidStatus"
+            layout_width="match_parent"
+            layout_height="wrap_content"
+            layout_marginBottom="10"
+            textSize="12"/>
+        <LinearLayout
+            layout_width="match_parent"
+            layout_height="wrap_content"
+            orientation="horizontal"
+            gravity="center_horizontal">
+            <UIButton
+                id="submitButton"
+                layout_width="100"
+                layout_height="30"
+                text="Submit"/>
+            <UIButton
+                id="toggleButton"
+                layout_width="wrap_content"
+                layout_height="30"
+                layout_marginLeft="10"
+                text="Toggle Android"/>
+        </LinearLayout>
     </LinearLayout>
 </UIScrollView>

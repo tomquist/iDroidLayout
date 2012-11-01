@@ -35,8 +35,23 @@ static char measuredHeightStateKey;
 static char paddingKey;
 static char layoutParamsKey;
 static char isLayoutRequestedKey;
+static char visibilityKey;
 
 - (void)setupFromAttributes:(NSDictionary *)attrs {
+    
+    // visibility
+    NSString *visibilityString = [attrs objectForKey:@"visibility"];
+    IDLViewVisibility visibility = IDLViewVisibilityVisible;
+    if ([visibilityString isEqualToString:@"visible"]) {
+        visibility = IDLViewVisibilityVisible;
+    } else if ([visibilityString isEqualToString:@"invisible"]) {
+        visibility = IDLViewVisibilityInvisible;
+    } else if ([visibilityString isEqualToString:@"gone"]) {
+        visibility = IDLViewVisibilityGone;
+    }
+    self.visibility = visibility;
+    
+    // padding
     NSString *paddingString = [attrs objectForKey:@"padding"];
     if (paddingString != nil) {
         CGFloat padding = [paddingString floatValue];
@@ -48,23 +63,28 @@ static char isLayoutRequestedKey;
         NSString *paddingRightString = [attrs objectForKey:@"paddingRight"];
         self.padding = UIEdgeInsetsMake([paddingLeftString floatValue], [paddingTopString floatValue], [paddingBottomString floatValue], [paddingRightString floatValue]);
     }
+    
+    // background
     NSString *colorString = [attrs objectForKey:@"background"];
     if (colorString != nil) {
         UIColor *backgroundColor = [UIColor colorFromAndroidColorString:colorString];
         self.backgroundColor = backgroundColor;
     }
     
+    // alpha
     NSString *alphaString = [attrs objectForKey:@"alpha"];
     if (alphaString != nil) {
         CGFloat alpha = MIN(1.0, MAX(0.0, [alphaString floatValue]));
         self.alpha = alpha;
     }
     
+    // minWidth/minHeight
     CGFloat minWidth = [[attrs objectForKey:@"minWidth"] floatValue];
     CGFloat minHeight = [[attrs objectForKey:@"minHeight"] floatValue];
     self.minWidth = minWidth;
     self.minHeight = minHeight;
     
+    // identifier
     NSString *identifier = [attrs objectForKey:@"id"];
     if (identifier != nil) {
         NSRange range = [identifier rangeOfString:@"@id/"];
@@ -77,6 +97,7 @@ static char isLayoutRequestedKey;
         self.identifier = identifier;
     }
     
+    // border
     NSString *borderWidth = [attrs objectForKey:@"borderWidth"];
     if (borderWidth != nil) {
         self.layer.borderWidth = [borderWidth floatValue];
@@ -178,10 +199,33 @@ static char isLayoutRequestedKey;
                              &layoutParamsKey,
                              layoutParams,
                              OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    [self requestLayout];
 }
 
 - (IDLLayoutParams *)layoutParams {
     return objc_getAssociatedObject(self, &layoutParamsKey);
+}
+
+- (void)setVisibility:(IDLViewVisibility)visibility {
+    IDLViewVisibility curVisibility = self.visibility;
+    [self setHidden:(visibility != IDLViewVisibilityVisible)];
+    objc_setAssociatedObject(self,
+                             &visibilityKey,
+                             @(visibility),
+                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    if ((curVisibility != visibility) && (curVisibility == IDLViewVisibilityGone || visibility == IDLViewVisibilityGone)) {
+        [self requestLayout];
+    }
+}
+
+- (IDLViewVisibility)visibility {
+    NSNumber *value = objc_getAssociatedObject(self, &visibilityKey);
+    IDLViewVisibility visibility = [value intValue];
+    if (visibility == IDLViewVisibilityVisible && self.isHidden) {
+        // Visibility has been set independently
+        visibility = IDLViewVisibilityInvisible;
+    }
+    return visibility;
 }
 
 - (CGFloat)minWidth {
@@ -197,14 +241,14 @@ static char isLayoutRequestedKey;
 - (void)setMinWidth:(CGFloat)minWidth {
     objc_setAssociatedObject(self,
                              &minWidthKey,
-                             [NSNumber numberWithFloat:minWidth],
+                             @(minWidth),
                              OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (void)setMinHeight:(CGFloat)minHeight {
     objc_setAssociatedObject(self,
                              &minHeightKey,
-                             [NSNumber numberWithFloat:minHeight],
+                             @(minHeight),
                              OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
@@ -221,19 +265,19 @@ static char isLayoutRequestedKey;
 - (void)setMeasuredDimensionWidth:(IDLLayoutMeasuredDimension)width height:(IDLLayoutMeasuredDimension)height {
     objc_setAssociatedObject(self,
                              &measuredWidthSizeKey,
-                             [NSNumber numberWithFloat:width.size],
+                             @(width.size),
                              OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     objc_setAssociatedObject(self,
                              &measuredWidthStateKey,
-                             [NSNumber numberWithInt:width.state],
+                             @(width.state),
                              OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     objc_setAssociatedObject(self,
                              &measuredHeightSizeKey,
-                             [NSNumber numberWithFloat:height.size],
+                             @(height.size),
                              OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     objc_setAssociatedObject(self,
                              &measuredHeightStateKey,
-                             [NSNumber numberWithInt:height.state],
+                             @(height.state),
                              OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
@@ -245,7 +289,7 @@ static char isLayoutRequestedKey;
 - (void)setIsLayoutRequested:(BOOL)isRequested {
     objc_setAssociatedObject(self,
                              &isLayoutRequestedKey,
-                             [NSNumber numberWithBool:isRequested],
+                             @(isRequested),
                              OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 

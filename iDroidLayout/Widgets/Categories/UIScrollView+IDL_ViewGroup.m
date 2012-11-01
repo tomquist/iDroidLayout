@@ -67,14 +67,17 @@ static char matchParentChildrenKey;
     
     for (int i = 0; i < count; i++) {
         UIView *child = [self.subviews objectAtIndex:i];
-        [self measureChildWithMargins:child parentWidthMeasureSpec:widthMeasureSpec widthUsed:0 parentHeightMeasureSpec:heightMeasureSpec heightUsed:0];
-        IDLFrameLayoutLayoutParams *lp = (IDLFrameLayoutLayoutParams *)child.layoutParams;
-        maxWidth = MAX(maxWidth, child.measuredSize.width + lp.margin.left + lp.margin.right);
-        maxHeight = MAX(maxHeight, child.measuredSize.height + lp.margin.top + lp.margin.bottom);
-        childState = [UIView combineMeasuredStatesCurrentState:childState newState:child.measuredState];
-        if (measureMatchParentChildren) {
-            if (lp.width == IDLLayoutParamsSizeMatchParent || lp.height == IDLLayoutParamsSizeMatchParent) {
-                [matchParentChildren addObject:child];
+        
+        if (child.visibility != IDLViewVisibilityGone) {
+            [self measureChildWithMargins:child parentWidthMeasureSpec:widthMeasureSpec widthUsed:0 parentHeightMeasureSpec:heightMeasureSpec heightUsed:0];
+            IDLFrameLayoutLayoutParams *lp = (IDLFrameLayoutLayoutParams *)child.layoutParams;
+            maxWidth = MAX(maxWidth, child.measuredSize.width + lp.margin.left + lp.margin.right);
+            maxHeight = MAX(maxHeight, child.measuredSize.height + lp.margin.top + lp.margin.bottom);
+            childState = [UIView combineMeasuredStatesCurrentState:childState newState:child.measuredState];
+            if (measureMatchParentChildren) {
+                if (lp.width == IDLLayoutParamsSizeMatchParent || lp.height == IDLLayoutParamsSizeMatchParent) {
+                    [matchParentChildren addObject:child];
+                }
             }
         }
     }
@@ -151,53 +154,56 @@ static char matchParentChildrenKey;
     CGFloat maxY = 0;
     for (int i = 0; i < count; i++) {
         UIView *child = [self.subviews objectAtIndex:i];
-        IDLFrameLayoutLayoutParams *lp = (IDLFrameLayoutLayoutParams *)child.layoutParams;
         
-        CGFloat width = child.measuredSize.width;
-        CGFloat height = child.measuredSize.height;
-        
-        CGFloat childLeft;
-        CGFloat childTop;
-        
-        IDLViewContentGravity gravity = lp.gravity;
-        if (gravity == -1) {
-            gravity = DEFAULT_CHILD_GRAVITY;
+        if (child.visibility != IDLViewVisibilityGone) {
+            IDLFrameLayoutLayoutParams *lp = (IDLFrameLayoutLayoutParams *)child.layoutParams;
+            
+            CGFloat width = child.measuredSize.width;
+            CGFloat height = child.measuredSize.height;
+            
+            CGFloat childLeft;
+            CGFloat childTop;
+            
+            IDLViewContentGravity gravity = lp.gravity;
+            if (gravity == -1) {
+                gravity = DEFAULT_CHILD_GRAVITY;
+            }
+            
+            IDLViewContentGravity verticalGravity = gravity & VERTICAL_GRAVITY_MASK;
+            
+            switch (gravity & HORIZONTAL_GRAVITY_MASK) {
+                case IDLViewContentGravityLeft:
+                    childLeft = parentLeft + lp.margin.left;
+                    break;
+                case IDLViewContentGravityCenterHorizontal:
+                    childLeft = parentLeft + (parentRight - parentLeft - width) / 2 + lp.margin.left - lp.margin.right;
+                    break;
+                case IDLViewContentGravityRight:
+                    childLeft = parentRight - width - lp.margin.right;
+                    break;
+                default:
+                    childLeft = parentLeft + lp.margin.left;
+            }
+            
+            switch (verticalGravity) {
+                case IDLViewContentGravityTop:
+                    childTop = parentTop + lp.margin.top;
+                    break;
+                case IDLViewContentGravityCenterVertical:
+                    childTop = parentTop + (parentBottom - parentTop - height) / 2 +
+                    lp.margin.top - lp.margin.bottom;
+                    break;
+                case IDLViewContentGravityBottom:
+                    childTop = parentBottom - height - lp.margin.bottom;
+                    break;
+                default:
+                    childTop = parentTop + lp.margin.top;
+            }
+            
+            [child layoutWithFrame:CGRectMake(childLeft, childTop, width, height)];
+            maxX = MAX(maxX, childLeft + width);
+            maxY = MAX(maxY, childTop + height);
         }
-        
-        IDLViewContentGravity verticalGravity = gravity & VERTICAL_GRAVITY_MASK;
-        
-        switch (gravity & HORIZONTAL_GRAVITY_MASK) {
-            case IDLViewContentGravityLeft:
-                childLeft = parentLeft + lp.margin.left;
-                break;
-            case IDLViewContentGravityCenterHorizontal:
-                childLeft = parentLeft + (parentRight - parentLeft - width) / 2 + lp.margin.left - lp.margin.right;
-                break;
-            case IDLViewContentGravityRight:
-                childLeft = parentRight - width - lp.margin.right;
-                break;
-            default:
-                childLeft = parentLeft + lp.margin.left;
-        }
-        
-        switch (verticalGravity) {
-            case IDLViewContentGravityTop:
-                childTop = parentTop + lp.margin.top;
-                break;
-            case IDLViewContentGravityCenterVertical:
-                childTop = parentTop + (parentBottom - parentTop - height) / 2 +
-                lp.margin.top - lp.margin.bottom;
-                break;
-            case IDLViewContentGravityBottom:
-                childTop = parentBottom - height - lp.margin.bottom;
-                break;
-            default:
-                childTop = parentTop + lp.margin.top;
-        }
-        
-        [child layoutWithFrame:CGRectMake(childLeft, childTop, width, height)];
-        maxX = MAX(maxX, childLeft + width);
-        maxY = MAX(maxY, childTop + height);
     }
     self.contentSize = CGSizeMake(maxX + padding.right, maxY + padding.bottom);
 }

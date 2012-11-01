@@ -15,7 +15,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     UIButton *submitButton = (UIButton *)[self.view findViewById:@"submitButton"];
+    UIButton *toggleButton = (UIButton *)[self.view findViewById:@"toggleButton"];
     [submitButton addTarget:self action:@selector(didPressSubmitButton) forControlEvents:UIControlEventTouchUpInside];
+    [toggleButton addTarget:self action:@selector(didPressToggleButton) forControlEvents:UIControlEventTouchUpInside];
+    [self updateAndroidStatus];
 }
 
 - (void)didPressSubmitButton {
@@ -29,6 +32,65 @@
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alertView show];
     [alertView release];
+}
+
+- (void)didPressToggleButton {
+    UIView *androidView = [self.view findViewById:@"android"];
+    if (androidView.visibility == IDLViewVisibilityVisible) {
+        IDLLinearLayoutLayoutParams *lp = (IDLLinearLayoutLayoutParams *)androidView.layoutParams;
+        if (lp.gravity == IDLViewContentGravityLeft) {
+            lp.gravity = IDLViewContentGravityCenterHorizontal;
+        } else if (lp.gravity == IDLViewContentGravityCenterHorizontal) {
+            lp.gravity = IDLViewContentGravityRight;
+        } else {
+            lp.gravity = IDLViewContentGravityLeft;
+            androidView.visibility = IDLViewVisibilityInvisible;
+        }
+        androidView.layoutParams = lp;
+    } else if (androidView.visibility == IDLViewVisibilityInvisible) {
+        androidView.visibility = IDLViewVisibilityGone;
+    } else {
+        androidView.visibility = IDLViewVisibilityVisible;
+    }
+    [UIView animateWithDuration:0.5 animations:^{
+        [self.view layoutIfNeeded];
+    }];
+    [self updateAndroidStatus];
+}
+
+- (void)updateAndroidStatus {
+    UILabel *label = (UILabel *)[self.view findViewById:@"androidStatus"];
+    UIView *androidView = [self.view findViewById:@"android"];
+    NSString *visibility;
+    switch (androidView.visibility) {
+        case IDLViewVisibilityVisible:
+            visibility = @"visible";
+            break;
+        case IDLViewVisibilityInvisible:
+            visibility = @"invisible";
+            break;
+        case IDLViewVisibilityGone:
+            visibility = @"gone";
+            break;
+    }
+    NSString *gravity = @"";
+    IDLLinearLayoutLayoutParams *lp = (IDLLinearLayoutLayoutParams *)androidView.layoutParams;
+    switch (lp.gravity) {
+        case IDLViewContentGravityLeft:
+            gravity = @"left";
+            break;
+        case IDLViewContentGravityCenterHorizontal:
+            gravity = @"center_horizontal";
+            break;
+        case IDLViewContentGravityRight:
+            gravity = @"right";
+            break;
+        default:
+            gravity = @"unknown";
+            break;
+    }
+    
+    label.text = [NSString stringWithFormat:@"andrdoid[visibility=%@,layout_gravity=%@]", visibility, gravity];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
