@@ -116,7 +116,7 @@
 
 - (UIView *)inflateResource:(NSString *)resource intoRootView:(UIView *)rootView attachToRoot:(BOOL)attachToRoot {
     NSError *error = nil;
-    TBXML *xml = [[TBXML newTBXMLWithXMLFile:resource error:nil] autorelease];
+    TBXML *xml = [[TBXML newTBXMLWithXMLFile:resource error:&error] autorelease];
     if (error) {
         NSLog(@"%@ %@", [error localizedDescription], [error userInfo]);
         return nil;

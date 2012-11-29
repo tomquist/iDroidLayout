@@ -18,8 +18,9 @@ Highlights
 - Use native UI widgets like UIButton, UITextField etc. and even custom subclasses of UIView within the layout XML
 - Layout views linearly, right to left or top to bottom (LinearLayout)
 - Layout views relatively to each other and to their parents (RelativeLayout)
-- Add views to UIScrollViews and let the automatically adjust their content size according to your layout
+- Add views to UIScrollViews and let them automatically adjust their content size according to your layout
 - Extend the layout system by implementing your own layout container
+- Load dynamic xml layouts within Interface Builder
 
 
 Getting started
@@ -95,3 +96,6 @@ Yes, simply use the class name of the view as the xml tag name (e.g. ``<MyCustom
 
 ##### Can I use xml layouts in ``UITableViewCell``s?
 Yes, you can either use ``IDLTableViewCell`` or create a custom UITableViewCell where you inflate your layout into an ``IDLLayoutBridge``.
+
+##### Can I load xml layouts into a view defined in a xib file?
+Yes, a layout xml file can be inflated into a view in interface builder. Simple add a plain view in interface builder, set ``IDLLayoutBridge`` as custom class of the newly added view and define a user defined runtime attribute with the name ``layout`` and the name of the xml file (without the file extension) as the value. Check out the example project for more details.

@@ -43,11 +43,13 @@
     _titles = [[NSArray alloc] initWithObjects:
                @"Formular",
                @"Animations",
-               @"ScrollViews", nil];
+               @"ScrollViews",
+               @"Interface Builder", nil];
     _descriptions = [[NSArray alloc] initWithObjects:
                      @"Shows a simple formular implemented using a combination of RelativeLayout and LinearLayout",
                      @"Shows simple layout animations",
-                     @"Horizontal and vertical scroll views", nil];
+                     @"Horizontal and vertical scroll views",
+                     @"Layout loaded into a view defined in Interface Builder", nil];
 }
 
 - (void)viewDidUnload {
@@ -99,6 +101,12 @@
             break;
         case 2:
             vc = [[[IDLLayoutViewController alloc] initWithLayoutName:@"scrollviews" bundle:nil] autorelease];
+            UIButton *toggleButton = (UIButton *)[vc.view findViewById:@"toggleButton"];
+            toggleButton.titleLabel.numberOfLines = 0;
+            [toggleButton addTarget:self action:@selector(didPressToggleButton:) forControlEvents:UIControlEventTouchUpInside];
+            break;
+        case 3:
+            vc = [[[UIViewController alloc] initWithNibName:@"LayoutFromIB" bundle:nil] autorelease];
             break;
         default:
             break;
@@ -106,6 +114,21 @@
     if (vc != nil) {
         [self.navigationController pushViewController:vc animated:TRUE];
     }
+}
+
+- (void)didPressToggleButton:(UIButton *)button {
+    IDLTextView *textView = (IDLTextView *)[button.superview findViewById:@"toggleText"];
+    
+    IDLLinearLayoutLayoutParams *lp = (IDLLinearLayoutLayoutParams *) textView.layoutParams;
+    if (lp.height == IDLLayoutParamsSizeWrapContent) {
+        lp.height = 44;
+    } else {
+        lp.height = IDLLayoutParamsSizeWrapContent;
+    }
+    textView.layoutParams = lp;
+    [UIView animateWithDuration:0.5 animations:^{
+        [self.navigationController.topViewController.view layoutIfNeeded];
+    }];
 }
 
 @end

@@ -8,6 +8,7 @@
 
 #import "IDLLayoutBridge.h"
 #import "UIView+IDL_Layout.h"
+#import "IDLLayoutInflater.h"
 
 @implementation UIView (IDLLayoutBridge)
 
@@ -180,6 +181,18 @@
         [center removeObserver:self name:UIKeyboardWillHideNotification object:nil];
     }
     _resizeOnKeyboard = resizeOnKeyboard;
+}
+
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
+    if ([key isEqualToString:@"layout"]) {
+        IDLLayoutInflater *inflater = [[IDLLayoutInflater alloc] init];
+        NSURL *url = [[NSBundle mainBundle] URLForResource:value withExtension:@"xml"];
+        if (url != nil) {
+            [inflater inflateURL:url intoRootView:self attachToRoot:TRUE];
+        }
+    } else {
+        [super setValue:value forUndefinedKey:key];
+    }
 }
 
 @end

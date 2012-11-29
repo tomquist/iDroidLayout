@@ -5,8 +5,10 @@
 		id="button_bar_scroll_view"
 		layout_width="match_parent"
 		layout_height="44"
+        background="#00ffffff"
 		layout_alignParentBottom="true">
 		<LinearLayout
+            background="#00ffffff"
 			layout_width="wrap_content"
 			layout_height="match_parent"
 			orientation="horizontal">
@@ -63,6 +65,24 @@
                 layout_height="wrap_content"
                 padding="20"
                 text="TextView2"/>
+            <LinearLayout
+                layout_width="match_parent"
+                layout_height="wrap_content"
+                layout_marginLeft="10"
+                layout_marginRight="10"
+                orientation="vertical">
+                <TextView
+                    id="toggleText"
+                    layout_width="match_parent"
+                    layout_height="44"
+                    gravity="fill_horizontal"
+                    text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."/>
+                    <UIButton
+                        id="toggleButton"
+                        type="detailDisclosure"
+                        layout_width="20"
+                        layout_height="20"/>
+                </LinearLayout>
 			<TextView
                 layout_width="match_parent"
                 layout_height="wrap_content"

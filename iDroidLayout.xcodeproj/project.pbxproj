@@ -107,6 +107,8 @@
 		79642CFC1603E8560095D5A2 /* IDLViewAsserts.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642CFB1603E8560095D5A2 /* IDLViewAsserts.m */; };
 		79642CFE1605E1790095D5A2 /* framelayout_gravity.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79642CFD1605E1790095D5A2 /* framelayout_gravity.xml */; };
 		79642D011605E24E0095D5A2 /* IDLFrameLayoutGravityTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642D001605E24E0095D5A2 /* IDLFrameLayoutGravityTest.m */; };
+		79E4337816681D7B00E49114 /* LayoutFromIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79E4337716681D7B00E49114 /* LayoutFromIB.xib */; };
+		79E4337D16681DEB00E49114 /* layoutFromIB.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79E4337C16681DEB00E49114 /* layoutFromIB.xml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -241,6 +243,9 @@
 		79642CFD1605E1790095D5A2 /* framelayout_gravity.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = framelayout_gravity.xml; sourceTree = "<group>"; };
 		79642CFF1605E24E0095D5A2 /* IDLFrameLayoutGravityTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLFrameLayoutGravityTest.h; sourceTree = "<group>"; };
 		79642D001605E24E0095D5A2 /* IDLFrameLayoutGravityTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLFrameLayoutGravityTest.m; sourceTree = "<group>"; };
+		79E4337716681D7B00E49114 /* LayoutFromIB.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LayoutFromIB.xib; sourceTree = "<group>"; };
+		79E4337C16681DEB00E49114 /* layoutFromIB.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = layoutFromIB.xml; sourceTree = "<group>"; };
+		79E4337E1668226900E49114 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,6 +284,7 @@
 		79642BDA1603C4A20095D5A2 = {
 			isa = PBXGroup;
 			children = (
+				79E4337E1668226900E49114 /* README.md */,
 				79642BEB1603C4A20095D5A2 /* iDroidLayout */,
 				79642C021603C4A30095D5A2 /* iDroidLayoutTests */,
 				79642C1D1603C4E80095D5A2 /* iDroidLayoutExample */,
@@ -378,6 +384,8 @@
 				79642CCB1603C5DB0095D5A2 /* MainViewController.m */,
 				79642CCC1603C5DB0095D5A2 /* scrollviews.xml */,
 				79642C1E1603C4E80095D5A2 /* Supporting Files */,
+				79E4337716681D7B00E49114 /* LayoutFromIB.xib */,
+				79E4337C16681DEB00E49114 /* layoutFromIB.xml */,
 			);
 			path = iDroidLayoutExample;
 			sourceTree = "<group>";
@@ -743,6 +751,8 @@
 				79642CD01603C5DB0095D5A2 /* formular~ipad.xml in Resources */,
 				79642CD41603C5DB0095D5A2 /* mainCell.xml in Resources */,
 				79642CD61603C5DB0095D5A2 /* scrollviews.xml in Resources */,
+				79E4337816681D7B00E49114 /* LayoutFromIB.xib in Resources */,
+				79E4337D16681DEB00E49114 /* layoutFromIB.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1058,6 +1068,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iDroidLayoutExample/iDroidLayout-Prefix.pch";
 				INFOPLIST_FILE = "iDroidLayoutExample/iDroidLayout-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -1075,6 +1086,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iDroidLayoutExample/iDroidLayout-Prefix.pch";
 				INFOPLIST_FILE = "iDroidLayoutExample/iDroidLayout-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
