@@ -44,12 +44,14 @@
                @"Formular",
                @"Animations",
                @"ScrollViews",
-               @"Interface Builder", nil];
+               @"Interface Builder",
+               @"Include", nil];
     _descriptions = [[NSArray alloc] initWithObjects:
                      @"Shows a simple formular implemented using a combination of RelativeLayout and LinearLayout",
                      @"Shows simple layout animations",
                      @"Horizontal and vertical scroll views",
-                     @"Layout loaded into a view defined in Interface Builder", nil];
+                     @"Layout loaded into a view defined in Interface Builder",
+                     @"Layout which includes two other layouts", nil];
 }
 
 - (void)viewDidUnload {
@@ -74,7 +76,7 @@
     static NSString *CellIdentifier = @"Cell";
     IDLTableViewCell *cell = (IDLTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[IDLTableViewCell alloc] initWithLayoutURL:_tableCellLayoutURL reuseIdentifier:CellIdentifier];
+        cell = [[[IDLTableViewCell alloc] initWithLayoutURL:_tableCellLayoutURL reuseIdentifier:CellIdentifier] autorelease];
     }
     UILabel *titleLabel = (UILabel *)[cell.layoutBridge findViewById:@"title"];
     UILabel *descriptionLabel = (UILabel *)[cell.layoutBridge findViewById:@"description"];
@@ -107,6 +109,9 @@
             break;
         case 3:
             vc = [[[UIViewController alloc] initWithNibName:@"LayoutFromIB" bundle:nil] autorelease];
+            break;
+        case 4:
+            vc = [[[IDLLayoutViewController alloc] initWithLayoutName:@"includeContainer" bundle:nil] autorelease];
             break;
         default:
             break;

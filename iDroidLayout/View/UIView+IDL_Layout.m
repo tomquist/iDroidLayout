@@ -23,6 +23,18 @@ IDLLayoutMeasureSpec IDLLayoutMeasureSpecMake(CGFloat size, IDLLayoutMeasureSpec
     return measureSpec;
 }
 
+IDLViewVisibility IDLViewVisibilityFromString(NSString *visibilityString) {
+    IDLViewVisibility visibility = IDLViewVisibilityVisible;
+    if ([visibilityString isEqualToString:@"visible"]) {
+        visibility = IDLViewVisibilityVisible;
+    } else if ([visibilityString isEqualToString:@"invisible"]) {
+        visibility = IDLViewVisibilityInvisible;
+    } else if ([visibilityString isEqualToString:@"gone"]) {
+        visibility = IDLViewVisibilityGone;
+    }
+    return visibility;
+}
+
 @implementation UIView (IDL_Layout)
 
 static char identifierKey;
@@ -41,15 +53,7 @@ static char visibilityKey;
     
     // visibility
     NSString *visibilityString = [attrs objectForKey:@"visibility"];
-    IDLViewVisibility visibility = IDLViewVisibilityVisible;
-    if ([visibilityString isEqualToString:@"visible"]) {
-        visibility = IDLViewVisibilityVisible;
-    } else if ([visibilityString isEqualToString:@"invisible"]) {
-        visibility = IDLViewVisibilityInvisible;
-    } else if ([visibilityString isEqualToString:@"gone"]) {
-        visibility = IDLViewVisibilityGone;
-    }
-    self.visibility = visibility;
+    self.visibility = IDLViewVisibilityFromString(visibilityString);
     
     // padding
     NSString *paddingString = [attrs objectForKey:@"padding"];
@@ -57,11 +61,11 @@ static char visibilityKey;
         CGFloat padding = [paddingString floatValue];
         self.padding = UIEdgeInsetsMake(padding, padding, padding, padding);
     } else {
-        NSString *paddingLeftString = [attrs objectForKey:@"paddingLeft"];
         NSString *paddingTopString = [attrs objectForKey:@"paddingTop"];
+        NSString *paddingLeftString = [attrs objectForKey:@"paddingLeft"];
         NSString *paddingBottomString = [attrs objectForKey:@"paddingBottom"];
         NSString *paddingRightString = [attrs objectForKey:@"paddingRight"];
-        self.padding = UIEdgeInsetsMake([paddingLeftString floatValue], [paddingTopString floatValue], [paddingBottomString floatValue], [paddingRightString floatValue]);
+        self.padding = UIEdgeInsetsMake([paddingTopString floatValue], [paddingLeftString floatValue], [paddingBottomString floatValue], [paddingRightString floatValue]);
     }
     
     // background

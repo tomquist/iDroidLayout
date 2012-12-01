@@ -13,6 +13,10 @@
 #import "IDLLayoutParams.h"
 #import "IDLBaseViewFactory.h"
 
+#define TAG_MERGE @"merge"
+#define TAG_INCLUDE @"include"
+#define INCLUDE_ATTRIBUTE_LAYOUT @"layout"
+
 @implementation IDLLayoutInflater
 
 @synthesize viewFactory = _viewFactory;
@@ -61,57 +65,164 @@
     return ret;
 }
 
+- (void)parseIncludeWithXmlElement:(TBXMLElement *)element parentView:(UIView *)parentView attributes:(NSMutableDictionary *)attrs {
+    if (!parentView.isViewGroup) {
+        NSLog(@"<include /> can only be used in view groups");
+        return;
+    }
+    
+    NSString *layoutToInclude = [attrs objectForKey:INCLUDE_ATTRIBUTE_LAYOUT];
+    NSError *error = nil;
+    if (layoutToInclude == nil) {
+        NSLog(@"You must specifiy a layout in the include tag: <include layout=\"layoutName\" />");
+    } else {
+        NSString *extension = [layoutToInclude pathExtension];
+        if ([extension length] == 0) extension = @"xml";
+        NSURL *url = [[NSBundle mainBundle] URLForResource:[layoutToInclude stringByDeletingPathExtension] withExtension:extension];
+        if (url == nil) {
+            NSLog(@"You must specifiy a valid layout reference. The layout ID %@ is not valid.", layoutToInclude);
+        } else {
+            TBXML *xml = [TBXML newTBXMLWithXMLData:[NSData dataWithContentsOfURL:url] error:&error];
+            if (error) {
+                NSLog(@"Cannot include layout %@: %@ %@", layoutToInclude, [error localizedDescription], [error userInfo]);
+            } else {
+                TBXMLElement *rootElement = xml.rootXMLElement;
+                NSString *elementName = [TBXML elementName:rootElement];
+                
+                NSMutableDictionary *childAttrs = [IDLLayoutInflater attributesFromXMLElement:rootElement reuseDictionary:nil];
+                if ([elementName isEqualToString:TAG_MERGE]) {
+                    [self rInflateWithXmlElement:rootElement->firstChild parentView:parentView attributes:childAttrs finishInflate:TRUE];
+                } else {
+                    UIView *temp = [self createViewFromTag:elementName withAttributes:childAttrs intoParentView:parentView];
+
+                    // We try to load the layout params set in the <include /> tag. If
+                    // they don't exist, we will rely on the layout params set in the
+                    // included XML file.
+                    // During a layoutparams generation, a runtime exception is thrown
+                    // if either layout_width or layout_height is missing. We catch
+                    // this exception and set localParams accordingly: true means we
+                    // successfully loaded layout params from the <include /> tag,
+                    // false means we need to rely on the included layout params.
+                    IDLLayoutParams *layoutParams = [parentView generateLayoutParamsFromAttributes:attrs];
+                    BOOL validLayoutParams = [parentView checkLayoutParams:layoutParams];
+                    if (!validLayoutParams && [parentView respondsToSelector:@selector(generateLayoutParamsFromAttributes:)]) {
+                        layoutParams = [parentView generateLayoutParamsFromAttributes:childAttrs];
+                    } else if (!validLayoutParams) {
+                        layoutParams = [parentView generateDefaultLayoutParams];
+                    }
+                    temp.layoutParams = layoutParams;
+                    
+                    // Inflate all children
+                    if (rootElement->firstChild != NULL) {
+                        [self rInflateWithXmlElement:rootElement->firstChild parentView:temp attributes:childAttrs finishInflate:TRUE];
+                    }
+                    
+                    // Attempt to override the included layout's id with the
+                    // one set on the <include /> tag itself.
+                    NSString *overwriteIdentifier = [attrs objectForKey:@"id"];
+                    if (overwriteIdentifier != nil) {
+                        temp.identifier = overwriteIdentifier;
+                    }
+                    
+                    // While we're at it, let's try to override visibility.
+                    NSString *overwriteVisibility = [attrs objectForKey:@"visibility"];
+                    if (overwriteVisibility != nil) {
+                        temp.visibility = IDLViewVisibilityFromString(overwriteVisibility);
+                    }
+                    [parentView addSubview:temp];
+                }
+            }
+            [xml release];
+        }
+    }
+}
+
 - (void)rInflateWithXmlElement:(TBXMLElement *)element parentView:(UIView *)parentView attributes:(NSMutableDictionary *)attrs finishInflate:(BOOL)finishInflate {
     do {
         NSString *tagName = [TBXML elementName:element];
         NSMutableDictionary *childAttrs = [IDLLayoutInflater attributesFromXMLElement:element reuseDictionary:attrs];
-        UIView *view = [self createViewFromTag:tagName withAttributes:childAttrs intoParentView:parentView];
-        IDLLayoutParams *layoutParams = nil;
-        if ([parentView respondsToSelector:@selector(generateLayoutParamsFromAttributes:)]) {
-            layoutParams = [parentView generateLayoutParamsFromAttributes:attrs];
+        if ([tagName isEqualToString:TAG_INCLUDE]) {
+            // Include other resource
+            
+            [self parseIncludeWithXmlElement:element parentView:parentView attributes:childAttrs];
+            
+            
         } else {
-            layoutParams = [parentView generateDefaultLayoutParams];
+            // Create view from element and attach to parent
+            
+            UIView *view = [self createViewFromTag:tagName withAttributes:childAttrs intoParentView:parentView];
+            IDLLayoutParams *layoutParams = nil;
+            if ([parentView respondsToSelector:@selector(generateLayoutParamsFromAttributes:)]) {
+                layoutParams = [parentView generateLayoutParamsFromAttributes:attrs];
+            } else {
+                layoutParams = [parentView generateDefaultLayoutParams];
+            }
+            view.layoutParams = layoutParams;
+            if (element->firstChild != NULL) {
+                [self rInflateWithXmlElement:element->firstChild parentView:view attributes:attrs finishInflate:TRUE];
+            }
+            [parentView addView:view];
         }
-        view.layoutParams = layoutParams;
-        if (element->firstChild != NULL) {
-            [self rInflateWithXmlElement:element->firstChild parentView:view attributes:attrs finishInflate:true];
-        }
-        [parentView addView:view];
     } while ((element = element->nextSibling));
     if (finishInflate) [parentView onFinishInflate];
 }
 
 - (UIView *)inflateParser:(TBXML *)parser intoRootView:(UIView *)rootView attachToRoot:(BOOL)attachToRoot {
-    TBXMLElement *rootElement = parser.rootXMLElement;
-    NSMutableDictionary *attrs = [IDLLayoutInflater attributesFromXMLElement:rootElement reuseDictionary:nil];
-    UIView *temp = [self createViewFromTag:[TBXML elementName:rootElement] withAttributes:attrs intoParentView:rootView];
+    UIView *ret = nil;
+    if (rootView != nil && !rootView.isViewGroup) {
+        NSLog(@"rootView must be ViewGroup");
+        return nil;
+    }
     
-    if (rootView != nil) {
-        IDLLayoutParams *layoutParams = nil;
-        if ([rootView respondsToSelector:@selector(generateLayoutParamsFromAttributes:)]) {
-            layoutParams = [rootView generateLayoutParamsFromAttributes:attrs];
-        } else {
-            layoutParams = [rootView generateDefaultLayoutParams];
+    TBXMLElement *rootElement = parser.rootXMLElement;
+    NSString *elementName = [TBXML elementName:rootElement];
+    NSMutableDictionary *attrs = [IDLLayoutInflater attributesFromXMLElement:rootElement reuseDictionary:nil];
+    if ([elementName isEqualToString:TAG_MERGE]) {
+        if (rootView == nil || !attachToRoot) {
+            NSLog(@"<merge /> can be used only with a valid ViewGroup root and attachToRoot=true");
+            return nil;;
+        } else if (rootElement->firstChild != NULL) {
+            [self rInflateWithXmlElement:rootElement->firstChild parentView:rootView attributes:attrs finishInflate:TRUE];
         }
-        temp.layoutParams = layoutParams;
+        ret = rootView;
+    } else {
+        UIView *temp = [self createViewFromTag:elementName withAttributes:attrs intoParentView:rootView];
+        
+        if (rootView != nil) {
+            IDLLayoutParams *layoutParams = nil;
+            if ([rootView respondsToSelector:@selector(generateLayoutParamsFromAttributes:)]) {
+                layoutParams = [rootView generateLayoutParamsFromAttributes:attrs];
+            } else {
+                layoutParams = [rootView generateDefaultLayoutParams];
+            }
+            temp.layoutParams = layoutParams;
+        }
+        if (rootElement->firstChild != NULL) {
+            [self rInflateWithXmlElement:rootElement->firstChild parentView:temp attributes:attrs finishInflate:TRUE];
+        }
+        if (attachToRoot && rootView != nil) {
+            [rootView addSubview:temp];
+            ret = rootView;
+        } else {
+            ret = temp;
+        }
     }
-    if (rootElement->firstChild != NULL) {
-        [self rInflateWithXmlElement:rootElement->firstChild parentView:temp attributes:attrs finishInflate:TRUE];
-    }
-    if (attachToRoot && rootView != nil) {
-        [rootView addSubview:temp];
-    }
-    return temp;
+    return ret;
 }
 
 - (UIView *)inflateURL:(NSURL *)url intoRootView:(UIView *)rootView attachToRoot:(BOOL)attachToRoot {
+    NSDate *methodStart = [NSDate date];
     NSError *error = nil;
     TBXML *xml = [[TBXML newTBXMLWithXMLData:[NSData dataWithContentsOfURL:url] error:&error] autorelease];
     if (error) {
         NSLog(@"%@ %@", [error localizedDescription], [error userInfo]);
         return nil;
     }
-    return [self inflateParser:xml intoRootView:rootView attachToRoot:attachToRoot];
+    UIView *ret = [self inflateParser:xml intoRootView:rootView attachToRoot:attachToRoot];
+    NSTimeInterval executionTime = [[NSDate date] timeIntervalSinceDate:methodStart];
+    NSLog(@"Inflation of %@ took %.2fms", [url absoluteString], executionTime*1000);
+    return ret;
+
 }
 
 - (UIView *)inflateResource:(NSString *)resource intoRootView:(UIView *)rootView attachToRoot:(BOOL)attachToRoot {

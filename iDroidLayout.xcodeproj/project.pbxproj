@@ -109,6 +109,9 @@
 		79642D011605E24E0095D5A2 /* IDLFrameLayoutGravityTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642D001605E24E0095D5A2 /* IDLFrameLayoutGravityTest.m */; };
 		79E4337816681D7B00E49114 /* LayoutFromIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79E4337716681D7B00E49114 /* LayoutFromIB.xib */; };
 		79E4337D16681DEB00E49114 /* layoutFromIB.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79E4337C16681DEB00E49114 /* layoutFromIB.xml */; };
+		79E43380166A2E7B00E49114 /* includeContainer.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79E4337F166A2E7B00E49114 /* includeContainer.xml */; };
+		79E43382166A2E8A00E49114 /* includeChild1.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79E43381166A2E8900E49114 /* includeChild1.xml */; };
+		79E43384166A2F4C00E49114 /* includeChild2.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79E43383166A2F4C00E49114 /* includeChild2.xml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -246,6 +249,9 @@
 		79E4337716681D7B00E49114 /* LayoutFromIB.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LayoutFromIB.xib; sourceTree = "<group>"; };
 		79E4337C16681DEB00E49114 /* layoutFromIB.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = layoutFromIB.xml; sourceTree = "<group>"; };
 		79E4337E1668226900E49114 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		79E4337F166A2E7B00E49114 /* includeContainer.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = includeContainer.xml; sourceTree = "<group>"; };
+		79E43381166A2E8900E49114 /* includeChild1.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = includeChild1.xml; sourceTree = "<group>"; };
+		79E43383166A2F4C00E49114 /* includeChild2.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = includeChild2.xml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -386,6 +392,9 @@
 				79642C1E1603C4E80095D5A2 /* Supporting Files */,
 				79E4337716681D7B00E49114 /* LayoutFromIB.xib */,
 				79E4337C16681DEB00E49114 /* layoutFromIB.xml */,
+				79E4337F166A2E7B00E49114 /* includeContainer.xml */,
+				79E43381166A2E8900E49114 /* includeChild1.xml */,
+				79E43383166A2F4C00E49114 /* includeChild2.xml */,
 			);
 			path = iDroidLayoutExample;
 			sourceTree = "<group>";
@@ -753,6 +762,9 @@
 				79642CD61603C5DB0095D5A2 /* scrollviews.xml in Resources */,
 				79E4337816681D7B00E49114 /* LayoutFromIB.xib in Resources */,
 				79E4337D16681DEB00E49114 /* layoutFromIB.xml in Resources */,
+				79E43380166A2E7B00E49114 /* includeContainer.xml in Resources */,
+				79E43382166A2E8A00E49114 /* includeChild1.xml in Resources */,
+				79E43384166A2F4C00E49114 /* includeChild2.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

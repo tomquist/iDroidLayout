@@ -43,6 +43,8 @@ typedef enum IDLViewVisibility {
     IDLViewVisibilityGone = 0x00000008
 } IDLViewVisibility;
 
+IDLViewVisibility IDLViewVisibilityFromString(NSString *visibilityString);
+
 @interface UIView (IDL_Layout)
 
 @property (nonatomic, retain) IDLLayoutParams *layoutParams;

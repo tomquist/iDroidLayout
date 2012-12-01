@@ -185,10 +185,15 @@
 
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key {
     if ([key isEqualToString:@"layout"]) {
-        IDLLayoutInflater *inflater = [[IDLLayoutInflater alloc] init];
-        NSURL *url = [[NSBundle mainBundle] URLForResource:value withExtension:@"xml"];
+        NSString *pathExtension = [value pathExtension];
+        if ([pathExtension length] == 0) {
+            pathExtension = @"xml";
+        }
+        NSURL *url = [[NSBundle mainBundle] URLForResource:[value stringByDeletingPathExtension] withExtension:pathExtension];
         if (url != nil) {
+            IDLLayoutInflater *inflater = [[IDLLayoutInflater alloc] init];
             [inflater inflateURL:url intoRootView:self attachToRoot:TRUE];
+            [inflater release];
         }
     } else {
         [super setValue:value forUndefinedKey:key];
