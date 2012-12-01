@@ -99,3 +99,42 @@ Yes, you can either use ``IDLTableViewCell`` or create a custom UITableViewCell 
 
 ##### Can I load xml layouts into a view defined in a xib file?
 Yes, a layout xml file can be inflated into a view in interface builder. Simple add a plain view in interface builder, set ``IDLLayoutBridge`` as custom class of the newly added view and define a user defined runtime attribute with the name ``layout`` and the name of the xml file (without the file extension) as the value. Check out the example project for more details.
+
+##### Can I re-use layouts within other layouts?
+Similar to the android layouting system, you can embed other layouts within a layout XML file using the ``<include />`` and ``<merge />`` tags. Inside the layout to which you want to add the re-usable component, add the <include/> tag. Here's an example:
+
+    <LinearLayout
+        layout_width="match_parent"
+        layout_height="match_parent"
+        orientation="vertical">
+        
+        <include layout="layoutToInclude"/>
+        
+        <TextView
+            layout_width="match_parent"
+            layout_height="wrap_content"
+            text="Some text"/>
+    </LinearLayout>
+    
+You can also override all the layout parameters (any ``layout_*`` attributes), the id and the visibility of the included layout's root view by specifying them in the ``<include/>`` tag. For example:
+
+    <include id="title"
+             layout_width="match_parent"
+             layout_height="match_parent"
+             layout="layoutToInclude"
+             visibility="gone"/>
+
+XML files always need a single root element. If you have to include multiple views from another single layout file, you need a container as a root element. This is where the ``<merge />`` tag comes into play. It allows you to include multiple views at once, without the need of an extra layout container:
+
+    <merge>
+        <TextView
+            layout_width="match_parent"
+            layout_height="wrap_content"
+            text="First text view"/>
+        <TextView
+            layout_width="match_parent"
+            layout_height="wrap_content"
+            text="Second text view"/>
+    </merge>
+
+Now, when you include this layout in another layout (using the ``<include/>`` tag), the system ignores the ``<merge />`` element and places the two text views directly in the layout, in place of the ``<include/>`` tag.

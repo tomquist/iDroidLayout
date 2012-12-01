@@ -77,6 +77,7 @@
     IDLTableViewCell *cell = (IDLTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[IDLTableViewCell alloc] initWithLayoutURL:_tableCellLayoutURL reuseIdentifier:CellIdentifier] autorelease];
+        cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
     }
     UILabel *titleLabel = (UILabel *)[cell.layoutBridge findViewById:@"title"];
     UILabel *descriptionLabel = (UILabel *)[cell.layoutBridge findViewById:@"description"];
