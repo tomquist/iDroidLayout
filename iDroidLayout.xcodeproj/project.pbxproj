@@ -107,6 +107,14 @@
 		79642CFC1603E8560095D5A2 /* IDLViewAsserts.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642CFB1603E8560095D5A2 /* IDLViewAsserts.m */; };
 		79642CFE1605E1790095D5A2 /* framelayout_gravity.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79642CFD1605E1790095D5A2 /* framelayout_gravity.xml */; };
 		79642D011605E24E0095D5A2 /* IDLFrameLayoutGravityTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642D001605E24E0095D5A2 /* IDLFrameLayoutGravityTest.m */; };
+		798140FA166A87C200A63480 /* UINavigationBar+IDL_View.h in Headers */ = {isa = PBXBuildFile; fileRef = 798140F8166A87C200A63480 /* UINavigationBar+IDL_View.h */; };
+		798140FB166A87C200A63480 /* UINavigationBar+IDL_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 798140F9166A87C200A63480 /* UINavigationBar+IDL_View.m */; };
+		798140FF166A8A5700A63480 /* UIToolbar+IDL_View.h in Headers */ = {isa = PBXBuildFile; fileRef = 798140FD166A8A5700A63480 /* UIToolbar+IDL_View.h */; };
+		79814100166A8A5700A63480 /* UIToolbar+IDL_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 798140FE166A8A5700A63480 /* UIToolbar+IDL_View.m */; };
+		79814103166A8DC600A63480 /* UISearchBar+IDL_View.h in Headers */ = {isa = PBXBuildFile; fileRef = 79814101166A8DC500A63480 /* UISearchBar+IDL_View.h */; };
+		79814104166A8DC600A63480 /* UISearchBar+IDL_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 79814102166A8DC500A63480 /* UISearchBar+IDL_View.m */; };
+		79814107166A8F3D00A63480 /* UISwitch+IDL_View.h in Headers */ = {isa = PBXBuildFile; fileRef = 79814105166A8F3C00A63480 /* UISwitch+IDL_View.h */; };
+		79814108166A8F3D00A63480 /* UISwitch+IDL_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 79814106166A8F3D00A63480 /* UISwitch+IDL_View.m */; };
 		79E4337816681D7B00E49114 /* LayoutFromIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79E4337716681D7B00E49114 /* LayoutFromIB.xib */; };
 		79E4337D16681DEB00E49114 /* layoutFromIB.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79E4337C16681DEB00E49114 /* layoutFromIB.xml */; };
 		79E43380166A2E7B00E49114 /* includeContainer.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79E4337F166A2E7B00E49114 /* includeContainer.xml */; };
@@ -246,6 +254,14 @@
 		79642CFD1605E1790095D5A2 /* framelayout_gravity.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = framelayout_gravity.xml; sourceTree = "<group>"; };
 		79642CFF1605E24E0095D5A2 /* IDLFrameLayoutGravityTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLFrameLayoutGravityTest.h; sourceTree = "<group>"; };
 		79642D001605E24E0095D5A2 /* IDLFrameLayoutGravityTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLFrameLayoutGravityTest.m; sourceTree = "<group>"; };
+		798140F8166A87C200A63480 /* UINavigationBar+IDL_View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+IDL_View.h"; sourceTree = "<group>"; };
+		798140F9166A87C200A63480 /* UINavigationBar+IDL_View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+IDL_View.m"; sourceTree = "<group>"; };
+		798140FD166A8A5700A63480 /* UIToolbar+IDL_View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIToolbar+IDL_View.h"; sourceTree = "<group>"; };
+		798140FE166A8A5700A63480 /* UIToolbar+IDL_View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIToolbar+IDL_View.m"; sourceTree = "<group>"; };
+		79814101166A8DC500A63480 /* UISearchBar+IDL_View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISearchBar+IDL_View.h"; sourceTree = "<group>"; };
+		79814102166A8DC500A63480 /* UISearchBar+IDL_View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISearchBar+IDL_View.m"; sourceTree = "<group>"; };
+		79814105166A8F3C00A63480 /* UISwitch+IDL_View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISwitch+IDL_View.h"; sourceTree = "<group>"; };
+		79814106166A8F3D00A63480 /* UISwitch+IDL_View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISwitch+IDL_View.m"; sourceTree = "<group>"; };
 		79E4337716681D7B00E49114 /* LayoutFromIB.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LayoutFromIB.xib; sourceTree = "<group>"; };
 		79E4337C16681DEB00E49114 /* layoutFromIB.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = layoutFromIB.xml; sourceTree = "<group>"; };
 		79E4337E1668226900E49114 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
@@ -497,8 +513,16 @@
 				79642C5E1603C5500095D5A2 /* UIImageView+IDL_View.m */,
 				79642C5F1603C5500095D5A2 /* UILabel+IDL_View.h */,
 				79642C601603C5500095D5A2 /* UILabel+IDL_View.m */,
+				798140F8166A87C200A63480 /* UINavigationBar+IDL_View.h */,
+				798140F9166A87C200A63480 /* UINavigationBar+IDL_View.m */,
 				79642C611603C5500095D5A2 /* UIScrollView+IDL_ViewGroup.h */,
 				79642C621603C5500095D5A2 /* UIScrollView+IDL_ViewGroup.m */,
+				79814101166A8DC500A63480 /* UISearchBar+IDL_View.h */,
+				79814102166A8DC500A63480 /* UISearchBar+IDL_View.m */,
+				79814105166A8F3C00A63480 /* UISwitch+IDL_View.h */,
+				79814106166A8F3D00A63480 /* UISwitch+IDL_View.m */,
+				798140FD166A8A5700A63480 /* UIToolbar+IDL_View.h */,
+				798140FE166A8A5700A63480 /* UIToolbar+IDL_View.m */,
 				79642C631603C5500095D5A2 /* UIWebView+IDL_View.h */,
 				79642C641603C5500095D5A2 /* UIWebView+IDL_View.m */,
 			);
@@ -633,6 +657,10 @@
 				79642CBB1603C5500095D5A2 /* IDLRelativeLayout.h in Headers */,
 				79642CBD1603C5500095D5A2 /* IDLRelativeLayoutLayoutParams.h in Headers */,
 				79642C7D1603C5500095D5A2 /* TBXML.h in Headers */,
+				798140FA166A87C200A63480 /* UINavigationBar+IDL_View.h in Headers */,
+				798140FF166A8A5700A63480 /* UIToolbar+IDL_View.h in Headers */,
+				79814103166A8DC600A63480 /* UISearchBar+IDL_View.h in Headers */,
+				79814107166A8F3D00A63480 /* UISwitch+IDL_View.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -860,6 +888,10 @@
 				79642CBA1603C5500095D5A2 /* IDLDependencyGraphNode.m in Sources */,
 				79642CBC1603C5500095D5A2 /* IDLRelativeLayout.m in Sources */,
 				79642CBE1603C5500095D5A2 /* IDLRelativeLayoutLayoutParams.m in Sources */,
+				798140FB166A87C200A63480 /* UINavigationBar+IDL_View.m in Sources */,
+				79814100166A8A5700A63480 /* UIToolbar+IDL_View.m in Sources */,
+				79814104166A8DC600A63480 /* UISearchBar+IDL_View.m in Sources */,
+				79814108166A8F3D00A63480 /* UISwitch+IDL_View.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

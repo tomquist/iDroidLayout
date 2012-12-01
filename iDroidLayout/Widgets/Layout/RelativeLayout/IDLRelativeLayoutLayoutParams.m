@@ -7,6 +7,7 @@
 //
 
 #import "IDLRelativeLayoutLayoutParams.h"
+#import "UIView+IDL_Layout.h"
 
 @interface IDLRelativeLayoutLayoutParams ()
 
@@ -31,10 +32,6 @@
 	[super dealloc];
 }
 
-- (BOOL)parseBoolean:(NSString *)string {
-    return [string isEqualToString:@"true"] || [string isEqualToString:@"TRUE"] || [string isEqualToString:@"yes"] || [string isEqualToString:@"YES"] || [string boolValue];
-}
-
 - (id) initWithAttributes:(NSDictionary *)attrs {
 	self = [super initWithAttributes:attrs];
 	if (self != nil) {
@@ -48,13 +45,13 @@
         _alignRight = [attrs objectForKey:@"layout_alignRight"];
         _alignBottom = [attrs objectForKey:@"layout_alignBottom"];
         
-        _alignParentLeft = [self parseBoolean:[attrs objectForKey:@"layout_alignParentLeft"]];
-        _alignParentTop = [self parseBoolean:[attrs objectForKey:@"layout_alignParentTop"]];
-        _alignParentRight = [self parseBoolean:[attrs objectForKey:@"layout_alignParentRight"]];
-        _alignParentBottom = [self parseBoolean:[attrs objectForKey:@"layout_alignParentBottom"]];
-        _centerInParent = [self parseBoolean:[attrs objectForKey:@"layout_centerInParent"]];
-        _centerHorizontal = [self parseBoolean:[attrs objectForKey:@"layout_centerHorizontal"]];
-        _centerVertical = [self parseBoolean:[attrs objectForKey:@"layout_centerVertical"]];
+        _alignParentLeft = BOOLFromString([attrs objectForKey:@"layout_alignParentLeft"]);
+        _alignParentTop = BOOLFromString([attrs objectForKey:@"layout_alignParentTop"]);
+        _alignParentRight = BOOLFromString([attrs objectForKey:@"layout_alignParentRight"]);
+        _alignParentBottom = BOOLFromString([attrs objectForKey:@"layout_alignParentBottom"]);
+        _centerInParent = BOOLFromString([attrs objectForKey:@"layout_centerInParent"]);
+        _centerHorizontal = BOOLFromString([attrs objectForKey:@"layout_centerHorizontal"]);
+        _centerVertical = BOOLFromString([attrs objectForKey:@"layout_centerVertical"]);
         
         NSNull *null = [NSNull null];
         _rules = [[NSArray alloc] initWithObjects:

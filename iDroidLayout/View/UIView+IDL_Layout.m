@@ -35,6 +35,10 @@ IDLViewVisibility IDLViewVisibilityFromString(NSString *visibilityString) {
     return visibility;
 }
 
+BOOL BOOLFromString(NSString *boolString) {
+    return [boolString isEqualToString:@"true"] || [boolString isEqualToString:@"TRUE"] || [boolString isEqualToString:@"yes"] || [boolString isEqualToString:@"YES"] || [boolString boolValue];
+}
+
 @implementation UIView (IDL_Layout)
 
 static char identifierKey;
