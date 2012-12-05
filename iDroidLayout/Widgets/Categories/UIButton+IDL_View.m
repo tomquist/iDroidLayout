@@ -9,13 +9,19 @@
 #import "UIButton+IDL_View.h"
 #import "UIView+IDL_Layout.h"
 #import "IDLGravity.h"
+#import "IDLResourceManager.h"
 
 @implementation UIButton (Layout)
 
 - (void)setupFromAttributes:(NSDictionary *)attrs {
     [super setupFromAttributes:attrs];
     NSString *text = [attrs objectForKey:@"text"];
-    [self setTitle:text forState:UIControlStateNormal];
+    if ([[IDLResourceManager currentResourceManager] isValidIdentifier:text]) {
+        NSString *title = [[IDLResourceManager currentResourceManager] stringForIdentifier:text];
+        [self setTitle:title forState:UIControlStateNormal];
+    } else {
+        [self setTitle:text forState:UIControlStateNormal];
+    }
 }
 
 - (void)onMeasureWithWidthMeasureSpec:(IDLLayoutMeasureSpec)widthMeasureSpec heightMeasureSpec:(IDLLayoutMeasureSpec)heightMeasureSpec {

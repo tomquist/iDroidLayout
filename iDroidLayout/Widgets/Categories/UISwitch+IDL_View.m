@@ -8,31 +8,31 @@
 
 #import "UISwitch+IDL_View.h"
 #import "UIView+IDL_Layout.h"
-#import "UIColor+IDL_ColorParser.h"
+#import "NSDictionary+IDL_ResourceManager.h"
 
 @implementation UISwitch (IDL_View)
 
 - (void)setupFromAttributes:(NSDictionary *)attrs {
     [super setupFromAttributes:attrs];
     
-    NSString *tintColor = [attrs objectForKey:@"tintColor"];
+    UIColor *tintColor = [attrs colorFromIDLValueForKey:@"tintColor"];
     if (tintColor != nil) {
         if ([self respondsToSelector:@selector(setTintColor:)]) {
-            self.tintColor = [UIColor colorFromAndroidColorString:tintColor];
+            self.tintColor = tintColor;
         }
     }
     
-    NSString *onTintColor = [attrs objectForKey:@"onTintColor"];
+    UIColor *onTintColor = [attrs colorFromIDLValueForKey:@"onTintColor"];
     if (onTintColor != nil) {
         if ([self respondsToSelector:@selector(setOnTintColor:)]) {
-            self.onTintColor = [UIColor colorFromAndroidColorString:onTintColor];
+            self.onTintColor = onTintColor;
         }
     }
 
-    NSString *thumbTintColor = [attrs objectForKey:@"thumbTintColor"];
+    UIColor *thumbTintColor = [attrs colorFromIDLValueForKey:@"thumbTintColor"];
     if (thumbTintColor != nil) {
         if ([self respondsToSelector:@selector(setThumbTintColor:)]) {
-            self.thumbTintColor = [UIColor colorFromAndroidColorString:thumbTintColor];
+            self.thumbTintColor = thumbTintColor;
         }
     }
     

@@ -13,6 +13,11 @@
 
 @synthesize layoutBridge = _layoutBridge;
 
+- (void)dealloc {
+    [_layoutBridge release];
+    [super dealloc];
+}
+
 - (id)initWithLayoutResource:(NSString *)resource reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
     if (self) {

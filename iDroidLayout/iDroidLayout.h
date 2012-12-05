@@ -17,10 +17,7 @@
 // Views
 #import "IDLTextView.h"
 #import "UILabel+IDL_View.h"
-#import "UIImageView+IDL_View.h"
-#import "UIWebView+IDL_View.h"
 #import "UIControl+IDL_View.h"
-#import "UIButton+IDL_View.h"
 
 // Utils
 #import "IDLLayoutInflater.h"

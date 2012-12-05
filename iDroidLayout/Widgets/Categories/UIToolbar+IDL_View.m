@@ -8,7 +8,7 @@
 
 #import "UIToolbar+IDL_View.h"
 #import "UIView+IDL_Layout.h"
-#import "UIColor+IDL_ColorParser.h"
+#import "NSDictionary+IDL_ResourceManager.h"
 
 UIBarStyle UIBarStyleFromString(NSString *barStyle) {
     UIBarStyle ret = UIBarStyleDefault;
@@ -24,9 +24,9 @@ UIBarStyle UIBarStyleFromString(NSString *barStyle) {
 
 - (void)setupFromAttributes:(NSDictionary *)attrs {
     [super setupFromAttributes:attrs];
-    NSString *tintColor = [attrs objectForKey:@"tintColor"];
+    UIColor *tintColor = [attrs colorFromIDLValueForKey:@"tintColor"];
     if (tintColor != nil) {
-        self.tintColor = [UIColor colorFromAndroidColorString:tintColor];
+        self.tintColor = tintColor;
     }
     NSString *barStyle = [attrs objectForKey:@"barStyle"];
     if (barStyle != nil) {

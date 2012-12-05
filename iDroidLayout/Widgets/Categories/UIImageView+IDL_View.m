@@ -8,13 +8,17 @@
 
 #import "UIImageView+IDL_View.h"
 #import "UIView+IDL_Layout.h"
+#import "IDLResourceManager.h"
 
 @implementation UIImageView (Layout)
 
 - (void)setupFromAttributes:(NSDictionary *)attrs {
     [super setupFromAttributes:attrs];
     NSString *imageRes = [attrs objectForKey:@"src"];
-    self.image = [UIImage imageNamed:imageRes];
+    UIImage *image = [[IDLResourceManager currentResourceManager] imageForIdentifier:imageRes];
+    if (image != nil) {
+        self.image = image;
+    }
     
     NSString *scaleType = [attrs objectForKey:@"scaleType"];
     if (scaleType != nil) {
@@ -69,7 +73,11 @@
         case IDLLayoutMeasureSpecModeExactly: {
             width.size = widthSize;
             if ([self isImageScaling]) {
-                height.size = (width.size/imageSize.width)*imageSize.height;
+                if (imageSize.width <= 0.f) {
+                    height.size = 0;
+                } else {
+                    height.size = (width.size/imageSize.width)*imageSize.height;
+                }
             }
             break;
         }
@@ -77,7 +85,11 @@
             if (widthSize < imageSize.width) {
                 width.size = widthSize;
                 if ([self isImageScaling]) {
-                    height.size = (width.size/imageSize.width)*imageSize.height;
+                    if (imageSize.width <= 0.f) {
+                        height.size = 0.f;
+                    } else {
+                        height.size = (width.size/imageSize.width)*imageSize.height;
+                    }
                 }
             }
             break;
@@ -98,7 +110,7 @@
             break;
     }
     //if (widthMode == IDLLayoutMeasureSpecModeAtMost || widthMode == IDLLayoutMeasureSpecModeUnspecified) {
-    width.size = MIN(width.size, (height.size/imageSize.height) * imageSize.width);
+    width.size = MIN(width.size, (imageSize.height>0.f?(height.size/imageSize.height) * imageSize.width:0.f));
     //}
     [self setMeasuredDimensionWidth:width height:height];
 }

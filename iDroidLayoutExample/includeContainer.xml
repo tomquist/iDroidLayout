@@ -3,10 +3,10 @@
     layout_height="match_parent"
     orientation="vertical">
     <include
-        layout="includeChild1"
+        layout="@layout/includeChild1"
         layout_width="wrap_content"
         layout_height="wrap_content"
         layout_gravity="center"
         layout_marginBottom="10"/>
-    <include layout="includeChild2"/>
+    <include layout="@layout/includeChild2"/>
 </LinearLayout>

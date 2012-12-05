@@ -86,15 +86,6 @@ typedef enum RelativeLayoutRule {
 } RelativeLayoutRule;
 
 @interface IDLRelativeLayoutLayoutParams : IDLMarginLayoutParams {
-    NSString *_leftOf;
-    NSString *_rightOf;
-    NSString *_above;
-    NSString *_below;
-    NSString *_alignBaseline;
-    NSString *_alignLeft;
-    NSString *_alignTop;
-    NSString *_alignRight;
-    NSString *_alignBottom;
     BOOL _alignParentLeft;
     BOOL _alignParentTop;
     BOOL _alignParentRight;

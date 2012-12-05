@@ -25,6 +25,10 @@
 
 - (void) dealloc {
 	[_ignoreGravity release];
+    [_sortedHorizontalChildren release];
+    [_sortedVerticalChildren release];
+    [_graph release];
+    [_baselineView release];
 	[super dealloc];
 }
 
@@ -38,7 +42,6 @@
     self = [super initWithAttributes:attrs];
     if (self) {
         _dirtyHierarchy = TRUE;
-        _graph = [[IDLDependencyGraph alloc] init];
     }
     return self;
 }
@@ -56,7 +59,6 @@
     self = [super init];
     if (self) {
         _dirtyHierarchy = TRUE;
-        _graph = [[IDLDependencyGraph alloc] init];
     }
     return self;
 }

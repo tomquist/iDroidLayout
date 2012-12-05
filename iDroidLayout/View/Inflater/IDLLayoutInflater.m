@@ -12,6 +12,7 @@
 #import "TBXML.h"
 #import "IDLLayoutParams.h"
 #import "IDLBaseViewFactory.h"
+#import "IDLResourceManager.h"
 
 #define TAG_MERGE @"merge"
 #define TAG_INCLUDE @"include"
@@ -74,11 +75,9 @@
     NSString *layoutToInclude = [attrs objectForKey:INCLUDE_ATTRIBUTE_LAYOUT];
     NSError *error = nil;
     if (layoutToInclude == nil) {
-        NSLog(@"You must specifiy a layout in the include tag: <include layout=\"layoutName\" />");
+        NSLog(@"You must specifiy a layout in the include tag: <include layout=\"@layout/layoutName\" />");
     } else {
-        NSString *extension = [layoutToInclude pathExtension];
-        if ([extension length] == 0) extension = @"xml";
-        NSURL *url = [[NSBundle mainBundle] URLForResource:[layoutToInclude stringByDeletingPathExtension] withExtension:extension];
+        NSURL *url = [[IDLResourceManager currentResourceManager] layoutURLForIdentifier:layoutToInclude];
         if (url == nil) {
             NSLog(@"You must specifiy a valid layout reference. The layout ID %@ is not valid.", layoutToInclude);
         } else {

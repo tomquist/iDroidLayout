@@ -60,6 +60,8 @@
 }
 
 - (void) dealloc {
+    self.view = nil;
+    self.nextPoolable = nil;
 	[_dependents release];
     [_dependencies release];
 	[super dealloc];

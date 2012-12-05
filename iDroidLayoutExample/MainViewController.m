@@ -10,6 +10,7 @@
 #import <iDroidLayout/iDroidLayout.h>
 #import "FormularViewController.h"
 #import "LayoutAnimationsViewController.h"
+#import "IDLResourceManager.h"
 
 @implementation MainViewController
 
@@ -30,6 +31,7 @@
 }
 
 - (void)viewDidLoad {
+    [[[IDLResourceManager alloc] init] autorelease];
     [super viewDidLoad];
     
     _tableCellLayoutURL = [[[NSBundle mainBundle] URLForResource:@"mainCell" withExtension:@"xml"] retain];

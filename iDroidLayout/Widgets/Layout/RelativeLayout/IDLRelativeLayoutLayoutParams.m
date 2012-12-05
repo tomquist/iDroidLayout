@@ -35,15 +35,15 @@
 - (id) initWithAttributes:(NSDictionary *)attrs {
 	self = [super initWithAttributes:attrs];
 	if (self != nil) {
-		_leftOf = [attrs objectForKey:@"layout_toLeftOf"];
-        _rightOf = [attrs objectForKey:@"layout_toRightOf"];
-        _above = [attrs objectForKey:@"layout_above"];
-        _below = [attrs objectForKey:@"layout_below"];
-        _alignBaseline = [attrs objectForKey:@"layout_alignBaseline"];
-        _alignLeft = [attrs objectForKey:@"layout_alignLeft"];
-        _alignTop = [attrs objectForKey:@"layout_alignTop"];
-        _alignRight = [attrs objectForKey:@"layout_alignRight"];
-        _alignBottom = [attrs objectForKey:@"layout_alignBottom"];
+		NSString *leftOf = [attrs objectForKey:@"layout_toLeftOf"];
+        NSString *rightOf = [attrs objectForKey:@"layout_toRightOf"];
+        NSString *above = [attrs objectForKey:@"layout_above"];
+        NSString *below = [attrs objectForKey:@"layout_below"];
+        NSString *alignBaseline = [attrs objectForKey:@"layout_alignBaseline"];
+        NSString *alignLeft = [attrs objectForKey:@"layout_alignLeft"];
+        NSString *alignTop = [attrs objectForKey:@"layout_alignTop"];
+        NSString *alignRight = [attrs objectForKey:@"layout_alignRight"];
+        NSString *alignBottom = [attrs objectForKey:@"layout_alignBottom"];
         
         _alignParentLeft = BOOLFromString([attrs objectForKey:@"layout_alignParentLeft"]);
         _alignParentTop = BOOLFromString([attrs objectForKey:@"layout_alignParentTop"]);
@@ -55,15 +55,15 @@
         
         NSNull *null = [NSNull null];
         _rules = [[NSArray alloc] initWithObjects:
-                  (_leftOf==nil?null:_leftOf),
-                  (_rightOf==nil?null:_rightOf),
-                  (_above==nil?null:_above),
-                  (_below==nil?null:_below),
-                  (_alignBaseline==nil?null:_alignBaseline),
-                  (_alignLeft==nil?null:_alignLeft),
-                  (_alignTop==nil?null:_alignTop),
-                  (_alignRight==nil?null:_alignRight),
-                  (_alignBottom==nil?null:_alignBottom),
+                  (leftOf==nil?null:leftOf),
+                  (rightOf==nil?null:rightOf),
+                  (above==nil?null:above),
+                  (below==nil?null:below),
+                  (alignBaseline==nil?null:alignBaseline),
+                  (alignLeft==nil?null:alignLeft),
+                  (alignTop==nil?null:alignTop),
+                  (alignRight==nil?null:alignRight),
+                  (alignBottom==nil?null:alignBottom),
                   @(_alignParentLeft),
                   @(_alignParentTop),
                   @(_alignParentRight),

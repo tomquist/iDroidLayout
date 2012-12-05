@@ -10,6 +10,7 @@
 #import "UIView+IDL_Layout.h"
 #import "UIColor+IDL_ColorParser.h"
 #import "UIView+IDL_ViewGroup.h"
+#import "NSDictionary+IDL_ResourceManager.h"
 
 #pragma mark - import libs
 #include <objc/runtime.h>
@@ -73,10 +74,9 @@ static char visibilityKey;
     }
     
     // background
-    NSString *colorString = [attrs objectForKey:@"background"];
-    if (colorString != nil) {
-        UIColor *backgroundColor = [UIColor colorFromAndroidColorString:colorString];
-        self.backgroundColor = backgroundColor;
+    UIColor *background = [attrs colorFromIDLValueForKey:@"background"];
+    if (background != nil) {
+        self.backgroundColor = background;
     }
     
     // alpha
@@ -110,9 +110,9 @@ static char visibilityKey;
     if (borderWidth != nil) {
         self.layer.borderWidth = [borderWidth floatValue];
     }
-    NSString *borderColor = [attrs objectForKey:@"borderColor"];
+    UIColor *borderColor = [attrs colorFromIDLValueForKey:@"borderColor"];
     if (borderColor != nil) {
-        self.layer.borderColor = [UIColor colorFromAndroidColorString:borderColor].CGColor;
+        self.layer.borderColor = borderColor.CGColor;
     }
     NSString *cornerRadius = [attrs objectForKey:@"cornerRadius"];
     if (cornerRadius != nil) {

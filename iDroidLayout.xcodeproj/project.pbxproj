@@ -115,6 +115,10 @@
 		79814104166A8DC600A63480 /* UISearchBar+IDL_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 79814102166A8DC500A63480 /* UISearchBar+IDL_View.m */; };
 		79814107166A8F3D00A63480 /* UISwitch+IDL_View.h in Headers */ = {isa = PBXBuildFile; fileRef = 79814105166A8F3C00A63480 /* UISwitch+IDL_View.h */; };
 		79814108166A8F3D00A63480 /* UISwitch+IDL_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 79814106166A8F3D00A63480 /* UISwitch+IDL_View.m */; };
+		7981410C166ABABB00A63480 /* IDLResourceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7981410A166ABABB00A63480 /* IDLResourceManager.h */; };
+		7981410D166ABABB00A63480 /* IDLResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7981410B166ABABB00A63480 /* IDLResourceManager.m */; };
+		79814110166BD65900A63480 /* NSDictionary+IDL_ResourceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7981410E166BD65800A63480 /* NSDictionary+IDL_ResourceManager.h */; };
+		79814111166BD65900A63480 /* NSDictionary+IDL_ResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7981410F166BD65800A63480 /* NSDictionary+IDL_ResourceManager.m */; };
 		79E4337816681D7B00E49114 /* LayoutFromIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79E4337716681D7B00E49114 /* LayoutFromIB.xib */; };
 		79E4337D16681DEB00E49114 /* layoutFromIB.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79E4337C16681DEB00E49114 /* layoutFromIB.xml */; };
 		79E43380166A2E7B00E49114 /* includeContainer.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79E4337F166A2E7B00E49114 /* includeContainer.xml */; };
@@ -262,6 +266,10 @@
 		79814102166A8DC500A63480 /* UISearchBar+IDL_View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISearchBar+IDL_View.m"; sourceTree = "<group>"; };
 		79814105166A8F3C00A63480 /* UISwitch+IDL_View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISwitch+IDL_View.h"; sourceTree = "<group>"; };
 		79814106166A8F3D00A63480 /* UISwitch+IDL_View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISwitch+IDL_View.m"; sourceTree = "<group>"; };
+		7981410A166ABABB00A63480 /* IDLResourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLResourceManager.h; sourceTree = "<group>"; };
+		7981410B166ABABB00A63480 /* IDLResourceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLResourceManager.m; sourceTree = "<group>"; };
+		7981410E166BD65800A63480 /* NSDictionary+IDL_ResourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+IDL_ResourceManager.h"; sourceTree = "<group>"; };
+		7981410F166BD65800A63480 /* NSDictionary+IDL_ResourceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+IDL_ResourceManager.m"; sourceTree = "<group>"; };
 		79E4337716681D7B00E49114 /* LayoutFromIB.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LayoutFromIB.xib; sourceTree = "<group>"; };
 		79E4337C16681DEB00E49114 /* layoutFromIB.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = layoutFromIB.xml; sourceTree = "<group>"; };
 		79E4337E1668226900E49114 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
@@ -328,6 +336,7 @@
 		79642BEB1603C4A20095D5A2 /* iDroidLayout */ = {
 			isa = PBXGroup;
 			children = (
+				79814109166AB8A700A63480 /* Resources */,
 				79642C2E1603C5500095D5A2 /* iDroidLayout.h */,
 				79642C2F1603C5500095D5A2 /* TBXML */,
 				79642C321603C5500095D5A2 /* Utils */,
@@ -613,6 +622,17 @@
 			path = TestResources;
 			sourceTree = "<group>";
 		};
+		79814109166AB8A700A63480 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7981410A166ABABB00A63480 /* IDLResourceManager.h */,
+				7981410B166ABABB00A63480 /* IDLResourceManager.m */,
+				7981410E166BD65800A63480 /* NSDictionary+IDL_ResourceManager.h */,
+				7981410F166BD65800A63480 /* NSDictionary+IDL_ResourceManager.m */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -661,6 +681,8 @@
 				798140FF166A8A5700A63480 /* UIToolbar+IDL_View.h in Headers */,
 				79814103166A8DC600A63480 /* UISearchBar+IDL_View.h in Headers */,
 				79814107166A8F3D00A63480 /* UISwitch+IDL_View.h in Headers */,
+				7981410C166ABABB00A63480 /* IDLResourceManager.h in Headers */,
+				79814110166BD65900A63480 /* NSDictionary+IDL_ResourceManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -892,6 +914,8 @@
 				79814100166A8A5700A63480 /* UIToolbar+IDL_View.m in Sources */,
 				79814104166A8DC600A63480 /* UISearchBar+IDL_View.m in Sources */,
 				79814108166A8F3D00A63480 /* UISwitch+IDL_View.m in Sources */,
+				7981410D166ABABB00A63480 /* IDLResourceManager.m in Sources */,
+				79814111166BD65900A63480 /* NSDictionary+IDL_ResourceManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1114,6 +1138,7 @@
 				INFOPLIST_FILE = "iDroidLayoutExample/iDroidLayout-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

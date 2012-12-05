@@ -9,6 +9,8 @@
 #import "UILabel+IDL_View.h"
 #import "UIView+IDL_Layout.h"
 #import "UIColor+IDL_ColorParser.h"
+#import "IDLResourceManager.h"
+#import "NSDictionary+IDL_ResourceManager.h"
 
 #include "objc/runtime.h"
 #include "objc/message.h"
@@ -17,18 +19,30 @@
 
 - (void)setupFromAttributes:(NSDictionary *)attrs {
     [super setupFromAttributes:attrs];
-    self.text = [attrs objectForKey:@"text"];
+    
+    NSString *text = [attrs objectForKey:@"text"];
+    if ([[IDLResourceManager currentResourceManager] isValidIdentifier:text]) {
+        NSString *textFromResouces = [[IDLResourceManager currentResourceManager] stringForIdentifier:text];
+        self.text = textFromResouces;
+    } else {
+        self.text = text;
+    }
+    
     self.gravity = [IDLGravity gravityFromAttribute:[attrs objectForKey:@"gravity"]];
     NSString *lines = [attrs objectForKey:@"lines"];
     self.numberOfLines = [lines integerValue];
     
-    NSString *textColor = [attrs objectForKey:@"textColor"];
+
+    UIColor *textColor = [attrs colorFromIDLValueForKey:@"textColor"];
     if (textColor != nil) {
-        self.textColor = [UIColor colorFromAndroidColorString:textColor];
+        self.textColor = textColor;
     }
-    NSString *textColorHighlight = [attrs objectForKey:@"textColorHighlight"];
+    
+    UIColor *textColorHighlight = [attrs colorFromIDLValueForKey:@"textColorHighlight"];
     if (textColorHighlight != nil) {
-        self.highlightedTextColor = [UIColor colorFromAndroidColorString:textColorHighlight];
+        if (textColorHighlight != nil) {
+            self.highlightedTextColor = textColorHighlight;
+        }
     }
     
     NSString *fontName = [attrs objectForKey:@"font"];

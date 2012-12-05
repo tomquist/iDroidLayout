@@ -9,15 +9,15 @@
 #import "UISearchBar+IDL_View.h"
 #import "UIToolbar+IDL_View.h"
 #import "UIView+IDL_Layout.h"
-#import "UIColor+IDL_ColorParser.h"
+#import "NSDictionary+IDL_ResourceManager.h"
 
 @implementation UISearchBar (IDL_View)
 
 - (void)setupFromAttributes:(NSDictionary *)attrs {
     [super setupFromAttributes:attrs];
-    NSString *tintColor = [attrs objectForKey:@"tintColor"];
+    UIColor *tintColor = [attrs colorFromIDLValueForKey:@"tintColor"];
     if (tintColor != nil) {
-        self.tintColor = [UIColor colorFromAndroidColorString:tintColor];
+        self.tintColor = tintColor;
     }
     NSString *barStyle = [attrs objectForKey:@"barStyle"];
     if (barStyle != nil) {
