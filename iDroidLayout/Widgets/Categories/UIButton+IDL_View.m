@@ -10,10 +10,19 @@
 #import "UIView+IDL_Layout.h"
 #import "IDLGravity.h"
 #import "IDLResourceManager.h"
+#import "UIColor+IDL_ColorParser.h"
+#import "UIImage+IDL_FromColor.h"
 
 @implementation UIButton (Layout)
 
 - (void)setupFromAttributes:(NSDictionary *)attrs {
+    NSString *backgroundString = [attrs objectForKey:@"background"];
+    if (backgroundString != nil) {
+        NSMutableDictionary *mutableAttrs = [NSMutableDictionary dictionaryWithDictionary:attrs];
+        [mutableAttrs removeObjectForKey:@"background"];
+        attrs = mutableAttrs;
+    }
+    
     [super setupFromAttributes:attrs];
     NSString *text = [attrs objectForKey:@"text"];
     if ([[IDLResourceManager currentResourceManager] isValidIdentifier:text]) {
@@ -21,6 +30,43 @@
         [self setTitle:title forState:UIControlStateNormal];
     } else {
         [self setTitle:text forState:UIControlStateNormal];
+    }
+    NSString *textColor = [attrs objectForKey:@"textColor"];
+    if ([textColor length] > 0) {
+        IDLColorStateList *colorStateList = [[IDLResourceManager currentResourceManager] colorStateListForIdentifier:textColor];
+        if (colorStateList != nil) {
+            for (NSInteger i=[colorStateList.items count]-1; i>=0; i--) {
+                IDLColorStateItem *item = [colorStateList.items objectAtIndex:i];
+                [self setTitleColor:item.color forState:item.controlState];
+            }
+        }
+    }
+    
+    if ([backgroundString length] > 0) {
+        IDLDrawableStateList *drawableStateList = [[IDLResourceManager currentResourceManager] drawableStateListForIdentifier:backgroundString];
+        if (drawableStateList != nil) {
+            for (NSInteger i=[drawableStateList.items count]-1; i>=0; i--) {
+                IDLDrawableStateItem *item = [drawableStateList.items objectAtIndex:i];
+                [self setBackgroundImage:item.image forState:item.controlState];
+            }
+        } else {
+            UIColor *color = [UIColor colorFromIDLColorString:backgroundString];
+            if (color != nil) {
+                UIImage *image = [UIImage idl_imageFromColor:color withSize:CGSizeMake(1, 1)];
+                [self setBackgroundImage:image forState:UIControlStateNormal];
+            }
+        }
+    }
+    
+    NSString *imageString = [attrs objectForKey:@"image"];
+    if ([imageString length] > 0) {
+        IDLDrawableStateList *drawableStateList = [[IDLResourceManager currentResourceManager] drawableStateListForIdentifier:imageString];
+        if (drawableStateList != nil) {
+            for (NSInteger i=[drawableStateList.items count]-1; i>=0; i--) {
+                IDLDrawableStateItem *item = [drawableStateList.items objectAtIndex:i];
+                [self setBackgroundImage:item.image forState:item.controlState];
+            }
+        }
     }
 }
 

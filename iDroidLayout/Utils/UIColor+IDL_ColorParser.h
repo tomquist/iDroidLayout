@@ -10,6 +10,6 @@
 
 @interface UIColor (IDL_ColorParser)
 
-+ (UIColor *)colorFromAndroidColorString:(NSString *)string;
++ (UIColor *)colorFromIDLColorString:(NSString *)string;
 
 @end

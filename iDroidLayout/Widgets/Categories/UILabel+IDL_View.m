@@ -32,16 +32,12 @@
     NSString *lines = [attrs objectForKey:@"lines"];
     self.numberOfLines = [lines integerValue];
     
-
-    UIColor *textColor = [attrs colorFromIDLValueForKey:@"textColor"];
-    if (textColor != nil) {
-        self.textColor = textColor;
-    }
-    
-    UIColor *textColorHighlight = [attrs colorFromIDLValueForKey:@"textColorHighlight"];
-    if (textColorHighlight != nil) {
-        if (textColorHighlight != nil) {
-            self.highlightedTextColor = textColorHighlight;
+    IDLColorStateList *textColorStateList = [attrs colorStateListFromIDLValueForKey:@"textColor"];
+    if (textColorStateList != nil) {
+        self.textColor = [textColorStateList colorForControlState:UIControlStateNormal];
+        UIColor *highlightedColor = [textColorStateList colorForControlState:UIControlStateHighlighted];
+        if (highlightedColor != nil) {
+            self.highlightedTextColor = highlightedColor;
         }
     }
     

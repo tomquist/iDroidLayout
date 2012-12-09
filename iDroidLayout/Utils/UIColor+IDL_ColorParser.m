@@ -10,7 +10,7 @@
 
 @implementation UIColor (IDL_ColorParser)
 
-+ (UIColor *)colorFromAndroidColorString:(NSString *)string {
++ (UIColor *)colorFromIDLColorString:(NSString *)string {
     if (string == nil) return nil;
     UIColor *ret = nil;
     if ([string rangeOfString:@"#" options:0 range:NSMakeRange(0, 1)].location != NSNotFound) {

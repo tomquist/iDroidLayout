@@ -27,6 +27,7 @@
     </LinearLayout>
     <UIButton
         id="button"
+        type="roundedRect"
         layout_width="100"
         layout_height="30"
         layout_gravity="center_horizontal"

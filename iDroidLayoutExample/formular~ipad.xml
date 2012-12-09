@@ -12,7 +12,7 @@
             layout_height="200"
             scaleType="centerInside"
             layout_gravity="center_horizontal"
-            src="android.jpg"/>
+            src="@drawable/android.jpg"/>
         <RelativeLayout
             layout_width="match_parent"
             layout_height="wrap_content"
@@ -89,12 +89,18 @@
             gravity="center_horizontal">
             <UIButton
                 id="submitButton"
+                type="roundedRect"
+                textColor="@color/button_color"
+                background="@drawable/button_background"
                 layout_width="200"
                 layout_height="60"
                 layout_gravity="center_horizontal"
                 text="Submit"/>
             <UIButton
                 id="toggleButton"
+                type="roundedRect"
+                textColor="@color/button_color"
+                background="#0000ff"
                 layout_width="200"
                 layout_height="60"
                 layout_marginLeft="20"

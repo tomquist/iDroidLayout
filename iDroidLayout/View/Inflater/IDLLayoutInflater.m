@@ -60,7 +60,7 @@
         ret = [self.viewFactory onCreateViewWithName:name attributes:attrs];
     }
     @catch (NSException *exception) {
-        NSLog(@"Warning!!!!! Class for view with name %@ does not exist. Creating UIView instead.", name);
+        NSLog(@"Warning!!!!! Could not initialize class for view with name %@. Creating UIView instead: %@", name, exception);
         ret = [self.viewFactory onCreateViewWithName:@"UIView" attributes:attrs];
     }
     return ret;

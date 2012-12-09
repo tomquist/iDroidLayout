@@ -16,12 +16,15 @@
     [super viewDidLoad];
     UIButton *submitButton = (UIButton *)[self.view findViewById:@"submitButton"];
     UIButton *toggleButton = (UIButton *)[self.view findViewById:@"toggleButton"];
+    
     [submitButton addTarget:self action:@selector(didPressSubmitButton) forControlEvents:UIControlEventTouchUpInside];
     [toggleButton addTarget:self action:@selector(didPressToggleButton) forControlEvents:UIControlEventTouchUpInside];
     [self updateAndroidStatus];
 }
 
 - (void)didPressSubmitButton {
+    UIButton *submitButton = (UIButton *)[self.view findViewById:@"submitButton"];
+    submitButton.selected = TRUE;
     UILabel *username = (UILabel *)[self.view findViewById:@"username"];
     UILabel *password = (UILabel *)[self.view findViewById:@"password"];
     UITextView *freeText = (UITextView *)[self.view findViewById:@"freeText"];

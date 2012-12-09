@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "IDLColorStateList.h"
 
 @interface NSDictionary (IDL_ResourceManager)
 
 - (UIColor *)colorFromIDLValueForKey:(NSString *)key;
+- (IDLColorStateList *)colorStateListFromIDLValueForKey:(NSString *)key;
 
 @end

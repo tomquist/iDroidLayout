@@ -67,6 +67,9 @@ static char matchParentChildrenKey;
     
     for (int i = 0; i < count; i++) {
         UIView *child = [self.subviews objectAtIndex:i];
+        if ([NSStringFromClass([child class]) isEqualToString:@"UIWebDocumentView"]) {
+            continue;
+        }
         
         if (child.visibility != IDLViewVisibilityGone) {
             [self measureChildWithMargins:child parentWidthMeasureSpec:widthMeasureSpec widthUsed:0 parentHeightMeasureSpec:heightMeasureSpec heightUsed:0];
@@ -97,6 +100,10 @@ static char matchParentChildrenKey;
     if (count > 1) {
         for (int i = 0; i < count; i++) {
             UIView *child = [matchParentChildren objectAtIndex:i];
+            
+            if ([NSStringFromClass([child class]) isEqualToString:@"UIWebDocumentView"]) {
+                continue;
+            }
             
             IDLMarginLayoutParams *lp = (IDLMarginLayoutParams *)child.layoutParams;
             IDLLayoutMeasureSpec childWidthMeasureSpec;
@@ -155,7 +162,7 @@ static char matchParentChildrenKey;
     for (int i = 0; i < count; i++) {
         UIView *child = [self.subviews objectAtIndex:i];
         
-        if (child.visibility != IDLViewVisibilityGone) {
+        if (child.visibility != IDLViewVisibilityGone && ![NSStringFromClass([child class]) isEqualToString:@"UIWebDocumentView"]) {
             IDLFrameLayoutLayoutParams *lp = (IDLFrameLayoutLayoutParams *)child.layoutParams;
             
             CGFloat width = child.measuredSize.width;
@@ -209,6 +216,9 @@ static char matchParentChildrenKey;
 }
 
 - (void)measureChild:(UIView *)child withParentWidthMeasureSpec:(IDLLayoutMeasureSpec)parentWidthMeasureSpec parentHeightMeasureSpec:(IDLLayoutMeasureSpec)parentHeightMeasureSpec {
+    if ([NSStringFromClass([child class]) isEqualToString:@"UIWebDocumentView"]) {
+        return;
+    }
     IDLLayoutParams *lp = child.layoutParams;
     
     IDLLayoutMeasureSpec childWidthMeasureSpec;
@@ -223,6 +233,9 @@ static char matchParentChildrenKey;
 }
 
 - (void)measureChildWithMargins:(UIView *)child parentWidthMeasureSpec:(IDLLayoutMeasureSpec)parentWidthMeasureSpec widthUsed:(CGFloat)widthUsed parentHeightMeasureSpec:(IDLLayoutMeasureSpec)parentHeightMeasureSpec heightUsed:(CGFloat)heightUsed {
+    if ([NSStringFromClass([child class]) isEqualToString:@"UIWebDocumentView"]) {
+        return;
+    }
     IDLMarginLayoutParams *lp = (IDLMarginLayoutParams *)child.layoutParams;
     UIEdgeInsets padding = self.padding;
     IDLLayoutMeasureSpec childWidthMeasureSpec = [self childMeasureSpecWithMeasureSpec:parentWidthMeasureSpec padding:(padding.left + padding.right + lp.margin.left + lp.margin.right + widthUsed) childDimension:lp.width];

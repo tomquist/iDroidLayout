@@ -8,12 +8,14 @@
 
 #import "IDLResourceManager.h"
 #import "UIColor+IDL_ColorParser.h"
+#import "UIImage+IDL_FromColor.h"
 
 typedef enum IDLResourceType {
     IDLResourceTypeUnknown,
     IDLResourceTypeString,
     IDLResourceTypeLayout,
-    IDLResourceTypeDrawable
+    IDLResourceTypeDrawable,
+    IDLResourceTypeColor
 } IDLResourceType;
 
 NSString *NSStringFromIDLResourceType(IDLResourceType type) {
@@ -27,6 +29,9 @@ NSString *NSStringFromIDLResourceType(IDLResourceType type) {
             break;
         case IDLResourceTypeDrawable:
             ret = @"drawable";
+            break;
+        case IDLResourceTypeColor:
+            ret = @"color";
             break;
         default:
             ret = nil;
@@ -43,6 +48,8 @@ IDLResourceType IDLResourceTypeFromString(NSString *typeString) {
         ret = IDLResourceTypeLayout;
     } else if ([typeString isEqualToString:@"drawable"]) {
         ret = IDLResourceTypeDrawable;
+    } else if ([typeString isEqualToString:@"color"]) {
+        ret = IDLResourceTypeColor;
     }
     return ret;
 }
@@ -119,7 +126,7 @@ IDLResourceType IDLResourceTypeFromString(NSString *typeString) {
 + (BOOL)isResourceIdentifier:(NSString *)string {
     static NSRegularExpression *regex;
     if (regex == nil) {
-        regex = [[NSRegularExpression alloc] initWithPattern:@"@([A-Za-z0-9\\.\\-]+:)?[a-z]+/[^A-Za-z0-9_\\.]" options:NSRegularExpressionCaseInsensitive error:nil];
+        regex = [[NSRegularExpression alloc] initWithPattern:@"@([A-Za-z0-9\\.\\-]+:)?[a-z]+/[A-Za-z0-9_\\.]+" options:NSRegularExpressionCaseInsensitive error:nil];
     }
     return string != nil && [string isKindOfClass:[NSString class]] && [string length] > 0 && [regex rangeOfFirstMatchInString:string options:0 range:NSMakeRange(0, [string length])].location != NSNotFound;
 }
@@ -134,16 +141,36 @@ IDLResourceType IDLResourceTypeFromString(NSString *typeString) {
 
 @implementation IDLResourceManager
 
+static IDLResourceManager *currentResourceManager;
+
++ (void)initialize {
+    [super initialize];
+    currentResourceManager = [[self defaultResourceManager] retain];
+}
+
 + (IDLResourceManager *)defaultResourceManager {
     static IDLResourceManager *resourceManager;
     if (resourceManager == nil) {
-        resourceManager = [[IDLResourceManager alloc] init];
+        resourceManager = [[self alloc] init];
     }
     return resourceManager;
 }
 
 + (IDLResourceManager *)currentResourceManager {
-    return [self defaultResourceManager];
+    @synchronized(self) {
+        return currentResourceManager;
+    }
+}
+
++ (void)setCurrentResourceManager:(IDLResourceManager *)resourceManager {
+    @synchronized(self) {
+        [currentResourceManager release];
+        currentResourceManager = [resourceManager retain];
+    }
+}
+
++ (void)resetCurrentResourceManager {
+    [self setCurrentResourceManager:[self defaultResourceManager]];
 }
 
 - (void)dealloc {
@@ -175,7 +202,9 @@ IDLResourceType IDLResourceTypeFromString(NSString *typeString) {
     IDLResourceIdentifier *identifier = [self.resourceIdentifierCache objectForKey:identifierString];
     if (identifier == nil) {
         identifier = [[IDLResourceIdentifier alloc] initWithString:identifierString];
-        [self.resourceIdentifierCache setObject:identifier forKey:identifierString];
+        if (identifier != nil) {
+            [self.resourceIdentifierCache setObject:identifier forKey:identifierString];
+        }
         [identifier release];
     }
     return identifier;
@@ -207,7 +236,11 @@ IDLResourceType IDLResourceTypeFromString(NSString *typeString) {
     IDLResourceIdentifier *identifier = [self resourceIdentifierForString:identifierString];
     if (identifier != nil) {
         NSBundle *bundle = [self resolveBundleForIdentifier:identifier];
-        ret = [bundle URLForResource:identifier.identifier withExtension:@"xml"];
+        NSString *extension = [identifier.identifier pathExtension];
+        if ([extension length] == 0) {
+            extension = @"xml";
+        }
+        ret = [bundle URLForResource:[identifier.identifier stringByDeletingPathExtension] withExtension:extension];
     }
     return ret;
 }
@@ -215,45 +248,53 @@ IDLResourceType IDLResourceTypeFromString(NSString *typeString) {
 - (UIImage *)imageForIdentifier:(NSString *)identifierString withCaching:(BOOL)withCaching {
     UIImage *ret = nil;
     IDLResourceIdentifier *identifier = [self resourceIdentifierForString:identifierString];
-    if (identifier.cachedObject != nil) {
-        ret = identifier.cachedObject;
-    } else if (identifier != nil) {
-        NSBundle *bundle = [self resolveBundleForIdentifier:identifier];
-        NSString *extension = [identifier.identifier pathExtension];
-        if ([extension length] == 0) {
-            extension = @".png";
-        }
-        NSString *fileName = [identifier.identifier stringByDeletingPathExtension];
+    if (identifier.type == IDLResourceTypeColor) {
+        UIColor *color = [self colorForIdentifier:identifierString];
+        ret = [UIImage idl_imageFromColor:color withSize:CGSizeMake(1, 1)];
+    } else if (identifier.type == IDLResourceTypeDrawable) {
         
-        if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)] && [UIScreen mainScreen].scale >= 2.f) {
-            NSString *retinaFileName = [fileName stringByAppendingString:@"@2x"];
-            NSURL *retinaImageURL = [bundle URLForResource:retinaFileName withExtension:extension];
-            if (retinaImageURL != nil) {
-                UIImage *nonScaledImage = [[UIImage alloc] initWithContentsOfFile:[retinaImageURL path]];
-                UIImage *retinaImage = nil;
-                if (nonScaledImage != nil) {
-                    if (nonScaledImage.scale >= 2.f) {
-                        retinaImage = [nonScaledImage retain];
-                    } else {
-                        retinaImage = [[UIImage alloc] initWithCGImage:nonScaledImage.CGImage scale:2.f orientation:nonScaledImage.imageOrientation];
+        if (identifier.cachedObject != nil) {
+            ret = identifier.cachedObject;
+        } else if (identifier != nil) {
+            NSBundle *bundle = [self resolveBundleForIdentifier:identifier];
+            NSString *extension = [identifier.identifier pathExtension];
+            if ([extension length] == 0) {
+                extension = @"png";
+            }
+            NSString *fileName = [identifier.identifier stringByDeletingPathExtension];
+            
+            if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)] && [UIScreen mainScreen].scale >= 2.f) {
+                NSString *retinaFileName = [fileName stringByAppendingString:@"@2x"];
+                NSURL *retinaImageURL = [bundle URLForResource:retinaFileName withExtension:extension];
+                if (retinaImageURL != nil) {
+                    UIImage *nonScaledImage = [[UIImage alloc] initWithContentsOfFile:[retinaImageURL path]];
+                    UIImage *retinaImage = nil;
+                    if (nonScaledImage != nil) {
+                        if (nonScaledImage.scale >= 2.f) {
+                            retinaImage = [nonScaledImage retain];
+                        } else {
+                            retinaImage = [[UIImage alloc] initWithCGImage:nonScaledImage.CGImage scale:2.f orientation:nonScaledImage.imageOrientation];
+                        }
+                        [nonScaledImage release];
                     }
-                    [nonScaledImage release];
+                    if (retinaImage != nil) {
+                        ret = [retinaImage autorelease];
+                    }
                 }
-                if (retinaImage != nil) {
-                    ret = [retinaImage autorelease];
+            }
+            
+            if (ret == nil) {
+                NSURL *imageURL = [bundle URLForResource:fileName withExtension:extension];
+                if (imageURL != nil) {
+                    ret = [UIImage imageWithContentsOfFile:imageURL.path];
                 }
             }
         }
-        
-        if (ret == nil) {
-            NSURL *imageURL = [bundle URLForResource:fileName withExtension:extension];
-            if (imageURL != nil) {
-                ret = [UIImage imageWithContentsOfFile:imageURL.path];
-            }
+        if (withCaching && ret != nil) {
+            identifier.cachedObject = ret;
         }
-    }
-    if (withCaching && ret != nil) {
-        identifier.cachedObject = ret;
+    } else {
+        NSLog(@"Could not create image from resource identifier %@: Invalid resource type", identifierString);
     }
     return ret;
 }
@@ -274,6 +315,72 @@ IDLResourceType IDLResourceTypeFromString(NSString *typeString) {
         }
     }
     return ret;
+}
+
+- (IDLColorStateList *)colorStateListForIdentifier:(NSString *)identifierString {
+    IDLColorStateList *colorStateList = nil;
+    IDLResourceIdentifier *identifier = [self resourceIdentifierForString:identifierString];
+    if (identifier.cachedObject != nil && ([identifier.cachedObject isKindOfClass:[IDLColorStateList class]] || [identifier.cachedObject isKindOfClass:[UIColor class]])) {
+        if ([identifier.cachedObject isKindOfClass:[IDLColorStateList class]]) {
+            colorStateList = identifier.cachedObject;
+        } else if ([identifier.cachedObject isKindOfClass:[UIColor class]]) {
+            colorStateList = [IDLColorStateList createWithSingleColorIdentifier:identifierString];
+        }
+    } else {
+        NSBundle *bundle = [self resolveBundleForIdentifier:identifier];
+        NSString *extension = [identifier.identifier pathExtension];
+        if ([extension length] == 0) {
+            extension = @"xml";
+        }
+        NSURL *url = [bundle URLForResource:[identifier.identifier stringByDeletingPathExtension] withExtension:extension];
+        if (url != nil) {
+            colorStateList = [IDLColorStateList createFromXMLURL:url];
+        }
+        if (colorStateList != nil) {
+            identifier.cachedObject = colorStateList;
+        }
+    }
+    if (colorStateList == nil) {
+        UIColor *color = [self colorForIdentifier:identifierString];
+        if (color != nil) {
+            colorStateList = [IDLColorStateList createWithSingleColorIdentifier:identifierString];
+        }
+    }
+    
+    return colorStateList;
+}
+
+- (IDLDrawableStateList *)drawableStateListForIdentifier:(NSString *)identifierString {
+    IDLDrawableStateList *drawableStateList = nil;
+    IDLResourceIdentifier *identifier = [self resourceIdentifierForString:identifierString];
+    if (identifier.cachedObject != nil && ([identifier.cachedObject isKindOfClass:[IDLDrawableStateList class]] || [identifier.cachedObject isKindOfClass:[UIImage class]])) {
+        if ([identifier.cachedObject isKindOfClass:[IDLDrawableStateList class]]) {
+            drawableStateList = identifier.cachedObject;
+        } else if ([identifier.cachedObject isKindOfClass:[UIImage class]]) {
+            drawableStateList = [IDLDrawableStateList createWithSingleDrawableIdentifier:identifierString];
+        }
+    } else {
+        NSBundle *bundle = [self resolveBundleForIdentifier:identifier];
+        NSString *extension = [identifier.identifier pathExtension];
+        if ([extension length] == 0) {
+            extension = @"xml";
+        }
+        NSURL *url = [bundle URLForResource:[identifier.identifier stringByDeletingPathExtension] withExtension:extension];
+        if (url != nil) {
+            drawableStateList = [IDLDrawableStateList createFromXMLURL:url];
+        }
+        if (drawableStateList != nil) {
+            identifier.cachedObject = drawableStateList;
+        }
+    }
+    if (drawableStateList == nil) {
+        UIImage *image = [self imageForIdentifier:identifierString];
+        if (image != nil) {
+            drawableStateList = [IDLDrawableStateList createWithSingleDrawableIdentifier:identifierString];
+        }
+    }
+    
+    return drawableStateList;
 }
 
 @end

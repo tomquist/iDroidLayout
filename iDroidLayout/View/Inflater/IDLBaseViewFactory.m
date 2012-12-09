@@ -18,11 +18,11 @@
 @implementation IDLBaseViewFactory
 
 - (UIButtonType)buttonTypeFromTypeAttribute:(NSString *)typeAttribute {
-    UIButtonType ret = UIButtonTypeRoundedRect;
-    if (typeAttribute == nil || [typeAttribute isEqualToString:@"roundedRect"]) {
-        ret = UIButtonTypeRoundedRect;
-    } else if ([typeAttribute isEqualToString:@"custom"]) {
+    UIButtonType ret = UIButtonTypeCustom;
+    if (typeAttribute == nil || [typeAttribute isEqualToString:@"custom"]) {
         ret = UIButtonTypeCustom;
+    } else if ([typeAttribute isEqualToString:@"roundedRect"]) {
+        ret = UIButtonTypeRoundedRect;
     } else if ([typeAttribute isEqualToString:@"detailDisclosure"]) {
         ret = UIButtonTypeDetailDisclosure;
     } else if ([typeAttribute isEqualToString:@"infoLight"]) {
@@ -37,7 +37,8 @@
 
 - (UIButton *)onCreateUIButtonWithAttributes:(NSDictionary *)attrs {
     NSString *type = [attrs objectForKey:@"type"];
-    UIButton *button = [UIButton buttonWithType:[self buttonTypeFromTypeAttribute:type]];
+    UIButtonType buttonType = [self buttonTypeFromTypeAttribute:type];
+    UIButton *button = [UIButton buttonWithType:buttonType];
     [button setupFromAttributes:attrs];
     return button;
 }

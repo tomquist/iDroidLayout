@@ -1,0 +1,6 @@
+<selector>
+    <item disabled="true" color="#777777"/>
+    <item selected="true" highlighted="true" color="#00ff00"/>
+    <item highlighted="true" color="#ff0000"/>
+    <item color="#000000"/>
+</selector>

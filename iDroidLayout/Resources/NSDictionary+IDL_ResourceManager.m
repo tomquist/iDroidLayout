@@ -20,8 +20,18 @@
         if ([[IDLResourceManager currentResourceManager] isValidIdentifier:string]) {
             ret = [[IDLResourceManager currentResourceManager] colorForIdentifier:string];
         } else {
-            ret = [UIColor colorFromAndroidColorString:string];
+            ret = [UIColor colorFromIDLColorString:string];
         }
+    }
+    return ret;
+}
+
+- (IDLColorStateList *)colorStateListFromIDLValueForKey:(NSString *)key {
+    IDLColorStateList *ret = nil;
+    id value = [self objectForKey:key];
+    if ([value isKindOfClass:[NSString class]]) {
+        NSString *string = value;
+        ret = [[IDLResourceManager currentResourceManager] colorStateListForIdentifier:string];
     }
     return ret;
 }

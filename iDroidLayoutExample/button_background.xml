@@ -1,0 +1,4 @@
+<selector>
+    <item selected="true" highlighted="true" drawable="#ff0000"/>
+    <item highlighted="true" drawable="#00ff00"/>
+</selector>

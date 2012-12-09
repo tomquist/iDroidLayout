@@ -34,7 +34,8 @@
     
     IDLLayoutBridge *rootView = [[IDLLayoutBridge alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
     UIView *view = [inflater inflateURL:url intoRootView:rootView attachToRoot:TRUE];
-    STAssertEquals(rootView, [view superview], @"Inflater did not attach inflated view to rootView");
+    STAssertEquals(view, rootView, @"Inflater did not return rootView");
+    STAssertEquals((NSUInteger)1, [[rootView subviews] count], @"Inflater did not attach inflated view to rootView");
 }
 
 - (void)testInflateAttachToRootFalse {

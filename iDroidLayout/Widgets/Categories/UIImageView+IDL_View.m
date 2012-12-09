@@ -15,9 +15,13 @@
 - (void)setupFromAttributes:(NSDictionary *)attrs {
     [super setupFromAttributes:attrs];
     NSString *imageRes = [attrs objectForKey:@"src"];
-    UIImage *image = [[IDLResourceManager currentResourceManager] imageForIdentifier:imageRes];
-    if (image != nil) {
-        self.image = image;
+    IDLDrawableStateList *drawableStateList = [[IDLResourceManager currentResourceManager] drawableStateListForIdentifier:imageRes];
+    if (drawableStateList != nil) {
+        self.image = [drawableStateList imageForControlState:UIControlStateNormal];
+        UIImage *highlightedImage = [drawableStateList imageForControlState:UIControlStateHighlighted];
+        if (highlightedImage != nil) {
+            self.highlightedImage = highlightedImage;
+        }
     }
     
     NSString *scaleType = [attrs objectForKey:@"scaleType"];

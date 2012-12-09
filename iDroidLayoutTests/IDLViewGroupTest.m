@@ -15,7 +15,8 @@
     [super setUp];
     _rootView = [[IDLLayoutBridge alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
     IDLLayoutInflater *inflater = [[IDLLayoutInflater alloc] init];
-    _group = (IDLViewGroup *)[[inflater inflateResource:@"viewgroupchildren.xml" intoRootView:_rootView attachToRoot:TRUE] retain];
+    [inflater inflateResource:@"viewgroupchildren.xml" intoRootView:_rootView attachToRoot:TRUE];
+    _group = [[[(IDLViewGroup *)_rootView subviews] lastObject] retain];
     [inflater release];
 }
 
@@ -32,7 +33,7 @@
 }
 
 - (IDLTextView *)createViewWithText:(NSString *)text {
-    IDLTextView *view = [[IDLTextView alloc] init];
+    IDLTextView *view = [[IDLTextView alloc] initWithFrame:CGRectZero];
     view.text = text;
     view.layoutParams = [[IDLLinearLayoutLayoutParams alloc] initWithWidth:IDLLayoutParamsSizeMatchParent height:IDLLayoutParamsSizeWrapContent];
     return [view autorelease];

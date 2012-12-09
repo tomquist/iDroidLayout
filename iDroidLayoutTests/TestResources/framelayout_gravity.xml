@@ -4,63 +4,63 @@
     layout_width="match_parent"
     layout_height="match_parent">
     
-    <Button
+    <UIButton
         id="left"
         layout_gravity="left"
         text="View"
         layout_width="wrap_content"
         layout_height="wrap_content" />
     
-    <Button
+    <UIButton
         id="right"
         layout_gravity="right"
         text="View"
         layout_width="wrap_content"
         layout_height="wrap_content" />
     
-    <Button
+    <UIButton
         id="center_horizontal"
         layout_gravity="center_horizontal"
         text="View"
         layout_width="wrap_content"
         layout_height="wrap_content" />
     
-    <Button
+    <UIButton
         id="left_center_vertical"
         layout_gravity="center_vertical|left"
         text="View"
         layout_width="wrap_content"
         layout_height="wrap_content" />
     
-    <Button
+    <UIButton
         id="right_center_vertical"
         layout_gravity="center_vertical|right"
         text="View"
         layout_width="wrap_content"
         layout_height="wrap_content" />
     
-    <Button
+    <UIButton
         id="center"
         layout_gravity="center"
         text="View"
         layout_width="wrap_content"
         layout_height="wrap_content" />
     
-    <Button
+    <UIButton
         id="left_bottom"
         layout_gravity="bottom|left"
         text="View"
         layout_width="wrap_content"
         layout_height="wrap_content" />
     
-    <Button
+    <UIButton
         id="right_bottom"
         layout_gravity="bottom|right"
         text="View"
         layout_width="wrap_content"
         layout_height="wrap_content" />
     
-    <Button
+    <UIButton
         id="center_horizontal_bottom"
         layout_gravity="bottom|center_horizontal"
         text="View"
