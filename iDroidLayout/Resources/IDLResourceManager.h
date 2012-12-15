@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "IDLColorStateList.h"
 #import "IDLDrawableStateList.h"
+#import "IDLStyle.h"
 
 @interface IDLResourceManager : NSObject
 
@@ -22,6 +23,7 @@
 - (IDLDrawableStateList *)drawableStateListForIdentifier:(NSString *)identifierString;
 - (UIColor *)colorForIdentifier:(NSString *)identifierString;
 - (IDLColorStateList *)colorStateListForIdentifier:(NSString *)identifierString;
+- (IDLStyle *)styleForIdentifier:(NSString *)identifierString;
 
 /**
  * Changes the currently used resource manager. This can be used to change

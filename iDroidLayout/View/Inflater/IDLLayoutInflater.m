@@ -35,6 +35,21 @@
         }
         [dict setObject:attributeValue forKey:attributeName];
     }];
+    
+    // Apply style
+    NSString *styleAttribute = [dict objectForKey:@"style"];
+    if ([styleAttribute length] > 0) {
+        IDLStyle *style = [[IDLResourceManager currentResourceManager] styleForIdentifier:styleAttribute];
+        if (style != nil) {
+            NSDictionary *styleAttributes = style.attributes;
+            for (NSString *name in [styleAttributes allKeys]) {
+                if ([dict objectForKey:name] == nil) {
+                    [dict setObject:[styleAttributes objectForKey:name] forKey:name];
+                }
+            }
+        }
+        [dict removeObjectForKey:styleAttribute];
+    }
     return dict;
 }
 

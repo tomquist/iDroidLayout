@@ -1,0 +1,14 @@
+<resources>
+    <style name="button">
+        <item name="type">roundedRect</item>
+        <item name="background">@drawable/button_background</item>
+    </style>
+    
+    <style name="parent_style">
+        <item name="textColor">#aaa</item>
+    </style>
+    
+    <style name="test" parent="@style/values.parent_style">
+        <item name="padding">20</item>
+    </style>
+</resource>

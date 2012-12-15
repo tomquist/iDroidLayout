@@ -39,6 +39,11 @@
         if (highlightedColor != nil) {
             self.highlightedTextColor = highlightedColor;
         }
+    } else {
+        UIColor *color = [attrs colorFromIDLValueForKey:@"textColor"];
+        if (color != nil) {
+            self.textColor = color;
+        }
     }
     
     NSString *fontName = [attrs objectForKey:@"font"];

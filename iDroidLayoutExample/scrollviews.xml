@@ -13,30 +13,35 @@
 			layout_height="match_parent"
 			orientation="horizontal">
 			<UIButton
+                style="@style/values.button"
                 layout_width="wrap_content"
                 layout_height="match_parent"
                 layout_marginLeft="10"
                 layout_marginRight="5"
                 text="Button1"/>
 			<UIButton
+                style="@style/values.button"
                 layout_width="wrap_content"
                 layout_height="match_parent"
                 layout_marginLeft="5"
                 layout_marginRight="5"
                 text="Button2"/>
 			<UIButton
+                style="@style/values.button"
                 layout_width="wrap_content"
                 layout_height="match_parent"
                 layout_marginLeft="5"
                 layout_marginRight="5"
                 text="Button3"/>
 			<UIButton
+                style="@style/values.button"
                 layout_width="wrap_content"
                 layout_height="match_parent"
                 layout_marginLeft="5"
                 layout_marginRight="5"
                 text="Button4"/>
 			<UIButton
+                style="@style/values.button"
                 layout_width="wrap_content"
                 layout_height="match_parent"
                 layout_marginLeft="5"
@@ -63,11 +68,12 @@
 			<TextView
                 layout_width="match_parent"
                 layout_height="wrap_content"
-                padding="20"
+                style="@style/values.test"
                 text="TextView2"/>
             <LinearLayout
                 layout_width="match_parent"
                 layout_height="wrap_content"
+                style="@style/values.test"
                 layout_marginLeft="10"
                 layout_marginRight="10"
                 orientation="vertical">
@@ -86,37 +92,37 @@
 			<TextView
                 layout_width="match_parent"
                 layout_height="wrap_content"
-                padding="20"
+                style="@style/values.test"
                 text="TextView3"/>
 			<TextView
                 layout_width="match_parent"
                 layout_height="wrap_content"
-                padding="20"
+                style="@style/values.test"
                 text="TextView4"/>
 			<TextView
                 layout_width="match_parent"
                 layout_height="wrap_content"
-                padding="20"
+                style="@style/values.test"
                 text="TextView5"/>
 			<TextView
                 layout_width="match_parent"
                 layout_height="wrap_content"
-                padding="20"
+                style="@style/values.test"
                 text="TextView6"/>
 			<TextView
                 layout_width="match_parent"
                 layout_height="wrap_content"
-                padding="20"
+                style="@style/values.test"
                 text="TextView7"/>
 			<TextView
                 layout_width="match_parent"
                 layout_height="wrap_content"
-                padding="20"
+                style="@style/values.test"
                 text="TextView8"/>
 			<TextView
                 layout_width="match_parent"
                 layout_height="wrap_content"
-                padding="20"
+                style="@style/values.test"
                 text="TextView9"/>
 		</LinearLayout>
 	</UIScrollView>

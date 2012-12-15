@@ -8,6 +8,7 @@
 
 #import "IDLResourceStateList.h"
 #import "IDLDrawableStateItem.h"
+#import "IDLColorStateList.h"
 
 @interface IDLDrawableStateList : IDLResourceStateList
 
@@ -17,5 +18,6 @@
 + (IDLDrawableStateList *)createFromXMLData:(NSData *)data;
 + (IDLDrawableStateList *)createFromXMLURL:(NSURL *)url;
 + (IDLDrawableStateList *)createWithSingleDrawableIdentifier:(NSString *)imageIdentifier;
++ (IDLDrawableStateList *)createFromColorStateList:(IDLColorStateList *)colorStateList;
 
 @end

@@ -21,6 +21,7 @@ Highlights
 - Add views to UIScrollViews and let them automatically adjust their content size according to your layout
 - Extend the layout system by implementing your own layout container
 - Load dynamic xml layouts within Interface Builder
+- Maintain your resources
 
 
 Getting started
@@ -69,7 +70,17 @@ Defining and using a layout with iDroid-Layout can be done in two simple steps:
         [self.navigationController pushViewController:vc animated:TRUE];
         [vc release];
     
+Resources
+---------
+iDroidLayout contains an advanced resource resolution framework. It allows to reference resources like images, layouts, strings, colors and styles. Resources identifiers allow to (cross-)reference resources. E.g. it allows you to specify texts and images for views within layouts.
 
+##### Resource-Identifier Syntax
+The syntax of a resource identifier is the following:
+``[<bundle-identifier>:]<resource-type>/<resource-name>[.<resource-subname>]``
+- ``<bundle-identifier>`` is the identifier of the bundle which contains the resource. If the bunde-identifier is ommitted, the resource will be searched within the main bundle. To use bundles other than the main bundle, you have to load the bundle at least once before a resource identifier whith this bundle is used.
+- ``<resource-type>`` is the resource type (one of ``string``, ``layout``, ``drawable``, ``color`` or ``style``)
+- ``<resource-name>`` is the name of te resource file
+- ``<resource-subname>`` is an identifier of the specific resource within the resource file. This is only used for some resource types which act as a resource container.
 
 Questions & Answers
 -------------------

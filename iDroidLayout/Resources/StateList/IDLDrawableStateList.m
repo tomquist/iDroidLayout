@@ -7,8 +7,34 @@
 //
 
 #import "IDLDrawableStateList.h"
+#import "UIImage+IDL_FromColor.h"
+#import "IDLResourceStateList+IDL_Internal.h"
 #import "IDLResourceStateList+IDL_Internal.h"
 #import "IDLDrawableStateItem+IDL_Internal.h"
+
+@interface IDLColorWrapperDrawableStateItem : IDLDrawableStateItem
+
+@property (nonatomic, retain) IDLColorStateItem *colorStateItem;
+
+- (id)initWithColorStateItem:(IDLColorStateItem *)colorStateItem;
+
+@end
+
+@implementation IDLColorWrapperDrawableStateItem
+
+- (id)initWithColorStateItem:(IDLColorStateItem *)colorStateItem {
+    self = [super initWithControlState:colorStateItem.controlState drawableResourceIdentifier:nil];
+    if (self) {
+        self.colorStateItem = colorStateItem;
+    }
+    return self;
+}
+
+- (UIImage *)image {
+    return [UIImage idl_imageFromColor:self.colorStateItem.color withSize:CGSizeMake(1, 1)];
+}
+
+@end
 
 @interface IDLDrawableStateList ()
 
@@ -43,6 +69,22 @@
 
 + (IDLDrawableStateList *)createFromXMLURL:(NSURL *)url {
     return (IDLDrawableStateList *)[super createFromXMLURL:url];
+}
+
++ (IDLDrawableStateList *)createFromColorStateList:(IDLColorStateList *)colorStateList {
+    IDLDrawableStateList *ret = nil;
+    if (colorStateList != nil) {
+        ret = [[IDLDrawableStateList alloc] init];
+        NSMutableArray *items = [[NSMutableArray alloc] initWithCapacity:[colorStateList.items count]];
+        for (IDLColorStateItem *colorStateItem in colorStateList.items) {
+            IDLDrawableStateItem *item = [[IDLColorWrapperDrawableStateItem alloc] initWithColorStateItem:colorStateItem];
+            [items addObject:item];
+            [item release];
+        }
+        ret.internalItems = items;
+        [items release];
+    }
+    return ret;
 }
 
 - (IDLDrawableStateItem *)itemForControlState:(UIControlState)controlState {

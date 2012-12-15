@@ -9,13 +9,16 @@
 #import "IDLResourceManager.h"
 #import "UIColor+IDL_ColorParser.h"
 #import "UIImage+IDL_FromColor.h"
+#import "IDLResourceValueSet.h"
 
 typedef enum IDLResourceType {
     IDLResourceTypeUnknown,
     IDLResourceTypeString,
     IDLResourceTypeLayout,
     IDLResourceTypeDrawable,
-    IDLResourceTypeColor
+    IDLResourceTypeColor,
+    IDLResourceTypeStyle,
+    IDLResourceTypeValue
 } IDLResourceType;
 
 NSString *NSStringFromIDLResourceType(IDLResourceType type) {
@@ -32,6 +35,12 @@ NSString *NSStringFromIDLResourceType(IDLResourceType type) {
             break;
         case IDLResourceTypeColor:
             ret = @"color";
+            break;
+        case IDLResourceTypeStyle:
+            ret = @"style";
+            break;
+        case IDLResourceTypeValue:
+            ret = @"value";
             break;
         default:
             ret = nil;
@@ -50,6 +59,10 @@ IDLResourceType IDLResourceTypeFromString(NSString *typeString) {
         ret = IDLResourceTypeDrawable;
     } else if ([typeString isEqualToString:@"color"]) {
         ret = IDLResourceTypeColor;
+    } else if ([typeString isEqualToString:@"style"]) {
+        ret = IDLResourceTypeStyle;
+    } else if ([typeString isEqualToString:@"value"]) {
+        ret = IDLResourceTypeValue;
     }
     return ret;
 }
@@ -61,6 +74,7 @@ IDLResourceType IDLResourceTypeFromString(NSString *typeString) {
 @property (nonatomic, retain) NSString *identifier;
 @property (nonatomic, assign) NSBundle *bundle;
 @property (nonatomic, retain) id cachedObject;
+@property (nonatomic, retain) NSString *valueIdentifier;
 
 - (id)initWithString:(NSString *)string;
 
@@ -204,6 +218,7 @@ static IDLResourceManager *currentResourceManager;
         identifier = [[IDLResourceIdentifier alloc] initWithString:identifierString];
         if (identifier != nil) {
             [self.resourceIdentifierCache setObject:identifier forKey:identifierString];
+            [self.resourceIdentifierCache setObject:identifier forKey:[identifier description]];
         }
         [identifier release];
     }
@@ -326,7 +341,7 @@ static IDLResourceManager *currentResourceManager;
         } else if ([identifier.cachedObject isKindOfClass:[UIColor class]]) {
             colorStateList = [IDLColorStateList createWithSingleColorIdentifier:identifierString];
         }
-    } else {
+    } else if (identifier.type == IDLResourceTypeColor) {
         NSBundle *bundle = [self resolveBundleForIdentifier:identifier];
         NSString *extension = [identifier.identifier pathExtension];
         if ([extension length] == 0) {
@@ -359,7 +374,7 @@ static IDLResourceManager *currentResourceManager;
         } else if ([identifier.cachedObject isKindOfClass:[UIImage class]]) {
             drawableStateList = [IDLDrawableStateList createWithSingleDrawableIdentifier:identifierString];
         }
-    } else {
+    } else if (identifier.type == IDLResourceTypeDrawable) {
         NSBundle *bundle = [self resolveBundleForIdentifier:identifier];
         NSString *extension = [identifier.identifier pathExtension];
         if ([extension length] == 0) {
@@ -372,6 +387,11 @@ static IDLResourceManager *currentResourceManager;
         if (drawableStateList != nil) {
             identifier.cachedObject = drawableStateList;
         }
+    } else if (identifier.type == IDLResourceTypeColor) {
+        IDLColorStateList *colorStateList = [self colorStateListForIdentifier:identifierString];
+        if (colorStateList != nil) {
+            drawableStateList = [IDLDrawableStateList createFromColorStateList:colorStateList];
+        }
     }
     if (drawableStateList == nil) {
         UIImage *image = [self imageForIdentifier:identifierString];
@@ -381,6 +401,77 @@ static IDLResourceManager *currentResourceManager;
     }
     
     return drawableStateList;
+}
+
+- (NSString *)valueSetIdentifierForIdentifier:(IDLResourceIdentifier *)identifier {
+    NSString *ret = nil;
+    if (identifier.valueIdentifier != nil) {
+        ret = identifier.valueIdentifier;
+    } else {
+        NSRange range = [identifier.identifier rangeOfString:@"."];
+        if (range.location != NSNotFound && range.location > 0) {
+            NSString *valueSetIdentifier = [identifier.identifier substringToIndex:range.location];
+            NSString *bundleIdentifier = identifier.bundle!=nil?identifier.bundle.bundleIdentifier:identifier.bundleIdentifier;
+            NSString *typeName = NSStringFromIDLResourceType(identifier.type);
+            if (bundleIdentifier) {
+                ret = [NSString stringWithFormat:@"@%@:%@/%@", bundleIdentifier, typeName, valueSetIdentifier];
+            } else {
+                ret = [NSString stringWithFormat:@"@%@/%@", typeName, valueSetIdentifier];
+            }
+            identifier.valueIdentifier = ret;
+        }
+    }
+    return ret;
+}
+
+- (IDLResourceValueSet *)resourceValueSetForIdentifier:(NSString *)identifierString {
+    IDLResourceValueSet *ret = nil;
+    IDLResourceIdentifier *identifier = [self resourceIdentifierForString:identifierString];
+    if (identifier != nil && identifier.type != IDLResourceTypeValue) {
+        NSString *valueSetIdentifier = [self valueSetIdentifierForIdentifier:identifier];
+        identifier = [self resourceIdentifierForString:valueSetIdentifier];
+    }
+    
+    if (identifier != nil) {
+        if (identifier.cachedObject != nil && [identifier.cachedObject isKindOfClass:[IDLStyle class]]) {
+            ret = identifier.cachedObject;
+        } else {
+            NSBundle *bundle = [self resolveBundleForIdentifier:identifier];
+            NSString *extension = [identifier.identifier pathExtension];
+            if ([extension length] == 0) {
+                extension = @"xml";
+            }
+            NSURL *url = [bundle URLForResource:[identifier.identifier stringByDeletingPathExtension] withExtension:extension];
+            if (url != nil) {
+                ret = [IDLResourceValueSet createFromXMLURL:url];
+            }
+            if (ret != nil) {
+                identifier.cachedObject = ret;
+            }
+        }
+    }
+    return ret;
+}
+
+- (IDLStyle *)styleForIdentifier:(NSString *)identifierString {
+    IDLStyle *style = nil;
+    IDLResourceIdentifier *identifier = [self resourceIdentifierForString:identifierString];
+    if (identifier.cachedObject != nil) {
+        style = identifier.cachedObject;
+    } else if (identifier != nil && identifier.type == IDLResourceTypeStyle) {
+        IDLResourceValueSet *valueSet = [self resourceValueSetForIdentifier:identifierString];
+        if (valueSet != nil) {
+            NSRange range = [identifier.identifier rangeOfString:@"."];
+            if (range.location != NSNotFound && range.location > 0) {
+                style = [valueSet styleForName:[identifier.identifier substringFromIndex:range.location+1]];
+            }
+            
+        }
+        if (style != nil) {
+            identifier.cachedObject = style;
+        }
+    }
+    return style;
 }
 
 @end
