@@ -18,7 +18,8 @@ typedef enum IDLResourceType {
     IDLResourceTypeDrawable,
     IDLResourceTypeColor,
     IDLResourceTypeStyle,
-    IDLResourceTypeValue
+    IDLResourceTypeValue,
+    IDLResourceTypeArray
 } IDLResourceType;
 
 NSString *NSStringFromIDLResourceType(IDLResourceType type) {
@@ -42,6 +43,9 @@ NSString *NSStringFromIDLResourceType(IDLResourceType type) {
         case IDLResourceTypeValue:
             ret = @"value";
             break;
+        case IDLResourceTypeArray:
+            ret = @"array";
+            break;
         default:
             ret = nil;
             break;
@@ -63,6 +67,8 @@ IDLResourceType IDLResourceTypeFromString(NSString *typeString) {
         ret = IDLResourceTypeStyle;
     } else if ([typeString isEqualToString:@"value"]) {
         ret = IDLResourceTypeValue;
+    } else if ([typeString isEqualToString:@"array"]) {
+        ret = IDLResourceTypeArray;
     }
     return ret;
 }
@@ -240,8 +246,22 @@ static IDLResourceManager *currentResourceManager;
     NSString *ret = nil;
     IDLResourceIdentifier *identifier = [self resourceIdentifierForString:identifierString];
     if (identifier != nil) {
-        NSBundle *bundle = [self resolveBundleForIdentifier:identifier];
-        ret = [bundle localizedStringForKey:identifier.identifier value:nil table:nil];
+        NSString *valueSetIdentifier = [self valueSetIdentifierForIdentifier:identifier];
+        if ([valueSetIdentifier length] > 0) {
+            IDLResourceValueSet *valueSet = [self resourceValueSetForIdentifier:valueSetIdentifier];
+            if (valueSet != nil) {
+                NSRange range = [identifier.identifier rangeOfString:@"."];
+                if (range.location != NSNotFound && range.location > 0) {
+                    ret = [valueSet stringForName:[identifier.identifier substringFromIndex:range.location+1]];
+                }
+
+            }
+        }
+        if (ret == nil) {
+            // Fallback to localized strings
+            NSBundle *bundle = [self resolveBundleForIdentifier:identifier];
+            ret = [bundle localizedStringForKey:identifier.identifier value:nil table:nil];
+        }
     }
     return ret;
 }
@@ -412,7 +432,7 @@ static IDLResourceManager *currentResourceManager;
         if (range.location != NSNotFound && range.location > 0) {
             NSString *valueSetIdentifier = [identifier.identifier substringToIndex:range.location];
             NSString *bundleIdentifier = identifier.bundle!=nil?identifier.bundle.bundleIdentifier:identifier.bundleIdentifier;
-            NSString *typeName = NSStringFromIDLResourceType(identifier.type);
+            NSString *typeName = NSStringFromIDLResourceType(IDLResourceTypeValue);
             if (bundleIdentifier) {
                 ret = [NSString stringWithFormat:@"@%@:%@/%@", bundleIdentifier, typeName, valueSetIdentifier];
             } else {
@@ -433,7 +453,7 @@ static IDLResourceManager *currentResourceManager;
     }
     
     if (identifier != nil) {
-        if (identifier.cachedObject != nil && [identifier.cachedObject isKindOfClass:[IDLStyle class]]) {
+        if (identifier.cachedObject != nil && [identifier.cachedObject isKindOfClass:[IDLResourceValueSet class]]) {
             ret = identifier.cachedObject;
         } else {
             NSBundle *bundle = [self resolveBundleForIdentifier:identifier];
@@ -456,22 +476,46 @@ static IDLResourceManager *currentResourceManager;
 - (IDLStyle *)styleForIdentifier:(NSString *)identifierString {
     IDLStyle *style = nil;
     IDLResourceIdentifier *identifier = [self resourceIdentifierForString:identifierString];
-    if (identifier.cachedObject != nil) {
-        style = identifier.cachedObject;
-    } else if (identifier != nil && identifier.type == IDLResourceTypeStyle) {
-        IDLResourceValueSet *valueSet = [self resourceValueSetForIdentifier:identifierString];
-        if (valueSet != nil) {
-            NSRange range = [identifier.identifier rangeOfString:@"."];
-            if (range.location != NSNotFound && range.location > 0) {
-                style = [valueSet styleForName:[identifier.identifier substringFromIndex:range.location+1]];
+    if (identifier.type == IDLResourceTypeStyle) {
+        if (identifier.cachedObject != nil) {
+            style = identifier.cachedObject;
+        } else if (identifier != nil) {
+            IDLResourceValueSet *valueSet = [self resourceValueSetForIdentifier:identifierString];
+            if (valueSet != nil) {
+                NSRange range = [identifier.identifier rangeOfString:@"."];
+                if (range.location != NSNotFound && range.location > 0) {
+                    style = [valueSet styleForName:[identifier.identifier substringFromIndex:range.location+1]];
+                }
+                
             }
-            
-        }
-        if (style != nil) {
-            identifier.cachedObject = style;
+            if (style != nil) {
+                identifier.cachedObject = style;
+            }
         }
     }
     return style;
+}
+
+- (NSArray *)stringArrayForIdentifier:(NSString *)identifierString {
+    NSArray *array = nil;
+    IDLResourceIdentifier *identifier = [self resourceIdentifierForString:identifierString];
+    if (identifier.type == IDLResourceTypeArray) {
+        if (identifier.cachedObject != nil) {
+            array = identifier.cachedObject;
+        } else if (identifier != nil) {
+            IDLResourceValueSet *valueSet = [self resourceValueSetForIdentifier:identifierString];
+            if (valueSet != nil) {
+                NSRange range = [identifier.identifier rangeOfString:@"."];
+                if (range.location != NSNotFound && range.location > 0) {
+                    array = [valueSet stringArrayForName:[identifier.identifier substringFromIndex:range.location+1]];
+                }
+            }
+            if (array != nil) {
+                identifier.cachedObject = array;
+            }
+        }
+    }
+    return array;
 }
 
 @end

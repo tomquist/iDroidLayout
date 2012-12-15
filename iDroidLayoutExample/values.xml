@@ -11,4 +11,27 @@
     <style name="test" parent="@style/values.parent_style">
         <item name="padding">20</item>
     </style>
+    
+    <string name="username_label">Username:</string>
+    <string name="password_label">Password:</string>
+    <string name="formular_hint">Also try rotating your device</string>
+    <string name="submit_button_title">Submit</string>
+    <string name="toggle_android_button_title">Toggle Android</string>
+    
+    <string-array name="main_menu_titles">
+        <item>Formular</item>
+        <item>Animations</item>
+        <item>ScrollViews</item>
+        <item>Interface Builder</item>
+        <item>Include</item>
+    </string-array>
+
+    <string-array name="main_menu_descriptions">
+        <item>Shows a simple formular implemented using a combination of RelativeLayout and LinearLayout</item>
+        <item>Shows simple layout animations</item>
+        <item>Horizontal and vertical scroll views</item>
+        <item>Layout loaded into a view defined in Interface Builder</item>
+        <item>Layout which includes two other layouts</item>
+    </string-array>
+
 </resource>

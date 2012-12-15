@@ -31,7 +31,6 @@
 }
 
 - (void)viewDidLoad {
-    [[[IDLResourceManager alloc] init] autorelease];
     [super viewDidLoad];
     
     _tableCellLayoutURL = [[[NSBundle mainBundle] URLForResource:@"mainCell" withExtension:@"xml"] retain];
@@ -42,18 +41,8 @@
     _tableView.delegate = self;
     [self.view addSubview:_tableView];
     
-    _titles = [[NSArray alloc] initWithObjects:
-               @"Formular",
-               @"Animations",
-               @"ScrollViews",
-               @"Interface Builder",
-               @"Include", nil];
-    _descriptions = [[NSArray alloc] initWithObjects:
-                     @"Shows a simple formular implemented using a combination of RelativeLayout and LinearLayout",
-                     @"Shows simple layout animations",
-                     @"Horizontal and vertical scroll views",
-                     @"Layout loaded into a view defined in Interface Builder",
-                     @"Layout which includes two other layouts", nil];
+    _titles = [[[IDLResourceManager currentResourceManager] stringArrayForIdentifier:@"@array/values.main_menu_titles"] retain];
+    _descriptions = [[[IDLResourceManager currentResourceManager] stringArrayForIdentifier:@"@array/values.main_menu_descriptions"] retain];
 }
 
 - (void)viewDidUnload {

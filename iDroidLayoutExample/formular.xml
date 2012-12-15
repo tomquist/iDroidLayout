@@ -25,7 +25,7 @@
                 layout_gravity="center_vertical"
                 gravity="left|center_vertical"
                 font="Helvetica-Bold"
-                text="Username:"/>
+                text="@string/values.username_label"/>
             <UITextField
                 id="username"
                 layout_width="match_parent"
@@ -48,7 +48,7 @@
                 layout_gravity="center_vertical"
                 gravity="left|center_vertical"
                 font="Helvetica-Bold"
-                text="Password:"/>
+                text="@string/values.password_label"/>
             <UITextField
                 id="password"
                 layout_width="match_parent"
@@ -63,7 +63,7 @@
             layout_width="wrap_content"
             layout_height="wrap_content"
             layout_gravity="right"
-            text="Also try rotating your device"
+            text="@string/values.formular_hint"
             textSize="10"
             textColor="#aaaaaa"/>
         <UITextView
@@ -92,7 +92,7 @@
                 background="@drawable/button_background"
                 layout_width="100"
                 layout_height="30"
-                text="Submit"/>
+                text="@string/values.submit_button_title"/>
             <UIButton
                 id="toggleButton"
                 type="roundedRect"
@@ -101,7 +101,7 @@
                 layout_width="wrap_content"
                 layout_height="30"
                 layout_marginLeft="10"
-                text="Toggle Android"/>
+                text="@string/values.toggle_android_button_title"/>
         </LinearLayout>
     </LinearLayout>
 </UIScrollView>

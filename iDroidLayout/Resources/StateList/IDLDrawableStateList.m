@@ -74,7 +74,7 @@
 + (IDLDrawableStateList *)createFromColorStateList:(IDLColorStateList *)colorStateList {
     IDLDrawableStateList *ret = nil;
     if (colorStateList != nil) {
-        ret = [[IDLDrawableStateList alloc] init];
+        ret = [[[IDLDrawableStateList alloc] init] autorelease];
         NSMutableArray *items = [[NSMutableArray alloc] initWithCapacity:[colorStateList.items count]];
         for (IDLColorStateItem *colorStateItem in colorStateList.items) {
             IDLDrawableStateItem *item = [[IDLColorWrapperDrawableStateItem alloc] initWithColorStateItem:colorStateItem];

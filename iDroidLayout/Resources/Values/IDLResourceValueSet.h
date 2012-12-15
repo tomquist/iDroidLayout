@@ -13,6 +13,7 @@
 
 - (IDLStyle *)styleForName:(NSString *)name;
 - (NSString *)stringForName:(NSString *)name;
+- (NSArray *)stringArrayForName:(NSString *)name;
 + (IDLResourceValueSet *)createFromXMLData:(NSData *)data;
 + (IDLResourceValueSet *)createFromXMLURL:(NSURL *)url;
 

@@ -7,10 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7926930A167BB6B00078EE37 /* IDLResourceValueSet.h in Headers */ = {isa = PBXBuildFile; fileRef = 79269308167BB6B00078EE37 /* IDLResourceValueSet.h */; };
-		7926930B167BB6B00078EE37 /* IDLResourceValueSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 79269309167BB6B00078EE37 /* IDLResourceValueSet.m */; };
-		79269313167BBEE10078EE37 /* IDLStyle+IDL_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 79269311167BBEE10078EE37 /* IDLStyle+IDL_Internal.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		79269316167BF7A00078EE37 /* values.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79269315167BF7A00078EE37 /* values.xml */; };
+		7926931D167D03FE0078EE37 /* IDLResourceValueSet.h in Headers */ = {isa = PBXBuildFile; fileRef = 79269318167D03FE0078EE37 /* IDLResourceValueSet.h */; };
+		7926931E167D03FE0078EE37 /* IDLResourceValueSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 79269319167D03FE0078EE37 /* IDLResourceValueSet.m */; };
+		7926931F167D03FE0078EE37 /* IDLStyle+IDL_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 7926931A167D03FE0078EE37 /* IDLStyle+IDL_Internal.h */; };
+		79269320167D03FE0078EE37 /* IDLStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = 7926931B167D03FE0078EE37 /* IDLStyle.h */; };
+		79269321167D03FE0078EE37 /* IDLStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7926931C167D03FE0078EE37 /* IDLStyle.m */; };
+		79269324167D11970078EE37 /* IDLStringArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 79269322167D11970078EE37 /* IDLStringArray.h */; };
+		79269325167D11970078EE37 /* IDLStringArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 79269323167D11970078EE37 /* IDLStringArray.m */; };
 		79642BF01603C4A30095D5A2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79642BEE1603C4A30095D5A2 /* InfoPlist.strings */; };
 		79642BFA1603C4A30095D5A2 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79642BF91603C4A30095D5A2 /* SenTestingKit.framework */; };
 		79642C011603C4A30095D5A2 /* iDroidLayout.framework in Resources */ = {isa = PBXBuildFile; fileRef = 79642BE91603C4A20095D5A2 /* iDroidLayout.framework */; };
@@ -143,8 +147,6 @@
 		79B983551674D2F200F844DB /* IDLResourceStateList+IDL_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B983451674D2F200F844DB /* IDLResourceStateList+IDL_Internal.h */; };
 		79B983561674D2F200F844DB /* IDLResourceStateList.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B983461674D2F200F844DB /* IDLResourceStateList.h */; };
 		79B983571674D2F200F844DB /* IDLResourceStateList.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B983471674D2F200F844DB /* IDLResourceStateList.m */; };
-		79B9835B1674D3AD00F844DB /* IDLStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B983591674D3AD00F844DB /* IDLStyle.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79B9835C1674D3AD00F844DB /* IDLStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B9835A1674D3AD00F844DB /* IDLStyle.m */; };
 		79E4337816681D7B00E49114 /* LayoutFromIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79E4337716681D7B00E49114 /* LayoutFromIB.xib */; };
 		79E4337D16681DEB00E49114 /* layoutFromIB.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79E4337C16681DEB00E49114 /* layoutFromIB.xml */; };
 		79E43380166A2E7B00E49114 /* includeContainer.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79E4337F166A2E7B00E49114 /* includeContainer.xml */; };
@@ -170,10 +172,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		79269308167BB6B00078EE37 /* IDLResourceValueSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLResourceValueSet.h; sourceTree = "<group>"; };
-		79269309167BB6B00078EE37 /* IDLResourceValueSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLResourceValueSet.m; sourceTree = "<group>"; };
-		79269311167BBEE10078EE37 /* IDLStyle+IDL_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IDLStyle+IDL_Internal.h"; sourceTree = "<group>"; };
 		79269315167BF7A00078EE37 /* values.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = values.xml; sourceTree = "<group>"; };
+		79269318167D03FE0078EE37 /* IDLResourceValueSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLResourceValueSet.h; sourceTree = "<group>"; };
+		79269319167D03FE0078EE37 /* IDLResourceValueSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLResourceValueSet.m; sourceTree = "<group>"; };
+		7926931A167D03FE0078EE37 /* IDLStyle+IDL_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IDLStyle+IDL_Internal.h"; sourceTree = "<group>"; };
+		7926931B167D03FE0078EE37 /* IDLStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLStyle.h; sourceTree = "<group>"; };
+		7926931C167D03FE0078EE37 /* IDLStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLStyle.m; sourceTree = "<group>"; };
+		79269322167D11970078EE37 /* IDLStringArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLStringArray.h; sourceTree = "<group>"; };
+		79269323167D11970078EE37 /* IDLStringArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLStringArray.m; sourceTree = "<group>"; };
 		79642BE91603C4A20095D5A2 /* iDroidLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iDroidLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		79642BED1603C4A30095D5A2 /* iDroidLayout-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iDroidLayout-Info.plist"; sourceTree = "<group>"; };
 		79642BEF1603C4A30095D5A2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -320,8 +326,6 @@
 		79B983451674D2F200F844DB /* IDLResourceStateList+IDL_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IDLResourceStateList+IDL_Internal.h"; sourceTree = "<group>"; };
 		79B983461674D2F200F844DB /* IDLResourceStateList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLResourceStateList.h; sourceTree = "<group>"; };
 		79B983471674D2F200F844DB /* IDLResourceStateList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLResourceStateList.m; sourceTree = "<group>"; };
-		79B983591674D3AD00F844DB /* IDLStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLStyle.h; sourceTree = "<group>"; };
-		79B9835A1674D3AD00F844DB /* IDLStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLStyle.m; sourceTree = "<group>"; };
 		79E4337716681D7B00E49114 /* LayoutFromIB.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LayoutFromIB.xib; sourceTree = "<group>"; };
 		79E4337C16681DEB00E49114 /* layoutFromIB.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = layoutFromIB.xml; sourceTree = "<group>"; };
 		79E4337E1668226900E49114 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
@@ -363,6 +367,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		79269317167D03FD0078EE37 /* Values */ = {
+			isa = PBXGroup;
+			children = (
+				79269318167D03FE0078EE37 /* IDLResourceValueSet.h */,
+				79269319167D03FE0078EE37 /* IDLResourceValueSet.m */,
+				7926931A167D03FE0078EE37 /* IDLStyle+IDL_Internal.h */,
+				7926931B167D03FE0078EE37 /* IDLStyle.h */,
+				7926931C167D03FE0078EE37 /* IDLStyle.m */,
+				79269322167D11970078EE37 /* IDLStringArray.h */,
+				79269323167D11970078EE37 /* IDLStringArray.m */,
+			);
+			path = Values;
+			sourceTree = "<group>";
+		};
 		79642BDA1603C4A20095D5A2 = {
 			isa = PBXGroup;
 			children = (
@@ -682,14 +700,12 @@
 		79814109166AB8A700A63480 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				79B983581674D30700F844DB /* Style */,
-				79B983371674D2F200F844DB /* StateList */,
 				7981410A166ABABB00A63480 /* IDLResourceManager.h */,
 				7981410B166ABABB00A63480 /* IDLResourceManager.m */,
 				7981410E166BD65800A63480 /* NSDictionary+IDL_ResourceManager.h */,
 				7981410F166BD65800A63480 /* NSDictionary+IDL_ResourceManager.m */,
-				79269308167BB6B00078EE37 /* IDLResourceValueSet.h */,
-				79269309167BB6B00078EE37 /* IDLResourceValueSet.m */,
+				79B983371674D2F200F844DB /* StateList */,
+				79269317167D03FD0078EE37 /* Values */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -715,16 +731,6 @@
 				79B983471674D2F200F844DB /* IDLResourceStateList.m */,
 			);
 			path = StateList;
-			sourceTree = "<group>";
-		};
-		79B983581674D30700F844DB /* Style */ = {
-			isa = PBXGroup;
-			children = (
-				79B983591674D3AD00F844DB /* IDLStyle.h */,
-				79B9835A1674D3AD00F844DB /* IDLStyle.m */,
-				79269311167BBEE10078EE37 /* IDLStyle+IDL_Internal.h */,
-			);
-			path = Style;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -788,9 +794,10 @@
 				79B983531674D2F200F844DB /* IDLResourceStateItem.h in Headers */,
 				79B983551674D2F200F844DB /* IDLResourceStateList+IDL_Internal.h in Headers */,
 				79B983561674D2F200F844DB /* IDLResourceStateList.h in Headers */,
-				79B9835B1674D3AD00F844DB /* IDLStyle.h in Headers */,
-				7926930A167BB6B00078EE37 /* IDLResourceValueSet.h in Headers */,
-				79269313167BBEE10078EE37 /* IDLStyle+IDL_Internal.h in Headers */,
+				7926931D167D03FE0078EE37 /* IDLResourceValueSet.h in Headers */,
+				7926931F167D03FE0078EE37 /* IDLStyle+IDL_Internal.h in Headers */,
+				79269320167D03FE0078EE37 /* IDLStyle.h in Headers */,
+				79269324167D11970078EE37 /* IDLStringArray.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1034,8 +1041,9 @@
 				79B983511674D2F200F844DB /* IDLDrawableStateList.m in Sources */,
 				79B983541674D2F200F844DB /* IDLResourceStateItem.m in Sources */,
 				79B983571674D2F200F844DB /* IDLResourceStateList.m in Sources */,
-				79B9835C1674D3AD00F844DB /* IDLStyle.m in Sources */,
-				7926930B167BB6B00078EE37 /* IDLResourceValueSet.m in Sources */,
+				7926931E167D03FE0078EE37 /* IDLResourceValueSet.m in Sources */,
+				79269321167D03FE0078EE37 /* IDLStyle.m in Sources */,
+				79269325167D11970078EE37 /* IDLStringArray.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

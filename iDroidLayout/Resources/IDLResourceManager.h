@@ -24,6 +24,7 @@
 - (UIColor *)colorForIdentifier:(NSString *)identifierString;
 - (IDLColorStateList *)colorStateListForIdentifier:(NSString *)identifierString;
 - (IDLStyle *)styleForIdentifier:(NSString *)identifierString;
+- (NSArray *)stringArrayForIdentifier:(NSString *)identifierString;
 
 /**
  * Changes the currently used resource manager. This can be used to change

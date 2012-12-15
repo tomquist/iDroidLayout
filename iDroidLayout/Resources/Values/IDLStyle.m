@@ -14,14 +14,35 @@
 
 @property (nonatomic, retain) NSMutableDictionary *internalAttributes;
 @property (nonatomic, retain) NSString *parentIdentifier;
+@property (nonatomic, retain) IDLStyle *internalParentStyle;
 @property (nonatomic, assign) BOOL includesParentStyleAttributes;
 
 @end
 
 @implementation IDLStyle
 
-@synthesize attributes = _attributes;
 @synthesize parentIdentifier = _parentIdentifier;
+@synthesize internalParentStyle = _internalParentStyle;
+
+- (void)dealloc {
+    self.internalAttributes = nil;
+    self.parentIdentifier = nil;
+    self.internalParentStyle = nil;
+    [super dealloc];
+}
+
+- (id)initWithAttributes:(NSMutableDictionary *)attributes arentIdentifier:(NSString *)parentIdentifier {
+    self = [super init];
+    if (self) {
+        if ([parentIdentifier length] > 0) {
+            self.parentIdentifier = parentIdentifier;
+        } else {
+            self.includesParentStyleAttributes = TRUE;
+        }
+        self.internalAttributes = attributes;
+    }
+    return self;
+}
 
 + (IDLStyle *)createFromXMLElement:(TBXMLElement *)element {
     NSString *parentStyleId = [TBXML valueOfAttributeNamed:@"parent" forElement:element];
@@ -42,13 +63,7 @@
         }
         child = child->nextSibling;
     }
-    IDLStyle *style = [[IDLStyle alloc] init];
-    if ([parentStyleId length] > 0) {
-        style.parentIdentifier = parentStyleId;
-    } else {
-        style.includesParentStyleAttributes = TRUE;
-    }
-    style.internalAttributes = attributes;
+    IDLStyle *style = [[[IDLStyle alloc] initWithAttributes:attributes arentIdentifier:parentStyleId] autorelease];
     [attributes release];
     return style;
 }
@@ -74,9 +89,10 @@
 }
 
 - (IDLStyle *)parentStyle {
-    IDLStyle *parentStyle = nil;
-    if ([self.parentIdentifier length] > 0) {
+    IDLStyle *parentStyle = self.internalParentStyle;
+    if (parentStyle == nil && [self.parentIdentifier length] > 0) {
         parentStyle = [[IDLResourceManager currentResourceManager] styleForIdentifier:self.parentIdentifier];
+        self.internalParentStyle = parentStyle;
     }
     return  parentStyle;
 }
