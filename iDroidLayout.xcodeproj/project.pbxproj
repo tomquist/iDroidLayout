@@ -15,6 +15,8 @@
 		79269321167D03FE0078EE37 /* IDLStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7926931C167D03FE0078EE37 /* IDLStyle.m */; };
 		79269324167D11970078EE37 /* IDLStringArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 79269322167D11970078EE37 /* IDLStringArray.h */; };
 		79269325167D11970078EE37 /* IDLStringArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 79269323167D11970078EE37 /* IDLStringArray.m */; };
+		7926940A167E0E0A0078EE37 /* IDLDrawable.h in Headers */ = {isa = PBXBuildFile; fileRef = 79269408167E0E0A0078EE37 /* IDLDrawable.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7926940B167E0E0A0078EE37 /* IDLDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 79269409167E0E0A0078EE37 /* IDLDrawable.m */; };
 		79642BF01603C4A30095D5A2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79642BEE1603C4A30095D5A2 /* InfoPlist.strings */; };
 		79642BFA1603C4A30095D5A2 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79642BF91603C4A30095D5A2 /* SenTestingKit.framework */; };
 		79642C011603C4A30095D5A2 /* iDroidLayout.framework in Resources */ = {isa = PBXBuildFile; fileRef = 79642BE91603C4A20095D5A2 /* iDroidLayout.framework */; };
@@ -119,6 +121,32 @@
 		796E1DB416735B1900E78B45 /* UIImage+IDL_FromColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 796E1DB216735B1900E78B45 /* UIImage+IDL_FromColor.h */; };
 		796E1DB516735B1900E78B45 /* UIImage+IDL_FromColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 796E1DB316735B1900E78B45 /* UIImage+IDL_FromColor.m */; };
 		796E1DB716735F8E00E78B45 /* button_background.xml in Resources */ = {isa = PBXBuildFile; fileRef = 796E1DB616735F8E00E78B45 /* button_background.xml */; };
+		79718ADC167FAC9B00414CCE /* IDLBitmapDrawable.h in Headers */ = {isa = PBXBuildFile; fileRef = 79718ADA167FAC9B00414CCE /* IDLBitmapDrawable.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79718ADD167FAC9B00414CCE /* IDLBitmapDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 79718ADB167FAC9B00414CCE /* IDLBitmapDrawable.m */; };
+		79718AE1167FAD9D00414CCE /* IDLColorDrawable.h in Headers */ = {isa = PBXBuildFile; fileRef = 79718ADF167FAD9D00414CCE /* IDLColorDrawable.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79718AE2167FAD9D00414CCE /* IDLColorDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 79718AE0167FAD9D00414CCE /* IDLColorDrawable.m */; };
+		79718AE5167FADB900414CCE /* IDLInsetDrawable.h in Headers */ = {isa = PBXBuildFile; fileRef = 79718AE3167FADB900414CCE /* IDLInsetDrawable.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79718AE6167FADB900414CCE /* IDLInsetDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 79718AE4167FADB900414CCE /* IDLInsetDrawable.m */; };
+		79718AE9167FAE3D00414CCE /* IDLDrawableContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 79718AE7167FAE3D00414CCE /* IDLDrawableContainer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79718AEA167FAE3D00414CCE /* IDLDrawableContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 79718AE8167FAE3D00414CCE /* IDLDrawableContainer.m */; };
+		79718AED167FAE9400414CCE /* IDLStateListDrawable.h in Headers */ = {isa = PBXBuildFile; fileRef = 79718AEB167FAE9400414CCE /* IDLStateListDrawable.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79718AEE167FAE9400414CCE /* IDLStateListDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 79718AEC167FAE9400414CCE /* IDLStateListDrawable.m */; };
+		79718AF1167FAEA800414CCE /* IDLLayerDrawable.h in Headers */ = {isa = PBXBuildFile; fileRef = 79718AEF167FAEA800414CCE /* IDLLayerDrawable.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79718AF2167FAEA800414CCE /* IDLLayerDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 79718AF0167FAEA800414CCE /* IDLLayerDrawable.m */; };
+		79718AF5167FAEB500414CCE /* IDLGradientDrawable.h in Headers */ = {isa = PBXBuildFile; fileRef = 79718AF3167FAEB500414CCE /* IDLGradientDrawable.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79718AF6167FAEB500414CCE /* IDLGradientDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 79718AF4167FAEB500414CCE /* IDLGradientDrawable.m */; };
+		79718AF916808D5F00414CCE /* IDLDrawableContainer+IDL_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 79718AF716808D5E00414CCE /* IDLDrawableContainer+IDL_Internal.h */; };
+		79718AFE1680912700414CCE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79718AFD1680912700414CCE /* QuartzCore.framework */; };
+		79718AFF1680912D00414CCE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79718AFD1680912700414CCE /* QuartzCore.framework */; };
+		79718B02168091D400414CCE /* IDLDrawable+IDL_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 79718B00168091D300414CCE /* IDLDrawable+IDL_Internal.h */; };
+		79718B0616809FAE00414CCE /* UIView+IDLDrawable.h in Headers */ = {isa = PBXBuildFile; fileRef = 79718B0416809FAE00414CCE /* UIView+IDLDrawable.h */; };
+		79718B0716809FAE00414CCE /* UIView+IDLDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 79718B0516809FAE00414CCE /* UIView+IDLDrawable.m */; };
+		79718B0C1680E10F00414CCE /* TBXML+IDL.h in Headers */ = {isa = PBXBuildFile; fileRef = 79718B0A1680E10F00414CCE /* TBXML+IDL.h */; };
+		79718B0D1680E10F00414CCE /* TBXML+IDL.m in Sources */ = {isa = PBXBuildFile; fileRef = 79718B0B1680E10F00414CCE /* TBXML+IDL.m */; };
+		79718B101681DE5400414CCE /* IDLNinePatchDrawable.h in Headers */ = {isa = PBXBuildFile; fileRef = 79718B0E1681DE5200414CCE /* IDLNinePatchDrawable.h */; };
+		79718B111681DE5400414CCE /* IDLNinePatchDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 79718B0F1681DE5300414CCE /* IDLNinePatchDrawable.m */; };
+		79718B141681FF1100414CCE /* UIImage+IDLNinePatch.h in Headers */ = {isa = PBXBuildFile; fileRef = 79718B121681FF1100414CCE /* UIImage+IDLNinePatch.h */; };
+		79718B151681FF1100414CCE /* UIImage+IDLNinePatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 79718B131681FF1100414CCE /* UIImage+IDLNinePatch.m */; };
 		798140FA166A87C200A63480 /* UINavigationBar+IDL_View.h in Headers */ = {isa = PBXBuildFile; fileRef = 798140F8166A87C200A63480 /* UINavigationBar+IDL_View.h */; };
 		798140FB166A87C200A63480 /* UINavigationBar+IDL_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 798140F9166A87C200A63480 /* UINavigationBar+IDL_View.m */; };
 		798140FF166A8A5700A63480 /* UIToolbar+IDL_View.h in Headers */ = {isa = PBXBuildFile; fileRef = 798140FD166A8A5700A63480 /* UIToolbar+IDL_View.h */; };
@@ -180,6 +208,8 @@
 		7926931C167D03FE0078EE37 /* IDLStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLStyle.m; sourceTree = "<group>"; };
 		79269322167D11970078EE37 /* IDLStringArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLStringArray.h; sourceTree = "<group>"; };
 		79269323167D11970078EE37 /* IDLStringArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLStringArray.m; sourceTree = "<group>"; };
+		79269408167E0E0A0078EE37 /* IDLDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLDrawable.h; sourceTree = "<group>"; };
+		79269409167E0E0A0078EE37 /* IDLDrawable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLDrawable.m; sourceTree = "<group>"; };
 		79642BE91603C4A20095D5A2 /* iDroidLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iDroidLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		79642BED1603C4A30095D5A2 /* iDroidLayout-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iDroidLayout-Info.plist"; sourceTree = "<group>"; };
 		79642BEF1603C4A30095D5A2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -298,6 +328,31 @@
 		796E1DB216735B1900E78B45 /* UIImage+IDL_FromColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+IDL_FromColor.h"; sourceTree = "<group>"; };
 		796E1DB316735B1900E78B45 /* UIImage+IDL_FromColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+IDL_FromColor.m"; sourceTree = "<group>"; };
 		796E1DB616735F8E00E78B45 /* button_background.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = button_background.xml; sourceTree = "<group>"; };
+		79718ADA167FAC9B00414CCE /* IDLBitmapDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLBitmapDrawable.h; sourceTree = "<group>"; };
+		79718ADB167FAC9B00414CCE /* IDLBitmapDrawable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLBitmapDrawable.m; sourceTree = "<group>"; };
+		79718ADF167FAD9D00414CCE /* IDLColorDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLColorDrawable.h; sourceTree = "<group>"; };
+		79718AE0167FAD9D00414CCE /* IDLColorDrawable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLColorDrawable.m; sourceTree = "<group>"; };
+		79718AE3167FADB900414CCE /* IDLInsetDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLInsetDrawable.h; sourceTree = "<group>"; };
+		79718AE4167FADB900414CCE /* IDLInsetDrawable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLInsetDrawable.m; sourceTree = "<group>"; };
+		79718AE7167FAE3D00414CCE /* IDLDrawableContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLDrawableContainer.h; sourceTree = "<group>"; };
+		79718AE8167FAE3D00414CCE /* IDLDrawableContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLDrawableContainer.m; sourceTree = "<group>"; };
+		79718AEB167FAE9400414CCE /* IDLStateListDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLStateListDrawable.h; sourceTree = "<group>"; };
+		79718AEC167FAE9400414CCE /* IDLStateListDrawable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLStateListDrawable.m; sourceTree = "<group>"; };
+		79718AEF167FAEA800414CCE /* IDLLayerDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLLayerDrawable.h; sourceTree = "<group>"; };
+		79718AF0167FAEA800414CCE /* IDLLayerDrawable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLLayerDrawable.m; sourceTree = "<group>"; };
+		79718AF3167FAEB500414CCE /* IDLGradientDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLGradientDrawable.h; sourceTree = "<group>"; };
+		79718AF4167FAEB500414CCE /* IDLGradientDrawable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLGradientDrawable.m; sourceTree = "<group>"; };
+		79718AF716808D5E00414CCE /* IDLDrawableContainer+IDL_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IDLDrawableContainer+IDL_Internal.h"; sourceTree = "<group>"; };
+		79718AFD1680912700414CCE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		79718B00168091D300414CCE /* IDLDrawable+IDL_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IDLDrawable+IDL_Internal.h"; sourceTree = "<group>"; };
+		79718B0416809FAE00414CCE /* UIView+IDLDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+IDLDrawable.h"; sourceTree = "<group>"; };
+		79718B0516809FAE00414CCE /* UIView+IDLDrawable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+IDLDrawable.m"; sourceTree = "<group>"; };
+		79718B0A1680E10F00414CCE /* TBXML+IDL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TBXML+IDL.h"; sourceTree = "<group>"; };
+		79718B0B1680E10F00414CCE /* TBXML+IDL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TBXML+IDL.m"; sourceTree = "<group>"; };
+		79718B0E1681DE5200414CCE /* IDLNinePatchDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLNinePatchDrawable.h; sourceTree = "<group>"; };
+		79718B0F1681DE5300414CCE /* IDLNinePatchDrawable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLNinePatchDrawable.m; sourceTree = "<group>"; };
+		79718B121681FF1100414CCE /* UIImage+IDLNinePatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+IDLNinePatch.h"; sourceTree = "<group>"; };
+		79718B131681FF1100414CCE /* UIImage+IDLNinePatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+IDLNinePatch.m"; sourceTree = "<group>"; };
 		798140F8166A87C200A63480 /* UINavigationBar+IDL_View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+IDL_View.h"; sourceTree = "<group>"; };
 		798140F9166A87C200A63480 /* UINavigationBar+IDL_View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+IDL_View.m"; sourceTree = "<group>"; };
 		798140FD166A8A5700A63480 /* UIToolbar+IDL_View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIToolbar+IDL_View.h"; sourceTree = "<group>"; };
@@ -346,6 +401,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79718AFF1680912D00414CCE /* QuartzCore.framework in Frameworks */,
 				79642CEE1603D3FE0095D5A2 /* CoreGraphics.framework in Frameworks */,
 				79642CED1603D3F80095D5A2 /* Foundation.framework in Frameworks */,
 				79642CEB1603D3F20095D5A2 /* UIKit.framework in Frameworks */,
@@ -357,6 +413,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79718AFE1680912700414CCE /* QuartzCore.framework in Frameworks */,
 				79642C191603C4E80095D5A2 /* UIKit.framework in Frameworks */,
 				79642C1A1603C4E80095D5A2 /* Foundation.framework in Frameworks */,
 				79642C1C1603C4E80095D5A2 /* CoreGraphics.framework in Frameworks */,
@@ -379,6 +436,35 @@
 				79269323167D11970078EE37 /* IDLStringArray.m */,
 			);
 			path = Values;
+			sourceTree = "<group>";
+		};
+		79269407167E0E000078EE37 /* Drawable */ = {
+			isa = PBXGroup;
+			children = (
+				79718ADA167FAC9B00414CCE /* IDLBitmapDrawable.h */,
+				79718ADB167FAC9B00414CCE /* IDLBitmapDrawable.m */,
+				79718ADF167FAD9D00414CCE /* IDLColorDrawable.h */,
+				79718AE0167FAD9D00414CCE /* IDLColorDrawable.m */,
+				79718B00168091D300414CCE /* IDLDrawable+IDL_Internal.h */,
+				79269408167E0E0A0078EE37 /* IDLDrawable.h */,
+				79269409167E0E0A0078EE37 /* IDLDrawable.m */,
+				79718AF716808D5E00414CCE /* IDLDrawableContainer+IDL_Internal.h */,
+				79718AE7167FAE3D00414CCE /* IDLDrawableContainer.h */,
+				79718AE8167FAE3D00414CCE /* IDLDrawableContainer.m */,
+				79718AF3167FAEB500414CCE /* IDLGradientDrawable.h */,
+				79718AF4167FAEB500414CCE /* IDLGradientDrawable.m */,
+				79718AE3167FADB900414CCE /* IDLInsetDrawable.h */,
+				79718AE4167FADB900414CCE /* IDLInsetDrawable.m */,
+				79718AEF167FAEA800414CCE /* IDLLayerDrawable.h */,
+				79718AF0167FAEA800414CCE /* IDLLayerDrawable.m */,
+				79718AEB167FAE9400414CCE /* IDLStateListDrawable.h */,
+				79718AEC167FAE9400414CCE /* IDLStateListDrawable.m */,
+				79718B0416809FAE00414CCE /* UIView+IDLDrawable.h */,
+				79718B0516809FAE00414CCE /* UIView+IDLDrawable.m */,
+				79718B0E1681DE5200414CCE /* IDLNinePatchDrawable.h */,
+				79718B0F1681DE5300414CCE /* IDLNinePatchDrawable.m */,
+			);
+			path = Drawable;
 			sourceTree = "<group>";
 		};
 		79642BDA1603C4A20095D5A2 = {
@@ -434,6 +520,7 @@
 				79642CEC1603D3F80095D5A2 /* Foundation.framework */,
 				79642BFD1603C4A30095D5A2 /* Foundation.framework */,
 				79642CD71603CA1D0095D5A2 /* iDroidLayout.embeddedframework */,
+				79718AFD1680912700414CCE /* QuartzCore.framework */,
 				79642BF91603C4A30095D5A2 /* SenTestingKit.framework */,
 				79642CEA1603D3F20095D5A2 /* UIKit.framework */,
 				79642BFB1603C4A30095D5A2 /* UIKit.framework */,
@@ -533,6 +620,10 @@
 				79642C3D1603C5500095D5A2 /* UIColor+IDL_ColorParser.m */,
 				796E1DB216735B1900E78B45 /* UIImage+IDL_FromColor.h */,
 				796E1DB316735B1900E78B45 /* UIImage+IDL_FromColor.m */,
+				79718B0A1680E10F00414CCE /* TBXML+IDL.h */,
+				79718B0B1680E10F00414CCE /* TBXML+IDL.m */,
+				79718B121681FF1100414CCE /* UIImage+IDLNinePatch.h */,
+				79718B131681FF1100414CCE /* UIImage+IDLNinePatch.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -700,6 +791,7 @@
 		79814109166AB8A700A63480 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				79269407167E0E000078EE37 /* Drawable */,
 				7981410A166ABABB00A63480 /* IDLResourceManager.h */,
 				7981410B166ABABB00A63480 /* IDLResourceManager.m */,
 				7981410E166BD65800A63480 /* NSDictionary+IDL_ResourceManager.h */,
@@ -798,6 +890,20 @@
 				7926931F167D03FE0078EE37 /* IDLStyle+IDL_Internal.h in Headers */,
 				79269320167D03FE0078EE37 /* IDLStyle.h in Headers */,
 				79269324167D11970078EE37 /* IDLStringArray.h in Headers */,
+				7926940A167E0E0A0078EE37 /* IDLDrawable.h in Headers */,
+				79718ADC167FAC9B00414CCE /* IDLBitmapDrawable.h in Headers */,
+				79718AE1167FAD9D00414CCE /* IDLColorDrawable.h in Headers */,
+				79718AE5167FADB900414CCE /* IDLInsetDrawable.h in Headers */,
+				79718AE9167FAE3D00414CCE /* IDLDrawableContainer.h in Headers */,
+				79718AED167FAE9400414CCE /* IDLStateListDrawable.h in Headers */,
+				79718AF1167FAEA800414CCE /* IDLLayerDrawable.h in Headers */,
+				79718AF5167FAEB500414CCE /* IDLGradientDrawable.h in Headers */,
+				79718AF916808D5F00414CCE /* IDLDrawableContainer+IDL_Internal.h in Headers */,
+				79718B02168091D400414CCE /* IDLDrawable+IDL_Internal.h in Headers */,
+				79718B0616809FAE00414CCE /* UIView+IDLDrawable.h in Headers */,
+				79718B0C1680E10F00414CCE /* TBXML+IDL.h in Headers */,
+				79718B101681DE5400414CCE /* IDLNinePatchDrawable.h in Headers */,
+				79718B141681FF1100414CCE /* UIImage+IDLNinePatch.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1044,6 +1150,18 @@
 				7926931E167D03FE0078EE37 /* IDLResourceValueSet.m in Sources */,
 				79269321167D03FE0078EE37 /* IDLStyle.m in Sources */,
 				79269325167D11970078EE37 /* IDLStringArray.m in Sources */,
+				7926940B167E0E0A0078EE37 /* IDLDrawable.m in Sources */,
+				79718ADD167FAC9B00414CCE /* IDLBitmapDrawable.m in Sources */,
+				79718AE2167FAD9D00414CCE /* IDLColorDrawable.m in Sources */,
+				79718AE6167FADB900414CCE /* IDLInsetDrawable.m in Sources */,
+				79718AEA167FAE3D00414CCE /* IDLDrawableContainer.m in Sources */,
+				79718AEE167FAE9400414CCE /* IDLStateListDrawable.m in Sources */,
+				79718AF2167FAEA800414CCE /* IDLLayerDrawable.m in Sources */,
+				79718AF6167FAEB500414CCE /* IDLGradientDrawable.m in Sources */,
+				79718B0716809FAE00414CCE /* UIView+IDLDrawable.m in Sources */,
+				79718B0D1680E10F00414CCE /* TBXML+IDL.m in Sources */,
+				79718B111681DE5400414CCE /* IDLNinePatchDrawable.m in Sources */,
+				79718B151681FF1100414CCE /* UIImage+IDLNinePatch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

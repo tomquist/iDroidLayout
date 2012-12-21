@@ -37,11 +37,11 @@
 
 + (UIControlState)controlStateForAttribute:(NSString *)attributeName {
     UIControlState controlState = UIControlStateNormal;
-    if ([attributeName isEqualToString:@"disabled"]) {
+    if ([attributeName isEqualToString:@"state_disabled"]) {
         controlState |= UIControlStateDisabled;
-    } else if ([attributeName isEqualToString:@"highlighted"]) {
+    } else if ([attributeName isEqualToString:@"state_highlighted"]) {
         controlState |= UIControlStateHighlighted;
-    } else if ([attributeName isEqualToString:@"selected"]) {
+    } else if ([attributeName isEqualToString:@"state_selected"]) {
         controlState |= UIControlStateSelected;
     }
     return controlState;

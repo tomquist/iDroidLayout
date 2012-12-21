@@ -11,6 +11,8 @@
 #import "UIColor+IDL_ColorParser.h"
 #import "UIView+IDL_ViewGroup.h"
 #import "NSDictionary+IDL_ResourceManager.h"
+#import "UIView+IDLDrawable.h"
+#import "IDLResourceManager.h"
 
 #pragma mark - import libs
 #include <objc/runtime.h>
@@ -60,23 +62,35 @@ static char visibilityKey;
     NSString *visibilityString = [attrs objectForKey:@"visibility"];
     self.visibility = IDLViewVisibilityFromString(visibilityString);
     
+    // background
+    /*UIColor *background = [attrs colorFromIDLValueForKey:@"background"];
+    if (background != nil) {
+        self.backgroundColor = background;
+    }*/
+    NSString *backgroundString = [attrs objectForKey:@"background"];
+    if (backgroundString != nil) {
+        self.backgroundDrawable = [[IDLResourceManager currentResourceManager] drawableForIdentifier:backgroundString];
+    }
+    
     // padding
     NSString *paddingString = [attrs objectForKey:@"padding"];
     if (paddingString != nil) {
         CGFloat padding = [paddingString floatValue];
         self.padding = UIEdgeInsetsMake(padding, padding, padding, padding);
     } else {
+        UIEdgeInsets padding = self.padding;
+        UIEdgeInsets initialPadding = padding;
         NSString *paddingTopString = [attrs objectForKey:@"paddingTop"];
         NSString *paddingLeftString = [attrs objectForKey:@"paddingLeft"];
         NSString *paddingBottomString = [attrs objectForKey:@"paddingBottom"];
         NSString *paddingRightString = [attrs objectForKey:@"paddingRight"];
-        self.padding = UIEdgeInsetsMake([paddingTopString floatValue], [paddingLeftString floatValue], [paddingBottomString floatValue], [paddingRightString floatValue]);
-    }
-    
-    // background
-    UIColor *background = [attrs colorFromIDLValueForKey:@"background"];
-    if (background != nil) {
-        self.backgroundColor = background;
+        if ([paddingTopString length] > 0) padding.top = [paddingTopString floatValue];
+        if ([paddingLeftString length] > 0) padding.left = [paddingLeftString floatValue];
+        if ([paddingBottomString length] > 0) padding.bottom = [paddingBottomString floatValue];
+        if ([paddingRightString length] > 0) padding.right = [paddingRightString floatValue];
+        if (!UIEdgeInsetsEqualToEdgeInsets(padding, initialPadding)) {
+            self.padding = padding;
+        }
     }
     
     // alpha
@@ -369,10 +383,14 @@ static char visibilityKey;
 }
 
 - (void)setPadding:(UIEdgeInsets)padding {
-    objc_setAssociatedObject(self,
-                             &paddingKey,
-                             [NSValue valueWithUIEdgeInsets:padding],
-                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    UIEdgeInsets prevPadding = self.padding;
+    if (!UIEdgeInsetsEqualToEdgeInsets(prevPadding, padding)) {
+        objc_setAssociatedObject(self,
+                                 &paddingKey,
+                                 [NSValue valueWithUIEdgeInsets:padding],
+                                 OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        [self requestLayout];
+    }
 }
 
 /**

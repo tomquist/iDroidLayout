@@ -10,6 +10,9 @@
 #import "UIColor+IDL_ColorParser.h"
 #import "UIImage+IDL_FromColor.h"
 #import "IDLResourceValueSet.h"
+#import "IDLBitmapDrawable.h"
+#import "IDLColorDrawable.h"
+#import "UIImage+IDLNinePatch.h"
 
 typedef enum IDLResourceType {
     IDLResourceTypeUnknown,
@@ -292,38 +295,7 @@ static IDLResourceManager *currentResourceManager;
             ret = identifier.cachedObject;
         } else if (identifier != nil) {
             NSBundle *bundle = [self resolveBundleForIdentifier:identifier];
-            NSString *extension = [identifier.identifier pathExtension];
-            if ([extension length] == 0) {
-                extension = @"png";
-            }
-            NSString *fileName = [identifier.identifier stringByDeletingPathExtension];
-            
-            if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)] && [UIScreen mainScreen].scale >= 2.f) {
-                NSString *retinaFileName = [fileName stringByAppendingString:@"@2x"];
-                NSURL *retinaImageURL = [bundle URLForResource:retinaFileName withExtension:extension];
-                if (retinaImageURL != nil) {
-                    UIImage *nonScaledImage = [[UIImage alloc] initWithContentsOfFile:[retinaImageURL path]];
-                    UIImage *retinaImage = nil;
-                    if (nonScaledImage != nil) {
-                        if (nonScaledImage.scale >= 2.f) {
-                            retinaImage = [nonScaledImage retain];
-                        } else {
-                            retinaImage = [[UIImage alloc] initWithCGImage:nonScaledImage.CGImage scale:2.f orientation:nonScaledImage.imageOrientation];
-                        }
-                        [nonScaledImage release];
-                    }
-                    if (retinaImage != nil) {
-                        ret = [retinaImage autorelease];
-                    }
-                }
-            }
-            
-            if (ret == nil) {
-                NSURL *imageURL = [bundle URLForResource:fileName withExtension:extension];
-                if (imageURL != nil) {
-                    ret = [UIImage imageWithContentsOfFile:imageURL.path];
-                }
-            }
+            ret = [UIImage idl_imageWithName:identifier.identifier fromBundle:bundle];
         }
         if (withCaching && ret != nil) {
             identifier.cachedObject = ret;
@@ -421,6 +393,54 @@ static IDLResourceManager *currentResourceManager;
     }
     
     return drawableStateList;
+}
+
+- (IDLDrawable *)drawableForIdentifier:(NSString *)identifierString {
+    IDLDrawable *ret = nil;
+    IDLResourceIdentifier *identifier = [self resourceIdentifierForString:identifierString];
+    if (identifier.type == IDLResourceTypeDrawable && identifier.cachedObject != nil && ([identifier.cachedObject isKindOfClass:[IDLDrawable class]] || [identifier.cachedObject isKindOfClass:[UIImage class]])) {
+        if ([identifier.cachedObject isKindOfClass:[IDLDrawable class]]) {
+            ret = identifier.cachedObject;
+        } else if ([identifier.cachedObject isKindOfClass:[UIImage class]]) {
+            ret = [[[IDLBitmapDrawable alloc] initWithImage:identifier.cachedObject] autorelease];
+        }
+    } else if (identifier.type == IDLResourceTypeDrawable) {
+        NSBundle *bundle = [self resolveBundleForIdentifier:identifier];
+        NSString *extension = [identifier.identifier pathExtension];
+        if ([extension length] == 0) {
+            extension = @"xml";
+        }
+        NSURL *url = [bundle URLForResource:[identifier.identifier stringByDeletingPathExtension] withExtension:extension];
+        if (url != nil) {
+            ret = [IDLDrawable createFromXMLURL:url];
+        } else {
+            UIImage *image = [self imageForIdentifier:identifierString];
+            if (image != nil) {
+                ret = [[[IDLBitmapDrawable alloc] initWithImage:image] autorelease];
+            }
+        }
+        if (ret != nil) {
+            identifier.cachedObject = ret;
+        }
+    } else if (identifier.type == IDLResourceTypeColor) {
+        IDLColorStateList *colorStateList = [self colorStateListForIdentifier:identifierString];
+        if (colorStateList != nil) {
+            ret = [colorStateList convertToDrawable];
+        }
+    }
+    if (ret == nil) {
+        UIImage *image = [self imageForIdentifier:identifierString];
+        if (image != nil) {
+            ret = [[[IDLBitmapDrawable alloc] initWithImage:image] autorelease];
+        } else {
+            UIColor *color = [UIColor colorFromIDLColorString:identifierString];
+            if (color != nil) {
+                ret = [[[IDLColorDrawable alloc] initWithColor:color] autorelease];
+            }
+        }
+    }
+    
+    return ret;
 }
 
 - (NSString *)valueSetIdentifierForIdentifier:(IDLResourceIdentifier *)identifier {

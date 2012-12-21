@@ -16,12 +16,12 @@
 @implementation UIButton (Layout)
 
 - (void)setupFromAttributes:(NSDictionary *)attrs {
-    NSString *backgroundString = [attrs objectForKey:@"background"];
+    /*NSString *backgroundString = [attrs objectForKey:@"background"];
     if (backgroundString != nil) {
         NSMutableDictionary *mutableAttrs = [NSMutableDictionary dictionaryWithDictionary:attrs];
         [mutableAttrs removeObjectForKey:@"background"];
         attrs = mutableAttrs;
-    }
+    }*/
     
     [super setupFromAttributes:attrs];
     NSString *text = [attrs objectForKey:@"text"];
@@ -39,10 +39,27 @@
                 IDLColorStateItem *item = [colorStateList.items objectAtIndex:i];
                 [self setTitleColor:item.color forState:item.controlState];
             }
+        } else {
+            UIColor *color = [UIColor colorFromIDLColorString:textColor];
+            if (color != nil) {
+                [self setTitleColor:color forState:UIControlStateNormal];
+            }
         }
     }
     
-    if ([backgroundString length] > 0) {
+    NSString *fontName = [attrs objectForKey:@"font"];
+    NSString *textSize = [attrs objectForKey:@"textSize"];
+    if (fontName != nil) {
+        CGFloat size = self.titleLabel.font.pointSize;
+        if (textSize != nil) size = [textSize floatValue];
+        self.titleLabel.font = [UIFont fontWithName:fontName size:size];
+    } else if (textSize != nil) {
+        CGFloat size = [textSize floatValue];
+        self.titleLabel.font = [UIFont systemFontOfSize:size];
+    }
+
+    
+    /*if ([backgroundString length] > 0) {
         IDLDrawableStateList *drawableStateList = [[IDLResourceManager currentResourceManager] drawableStateListForIdentifier:backgroundString];
         if (drawableStateList != nil) {
             for (NSInteger i=[drawableStateList.items count]-1; i>=0; i--) {
@@ -56,7 +73,7 @@
                 [self setBackgroundImage:image forState:UIControlStateNormal];
             }
         }
-    }
+    }*/
     
     NSString *imageString = [attrs objectForKey:@"image"];
     if ([imageString length] > 0) {

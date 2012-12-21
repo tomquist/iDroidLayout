@@ -10,6 +10,7 @@
 #import "IDLColorStateList.h"
 #import "IDLDrawableStateList.h"
 #import "IDLStyle.h"
+#import "IDLDrawable.h"
 
 @interface IDLResourceManager : NSObject
 
@@ -21,6 +22,7 @@
 - (UIImage *)imageForIdentifier:(NSString *)identifierString withCaching:(BOOL)withCaching;
 - (UIImage *)imageForIdentifier:(NSString *)identifierString;
 - (IDLDrawableStateList *)drawableStateListForIdentifier:(NSString *)identifierString;
+- (IDLDrawable *)drawableForIdentifier:(NSString *)identifier;
 - (UIColor *)colorForIdentifier:(NSString *)identifierString;
 - (IDLColorStateList *)colorStateListForIdentifier:(NSString *)identifierString;
 - (IDLStyle *)styleForIdentifier:(NSString *)identifierString;

@@ -13,6 +13,8 @@
 #import "UIColor+IDL_ColorParser.h"
 #import "IDLColorStateItem+IDL_Internal.h"
 #import "IDLResourceStateList+IDL_Internal.h"
+#import "IDLStateListDrawable.h"
+#import "IDLColorDrawable.h"
 
 @interface IDLColorStateList ()
 
@@ -64,6 +66,16 @@
 
 - (UIColor *)colorForControlState:(UIControlState)controlState {
     return [self colorForControlState:controlState defaultColor:nil];
+}
+
+- (IDLDrawable *)convertToDrawable {
+    IDLStateListDrawable *drawable = [[[IDLStateListDrawable alloc] init] autorelease];
+    for (IDLColorStateItem *item in self.items) {
+        IDLColorDrawable *colorDrawable = [[IDLColorDrawable alloc] initWithColor:item.color];
+        [drawable addDrawable:colorDrawable forState:item.controlState];
+        [colorDrawable release];
+    }
+    return drawable;
 }
 
 @end

@@ -9,6 +9,7 @@
 // Core
 #import "UIView+IDL_Layout.h"
 #import "UIView+IDL_ViewGroup.h"
+#import "UIView+IDLDrawable.h"
 #import "IDLViewGroup.h"
 
 // Layout
@@ -18,6 +19,14 @@
 #import "IDLTextView.h"
 #import "UILabel+IDL_View.h"
 #import "UIControl+IDL_View.h"
+
+// Drawable
+#import "IDLDrawable.h"
+#import "IDLBitmapDrawable.h"
+#import "IDLColorDrawable.h"
+#import "IDLStateListDrawable.h"
+#import "IDLLayerDrawable.h"
+#import "IDLInsetDrawable.h"
 
 // Utils
 #import "IDLLayoutInflater.h"

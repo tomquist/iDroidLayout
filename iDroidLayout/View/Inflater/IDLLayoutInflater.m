@@ -13,6 +13,7 @@
 #import "IDLLayoutParams.h"
 #import "IDLBaseViewFactory.h"
 #import "IDLResourceManager.h"
+#import "TBXML+IDL.h"
 
 #define TAG_MERGE @"merge"
 #define TAG_INCLUDE @"include"
@@ -23,19 +24,7 @@
 @synthesize viewFactory = _viewFactory;
 
 + (NSMutableDictionary *)attributesFromXMLElement:(TBXMLElement *)element reuseDictionary:(NSMutableDictionary *)dict {
-    if (dict == nil) {
-        dict = [NSMutableDictionary dictionaryWithCapacity:20];
-    } else {
-        [dict removeAllObjects];
-    }
-    [TBXML iterateAttributesOfElement:element withBlock:^(TBXMLAttribute *attribute, NSString *attributeName, NSString *attributeValue) {
-        NSRange prefixRange = [attributeName rangeOfString:@":"];
-        if (prefixRange.location != NSNotFound) {
-            attributeName = [attributeName substringFromIndex:(prefixRange.location+1)];
-        }
-        [dict setObject:attributeValue forKey:attributeName];
-    }];
-    
+    dict = [TBXML attributesFromXMLElement:element reuseDictionary:dict];
     // Apply style
     NSString *styleAttribute = [dict objectForKey:@"style"];
     if ([styleAttribute length] > 0) {
@@ -48,7 +37,7 @@
                 }
             }
         }
-        [dict removeObjectForKey:styleAttribute];
+        [dict removeObjectForKey:@"style"];
     }
     return dict;
 }

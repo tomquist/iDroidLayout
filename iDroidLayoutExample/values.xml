@@ -12,6 +12,11 @@
         <item name="padding">20</item>
     </style>
     
+    <style name="button_remote">
+        <item name="textColor">#000</item>
+        <item name="font">Arial-BoldMT</item>
+    </style/>
+    
     <string name="username_label">Username:</string>
     <string name="password_label">Password:</string>
     <string name="formular_hint">Also try rotating your device</string>
