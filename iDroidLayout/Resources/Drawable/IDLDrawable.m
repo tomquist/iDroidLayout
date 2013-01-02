@@ -14,31 +14,44 @@
 #import "IDLInsetDrawable.h"
 #import "IDLBitmapDrawable.h"
 #import "IDLNinePatchDrawable.h"
+#import "IDLGradientDrawable.h"
+#import "IDLDrawable+IDL_Internal.h"
+
+@implementation IDLDrawableConstantState
+
+@end
+
+@interface IDLDrawable ()
+
+@property (nonatomic, assign) BOOL stateInitialized;
+
+@end
 
 @implementation IDLDrawable
 
 @synthesize state = _state;
 
-- (void)dealloc {
-    [self removeObserver:self forKeyPath:@"state"];
-    [super dealloc];
+- (id)initWithState:(IDLDrawableConstantState *)state {
+    self = [super init];
+    if (self) {
+
+    }
+    return self;
 }
 
 - (id)init {
     self = [super init];
     if (self) {
-        [self addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionNew context:nil];
+        
     }
     return self;
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if (object == self && [keyPath isEqualToString:@"state"]) {
-        [self onStateChanged];
-    }
+- (void)onStateChangeToState:(UIControlState)state {
+    
 }
 
-- (void)onStateChanged {
+- (void)onBoundsChangeToRect:(CGRect)bounds {
     
 }
 
@@ -57,8 +70,36 @@
     
 }
 
+- (void)drawInContext:(CGContextRef)context {
+#warning This is just a wrapper around to old lazy/slow way of drawing. Do proper drawing in IDLBitmapDrawable and IDLGradientDrawable
+    
+    CALayer *layer = [[CALayer alloc] init];
+    layer.frame = self.bounds;
+    [self drawOnLayer:layer];
+    [layer renderInContext:context];
+    [layer release];
+    
+    OUTLINE_RECT(context, self.bounds);
+}
+
+#if OUTLINE_DRAWABLE
+- (void)outlineRect:(CGRect)rect inContext:(CGContextRef)context {
+    CGContextSaveGState(context);
+    CGContextSetStrokeColorWithColor(context, [[UIColor redColor] CGColor]);
+    CGContextSetLineWidth(context, 1);
+/*    CGFloat lengths[] = {5.f};
+    CGContextSetLineDash(context, 1.f, lengths, 1);*/
+    CGContextStrokeRect(context, rect);
+    CGContextRestoreGState(context);
+}
+#endif
+
 - (BOOL)isStateful {
     return FALSE;
+}
+
+- (void)invalidateSelf {
+    [self.delegate drawableDidInvalidate:self];
 }
 
 - (UIImage *)renderToImageOfSize:(CGSize)imageSize {
@@ -85,23 +126,46 @@
     return UIEdgeInsetsZero;
 }
 
+- (void)setBounds:(CGRect)bounds {
+    if (!CGRectEqualToRect(_bounds, bounds)) {
+        _bounds = bounds;
+        [self onBoundsChangeToRect:bounds];
+    }
+}
+
+- (void)setState:(UIControlState)state {
+    if (_state != state || !_stateInitialized) {
+        _stateInitialized = TRUE;
+        _state = state;
+        [self onStateChangeToState:state];
+    }
+}
+
 + (IDLDrawable *)createFromXMLElement:(TBXMLElement *)element {
     IDLDrawable *drawable = nil;
     NSString *tagName = [TBXML elementName:element];
+    Class drawableClass = NULL;
     if ([tagName isEqualToString:@"selector"]) {
-        drawable = [[IDLStateListDrawable alloc] init];
+        drawableClass = [IDLStateListDrawable class];
     } else if ([tagName isEqualToString:@"layer-list"]) {
-        drawable = [[IDLLayerDrawable alloc] init];
+        drawableClass = [IDLLayerDrawable class];
     } else if ([tagName isEqualToString:@"color"]) {
-        drawable = [[IDLColorDrawable alloc] init];
+        drawableClass = [IDLColorDrawable class];
     } else if ([tagName isEqualToString:@"bitmap"]) {
-        drawable = [[IDLBitmapDrawable alloc] init];
+        drawableClass = [IDLBitmapDrawable class];
     } else if ([tagName isEqualToString:@"inset"]) {
-        drawable = [[IDLInsetDrawable alloc] init];
+        drawableClass = [IDLInsetDrawable class];
     } else if ([tagName isEqualToString:@"nine-patch"]) {
-        drawable = [[IDLNinePatchDrawable alloc] init];
+        drawableClass = [IDLNinePatchDrawable class];
+    } else if ([tagName isEqualToString:@"shape"]) {
+        drawableClass = [IDLGradientDrawable class];
+    } else {
+        drawableClass = NSClassFromString(tagName);
     }
-    [drawable inflateWithElement:element];
+    if (drawableClass != NULL && [drawableClass isSubclassOfClass:[IDLDrawable class]]) {
+        drawable = [[drawableClass alloc] init];
+        [drawable inflateWithElement:element];
+    }
     return [drawable autorelease];
 }
 
@@ -126,5 +190,18 @@
     return drawable;
 }
 
+- (IDLDrawableConstantState *)constantState {
+    [self doesNotRecognizeSelector:_cmd];
+    return nil;
+}
+
+- (id)copyWithZone:(NSZone *)zone {
+    IDLDrawableConstantState *state = self.constantState;
+    if (state != nil) {
+        return [[[self class] allocWithZone:zone] initWithState:state];
+    } else {
+        return nil;
+    }
+}
 
 @end

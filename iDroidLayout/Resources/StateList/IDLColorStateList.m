@@ -69,12 +69,7 @@
 }
 
 - (IDLDrawable *)convertToDrawable {
-    IDLStateListDrawable *drawable = [[[IDLStateListDrawable alloc] init] autorelease];
-    for (IDLColorStateItem *item in self.items) {
-        IDLColorDrawable *colorDrawable = [[IDLColorDrawable alloc] initWithColor:item.color];
-        [drawable addDrawable:colorDrawable forState:item.controlState];
-        [colorDrawable release];
-    }
+    IDLStateListDrawable *drawable = [[[IDLStateListDrawable alloc] initWithColorStateListe:self] autorelease];
     return drawable;
 }
 

@@ -11,9 +11,10 @@
 
 @interface IDLBitmapDrawable : IDLDrawable
 
-@property (nonatomic, readonly) UIImage *image;
-@property (nonatomic, assign) IDLViewContentGravity gravity;
-
 - (id)initWithImage:(UIImage *)image;
+
+@end
+
+@interface IDLBitmapDrawableConstantState : IDLDrawableConstantState
 
 @end

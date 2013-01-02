@@ -13,3 +13,7 @@
 - (id)initWithColor:(UIColor *)color;
 
 @end
+
+@interface IDLColorDrawableConstantState : IDLDrawableConstantState
+
+@end

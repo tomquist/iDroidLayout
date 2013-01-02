@@ -19,6 +19,8 @@
 
 #pragma mark -
 
+NSString *const IDLViewAttributeActionTarget = @"__actionTarget";
+
 IDLLayoutMeasureSpec IDLLayoutMeasureSpecMake(CGFloat size, IDLLayoutMeasureSpecMode mode) {
     IDLLayoutMeasureSpec measureSpec;
     measureSpec.size = size;
@@ -210,6 +212,9 @@ static char visibilityKey;
                              &identifierKey,
                              identifier,
                              OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    if (NSClassFromString(@"PXEngine") != NULL) {
+        [self setValue:identifier forKey:@"styleId"];
+    }
 }
 
 - (NSString *)identifier {

@@ -27,6 +27,7 @@
     </LinearLayout>
     <UIButton
         id="button"
+        onClick="didPressButton"
         type="roundedRect"
         layout_width="100"
         layout_height="30"

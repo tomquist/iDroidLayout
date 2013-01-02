@@ -12,45 +12,95 @@
 #import "IDLResourceManager.h"
 #import "UIImage+IDLNinePatch.h"
 
+@interface IDLBitmapDrawableConstantState ()
+
+@property (nonatomic, retain) UIImage *image;
+@property (nonatomic, assign) IDLViewContentGravity gravity;
+
+- (id)initWithState:(IDLBitmapDrawableConstantState *)state;
+
+@end
+
+@implementation IDLBitmapDrawableConstantState
+
+- (void)dealloc {
+    self.image = nil;
+    [super dealloc];
+}
+
+- (id)initWithState:(IDLBitmapDrawableConstantState *)state {
+    self = [super init];
+    if (self) {
+        if (state != nil) {
+            self.image = state.image;
+            self.gravity = state.gravity;
+        } else {
+            self.gravity = IDLViewContentGravityFill;
+        }
+    }
+    return self;
+}
+
+
+@end
+
 @interface IDLBitmapDrawable ()
 
-@property (nonatomic, retain) UIImage *internalImage;
+@property (nonatomic, retain) IDLBitmapDrawableConstantState *internalConstantState;
 
 @end
 
 @implementation IDLBitmapDrawable
 
 - (void)dealloc {
-    self.internalImage = nil;
+    self.internalConstantState = nil;
     [super dealloc];
 }
 
 - (id)initWithImage:(UIImage *)image {
     self = [super init];
     if (self) {
-        self.internalImage = image;
-        self.gravity = IDLViewContentGravityFill;
+        IDLBitmapDrawableConstantState *state = [[IDLBitmapDrawableConstantState alloc] initWithState:nil];
+        state.image = image;
+        self.internalConstantState = state;
+        [state release];
     }
     return self;
 }
 
+- (id)initWithState:(IDLBitmapDrawableConstantState *)state {
+    self = [super init];
+    if (self) {
+        IDLBitmapDrawableConstantState *s = [[IDLBitmapDrawableConstantState alloc] initWithState:state];
+        self.internalConstantState = s;
+        [s release];
+    }
+    return self;
+}
+
+- (id)init {
+    return [self initWithState:nil];
+}
+
 - (UIImage *)image {
-    return self.internalImage;
+    return self.internalConstantState.image;
 }
 
 -(void)drawOnLayer:(CALayer *)layer {
     CGRect containerRect = layer.bounds;
     CGRect dstRect = CGRectZero;
-    [IDLGravity applyGravity:self.gravity width:self.image.size.width height:self.image.size.height containerRect:&containerRect outRect:&dstRect];
+    UIImage *image = self.internalConstantState.image;
+    
+    [IDLGravity applyGravity:self.internalConstantState.gravity width:image.size.width height:image.size.height containerRect:&containerRect outRect:&dstRect];
 
     CGRect contentsCenter = CGRectMake(0, 0, 1, 1);
-    CGSize size = self.image.size;
+    CGSize size = image.size;
     UIEdgeInsets capInsets = UIEdgeInsetsZero;
-    if ([self.image respondsToSelector:@selector(capInsets)]) {
-        capInsets = self.image.capInsets;
-    } else if ([self.image respondsToSelector:@selector(leftCapWidth)]) {
-        capInsets.left = [self.image leftCapWidth];
-        capInsets.top = [self.image topCapHeight];
+    if ([image respondsToSelector:@selector(capInsets)]) {
+        capInsets = image.capInsets;
+    } else if ([image respondsToSelector:@selector(leftCapWidth)]) {
+        capInsets.left = [image leftCapWidth];
+        capInsets.top = [image topCapHeight];
         if (capInsets.left > 0) {
             capInsets.right = size.width - capInsets.left - 1;
         }
@@ -63,20 +113,20 @@
     }
     if (CGRectEqualToRect(containerRect, dstRect)) {
         layer.contentsCenter = contentsCenter;
-        layer.contents = (id)self.image.CGImage;
+        layer.contents = (id)image.CGImage;
         
     } else {
         CALayer *sublayer = [[CALayer alloc] init];
         sublayer.frame = dstRect;
         sublayer.contentsCenter = contentsCenter;
-        sublayer.contents = (id)self.image.CGImage;
+        sublayer.contents = (id)image.CGImage;
         [layer addSublayer:sublayer];
         [sublayer release];
     }
 }
 
 - (CGSize)intrinsicSize {
-    return self.image.size;
+    return self.internalConstantState.image.size;
 }
 
 - (void)inflateWithElement:(TBXMLElement *)element {
@@ -86,23 +136,27 @@
     if (bitmapIdentifier != nil) {
         IDLResourceManager *resMgr = [IDLResourceManager currentResourceManager];
         UIImage *image = [resMgr imageForIdentifier:bitmapIdentifier];
-        self.internalImage = image;
+        self.internalConstantState.image = image;
     } else {
         NSLog(@"<bitmap> requires a valid src attribute");
     }
     
     NSString *gravityValue = [dictionary objectForKey:@"gravity"];
     if (gravityValue != nil) {
-        self.gravity = [IDLGravity gravityFromAttribute:gravityValue];
+        self.internalConstantState.gravity = [IDLGravity gravityFromAttribute:gravityValue];
     }
 }
 
 - (BOOL)hasPadding {
-    return self.image.hasNinePatchPaddings;
+    return self.internalConstantState.image.hasNinePatchPaddings;
 }
 
 - (UIEdgeInsets)padding {
-    return self.image.ninePatchPaddings;
+    return self.internalConstantState.image.ninePatchPaddings;
+}
+
+- (IDLDrawableConstantState *)constantState {
+    return self.internalConstantState;
 }
 
 @end

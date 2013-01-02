@@ -10,11 +10,36 @@
 
 @interface IDLDrawableContainer (IDL_Internal)
 
-@property (nonatomic, readonly) NSArray *drawables;
 @property (nonatomic, readonly) NSInteger currentIndex;
 
+- (id)initWithState:(IDLDrawableContainerConstantState *)state;
 - (BOOL)selectDrawableAtIndex:(NSInteger)index;
+
+@end
+
+@interface IDLDrawableContainerConstantState (IDL_Internal)
+
+@property (nonatomic, assign) IDLDrawableContainer *owner;
+
+// Drawables
+@property (nonatomic, retain) NSMutableArray *drawables;
+
+// Dimension
+@property (nonatomic, assign) CGSize constantIntrinsicSize;
+@property (nonatomic, assign) CGSize constantMinimumSize;
+@property (nonatomic, assign, getter = isConstantSizeComputed) BOOL constantSizeComputed;
+@property (nonatomic, assign, getter = isConstantSize) BOOL constantSize;
+
+// Statful
+@property (nonatomic, assign) BOOL haveStateful;
+@property (nonatomic, assign, getter = isStateful) BOOL stateful;
+
+// Padding
+@property (nonatomic, assign, getter = isPaddingComputed) BOOL paddingComputed;
+@property (nonatomic, assign) UIEdgeInsets padding;
+@property (nonatomic, assign) BOOL hasPadding;
+
+- (id)initWithState:(IDLDrawableContainerConstantState *)state owner:(IDLDrawableContainer *)owner;
 - (void)addChildDrawable:(IDLDrawable *)drawable;
-- (void)invalidate;
 
 @end

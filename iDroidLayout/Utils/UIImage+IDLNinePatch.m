@@ -100,36 +100,54 @@ static char ninePatchPaddingsKey;
     
     // We allocate one single buffer containing all the data:
     // | leftCapInsetLine | topCapInsetLine | rightPaddingLine | bottomPaddingLine |
-    long totalBufferSize = (verticalBufferSize + horizontalBufferSize) * 2;
-    unsigned char *buffer = calloc(totalBufferSize, 1);
-    unsigned char *leftBuffer = buffer;
-    unsigned char *topBuffer = leftBuffer + verticalBufferSize;
-    unsigned char *rightBuffer = topBuffer + horizontalBufferSize;
-    unsigned char *bottomBuffer = rightBuffer + verticalBufferSize;
-    
-    // First write the pixel lines to the buffer...
+    long totalBufferSize = 0;
     if (capInsets != NULL) {
-        [self writePixelMaskForRect:leftRect toBuffer:leftBuffer];
-        [self writePixelMaskForRect:topRect toBuffer:topBuffer];
+        totalBufferSize += verticalBufferSize + horizontalBufferSize;
     }
-    if (padding != NULL) {
-        [self writePixelMaskForRect:rightRect toBuffer:rightBuffer];
-        [self writePixelMaskForRect:bottomRect toBuffer:bottomBuffer];
+    if  (padding != NULL) {
+        totalBufferSize += verticalBufferSize + horizontalBufferSize;
     }
-    
-    // ...then find start and end pixel of the nine patch indicator lines
-    if (capInsets != NULL) {
-        [self idl_startAndEndFromBuffer:leftBuffer length:verticalBufferSize startRef:&(*capInsets).top endRef:&(*capInsets).bottom];
-        [self idl_startAndEndFromBuffer:topBuffer length:horizontalBufferSize startRef:&(*capInsets).left endRef:&(*capInsets).right];
-    }
-    if (padding != NULL) {
-        BOOL paddingIndicator = [self idl_startAndEndFromBuffer:rightBuffer length:verticalBufferSize startRef:&(*padding).top endRef:&(*padding).bottom];
-        paddingIndicator |= [self idl_startAndEndFromBuffer:bottomBuffer length:horizontalBufferSize startRef:&(*padding).left endRef:&(*padding).right];
-        if (hasPadding != NULL) {
-            (*hasPadding)= paddingIndicator;
+    if (totalBufferSize > 0) {
+        unsigned char *buffer = calloc(totalBufferSize, 1);
+        unsigned char *leftBuffer;
+        unsigned char *topBuffer;
+        unsigned char *rightBuffer;
+        unsigned char *bottomBuffer;
+        
+        if (capInsets != NULL) {
+            leftBuffer = buffer;
+            topBuffer = leftBuffer + verticalBufferSize;
+            rightBuffer = topBuffer + horizontalBufferSize;
+            bottomBuffer = rightBuffer + verticalBufferSize;
+        } else {
+            rightBuffer = buffer;
+            bottomBuffer = rightBuffer + verticalBufferSize;
         }
+        
+        // First write the pixel lines to the buffer...
+        if (capInsets != NULL) {
+            [self writePixelMaskForRect:leftRect toBuffer:leftBuffer];
+            [self writePixelMaskForRect:topRect toBuffer:topBuffer];
+        }
+        if (padding != NULL) {
+            [self writePixelMaskForRect:rightRect toBuffer:rightBuffer];
+            [self writePixelMaskForRect:bottomRect toBuffer:bottomBuffer];
+        }
+        
+        // ...then find start and end pixel of the nine patch indicator lines
+        if (capInsets != NULL) {
+            [self idl_startAndEndFromBuffer:leftBuffer length:verticalBufferSize startRef:&(*capInsets).top endRef:&(*capInsets).bottom];
+            [self idl_startAndEndFromBuffer:topBuffer length:horizontalBufferSize startRef:&(*capInsets).left endRef:&(*capInsets).right];
+        }
+        if (padding != NULL) {
+            BOOL paddingIndicator = [self idl_startAndEndFromBuffer:rightBuffer length:verticalBufferSize startRef:&(*padding).top endRef:&(*padding).bottom];
+            paddingIndicator |= [self idl_startAndEndFromBuffer:bottomBuffer length:horizontalBufferSize startRef:&(*padding).left endRef:&(*padding).right];
+            if (hasPadding != NULL) {
+                (*hasPadding)= paddingIndicator;
+            }
+        }
+        free(buffer);
     }
-    free(leftBuffer);
 }
 
 + (UIImage *)idl_imageWithName:(NSString *)name fromBundle:(NSBundle *)bundle {

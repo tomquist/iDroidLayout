@@ -10,7 +10,8 @@
 
 @interface IDLInsetDrawable : IDLDrawable
 
-@property (nonatomic, readonly) UIEdgeInsets insets;
-@property (nonatomic, readonly) IDLDrawable *drawable;
+@end
+
+@interface IDLInsetDrawableConstantState : IDLDrawableConstantState
 
 @end

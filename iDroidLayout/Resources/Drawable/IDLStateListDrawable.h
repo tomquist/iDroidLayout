@@ -7,9 +7,14 @@
 //
 
 #import "IDLDrawableContainer.h"
+#import "IDLColorStateList.h"
 
 @interface IDLStateListDrawable : IDLDrawableContainer
 
-- (void)addDrawable:(IDLDrawable *)drawable forState:(UIControlState)state;
+- (id)initWithColorStateListe:(IDLColorStateList *)colorStateList;
+
+@end
+
+@interface IDLStateListDrawableConstantState : IDLDrawableContainerConstantState
 
 @end

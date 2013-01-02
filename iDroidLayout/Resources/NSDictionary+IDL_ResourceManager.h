@@ -11,7 +11,10 @@
 
 @interface NSDictionary (IDL_ResourceManager)
 
+- (NSString *)stringFromIDLValueForKey:(NSString *)key;
 - (UIColor *)colorFromIDLValueForKey:(NSString *)key;
 - (IDLColorStateList *)colorStateListFromIDLValueForKey:(NSString *)key;
+- (CGFloat)dimensionFromIDLValueForKey:(NSString *)key;
+- (CGFloat)dimensionFromIDLValueForKey:(NSString *)key defaultValue:(CGFloat)defaultValue;
 
 @end

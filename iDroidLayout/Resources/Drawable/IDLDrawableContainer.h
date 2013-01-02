@@ -8,8 +8,10 @@
 
 #import "IDLDrawable.h"
 
-@interface IDLDrawableContainer : IDLDrawable
+@interface IDLDrawableContainer : IDLDrawable <IDLDrawableDelegate>
 
-@property (nonatomic, assign, getter = isConstantSize) BOOL constantSize;
+@end
+
+@interface IDLDrawableContainerConstantState : IDLDrawableConstantState
 
 @end

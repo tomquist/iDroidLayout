@@ -7,70 +7,71 @@
 //
 
 #import "IDLDrawableContainer.h"
+#import "IDLDrawableContainer+IDL_Internal.h"
+#import "IDLDrawable+IDL_Internal.h"
 
-@interface IDLDrawableContainer ()
+@interface IDLDrawableContainerConstantState ()
 
-@property (nonatomic, retain) IDLDrawable *currentDrawable;
+@property (nonatomic, assign) IDLDrawableContainer *owner;
+
+// Drawables
 @property (nonatomic, retain) NSMutableArray *drawables;
-@property (nonatomic, assign) NSInteger currentIndex;
+
+// Dimension
 @property (nonatomic, assign) CGSize constantIntrinsicSize;
 @property (nonatomic, assign) CGSize constantMinimumSize;
 @property (nonatomic, assign, getter = isConstantSizeComputed) BOOL constantSizeComputed;
+@property (nonatomic, assign, getter = isConstantSize) BOOL constantSize;
+
+// Statful
 @property (nonatomic, assign) BOOL haveStateful;
-@property (nonatomic, assign) BOOL internalStateful;
+@property (nonatomic, assign, getter = isStateful) BOOL stateful;
+
+// Padding
 @property (nonatomic, assign, getter = isPaddingComputed) BOOL paddingComputed;
-@property (nonatomic, assign) UIEdgeInsets computedPadding;
-@property (nonatomic, assign) BOOL internalHasPadding;
+@property (nonatomic, assign) UIEdgeInsets padding;
+@property (nonatomic, assign) BOOL hasPadding;
+
 @end
 
-@implementation IDLDrawableContainer
+@implementation IDLDrawableContainerConstantState
 
-@synthesize drawables = _drawables;
-@synthesize currentIndex = _currentIndex;
-@synthesize currentDrawable = _currentDrawable;
-@synthesize constantSize = _constantSize;
-
-
-- (void)dealloc {
-    self.drawables = nil;
-    [super dealloc];
-}
-
-- (id)init {
+- (id)initWithState:(IDLDrawableContainerConstantState *)state owner:(IDLDrawableContainer *)owner {
     self = [super init];
     if (self) {
-        NSMutableArray *drawables = [[NSMutableArray alloc] init];
-        self.drawables = drawables;
-        self.currentIndex = -1;
-        [drawables release];
+        self.owner = owner;
+        if (state != nil) {
+            NSMutableArray *drawables = [[NSMutableArray alloc] initWithCapacity:[state.drawables count]];
+            for (IDLDrawable *drawable in state.drawables) {
+                IDLDrawable *copiedDrawable = [drawable copy];
+                [drawables addObject:copiedDrawable];
+                [copiedDrawable release];
+            }
+            self.drawables = state.drawables;
+            self.constantIntrinsicSize = state.constantIntrinsicSize;
+            self.constantMinimumSize = state.constantMinimumSize;
+            self.constantSizeComputed = state.constantSizeComputed;
+            self.haveStateful = state.haveStateful;
+            self.stateful = state.stateful;
+            self.paddingComputed = state.paddingComputed;
+            self.padding = state.padding;
+            self.hasPadding = state.hasPadding;
+        } else {
+            NSMutableArray *drawables = [[NSMutableArray alloc] initWithCapacity:10];
+            self.drawables = drawables;
+            [drawables release];
+        }
     }
     return self;
 }
 
 - (void)addChildDrawable:(IDLDrawable *)drawable {
     [self.drawables addObject:drawable];
-    drawable.state = self.state;
-    [self invalidate];
-}
-
-- (void)drawOnLayer:(CALayer *)layer {
-    [self.currentDrawable drawOnLayer:layer];
-}
-
-- (BOOL)selectDrawableAtIndex:(NSInteger)index {
-    BOOL ret = TRUE;
-    if (index == self.currentIndex) {
-        ret = FALSE;
-    } else if (index >= 0 && index < [self.drawables count]) {
-        IDLDrawable *drawable = [self.drawables objectAtIndex:index];
-        self.currentDrawable = drawable;
-        self.currentIndex = index;
-        self.currentDrawable.state = self.state;
-    } else {
-        self.currentDrawable = nil;
-        self.currentIndex = -1;
-    }
-    return ret;
+    drawable.delegate = self.owner;
+    
+    self.haveStateful = FALSE;
+    self.constantSizeComputed = FALSE;
+    self.paddingComputed = FALSE;
 }
 
 - (void)computeConstantSize {
@@ -89,46 +90,23 @@
     self.constantSizeComputed = TRUE;
 }
 
-- (CGSize)intrinsicSize {
-    CGSize ret = CGSizeZero;
-    if (self.isConstantSize) {
-        if (!self.isConstantSizeComputed) {
-            [self computeConstantSize];
-        }
-        ret = self.constantIntrinsicSize;
-    } else {
-        ret = self.currentDrawable.intrinsicSize;
+- (CGSize)constantIntrinsicSize {
+    if (!self.isConstantSizeComputed) {
+        [self computeConstantSize];
     }
-    return ret;
+    return _constantIntrinsicSize;
 }
 
-- (CGSize)minimumSize {
-    CGSize ret = CGSizeZero;
-    if (self.isConstantSize) {
-        if (!self.isConstantSizeComputed) {
-            [self computeConstantSize];
-        }
-        ret = self.constantMinimumSize;
-    } else {
-        ret = self.currentDrawable.minimumSize;
+- (CGSize)constantMinimumSize {
+    if (!self.isConstantSizeComputed) {
+        [self computeConstantSize];
     }
-    return ret;
-}
-
-- (void)invalidate {
-    self.haveStateful = FALSE;
-    self.constantSizeComputed = FALSE;
-    self.paddingComputed = FALSE;
-}
-
-- (void)onStateChanged {
-    [super onStateChanged];
-    [self.currentDrawable setState:self.state];
+    return _constantMinimumSize;
 }
 
 - (BOOL)isStateful {
     if (self.haveStateful) {
-        return self.internalStateful;
+        return _stateful;
     }
     BOOL stateful = FALSE;
     for (IDLDrawable *child in self.drawables) {
@@ -137,8 +115,8 @@
             break;
         }
     }
-    self.internalStateful = stateful;
-    self.haveStateful = TRUE;
+    _stateful = stateful;
+    _haveStateful = TRUE;
     return stateful;
 }
 
@@ -155,25 +133,131 @@
             padding.bottom = MAX(padding.bottom, childPadding.bottom);
         }
     }
-    self.computedPadding = padding;
-    self.internalHasPadding = hasPadding;
-    self.paddingComputed = TRUE;
+    _padding = padding;
+    _hasPadding = hasPadding;
+    _paddingComputed = TRUE;
 }
 
 - (UIEdgeInsets)padding {
-    UIEdgeInsets padding = UIEdgeInsetsZero;
     if (!self.isPaddingComputed) {
         [self computePadding];
     }
-    padding = self.computedPadding;
-    return padding;
+    return _padding;
 }
 
 - (BOOL)hasPadding {
     if (!self.isPaddingComputed) {
         [self computePadding];
     }
-    return self.internalHasPadding;
+    return _hasPadding;
+}
+
+@end
+
+@interface IDLDrawableContainer ()
+
+@property (nonatomic, retain) IDLDrawableContainerConstantState *internalConstantState;
+@property (nonatomic, retain) IDLDrawable *currentDrawable;
+@property (nonatomic, assign) NSInteger currentIndex;
+
+@end
+
+@implementation IDLDrawableContainer
+
+@synthesize currentDrawable = _currentDrawable;
+
+- (void)dealloc {
+    self.internalConstantState = nil;
+    self.currentDrawable = nil;
+    [super dealloc];
+}
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        self.currentIndex = -1;
+    }
+    return self;
+}
+
+- (void)drawOnLayer:(CALayer *)layer {
+    [self.currentDrawable drawOnLayer:layer];
+}
+
+- (void)drawInContext:(CGContextRef)context {
+    [self.currentDrawable drawInContext:context];
+}
+
+- (BOOL)selectDrawableAtIndex:(NSInteger)index {
+    BOOL ret = TRUE;
+    if (index == self.currentIndex) {
+        ret = FALSE;
+    } else if (index >= 0 && index < [self.internalConstantState.drawables count]) {
+        IDLDrawable *drawable = [self.internalConstantState.drawables objectAtIndex:index];
+        self.currentDrawable = drawable;
+        self.currentIndex = index;
+        drawable.state = self.state;
+        drawable.bounds = self.bounds;
+    } else {
+        self.currentDrawable = nil;
+        self.currentIndex = -1;
+    }
+    if (ret) [self invalidateSelf];
+    return ret;
+}
+
+- (CGSize)intrinsicSize {
+    CGSize ret = CGSizeZero;
+    if (self.internalConstantState.isConstantSize) {
+        ret = self.internalConstantState.constantIntrinsicSize;
+    } else {
+        ret = self.currentDrawable.intrinsicSize;
+    }
+    return ret;
+}
+
+- (CGSize)minimumSize {
+    CGSize ret = CGSizeZero;
+    if (self.internalConstantState.isConstantSize) {
+        ret = self.internalConstantState.constantMinimumSize;
+    } else {
+        ret = self.currentDrawable.minimumSize;
+    }
+    return ret;
+}
+
+- (void)onStateChangeToState:(UIControlState)state {
+    [super onStateChangeToState:state];
+    [self.currentDrawable setState:self.state];
+}
+
+- (void)onBoundsChangeToRect:(CGRect)bounds {
+    self.currentDrawable.bounds = bounds;
+}
+
+- (BOOL)isStateful {
+    return self.internalConstantState.isStateful;
+}
+
+- (UIEdgeInsets)padding {
+    return self.internalConstantState.padding;
+}
+
+- (BOOL)hasPadding {
+    return self.internalConstantState.hasPadding;
+}
+
+- (IDLDrawableConstantState *)constantState {
+    return self.internalConstantState;
+}
+
+
+#pragma mark - IDLDrawableDelegate
+
+- (void)drawableDidInvalidate:(IDLDrawable *)drawable {
+    if (drawable == _currentDrawable) {
+        [self.delegate drawableDidInvalidate:self];
+    }
 }
 
 @end

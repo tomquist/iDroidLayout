@@ -9,23 +9,39 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
-@interface IDLDrawable : NSObject
+@class IDLDrawableConstantState;
+@protocol IDLDrawableDelegate;
+
+@interface IDLDrawable : NSObject <NSCopying>
 
 @property (nonatomic, readonly) CGSize minimumSize;
 @property (nonatomic, readonly) CGSize intrinsicSize;
 @property (nonatomic, assign) UIControlState state;
+@property (nonatomic, assign) CGRect bounds;
 @property (nonatomic, readonly) IDLDrawable *currentDrawable;
 @property (nonatomic, readonly, getter = isStateful) BOOL stateful;
 @property (nonatomic, readonly) BOOL hasPadding;
 @property (nonatomic, readonly) UIEdgeInsets padding;
+@property (nonatomic, readonly) IDLDrawableConstantState *constantState;
+
+@property (nonatomic, assign) id<IDLDrawableDelegate> delegate;
 
 - (void)drawOnLayer:(CALayer *)layer;
-
-- (void)onStateChanged;
+- (void)drawInContext:(CGContextRef)context;
 
 - (UIImage *)renderToImageOfSize:(CGSize)imageSize;
 
 + (IDLDrawable *)createFromXMLData:(NSData *)data;
 + (IDLDrawable *)createFromXMLURL:(NSURL *)url;
+
+@end
+
+@interface IDLDrawableConstantState : NSObject
+
+@end
+
+@protocol IDLDrawableDelegate <NSObject>
+@required
+- (void)drawableDidInvalidate:(IDLDrawable *)drawable;
 
 @end

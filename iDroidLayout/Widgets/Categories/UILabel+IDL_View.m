@@ -11,6 +11,8 @@
 #import "UIColor+IDL_ColorParser.h"
 #import "IDLResourceManager.h"
 #import "NSDictionary+IDL_ResourceManager.h"
+#import "UIView+IDLDrawable.h"
+#import "NSObject+IDL_KVOObserver.h"
 
 #include "objc/runtime.h"
 #include "objc/message.h"
@@ -20,13 +22,7 @@
 - (void)setupFromAttributes:(NSDictionary *)attrs {
     [super setupFromAttributes:attrs];
     
-    NSString *text = [attrs objectForKey:@"text"];
-    if ([[IDLResourceManager currentResourceManager] isValidIdentifier:text]) {
-        NSString *textFromResouces = [[IDLResourceManager currentResourceManager] stringForIdentifier:text];
-        self.text = textFromResouces;
-    } else {
-        self.text = text;
-    }
+    self.text = [attrs stringFromIDLValueForKey:@"text"];
     
     self.gravity = [IDLGravity gravityFromAttribute:[attrs objectForKey:@"gravity"]];
     NSString *lines = [attrs objectForKey:@"lines"];
@@ -126,6 +122,22 @@
     [self setMeasuredDimensionWidth:width height:height];
 }
 
+- (void)onBackgroundDrawableChanged {
+    __block id selfRef = self;
+    if (![self idl_hasObserverWithIdentifier:@"uiLabelFrameObserver"]) {
+        [self idl_addObserver:^(NSString *keyPath, id object, NSDictionary *change) {
+            [selfRef onBackgroundDrawableChanged];
+        } withIdentifier:@"uiLabelFrameObserver" forKeyPaths:@[@"frame"] options:NSKeyValueObservingOptionNew];
+    }
+    
+    IDLDrawable *drawable = self.backgroundDrawable;
+    if (drawable != nil && !CGSizeEqualToSize(CGSizeZero, self.bounds.size)) {
+        UIImage *image = [drawable renderToImageOfSize:self.bounds.size];
+        self.backgroundColor = [UIColor colorWithPatternImage:image];
+    } else {
+        self.backgroundColor = nil;
+    }
+}
 
 
 @end

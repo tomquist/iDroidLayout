@@ -23,7 +23,7 @@
 
 @synthesize viewFactory = _viewFactory;
 
-+ (NSMutableDictionary *)attributesFromXMLElement:(TBXMLElement *)element reuseDictionary:(NSMutableDictionary *)dict {
++ (NSMutableDictionary *)attributesFromXMLElement:(TBXMLElement *)element reuseDictionary:(NSMutableDictionary *)dict actionTarget:(id)actionTarget {
     dict = [TBXML attributesFromXMLElement:element reuseDictionary:dict];
     // Apply style
     NSString *styleAttribute = [dict objectForKey:@"style"];
@@ -38,6 +38,11 @@
             }
         }
         [dict removeObjectForKey:@"style"];
+    }
+    if (actionTarget != nil) {
+        [dict setValue:actionTarget forKey:IDLViewAttributeActionTarget];
+    } else {
+        [dict removeObjectForKey:IDLViewAttributeActionTarget];
     }
     return dict;
 }
@@ -92,7 +97,7 @@
                 TBXMLElement *rootElement = xml.rootXMLElement;
                 NSString *elementName = [TBXML elementName:rootElement];
                 
-                NSMutableDictionary *childAttrs = [IDLLayoutInflater attributesFromXMLElement:rootElement reuseDictionary:nil];
+                NSMutableDictionary *childAttrs = [IDLLayoutInflater attributesFromXMLElement:rootElement reuseDictionary:nil actionTarget:self.actionTarget];
                 if ([elementName isEqualToString:TAG_MERGE]) {
                     [self rInflateWithXmlElement:rootElement->firstChild parentView:parentView attributes:childAttrs finishInflate:TRUE];
                 } else {
@@ -143,7 +148,7 @@
 - (void)rInflateWithXmlElement:(TBXMLElement *)element parentView:(UIView *)parentView attributes:(NSMutableDictionary *)attrs finishInflate:(BOOL)finishInflate {
     do {
         NSString *tagName = [TBXML elementName:element];
-        NSMutableDictionary *childAttrs = [IDLLayoutInflater attributesFromXMLElement:element reuseDictionary:attrs];
+        NSMutableDictionary *childAttrs = [IDLLayoutInflater attributesFromXMLElement:element reuseDictionary:attrs actionTarget:self.actionTarget];
         if ([tagName isEqualToString:TAG_INCLUDE]) {
             // Include other resource
             
@@ -179,7 +184,7 @@
     
     TBXMLElement *rootElement = parser.rootXMLElement;
     NSString *elementName = [TBXML elementName:rootElement];
-    NSMutableDictionary *attrs = [IDLLayoutInflater attributesFromXMLElement:rootElement reuseDictionary:nil];
+    NSMutableDictionary *attrs = [IDLLayoutInflater attributesFromXMLElement:rootElement reuseDictionary:nil actionTarget:self.actionTarget];
     if ([elementName isEqualToString:TAG_MERGE]) {
         if (rootView == nil || !attachToRoot) {
             NSLog(@"<merge /> can be used only with a valid ViewGroup root and attachToRoot=true");

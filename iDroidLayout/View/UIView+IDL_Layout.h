@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "IDLLayoutParams.h"
 
+/**
+ * This is used by the layout-inflater to pass an action target to a UIControl
+ */
+FOUNDATION_EXPORT NSString *const IDLViewAttributeActionTarget;
+
 typedef enum IDLLayoutMeasureSpecMode {
     IDLLayoutMeasureSpecModeUnspecified,
     IDLLayoutMeasureSpecModeExactly,

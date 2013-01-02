@@ -135,5 +135,10 @@
     }
 }
 
+- (void)setPadding:(UIEdgeInsets)padding {
+    [super setPadding:padding];
+    self.contentEdgeInsets = padding;
+}
+
 
 @end

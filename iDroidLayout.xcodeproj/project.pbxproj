@@ -139,13 +139,13 @@
 		79718AFE1680912700414CCE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79718AFD1680912700414CCE /* QuartzCore.framework */; };
 		79718AFF1680912D00414CCE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79718AFD1680912700414CCE /* QuartzCore.framework */; };
 		79718B02168091D400414CCE /* IDLDrawable+IDL_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 79718B00168091D300414CCE /* IDLDrawable+IDL_Internal.h */; };
-		79718B0616809FAE00414CCE /* UIView+IDLDrawable.h in Headers */ = {isa = PBXBuildFile; fileRef = 79718B0416809FAE00414CCE /* UIView+IDLDrawable.h */; };
+		79718B0616809FAE00414CCE /* UIView+IDLDrawable.h in Headers */ = {isa = PBXBuildFile; fileRef = 79718B0416809FAE00414CCE /* UIView+IDLDrawable.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		79718B0716809FAE00414CCE /* UIView+IDLDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 79718B0516809FAE00414CCE /* UIView+IDLDrawable.m */; };
 		79718B0C1680E10F00414CCE /* TBXML+IDL.h in Headers */ = {isa = PBXBuildFile; fileRef = 79718B0A1680E10F00414CCE /* TBXML+IDL.h */; };
 		79718B0D1680E10F00414CCE /* TBXML+IDL.m in Sources */ = {isa = PBXBuildFile; fileRef = 79718B0B1680E10F00414CCE /* TBXML+IDL.m */; };
-		79718B101681DE5400414CCE /* IDLNinePatchDrawable.h in Headers */ = {isa = PBXBuildFile; fileRef = 79718B0E1681DE5200414CCE /* IDLNinePatchDrawable.h */; };
+		79718B101681DE5400414CCE /* IDLNinePatchDrawable.h in Headers */ = {isa = PBXBuildFile; fileRef = 79718B0E1681DE5200414CCE /* IDLNinePatchDrawable.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		79718B111681DE5400414CCE /* IDLNinePatchDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 79718B0F1681DE5300414CCE /* IDLNinePatchDrawable.m */; };
-		79718B141681FF1100414CCE /* UIImage+IDLNinePatch.h in Headers */ = {isa = PBXBuildFile; fileRef = 79718B121681FF1100414CCE /* UIImage+IDLNinePatch.h */; };
+		79718B141681FF1100414CCE /* UIImage+IDLNinePatch.h in Headers */ = {isa = PBXBuildFile; fileRef = 79718B121681FF1100414CCE /* UIImage+IDLNinePatch.h */; settings = {ATTRIBUTES = (); }; };
 		79718B151681FF1100414CCE /* UIImage+IDLNinePatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 79718B131681FF1100414CCE /* UIImage+IDLNinePatch.m */; };
 		798140FA166A87C200A63480 /* UINavigationBar+IDL_View.h in Headers */ = {isa = PBXBuildFile; fileRef = 798140F8166A87C200A63480 /* UINavigationBar+IDL_View.h */; };
 		798140FB166A87C200A63480 /* UINavigationBar+IDL_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 798140F9166A87C200A63480 /* UINavigationBar+IDL_View.m */; };
@@ -160,21 +160,25 @@
 		79814110166BD65900A63480 /* NSDictionary+IDL_ResourceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7981410E166BD65800A63480 /* NSDictionary+IDL_ResourceManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		79814111166BD65900A63480 /* NSDictionary+IDL_ResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7981410F166BD65800A63480 /* NSDictionary+IDL_ResourceManager.m */; };
 		79B983481674D2F200F844DB /* IDLColorStateItem+IDL_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B983381674D2F200F844DB /* IDLColorStateItem+IDL_Internal.h */; };
-		79B983491674D2F200F844DB /* IDLColorStateItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B983391674D2F200F844DB /* IDLColorStateItem.h */; };
+		79B983491674D2F200F844DB /* IDLColorStateItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B983391674D2F200F844DB /* IDLColorStateItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		79B9834A1674D2F200F844DB /* IDLColorStateItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B9833A1674D2F200F844DB /* IDLColorStateItem.m */; };
-		79B9834B1674D2F200F844DB /* IDLColorStateList.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B9833B1674D2F200F844DB /* IDLColorStateList.h */; };
+		79B9834B1674D2F200F844DB /* IDLColorStateList.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B9833B1674D2F200F844DB /* IDLColorStateList.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		79B9834C1674D2F200F844DB /* IDLColorStateList.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B9833C1674D2F200F844DB /* IDLColorStateList.m */; };
 		79B9834D1674D2F200F844DB /* IDLDrawableStateItem+IDL_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B9833D1674D2F200F844DB /* IDLDrawableStateItem+IDL_Internal.h */; };
-		79B9834E1674D2F200F844DB /* IDLDrawableStateItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B9833E1674D2F200F844DB /* IDLDrawableStateItem.h */; };
+		79B9834E1674D2F200F844DB /* IDLDrawableStateItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B9833E1674D2F200F844DB /* IDLDrawableStateItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		79B9834F1674D2F200F844DB /* IDLDrawableStateItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B9833F1674D2F200F844DB /* IDLDrawableStateItem.m */; };
-		79B983501674D2F200F844DB /* IDLDrawableStateList.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B983401674D2F200F844DB /* IDLDrawableStateList.h */; };
+		79B983501674D2F200F844DB /* IDLDrawableStateList.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B983401674D2F200F844DB /* IDLDrawableStateList.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		79B983511674D2F200F844DB /* IDLDrawableStateList.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B983411674D2F200F844DB /* IDLDrawableStateList.m */; };
 		79B983521674D2F200F844DB /* IDLResourceStateItem+IDL_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B983421674D2F200F844DB /* IDLResourceStateItem+IDL_Internal.h */; };
-		79B983531674D2F200F844DB /* IDLResourceStateItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B983431674D2F200F844DB /* IDLResourceStateItem.h */; };
+		79B983531674D2F200F844DB /* IDLResourceStateItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B983431674D2F200F844DB /* IDLResourceStateItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		79B983541674D2F200F844DB /* IDLResourceStateItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B983441674D2F200F844DB /* IDLResourceStateItem.m */; };
 		79B983551674D2F200F844DB /* IDLResourceStateList+IDL_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B983451674D2F200F844DB /* IDLResourceStateList+IDL_Internal.h */; };
-		79B983561674D2F200F844DB /* IDLResourceStateList.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B983461674D2F200F844DB /* IDLResourceStateList.h */; };
+		79B983561674D2F200F844DB /* IDLResourceStateList.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B983461674D2F200F844DB /* IDLResourceStateList.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		79B983571674D2F200F844DB /* IDLResourceStateList.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B983471674D2F200F844DB /* IDLResourceStateList.m */; };
+		79DE0ABD1684AFF200EDACE3 /* NSObject+IDL_KVOObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 79DE0ABB1684AFF200EDACE3 /* NSObject+IDL_KVOObserver.h */; settings = {ATTRIBUTES = (); }; };
+		79DE0ABE1684AFF200EDACE3 /* NSObject+IDL_KVOObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DE0ABC1684AFF200EDACE3 /* NSObject+IDL_KVOObserver.m */; };
+		79DE0BEE1690C87400EDACE3 /* IDLDrawableLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 79DE0BEC1690C87100EDACE3 /* IDLDrawableLayer.h */; };
+		79DE0BEF1690C87400EDACE3 /* IDLDrawableLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DE0BED1690C87200EDACE3 /* IDLDrawableLayer.m */; };
 		79E4337816681D7B00E49114 /* LayoutFromIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79E4337716681D7B00E49114 /* LayoutFromIB.xib */; };
 		79E4337D16681DEB00E49114 /* layoutFromIB.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79E4337C16681DEB00E49114 /* layoutFromIB.xml */; };
 		79E43380166A2E7B00E49114 /* includeContainer.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79E4337F166A2E7B00E49114 /* includeContainer.xml */; };
@@ -381,6 +385,10 @@
 		79B983451674D2F200F844DB /* IDLResourceStateList+IDL_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IDLResourceStateList+IDL_Internal.h"; sourceTree = "<group>"; };
 		79B983461674D2F200F844DB /* IDLResourceStateList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLResourceStateList.h; sourceTree = "<group>"; };
 		79B983471674D2F200F844DB /* IDLResourceStateList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLResourceStateList.m; sourceTree = "<group>"; };
+		79DE0ABB1684AFF200EDACE3 /* NSObject+IDL_KVOObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+IDL_KVOObserver.h"; sourceTree = "<group>"; };
+		79DE0ABC1684AFF200EDACE3 /* NSObject+IDL_KVOObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+IDL_KVOObserver.m"; sourceTree = "<group>"; };
+		79DE0BEC1690C87100EDACE3 /* IDLDrawableLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLDrawableLayer.h; sourceTree = "<group>"; };
+		79DE0BED1690C87200EDACE3 /* IDLDrawableLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLDrawableLayer.m; sourceTree = "<group>"; };
 		79E4337716681D7B00E49114 /* LayoutFromIB.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LayoutFromIB.xib; sourceTree = "<group>"; };
 		79E4337C16681DEB00E49114 /* layoutFromIB.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = layoutFromIB.xml; sourceTree = "<group>"; };
 		79E4337E1668226900E49114 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
@@ -463,6 +471,8 @@
 				79718B0516809FAE00414CCE /* UIView+IDLDrawable.m */,
 				79718B0E1681DE5200414CCE /* IDLNinePatchDrawable.h */,
 				79718B0F1681DE5300414CCE /* IDLNinePatchDrawable.m */,
+				79DE0BEC1690C87100EDACE3 /* IDLDrawableLayer.h */,
+				79DE0BED1690C87200EDACE3 /* IDLDrawableLayer.m */,
 			);
 			path = Drawable;
 			sourceTree = "<group>";
@@ -624,6 +634,8 @@
 				79718B0B1680E10F00414CCE /* TBXML+IDL.m */,
 				79718B121681FF1100414CCE /* UIImage+IDLNinePatch.h */,
 				79718B131681FF1100414CCE /* UIImage+IDLNinePatch.m */,
+				79DE0ABB1684AFF200EDACE3 /* NSObject+IDL_KVOObserver.h */,
+				79DE0ABC1684AFF200EDACE3 /* NSObject+IDL_KVOObserver.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -904,6 +916,8 @@
 				79718B0C1680E10F00414CCE /* TBXML+IDL.h in Headers */,
 				79718B101681DE5400414CCE /* IDLNinePatchDrawable.h in Headers */,
 				79718B141681FF1100414CCE /* UIImage+IDLNinePatch.h in Headers */,
+				79DE0ABD1684AFF200EDACE3 /* NSObject+IDL_KVOObserver.h in Headers */,
+				79DE0BEE1690C87400EDACE3 /* IDLDrawableLayer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1069,7 +1083,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "HEADERS_ROOT=$SRCROOT/$PRODUCT_NAME\nFRAMEWORK_HEADERS_DIR=\"$BUILT_PRODUCTS_DIR/$WRAPPER_NAME/Versions/$FRAMEWORK_VERSION/Headers\"\n\n## only header files expected at this point\nPUBLIC_HEADERS=$(find $FRAMEWORK_HEADERS_DIR/. -not -type d 2> /dev/null | sed -e \"s@.*/@@g\")\n\nFIND_OPTS=\"\"\nfor PUBLIC_HEADER in $PUBLIC_HEADERS; do\n  if [ -n \"$FIND_OPTS\" ]; then\n    FIND_OPTS=\"$FIND_OPTS -o\"\n  fi\n  FIND_OPTS=\"$FIND_OPTS -name '$PUBLIC_HEADER'\"\ndone\n\nif [ -n \"$FIND_OPTS\" ]; then\n  for ORIG_HEADER in $(eval \"find $HEADERS_ROOT/. $FIND_OPTS\" 2> /dev/null | sed -e \"s@^$HEADERS_ROOT/./@@g\"); do\n    PUBLIC_HEADER=$(basename $ORIG_HEADER)\n    RELATIVE_PATH=$(dirname $ORIG_HEADER)\n    if [ -e $FRAMEWORK_HEADERS_DIR/$PUBLIC_HEADER ]; then\n      mkdir -p \"$FRAMEWORK_HEADERS_DIR/$RELATIVE_PATH\"\n      mv \"$FRAMEWORK_HEADERS_DIR/$PUBLIC_HEADER\" \"$FRAMEWORK_HEADERS_DIR/$RELATIVE_PATH/$PUBLIC_HEADER\"\n    fi\n  done\nfi\n";
+			shellScript = "HEADERS_ROOT=$SRCROOT/$PRODUCT_NAME\nFRAMEWORK_HEADERS_DIR=\"$BUILT_PRODUCTS_DIR/$WRAPPER_NAME/Versions/$FRAMEWORK_VERSION/Headers\"\n\n## only header files expected at this point\nPUBLIC_HEADERS=$(find $FRAMEWORK_HEADERS_DIR/. -not -type d 2> /dev/null | sed -e \"s@.*/@@g\")\n\nFIND_OPTS=\"\"\nfor PUBLIC_HEADER in $PUBLIC_HEADERS; do\n  if [ -n \"$FIND_OPTS\" ]; then\n    FIND_OPTS=\"$FIND_OPTS -o\"\n  fi\n  FIND_OPTS=\"$FIND_OPTS -name '$PUBLIC_HEADER'\"\ndone\n\n#if [ -n \"$FIND_OPTS\" ]; then\n#  for ORIG_HEADER in $(eval \"find $HEADERS_ROOT/. $FIND_OPTS\" 2> /dev/null | sed -e \"s@^$HEADERS_ROOT/./@@g\"); do\n#    PUBLIC_HEADER=$(basename $ORIG_HEADER)\n#    RELATIVE_PATH=$(dirname $ORIG_HEADER)\n#    if [ -e $FRAMEWORK_HEADERS_DIR/$PUBLIC_HEADER ]; then\n#mkdir -p \"$FRAMEWORK_HEADERS_DIR/$RELATIVE_PATH\"\n#mv \"$FRAMEWORK_HEADERS_DIR/$PUBLIC_HEADER\" \"$FRAMEWORK_HEADERS_DIR/$PUBLIC_HEADER\"\n#    fi\n#  done\n#fi\n";
 		};
 		79642BE71603C4A20095D5A2 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1162,6 +1176,8 @@
 				79718B0D1680E10F00414CCE /* TBXML+IDL.m in Sources */,
 				79718B111681DE5400414CCE /* IDLNinePatchDrawable.m in Sources */,
 				79718B151681FF1100414CCE /* UIImage+IDLNinePatch.m in Sources */,
+				79DE0ABE1684AFF200EDACE3 /* NSObject+IDL_KVOObserver.m in Sources */,
+				79DE0BEF1690C87400EDACE3 /* IDLDrawableLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1289,6 +1305,11 @@
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iDroidLayout/iDroidLayout-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"OUTLINE_DRAWABLE=0",
+				);
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "iDroidLayout/iDroidLayout-Info.plist";
 				INFOPLIST_PATH = "$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/Info.plist";

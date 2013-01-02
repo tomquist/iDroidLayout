@@ -13,4 +13,6 @@
 
 @property (nonatomic, retain) IDLDrawable *backgroundDrawable;
 
+- (void)onBackgroundDrawableChanged;
+
 @end

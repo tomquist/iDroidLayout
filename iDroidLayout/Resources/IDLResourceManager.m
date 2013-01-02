@@ -400,7 +400,7 @@ static IDLResourceManager *currentResourceManager;
     IDLResourceIdentifier *identifier = [self resourceIdentifierForString:identifierString];
     if (identifier.type == IDLResourceTypeDrawable && identifier.cachedObject != nil && ([identifier.cachedObject isKindOfClass:[IDLDrawable class]] || [identifier.cachedObject isKindOfClass:[UIImage class]])) {
         if ([identifier.cachedObject isKindOfClass:[IDLDrawable class]]) {
-            ret = identifier.cachedObject;
+            ret = [[identifier.cachedObject copy] autorelease];
         } else if ([identifier.cachedObject isKindOfClass:[UIImage class]]) {
             ret = [[[IDLBitmapDrawable alloc] initWithImage:identifier.cachedObject] autorelease];
         }
@@ -421,6 +421,7 @@ static IDLResourceManager *currentResourceManager;
         }
         if (ret != nil) {
             identifier.cachedObject = ret;
+            ret = [[ret copy] autorelease];
         }
     } else if (identifier.type == IDLResourceTypeColor) {
         IDLColorStateList *colorStateList = [self colorStateListForIdentifier:identifierString];

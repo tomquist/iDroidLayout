@@ -8,9 +8,26 @@
 
 #import "IDLDrawable.h"
 
+typedef enum IDLGradientDrawableShape {
+    IDLGradientDrawableShapeRectangle = 0,
+    IDLGradientDrawableShapeOval,
+    IDLGradientDrawableShapeLine,
+    IDLGradientDrawableShapeRing
+} IDLGradientDrawableShape;
+
+typedef struct IDLGradientDrawableCornerRadius {
+    CGFloat topLeft;
+    CGFloat topRight;
+    CGFloat bottomLeft;
+    CGFloat bottomRight;
+} IDLGradientDrawableCornerRadius;
+
+UIKIT_EXTERN const IDLGradientDrawableCornerRadius IDLGradientDrawableCornerRadiusZero;
+
 @interface IDLGradientDrawable : IDLDrawable
 
-@property (nonatomic, readonly) UIColor *startColor;
-@property (nonatomic, readonly) UIColor *endColor;
+@end
+
+@interface IDLGradientDrawableConstantState : IDLDrawableConstantState
 
 @end

@@ -8,6 +8,10 @@
 
 #import "IDLDrawable.h"
 
-@interface IDLLayerDrawable : IDLDrawable
+@interface IDLLayerDrawable : IDLDrawable <IDLDrawableDelegate>
+
+@end
+
+@interface IDLLayerDrawableConstantState : IDLDrawableConstantState
 
 @end

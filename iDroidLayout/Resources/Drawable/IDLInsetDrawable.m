@@ -11,32 +11,95 @@
 #import "IDLResourceManager.h"
 #import "TBXML+IDL.h"
 
+@interface IDLInsetDrawableConstantState ()
+
+@property (nonatomic, assign) UIEdgeInsets insets;
+@property (nonatomic, retain) IDLDrawable *drawable;
+
+@end
+
+@implementation IDLInsetDrawableConstantState
+
+- (void)dealloc {
+    self.drawable = nil;
+    [super dealloc];
+}
+
+- (id)initWithState:(IDLInsetDrawableConstantState *)state {
+    self = [super init];
+    if (self) {
+        if (state != nil) {
+            self.insets = state.insets;
+            self.drawable = state.drawable;
+        }
+    }
+    return self;
+}
+
+@end
+
+@interface IDLInsetDrawable ()
+
+@property (nonatomic, retain) IDLInsetDrawableConstantState *internalConstantState;
+
+@end
+
 @implementation IDLInsetDrawable
+
+- (void)dealloc {
+    self.internalConstantState = nil;
+    [super dealloc];
+}
+
+- (id)initWithState:(IDLInsetDrawableConstantState *)state {
+    self = [super init];
+    if (self) {
+        IDLInsetDrawableConstantState *s = [[IDLInsetDrawableConstantState alloc] initWithState:state];
+        self.internalConstantState = s;
+        [s release];
+    }
+    return self;
+}
+
+- (id)init {
+    return [self initWithState:nil];
+}
 
 - (void)drawOnLayer:(CALayer *)layer {
     CALayer *sublayer = [CALayer layer];
-    sublayer.frame = UIEdgeInsetsInsetRect(layer.frame, self.insets);
-    [self.drawable drawOnLayer:sublayer];
+    sublayer.frame = UIEdgeInsetsInsetRect(layer.frame, self.internalConstantState.insets);
+    [self.internalConstantState.drawable drawOnLayer:sublayer];
     [layer addSublayer:sublayer];
 }
 
+- (void)drawInContext:(CGContextRef)context {
+    [self.internalConstantState.drawable drawInContext:context];
+    OUTLINE_RECT(context, self.bounds);
+}
+
 - (CGSize)minimumSize {
-    return self.drawable.minimumSize;
+    return self.internalConstantState.drawable.minimumSize;
 }
 
 - (CGSize)intrinsicSize {
-    return self.drawable.intrinsicSize;
+    return self.internalConstantState.drawable.intrinsicSize;
 }
 
-- (void)onStateChanged {
-    [super onStateChanged];
-    self.drawable.state = self.state;
+- (void)onStateChangeToState:(UIControlState)state {
+    self.internalConstantState.drawable.state = self.state;
+    [self onBoundsChangeToRect:self.bounds];
+}
+
+- (void)onBoundsChangeToRect:(CGRect)bounds {
+    [super onBoundsChangeToRect:bounds];
+    CGRect insetRect = UIEdgeInsetsInsetRect(self.bounds, self.internalConstantState.insets);
+    self.internalConstantState.drawable.bounds = insetRect;
 }
 
 - (UIEdgeInsets)padding {
-    UIEdgeInsets insets = self.insets;
-    if (self.drawable.hasPadding) {
-        UIEdgeInsets childInsets = self.drawable.padding;
+    UIEdgeInsets insets = self.internalConstantState.insets;
+    if (self.internalConstantState.drawable.hasPadding) {
+        UIEdgeInsets childInsets = self.internalConstantState.drawable.padding;
         insets.left += childInsets.left;
         insets.top += childInsets.top;
         insets.right += childInsets.right;
@@ -46,7 +109,7 @@
 }
 
 - (BOOL)hasPadding {
-    return self.drawable.hasPadding || !UIEdgeInsetsEqualToEdgeInsets(self.insets, UIEdgeInsetsZero);
+    return self.internalConstantState.drawable.hasPadding || !UIEdgeInsetsEqualToEdgeInsets(self.internalConstantState.insets, UIEdgeInsetsZero);
 }
 
 - (void)inflateWithElement:(TBXMLElement *)element {
@@ -70,9 +133,13 @@
     }
     if (drawable != nil) {
         drawable.state = self.state;
-        _drawable = drawable;
-        _insets = insets;
+        self.internalConstantState.drawable = drawable;
+        self.internalConstantState.insets = insets;
     }
+}
+
+- (IDLDrawableConstantState *)constantState {
+    return self.internalConstantState;
 }
 
 @end

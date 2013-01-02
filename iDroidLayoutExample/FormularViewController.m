@@ -14,11 +14,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIButton *submitButton = (UIButton *)[self.view findViewById:@"submitButton"];
-    UIButton *toggleButton = (UIButton *)[self.view findViewById:@"toggleButton"];
-    
-    [submitButton addTarget:self action:@selector(didPressSubmitButton) forControlEvents:UIControlEventTouchUpInside];
-    [toggleButton addTarget:self action:@selector(didPressToggleButton) forControlEvents:UIControlEventTouchUpInside];
     [self updateAndroidStatus];
 }
 

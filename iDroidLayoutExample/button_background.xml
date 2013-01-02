@@ -1,4 +1,11 @@
 <selector>
-    <item selected="true" highlighted="true" drawable="#ff0000"/>
-    <item highlighted="true" drawable="#00ff00"/>
+    <item state_selected="true" state_highlighted="true" drawable="#ff0000"/>
+    <item state_highlighted="true" drawable="#00ff00"/>
+    <item>
+        <shape>
+            <gradient startColor="#ff0000" endColor="#00ff00"/>
+            <corners topLeftRadius="10" bottomRightRadius="10"/>
+            <stroke color="#8000" width="1"/>
+        </shape>
+    </item>
 </selector>

@@ -56,23 +56,18 @@
 #pragma mark - View lifecycle
 
 - (void)loadView {
-    IDLLayoutBridge *bridge = [[IDLLayoutBridge alloc] init];
+    IDLLayoutBridge *bridge = [[IDLLayoutBridge alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     bridge.resizeOnKeyboard = TRUE;
     bridge.scrollToTextField = TRUE;
     bridge.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    self.view = bridge;
-    
     if (_layoutUrl != nil) {
         IDLLayoutInflater *inflater = [[IDLLayoutInflater alloc] init];
+        inflater.actionTarget = self;
         [inflater inflateURL:_layoutUrl intoRootView:bridge attachToRoot:TRUE];
         [inflater release];
     }
-    
+    self.view = bridge;
     [bridge release];
-}
-
-- (void)setView:(IDLLayoutBridge *)view {
-    [super setView:view];
 }
 
 - (IDLLayoutBridge *)view {

@@ -22,27 +22,49 @@
 
 @implementation IDLStateListDrawableItem
 
+- (void)dealloc {
+    self.drawable = nil;
+    [super dealloc];
+}
+
 @end
 
-@interface IDLStateListDrawable ()
+
+@interface IDLStateListDrawableConstantState ()
 
 @property (nonatomic, retain) NSMutableArray *items;
 
 @end
 
-@implementation IDLStateListDrawable
+@implementation IDLStateListDrawableConstantState
 
 - (void)dealloc {
     self.items = nil;
     [super dealloc];
 }
 
-- (id)init {
-    self = [super init];
+- (id)initWithState:(IDLStateListDrawableConstantState *)state owner:(IDLStateListDrawable *)owner {
+    self = [super initWithState:state owner:owner];
     if (self) {
-        NSMutableArray *items = [[NSMutableArray alloc] init];
-        self.items = items;
-        [items release];
+        if (state != nil) {
+            NSInteger count = MIN([self.drawables count], [state.items count]);
+            NSMutableArray *items = [[NSMutableArray alloc] initWithCapacity:count];
+            for (NSInteger i = 0; i<count; i++) {
+                IDLStateListDrawableItem *origItem = [state.items objectAtIndex:i];
+                IDLStateListDrawableItem *item = [[IDLStateListDrawableItem alloc] init];
+                item.drawable = [self.drawables objectAtIndex:i];
+                item.drawable.delegate = owner;
+                item.state = origItem.state;
+                [items addObject:item];
+                [item release];
+            }
+            self.items = items;
+            [items release];
+        } else {
+            NSMutableArray *items = [[NSMutableArray alloc] initWithCapacity:10];
+            self.items = items;
+            [items release];
+        }
     }
     return self;
 }
@@ -54,14 +76,54 @@
     [self.items addObject:item];
     [item release];
     [self addChildDrawable:drawable];
-    [self onStateChanged];
+}
+
+@end
+
+@interface IDLStateListDrawable ()
+
+@property (nonatomic, retain) IDLStateListDrawableConstantState *internalConstantState;
+
+@end
+
+@implementation IDLStateListDrawable
+
+- (void)dealloc {
+    self.internalConstantState = nil;
+    [super dealloc];
+}
+
+- (id)initWithState:(IDLStateListDrawableConstantState *)state {
+    self = [super init];
+    if (self) {
+        IDLStateListDrawableConstantState *s = [[IDLStateListDrawableConstantState alloc] initWithState:state owner:self];
+        self.internalConstantState = s;
+        [s release];
+    }
+    return self;
+}
+
+- (id)init {
+    return [self initWithState:nil];
+}
+
+- (id)initWithColorStateListe:(IDLColorStateList *)colorStateList {
+    self = [self init];
+    if (self) {
+        for (IDLColorStateItem *item in colorStateList.items) {
+            IDLColorDrawable *colorDrawable = [[IDLColorDrawable alloc] initWithColor:item.color];
+            [self.internalConstantState addDrawable:colorDrawable forState:item.controlState];
+            [colorDrawable release];
+        }
+    }
+    return self;
 }
 
 - (NSInteger)indexOfState:(UIControlState)state {
     NSInteger ret = -1;
-    NSInteger count = [self.items count];
+    NSInteger count = [self.internalConstantState.items count];
     for (NSInteger i = 0; i < count; i++) {
-        IDLStateListDrawableItem *item = [self.items objectAtIndex:i];
+        IDLStateListDrawableItem *item = [self.internalConstantState.items objectAtIndex:i];
         if ((item.state & state) == item.state) {
             ret = i;
             break;
@@ -69,13 +131,10 @@
     }
     return ret;
 }
-- (void)onStateChanged {
+- (void)onStateChangeToState:(UIControlState)state {
     NSInteger idx = [self indexOfState:self.state];
-    if (idx < 0) {
-        idx = 0;
-    }
     if (![self selectDrawableAtIndex:idx]) {
-        [super onStateChanged];
+        [super onStateChangeToState:state];
     }
 }
 
@@ -100,7 +159,7 @@
     NSMutableDictionary *attrs = [TBXML attributesFromXMLElement:element reuseDictionary:nil];
     
     
-    self.constantSize = BOOLFromString([attrs objectForKey:@"constantSize"]);
+    self.internalConstantState.constantSize = BOOLFromString([attrs objectForKey:@"constantSize"]);
     
     TBXMLElement *child = element->firstChild;
     while (child != NULL) {
@@ -124,7 +183,7 @@
                 NSLog(@"<item> tag requires a 'drawable' attribute or child tag defining a drawable");
             }
             if (drawable != nil) {
-                [self addDrawable:drawable forState:state];
+                [self.internalConstantState addDrawable:drawable forState:state];
             }
         }
         child = child->nextSibling;
