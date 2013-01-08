@@ -1,17 +1,16 @@
 //
-//  TextView.m
+//  IDLEditText.m
 //  iDroidLayout
 //
-//  Created by Tom Quist on 22.07.12.
-//  Copyright (c) 2012 Tom Quist. All rights reserved.
+//  Created by Tom Quist on 03.01.13.
+//  Copyright (c) 2013 Tom Quist. All rights reserved.
 //
 
-#import "IDLTextView.h"
+#import "IDLEditText.h"
 #import "UIView+IDL_Layout.h"
 #import "UILabel+IDL_View.h"
-#import "UIView+IDLDrawable.h"
 
-@implementation IDLTextView
+@implementation IDLEditText
 
 @synthesize contentVerticalAlignment = _contentVerticalAlignment;
 
@@ -42,8 +41,8 @@
     if (heightMode == IDLLayoutMeasureSpecModeExactly) {
         height.size = heightSize;
     } else {
-        CGSize size = [self.text sizeWithFont:self.font constrainedToSize:CGSizeMake(width.size - padding.left - padding.right, CGFLOAT_MAX) lineBreakMode:self.lineBreakMode];
-        height.size = MAX(size.height, self.numberOfLines * self.font.lineHeight) + padding.top + padding.bottom;
+        CGSize size = [self.text sizeWithFont:self.font constrainedToSize:CGSizeMake(width.size - padding.left - padding.right, CGFLOAT_MAX)];
+        height.size = MAX(size.height, self.font.lineHeight) + padding.top + padding.bottom;
         if (heightMode == IDLLayoutMeasureSpecModeAtMost) {
             height.size = MIN(height.size, heightSize);
         }
@@ -53,47 +52,17 @@
     [self setMeasuredDimensionWidth:width height:height];
 }
 
-- (void)setGravity:(IDLViewContentGravity)gravity {
-    [super setGravity:gravity];
-    if ((gravity & IDLViewContentGravityTop) == IDLViewContentGravityTop) {
-        self.contentVerticalAlignment = UIControlContentVerticalAlignmentTop;
-    } else if ((gravity & IDLViewContentGravityBottom) == IDLViewContentGravityBottom) {
-        self.contentVerticalAlignment = UIControlContentVerticalAlignmentBottom;
-    } else if ((gravity & IDLViewContentGravityFillVertical) == IDLViewContentGravityFillVertical) {
-        self.contentVerticalAlignment = UIControlContentVerticalAlignmentFill;
-    }
-}
-
-- (IDLViewContentGravity)gravity {
-    IDLViewContentGravity ret = [super gravity];
-    switch (self.contentVerticalAlignment) {
-        case UIControlContentVerticalAlignmentTop:
-            ret |= IDLViewContentGravityTop;
-            break;
-        case UIControlContentVerticalAlignmentBottom:
-            ret |= IDLViewContentGravityBottom;
-            break;
-        case UIControlContentVerticalAlignmentCenter:
-            ret |= IDLViewContentGravityCenterVertical;
-            break;
-        case UIControlContentVerticalAlignmentFill:
-            ret |= IDLViewContentGravityFillVertical;
-            break;
-    }
-    return ret;
-}
 
 - (void)setContentVerticalAlignment:(UIControlContentVerticalAlignment)contentVerticalAlignment {
     _contentVerticalAlignment = contentVerticalAlignment;
     [self setNeedsDisplay];
 }
 
-- (CGRect)textRectForBounds:(CGRect)bounds limitedToNumberOfLines:(NSInteger)numberOfLines {
+- (CGRect)textRectForBounds:(CGRect)bounds {
     bounds = UIEdgeInsetsInsetRect(bounds, self.padding);
-    CGRect rect = [super textRectForBounds:bounds limitedToNumberOfLines:numberOfLines];
+    CGRect rect = [super textRectForBounds:bounds];
     CGRect result;
-    switch (_contentVerticalAlignment)
-    {
+    switch (_contentVerticalAlignment) {
         case UIControlContentVerticalAlignmentTop:
             result = CGRectMake(rect.origin.x, bounds.origin.y, rect.size.width, rect.size.height);
             break;
@@ -110,9 +79,57 @@
     return result;
 }
 
+- (CGRect)editingRectForBounds:(CGRect)bounds {
+    bounds = UIEdgeInsetsInsetRect(bounds, self.padding);
+    CGRect rect = [super editingRectForBounds:bounds];
+    CGRect result;
+    switch (_contentVerticalAlignment) {
+        case UIControlContentVerticalAlignmentTop:
+            result = CGRectMake(rect.origin.x, bounds.origin.y, rect.size.width, rect.size.height);
+            break;
+        case UIControlContentVerticalAlignmentCenter:
+            result = CGRectMake(rect.origin.x, bounds.origin.y + (bounds.size.height - rect.size.height) / 2, rect.size.width, rect.size.height);
+            break;
+        case UIControlContentVerticalAlignmentBottom:
+            result = CGRectMake(rect.origin.x, bounds.origin.y + (bounds.size.height - rect.size.height), rect.size.width, rect.size.height);
+            break;
+        default:
+            result = bounds;
+            break;
+    }
+    return result;
+}
+
+- (CGRect)placeholderRectForBounds:(CGRect)bounds {
+    bounds = UIEdgeInsetsInsetRect(bounds, self.padding);
+    CGRect rect = [super placeholderRectForBounds:bounds];
+    CGRect result;
+    switch (_contentVerticalAlignment) {
+        case UIControlContentVerticalAlignmentTop:
+            result = CGRectMake(rect.origin.x, bounds.origin.y, rect.size.width, rect.size.height);
+            break;
+        case UIControlContentVerticalAlignmentCenter:
+            result = CGRectMake(rect.origin.x, bounds.origin.y + (bounds.size.height - rect.size.height) / 2, rect.size.width, rect.size.height);
+            break;
+        case UIControlContentVerticalAlignmentBottom:
+            result = CGRectMake(rect.origin.x, bounds.origin.y + (bounds.size.height - rect.size.height), rect.size.width, rect.size.height);
+            break;
+        default:
+            result = bounds;
+            break;
+    }
+    return result;
+}
+
+
 - (void)drawTextInRect:(CGRect)rect {
-    CGRect r = [self textRectForBounds:rect limitedToNumberOfLines:self.numberOfLines];
+    CGRect r = [self textRectForBounds:rect];
     [super drawTextInRect:r];
+}
+
+- (void)drawPlaceholderInRect:(CGRect)rect {
+    CGRect r = [self textRectForBounds:rect];
+    [super drawPlaceholderInRect:r];
 }
 
 - (void)setText:(NSString *)text {
@@ -122,11 +139,6 @@
 
 - (void)setFont:(UIFont *)font {
     [super setFont:font];
-    [self requestLayout];
-}
-
-- (void)setLineBreakMode:(UILineBreakMode)lineBreakMode {
-    [super setLineBreakMode:lineBreakMode];
     [self requestLayout];
 }
 

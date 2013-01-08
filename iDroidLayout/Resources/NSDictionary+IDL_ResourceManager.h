@@ -16,5 +16,8 @@
 - (IDLColorStateList *)colorStateListFromIDLValueForKey:(NSString *)key;
 - (CGFloat)dimensionFromIDLValueForKey:(NSString *)key;
 - (CGFloat)dimensionFromIDLValueForKey:(NSString *)key defaultValue:(CGFloat)defaultValue;
+- (float)fractionValueFromIDLValueForKey:(NSString *)key;
+- (float)fractionValueFromIDLValueForKey:(NSString *)key defaultValue:(CGFloat)defaultValue;
+- (BOOL)isFractionIDLValueForKey:(NSString *)key;
 
 @end

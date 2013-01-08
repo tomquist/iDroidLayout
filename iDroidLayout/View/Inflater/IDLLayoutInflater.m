@@ -7,6 +7,7 @@
 //
 
 #import "IDLLayoutInflater.h"
+#import "IDLXMLCache.h"
 #import "UIView+IDL_Layout.h"
 #import "UIView+IDL_ViewGroup.h"
 #import "TBXML.h"
@@ -90,7 +91,8 @@
         if (url == nil) {
             NSLog(@"You must specifiy a valid layout reference. The layout ID %@ is not valid.", layoutToInclude);
         } else {
-            TBXML *xml = [TBXML newTBXMLWithXMLData:[NSData dataWithContentsOfURL:url] error:&error];
+            TBXML *xml = [[IDLXMLCache sharedInstance] xmlForUrl:url error:&error];
+            //[TBXML newTBXMLWithXMLData:[NSData dataWithContentsOfURL:url] error:&error];
             if (error) {
                 NSLog(@"Cannot include layout %@: %@ %@", layoutToInclude, [error localizedDescription], [error userInfo]);
             } else {
@@ -140,7 +142,6 @@
                     [parentView addSubview:temp];
                 }
             }
-            [xml release];
         }
     }
 }
@@ -221,7 +222,8 @@
 - (UIView *)inflateURL:(NSURL *)url intoRootView:(UIView *)rootView attachToRoot:(BOOL)attachToRoot {
     NSDate *methodStart = [NSDate date];
     NSError *error = nil;
-    TBXML *xml = [[TBXML newTBXMLWithXMLData:[NSData dataWithContentsOfURL:url] error:&error] autorelease];
+    TBXML *xml = [[IDLXMLCache sharedInstance] xmlForUrl:url error:&error];
+    //[[TBXML newTBXMLWithXMLData:[NSData dataWithContentsOfURL:url] error:&error] autorelease];
     if (error) {
         NSLog(@"%@ %@", [error localizedDescription], [error userInfo]);
         return nil;

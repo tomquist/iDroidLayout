@@ -86,43 +86,16 @@
     return self.internalConstantState.image;
 }
 
--(void)drawOnLayer:(CALayer *)layer {
-    CGRect containerRect = layer.bounds;
+- (void)drawInContext:(CGContextRef)context {
+    IDLBitmapDrawableConstantState *state = self.internalConstantState;
+    CGRect containerRect = self.bounds;
     CGRect dstRect = CGRectZero;
-    UIImage *image = self.internalConstantState.image;
+    UIImage *image = state.image;
     
-    [IDLGravity applyGravity:self.internalConstantState.gravity width:image.size.width height:image.size.height containerRect:&containerRect outRect:&dstRect];
-
-    CGRect contentsCenter = CGRectMake(0, 0, 1, 1);
-    CGSize size = image.size;
-    UIEdgeInsets capInsets = UIEdgeInsetsZero;
-    if ([image respondsToSelector:@selector(capInsets)]) {
-        capInsets = image.capInsets;
-    } else if ([image respondsToSelector:@selector(leftCapWidth)]) {
-        capInsets.left = [image leftCapWidth];
-        capInsets.top = [image topCapHeight];
-        if (capInsets.left > 0) {
-            capInsets.right = size.width - capInsets.left - 1;
-        }
-        if (capInsets.top > 0) {
-            capInsets.bottom = size.height - capInsets.top - 1;
-        }
-    }
-    if (!UIEdgeInsetsEqualToEdgeInsets(capInsets, UIEdgeInsetsZero)) {
-        contentsCenter = CGRectMake(capInsets.left/size.width, capInsets.top/size.height, (size.width - capInsets.left - capInsets.right)/size.width, (size.height - capInsets.top - capInsets.bottom)/size.height);
-    }
-    if (CGRectEqualToRect(containerRect, dstRect)) {
-        layer.contentsCenter = contentsCenter;
-        layer.contents = (id)image.CGImage;
-        
-    } else {
-        CALayer *sublayer = [[CALayer alloc] init];
-        sublayer.frame = dstRect;
-        sublayer.contentsCenter = contentsCenter;
-        sublayer.contents = (id)image.CGImage;
-        [layer addSublayer:sublayer];
-        [sublayer release];
-    }
+    [IDLGravity applyGravity:state.gravity width:image.size.width height:image.size.height containerRect:&containerRect outRect:&dstRect];
+    UIGraphicsPushContext(context);
+    [state.image drawInRect:dstRect];
+    UIGraphicsPopContext();
 }
 
 - (CGSize)intrinsicSize {
@@ -130,21 +103,33 @@
 }
 
 - (void)inflateWithElement:(TBXMLElement *)element {
+    IDLBitmapDrawableConstantState *state = self.internalConstantState;
     [super inflateWithElement:element];
     NSMutableDictionary *dictionary = [TBXML attributesFromXMLElement:element reuseDictionary:nil];
     NSString *bitmapIdentifier = [dictionary objectForKey:@"src"];
     if (bitmapIdentifier != nil) {
         IDLResourceManager *resMgr = [IDLResourceManager currentResourceManager];
         UIImage *image = [resMgr imageForIdentifier:bitmapIdentifier];
-        self.internalConstantState.image = image;
+        state.image = image;
     } else {
         NSLog(@"<bitmap> requires a valid src attribute");
     }
     
     NSString *gravityValue = [dictionary objectForKey:@"gravity"];
     if (gravityValue != nil) {
-        self.internalConstantState.gravity = [IDLGravity gravityFromAttribute:gravityValue];
+        state.gravity = [IDLGravity gravityFromAttribute:gravityValue];
     }
+}
+
+- (CGSize)minimumSize {
+    IDLBitmapDrawableConstantState *state = self.internalConstantState;
+    if ([state.image respondsToSelector:@selector(capInsets)]) {
+        UIEdgeInsets insets = state.image.capInsets;
+        if (!UIEdgeInsetsEqualToEdgeInsets(insets, UIEdgeInsetsZero)) {
+            return CGSizeMake(insets.left + insets.right, insets.top + insets.bottom);
+        }
+    }
+    return [super minimumSize];
 }
 
 - (BOOL)hasPadding {

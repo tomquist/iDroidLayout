@@ -117,14 +117,14 @@
     if (_orientation == LinearLayoutOrientationVertical) {
         IDLViewContentGravity majorGravity = _gravity & VERTICAL_GRAVITY_MASK;
         if (majorGravity != IDLViewContentGravityTop) {
+            UIEdgeInsets padding = self.padding;
             switch (majorGravity) {
                 case IDLViewContentGravityBottom:
-                    childTop = self.frame.size.height - self.padding.bottom - _totalLength;
+                    childTop = self.frame.size.height - padding.bottom - _totalLength;
                     break;
                     
                 case IDLViewContentGravityCenterVertical:
-                    childTop += ((self.frame.size.height - self.padding.top - self.padding.bottom) -
-                                 _totalLength) / 2;
+                    childTop += ((self.frame.size.height - padding.top - padding.bottom) - _totalLength) / 2;
                     break;
                 default:
                     break;
@@ -233,7 +233,7 @@
         }
         
         IDLLinearLayoutLayoutParams *lp = (IDLLinearLayoutLayoutParams *) child.layoutParams;
-        
+        UIEdgeInsets lpMargin = lp.margin;
         totalWeight += lp.weight;
         
         if (heightMode == IDLLayoutMeasureSpecModeExactly && lp.height == 0 && lp.weight > 0) {
@@ -241,7 +241,7 @@
             // leftover space. These views will get measured again down below if
             // there is any leftover space.
             CGFloat totalLength = _totalLength;
-            _totalLength = MAX(totalLength, totalLength + lp.margin.top + lp.margin.bottom);
+            _totalLength = MAX(totalLength, totalLength + lpMargin.top + lpMargin.bottom);
         } else {
             CGFloat oldHeight = CGFLOAT_MIN;
             
@@ -266,7 +266,7 @@
             
             CGFloat childHeight = child.measuredSize.height;
             CGFloat totalLength = _totalLength;
-            _totalLength = MAX(totalLength, totalLength + childHeight + lp.margin.top + lp.margin.bottom + [self nextLocationOffsetOfChild:child]);
+            _totalLength = MAX(totalLength, totalLength + childHeight + lpMargin.top + lpMargin.bottom + [self nextLocationOffsetOfChild:child]);
             
             if (useLargestChild) {
                 largestChildHeight = MAX(childHeight, largestChildHeight);
@@ -298,7 +298,7 @@
             matchWidthLocally = TRUE;
         }
         
-        CGFloat margin = lp.margin.left + lp.margin.right;
+        CGFloat margin = lpMargin.left + lpMargin.right;
         CGFloat measuredWidth = child.measuredSize.width + margin;
         maxWidth = MAX(maxWidth, measuredWidth);
         childState = [UIView combineMeasuredStatesCurrentState:childState newState:child.measuredState];
@@ -333,13 +333,15 @@
             IDLLinearLayoutLayoutParams *lp = (IDLLinearLayoutLayoutParams *) child.layoutParams;
             // Account for negative margins
             CGFloat totalLength = _totalLength;
+            UIEdgeInsets lpMargin = lp.margin;
             _totalLength = MAX(totalLength, totalLength + largestChildHeight +
-                               lp.margin.top + lp.margin.bottom + [self nextLocationOffsetOfChild:child]);
+                               lpMargin.top + lpMargin.bottom + [self nextLocationOffsetOfChild:child]);
         }
     }
     
     // Add in our padding
-    _totalLength += self.padding.top + self.padding.bottom;
+    UIEdgeInsets padding = self.padding;
+    _totalLength += padding.top + padding.bottom;
     
     CGFloat heightSize = _totalLength;
     
@@ -366,6 +368,7 @@
             }
             
             IDLLinearLayoutLayoutParams *lp = (IDLLinearLayoutLayoutParams *) child.layoutParams;
+            UIEdgeInsets lpMargin = lp.margin;
             
             float childExtra = lp.weight;
             if (childExtra > 0) {
@@ -374,7 +377,7 @@
                 weightSum -= childExtra;
                 delta -= share;
                 
-                IDLLayoutMeasureSpec childWidthMeasureSpec = [IDLViewGroup childMeasureSpecForMeasureSpec:widthMeasureSpec padding:(self.padding.left + self.padding.right + lp.margin.left + lp.margin.right) childDimension:lp.width];
+                IDLLayoutMeasureSpec childWidthMeasureSpec = [IDLViewGroup childMeasureSpecForMeasureSpec:widthMeasureSpec padding:(padding.left + padding.right + lpMargin.left + lpMargin.right) childDimension:lp.width];
                 
                 // TODO: Use a field like lp.isMeasured to figure out if this
                 // child has been previously measured
@@ -400,7 +403,7 @@
                 childState = [UIView combineMeasuredStatesCurrentState:childState newState:newState];
             }
             
-            CGFloat margin =  lp.margin.left + lp.margin.right;
+            CGFloat margin =  lpMargin.left + lpMargin.right;
             CGFloat measuredWidth = child.measuredSize.width + margin;
             maxWidth = MAX(maxWidth, measuredWidth);
             
@@ -412,11 +415,11 @@
             allFillParent = allFillParent && lp.width == IDLLayoutParamsSizeMatchParent;
             
             CGFloat totalLength = _totalLength;
-            _totalLength = MAX(totalLength, totalLength + child.measuredSize.height + lp.margin.top + lp.margin.bottom + [self nextLocationOffsetOfChild:child]);
+            _totalLength = MAX(totalLength, totalLength + child.measuredSize.height + lpMargin.top + lpMargin.bottom + [self nextLocationOffsetOfChild:child]);
         }
         
         // Add in our padding
-        _totalLength += self.padding.top + self.padding.bottom;
+        _totalLength += padding.top + padding.bottom;
         // TODO: Should we recompute the heightSpec based on the new total length?
     } else {
         alternativeMaxWidth = MAX(alternativeMaxWidth, weightedMaxWidth);
@@ -453,7 +456,7 @@
         maxWidth = alternativeMaxWidth;
     }
     
-    maxWidth += self.padding.left + self.padding.right;
+    maxWidth += padding.left + padding.right;
     
     // Check against our minimum width
     maxWidth = MAX(maxWidth, self.minWidth);
@@ -545,6 +548,7 @@
         }
         
         IDLLinearLayoutLayoutParams *lp = (IDLLinearLayoutLayoutParams *) child.layoutParams;
+        UIEdgeInsets lpMargin = lp.margin;
         
         totalWeight += lp.weight;
         
@@ -553,10 +557,10 @@
             // leftover space. These views will get measured again down below if
             // there is any leftover space.
             if (isExactly) {
-                _totalLength += lp.margin.left + lp.margin.right;
+                _totalLength += lpMargin.left + lpMargin.right;
             } else {
                 CGFloat totalLength = _totalLength;
-                _totalLength = MAX(totalLength, totalLength + lp.margin.left + lp.margin.right);
+                _totalLength = MAX(totalLength, totalLength + lpMargin.left + lpMargin.right);
             }
             
             // Baseline alignment requires to measure widgets to obtain the
@@ -594,10 +598,10 @@
             
             CGFloat childWidth = child.measuredSize.width;
             if (isExactly) {
-                _totalLength += childWidth + lp.margin.left + lp.margin.right + [self nextLocationOffsetOfChild:child];
+                _totalLength += childWidth + lpMargin.left + lpMargin.right + [self nextLocationOffsetOfChild:child];
             } else {
                 CGFloat totalLength = _totalLength;
-                _totalLength = MAX(totalLength, totalLength + childWidth + lp.margin.left + lp.margin.right + [self nextLocationOffsetOfChild:child]);
+                _totalLength = MAX(totalLength, totalLength + childWidth + lpMargin.left + lpMargin.right + [self nextLocationOffsetOfChild:child]);
             }
             
             if (useLargestChild) {
@@ -614,7 +618,7 @@
             matchHeightLocally = true;
         }
         
-        CGFloat margin = lp.margin.top + lp.margin.bottom;
+        CGFloat margin = lpMargin.top + lpMargin.bottom;
         CGFloat childHeight = child.measuredSize.height + margin;
         childState = [UIView combineMeasuredStatesCurrentState:childState newState:child.measuredState];
         
@@ -679,17 +683,19 @@
             
             IDLLinearLayoutLayoutParams *lp = (IDLLinearLayoutLayoutParams *)
             child.layoutParams;
+            UIEdgeInsets lpMargin = lp.margin;
             if (isExactly) {
-                _totalLength += largestChildWidth + lp.margin.left + lp.margin.right + [self nextLocationOffsetOfChild:child];
+                _totalLength += largestChildWidth + lpMargin.left + lpMargin.right + [self nextLocationOffsetOfChild:child];
             } else {
                 CGFloat totalLength = _totalLength;
-                _totalLength = MAX(totalLength, totalLength + largestChildWidth + lp.margin.left + lp.margin.right + [ self nextLocationOffsetOfChild:child]);
+                _totalLength = MAX(totalLength, totalLength + largestChildWidth + lpMargin.left + lpMargin.right + [ self nextLocationOffsetOfChild:child]);
             }
         }
     }
     
     // Add in our padding
-    _totalLength += self.padding.left + self.padding.right;
+    UIEdgeInsets padding = self.padding;
+    _totalLength += padding.left + padding.right;
     
     CGFloat widthSize = _totalLength;
     
@@ -720,6 +726,7 @@
             }
             
             IDLLinearLayoutLayoutParams *lp = (IDLLinearLayoutLayoutParams *) child.layoutParams;
+            UIEdgeInsets lpMargin = lp.margin;
             
             float childExtra = lp.weight;
             if (childExtra > 0) {
@@ -728,7 +735,7 @@
                 weightSum -= childExtra;
                 delta -= share;
                 
-                IDLLayoutMeasureSpec childHeightMeasureSpec = [self childMeasureSpecWithMeasureSpec:heightMeasureSpec padding:(self.padding.top + self.padding.bottom + lp.margin.top + lp.margin.bottom) childDimension:lp.height];
+                IDLLayoutMeasureSpec childHeightMeasureSpec = [self childMeasureSpecWithMeasureSpec:heightMeasureSpec padding:(padding.top + padding.bottom + lpMargin.top + lpMargin.bottom) childDimension:lp.height];
                 
                 // TODO: Use a field like lp.isMeasured to figure out if this
                 // child has been previously measured
@@ -759,15 +766,15 @@
             }
             
             if (isExactly) {
-                _totalLength += child.measuredSize.width + lp.margin.left + lp.margin.right + [self nextLocationOffsetOfChild:child];
+                _totalLength += child.measuredSize.width + lpMargin.left + lpMargin.right + [self nextLocationOffsetOfChild:child];
             } else {
                 CGFloat totalLength = _totalLength;
-                _totalLength = MAX(totalLength, totalLength + child.measuredSize.width + lp.margin.left + lp.margin.right + [self nextLocationOffsetOfChild:child]);
+                _totalLength = MAX(totalLength, totalLength + child.measuredSize.width + lpMargin.left + lpMargin.right + [self nextLocationOffsetOfChild:child]);
             }
             
             BOOL matchHeightLocally = heightMode != IDLLayoutMeasureSpecModeExactly && lp.height == IDLLayoutParamsSizeMatchParent;
             
-            CGFloat margin = lp.margin.top + lp.margin.bottom;
+            CGFloat margin = lpMargin.top + lpMargin.bottom;
             CGFloat childHeight = child.measuredSize.height + margin;
             maxHeight = MAX(maxHeight, childHeight);
             alternativeMaxHeight = MAX(alternativeMaxHeight,
@@ -791,7 +798,7 @@
         }
         
         // Add in our padding
-        _totalLength += self.padding.left + self.padding.right;
+        _totalLength += padding.left + padding.right;
         // TODO: Should we update widthSize with the new total length?
         
         // Check mMaxAscent[INDEX_TOP] first because it maps to Gravity.TOP,
@@ -841,7 +848,7 @@
         maxHeight = alternativeMaxHeight;
     }
     
-    maxHeight += self.padding.top + self.padding.bottom;
+    maxHeight += padding.top + padding.bottom;
     
     // Check against our minimum height
     maxHeight = MAX(maxHeight, self.minHeight);
@@ -923,6 +930,7 @@
             CGSize childSize = child.measuredSize;
             
             IDLLinearLayoutLayoutParams *lp = (IDLLinearLayoutLayoutParams *)child.layoutParams;
+            UIEdgeInsets lpMargin = lp.margin;
             
             IDLViewContentGravity gravity = lp.gravity;
             if (gravity < IDLViewContentGravityNone) {
@@ -931,22 +939,22 @@
             switch (gravity & HORIZONTAL_GRAVITY_MASK) {
                 case IDLViewContentGravityCenterHorizontal:
                     childLeft = padding.left + ((childSpace - childSize.width) / 2)
-                    + lp.margin.left - lp.margin.right;
+                    + lpMargin.left - lpMargin.right;
                     break;
                     
                 case IDLViewContentGravityRight:
-                    childLeft = childRight - childSize.width - lp.margin.right;
+                    childLeft = childRight - childSize.width - lpMargin.right;
                     break;
                     
                 case IDLViewContentGravityLeft:
                 default:
-                    childLeft = padding.left + lp.margin.left;
+                    childLeft = padding.left + lpMargin.left;
                     break;
             }
             
-            childTop += lp.margin.top;
+            childTop += lpMargin.top;
             [self setChildFrameOfChild:child withFrame:CGRectMake(childLeft, childTop + [self locationOffsetOfChild:child], childSize.width, childSize.height)];
-            childTop += childSize.height + lp.margin.bottom + [self nextLocationOffsetOfChild:child];
+            childTop += childSize.height + lpMargin.bottom + [self nextLocationOffsetOfChild:child];
             
             i += [self childrenSkipCountAfterChild:child atIndex:i];
         }
@@ -1001,6 +1009,7 @@
             CGFloat childBaseline = -1;
             
             IDLLinearLayoutLayoutParams *lp = (IDLLinearLayoutLayoutParams *)child.layoutParams;
+            UIEdgeInsets lpMargin = lp.margin;
             
             if (baselineAligned && lp.height != IDLLayoutParamsSizeMatchParent) {
                 childBaseline = child.baseline;
@@ -1013,18 +1022,18 @@
             
             switch (gravity & VERTICAL_GRAVITY_MASK) {
                 case IDLViewContentGravityTop:
-                    childTop = padding.top + lp.margin.top;
+                    childTop = padding.top + lpMargin.top;
                     if (childBaseline != -1) {
                         childTop += _maxAscent[MAX_ASCENT_DESCENT_INDEX_TOP] - childBaseline;
                     }
                     break;
                     
                 case IDLViewContentGravityCenterVertical:
-                    childTop = padding.top + ((childSpace - childSize.height) / 2) + lp.margin.top - lp.margin.bottom;
+                    childTop = padding.top + ((childSpace - childSize.height) / 2) + lpMargin.top - lpMargin.bottom;
                     break;
                     
                 case IDLViewContentGravityBottom:
-                    childTop = childBottom - childSize.height - lp.margin.bottom;
+                    childTop = childBottom - childSize.height - lpMargin.bottom;
                     if (childBaseline != -1) {
                         int descent = childSize.height - childBaseline;
                         childTop -= (_maxDescent[MAX_ASCENT_DESCENT_INDEX_BOTTOM] - descent);
@@ -1035,10 +1044,10 @@
                     break;
             }
             
-            childLeft += lp.margin.left;
+            childLeft += lpMargin.left;
             [self setChildFrameOfChild:child withFrame:CGRectMake(childLeft + [self locationOffsetOfChild:child], childTop,
                                                                   childSize.width, childSize.height)];
-            childLeft += childSize.width + lp.margin.right + [self nextLocationOffsetOfChild:child];
+            childLeft += childSize.width + lpMargin.right + [self nextLocationOffsetOfChild:child];
             
             i += [self childrenSkipCountAfterChild:child atIndex:i];
         }

@@ -12,6 +12,8 @@
 
 - (id)initWithColor:(UIColor *)color;
 
+@property (nonatomic, readonly) UIColor *color;
+
 @end
 
 @interface IDLColorDrawableConstantState : IDLDrawableConstantState

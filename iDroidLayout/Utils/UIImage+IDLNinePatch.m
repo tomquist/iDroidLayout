@@ -138,10 +138,18 @@ static char ninePatchPaddingsKey;
         if (capInsets != NULL) {
             [self idl_startAndEndFromBuffer:leftBuffer length:verticalBufferSize startRef:&(*capInsets).top endRef:&(*capInsets).bottom];
             [self idl_startAndEndFromBuffer:topBuffer length:horizontalBufferSize startRef:&(*capInsets).left endRef:&(*capInsets).right];
+            (*capInsets).top /= self.scale;
+            (*capInsets).left /= self.scale;
+            (*capInsets).bottom /= self.scale;
+            (*capInsets).right /= self.scale;
         }
         if (padding != NULL) {
             BOOL paddingIndicator = [self idl_startAndEndFromBuffer:rightBuffer length:verticalBufferSize startRef:&(*padding).top endRef:&(*padding).bottom];
             paddingIndicator |= [self idl_startAndEndFromBuffer:bottomBuffer length:horizontalBufferSize startRef:&(*padding).left endRef:&(*padding).right];
+            (*padding).top /= self.scale;
+            (*padding).left /= self.scale;
+            (*padding).bottom /= self.scale;
+            (*padding).right /= self.scale;
             if (hasPadding != NULL) {
                 (*hasPadding)= paddingIndicator;
             }
@@ -199,10 +207,10 @@ static char ninePatchPaddingsKey;
 }
 
 + (UIImage *)resizableImageFromNinePatchImage:(UIImage *)image withInsets:(UIEdgeInsets)insets {
-    CGRect sourceRectTop = CGRectMake(image.scale, image.scale, (image.size.width - 2) * image.scale, (image.size.height - 2) * image.scale);
-    CGImageRef imageRefTop = CGImageCreateWithImageInRect(image.CGImage, sourceRectTop);
-    UIImage *nonScaledImage = [[UIImage alloc] initWithCGImage:imageRefTop scale:image.scale orientation:image.imageOrientation];
-    CGImageRelease(imageRefTop);
+    CGRect imageRect = CGRectMake(1, 1, image.size.width * image.scale - 2, image.size.height * image.scale - 2);
+    CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, imageRect);
+    UIImage *nonScaledImage = [[UIImage alloc] initWithCGImage:imageRef scale:image.scale orientation:image.imageOrientation];
+    CGImageRelease(imageRef);
     UIImage *resizableImage = nil;
     if ([nonScaledImage respondsToSelector:@selector(resizableImageWithCapInsets:resizingMode:)]) {
         resizableImage = [nonScaledImage resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch];

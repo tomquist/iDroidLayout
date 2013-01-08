@@ -78,7 +78,7 @@ static char backgroundDrawableKey;
             __block UIView *selfRef = self;
             __block IDLDrawableLayer *layer = existingBackgroundLayer;
             [self idl_addObserver:^(NSString *keyPath, id object, NSDictionary *change) {
-                layer.frame = self.bounds;
+                layer.frame = selfRef.bounds;
             } withIdentifier:BackgroundDrawableFrameTag forKeyPaths:@[@"frame"] options:NSKeyValueObservingOptionNew];
             
             if ([self isKindOfClass:[UIControl class]] && ![self idl_hasObserverWithIdentifier:BackgroundDrawableStateTag]) {

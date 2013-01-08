@@ -11,7 +11,7 @@
 		7926931D167D03FE0078EE37 /* IDLResourceValueSet.h in Headers */ = {isa = PBXBuildFile; fileRef = 79269318167D03FE0078EE37 /* IDLResourceValueSet.h */; };
 		7926931E167D03FE0078EE37 /* IDLResourceValueSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 79269319167D03FE0078EE37 /* IDLResourceValueSet.m */; };
 		7926931F167D03FE0078EE37 /* IDLStyle+IDL_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 7926931A167D03FE0078EE37 /* IDLStyle+IDL_Internal.h */; };
-		79269320167D03FE0078EE37 /* IDLStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = 7926931B167D03FE0078EE37 /* IDLStyle.h */; };
+		79269320167D03FE0078EE37 /* IDLStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = 7926931B167D03FE0078EE37 /* IDLStyle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		79269321167D03FE0078EE37 /* IDLStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7926931C167D03FE0078EE37 /* IDLStyle.m */; };
 		79269324167D11970078EE37 /* IDLStringArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 79269322167D11970078EE37 /* IDLStringArray.h */; };
 		79269325167D11970078EE37 /* IDLStringArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 79269323167D11970078EE37 /* IDLStringArray.m */; };
@@ -159,6 +159,8 @@
 		7981410D166ABABB00A63480 /* IDLResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7981410B166ABABB00A63480 /* IDLResourceManager.m */; };
 		79814110166BD65900A63480 /* NSDictionary+IDL_ResourceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7981410E166BD65800A63480 /* NSDictionary+IDL_ResourceManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		79814111166BD65900A63480 /* NSDictionary+IDL_ResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7981410F166BD65800A63480 /* NSDictionary+IDL_ResourceManager.m */; };
+		79B5BFA6169B6A3700FA1D94 /* IDLClipDrawable.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B5BFA4169B6A3600FA1D94 /* IDLClipDrawable.h */; };
+		79B5BFA7169B6A3700FA1D94 /* IDLClipDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B5BFA5169B6A3700FA1D94 /* IDLClipDrawable.m */; };
 		79B983481674D2F200F844DB /* IDLColorStateItem+IDL_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B983381674D2F200F844DB /* IDLColorStateItem+IDL_Internal.h */; };
 		79B983491674D2F200F844DB /* IDLColorStateItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B983391674D2F200F844DB /* IDLColorStateItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		79B9834A1674D2F200F844DB /* IDLColorStateItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B9833A1674D2F200F844DB /* IDLColorStateItem.m */; };
@@ -179,6 +181,20 @@
 		79DE0ABE1684AFF200EDACE3 /* NSObject+IDL_KVOObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DE0ABC1684AFF200EDACE3 /* NSObject+IDL_KVOObserver.m */; };
 		79DE0BEE1690C87400EDACE3 /* IDLDrawableLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 79DE0BEC1690C87100EDACE3 /* IDLDrawableLayer.h */; };
 		79DE0BEF1690C87400EDACE3 /* IDLDrawableLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DE0BED1690C87200EDACE3 /* IDLDrawableLayer.m */; };
+		79DE0BFC1695FC5C00EDACE3 /* button_disabled.9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79DE0BF81695FC5C00EDACE3 /* button_disabled.9@2x.png */; };
+		79DE0BFD1695FC5C00EDACE3 /* button_pressed.9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79DE0BF91695FC5C00EDACE3 /* button_pressed.9@2x.png */; };
+		79DE0BFE1695FC5C00EDACE3 /* button_normal.9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79DE0BFA1695FC5C00EDACE3 /* button_normal.9@2x.png */; };
+		79DE0BFF1695FC5C00EDACE3 /* background1.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79DE0BFB1695FC5C00EDACE3 /* background1.xml */; };
+		79DE0C021696010100EDACE3 /* IDLEditText.h in Headers */ = {isa = PBXBuildFile; fileRef = 79DE0C001696010100EDACE3 /* IDLEditText.h */; };
+		79DE0C031696010100EDACE3 /* IDLEditText.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DE0C011696010100EDACE3 /* IDLEditText.m */; };
+		79DE0C06169604A100EDACE3 /* IDLTextArea.h in Headers */ = {isa = PBXBuildFile; fileRef = 79DE0C04169604A000EDACE3 /* IDLTextArea.h */; };
+		79DE0C07169604A100EDACE3 /* IDLTextArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DE0C05169604A100EDACE3 /* IDLTextArea.m */; };
+		79DE0C0A169605A700EDACE3 /* UITextView+IDL_View.h in Headers */ = {isa = PBXBuildFile; fileRef = 79DE0C08169605A600EDACE3 /* UITextView+IDL_View.h */; };
+		79DE0C0B169605A700EDACE3 /* UITextView+IDL_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DE0C09169605A700EDACE3 /* UITextView+IDL_View.m */; };
+		79DE0C0E1698A56D00EDACE3 /* IDLButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 79DE0C0C1698A56D00EDACE3 /* IDLButton.h */; };
+		79DE0C0F1698A56D00EDACE3 /* IDLButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DE0C0D1698A56D00EDACE3 /* IDLButton.m */; };
+		79DE0C141699B81700EDACE3 /* IDLXMLCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 79DE0C121699B81000EDACE3 /* IDLXMLCache.h */; };
+		79DE0C151699B81700EDACE3 /* IDLXMLCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DE0C131699B81300EDACE3 /* IDLXMLCache.m */; };
 		79E4337816681D7B00E49114 /* LayoutFromIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79E4337716681D7B00E49114 /* LayoutFromIB.xib */; };
 		79E4337D16681DEB00E49114 /* layoutFromIB.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79E4337C16681DEB00E49114 /* layoutFromIB.xml */; };
 		79E43380166A2E7B00E49114 /* includeContainer.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79E4337F166A2E7B00E49114 /* includeContainer.xml */; };
@@ -369,6 +385,8 @@
 		7981410B166ABABB00A63480 /* IDLResourceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLResourceManager.m; sourceTree = "<group>"; };
 		7981410E166BD65800A63480 /* NSDictionary+IDL_ResourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+IDL_ResourceManager.h"; sourceTree = "<group>"; };
 		7981410F166BD65800A63480 /* NSDictionary+IDL_ResourceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+IDL_ResourceManager.m"; sourceTree = "<group>"; };
+		79B5BFA4169B6A3600FA1D94 /* IDLClipDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLClipDrawable.h; sourceTree = "<group>"; };
+		79B5BFA5169B6A3700FA1D94 /* IDLClipDrawable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLClipDrawable.m; sourceTree = "<group>"; };
 		79B983381674D2F200F844DB /* IDLColorStateItem+IDL_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IDLColorStateItem+IDL_Internal.h"; sourceTree = "<group>"; };
 		79B983391674D2F200F844DB /* IDLColorStateItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLColorStateItem.h; sourceTree = "<group>"; };
 		79B9833A1674D2F200F844DB /* IDLColorStateItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLColorStateItem.m; sourceTree = "<group>"; };
@@ -389,6 +407,20 @@
 		79DE0ABC1684AFF200EDACE3 /* NSObject+IDL_KVOObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+IDL_KVOObserver.m"; sourceTree = "<group>"; };
 		79DE0BEC1690C87100EDACE3 /* IDLDrawableLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLDrawableLayer.h; sourceTree = "<group>"; };
 		79DE0BED1690C87200EDACE3 /* IDLDrawableLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLDrawableLayer.m; sourceTree = "<group>"; };
+		79DE0BF81695FC5C00EDACE3 /* button_disabled.9@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_disabled.9@2x.png"; sourceTree = "<group>"; };
+		79DE0BF91695FC5C00EDACE3 /* button_pressed.9@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_pressed.9@2x.png"; sourceTree = "<group>"; };
+		79DE0BFA1695FC5C00EDACE3 /* button_normal.9@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_normal.9@2x.png"; sourceTree = "<group>"; };
+		79DE0BFB1695FC5C00EDACE3 /* background1.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = background1.xml; sourceTree = "<group>"; };
+		79DE0C001696010100EDACE3 /* IDLEditText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLEditText.h; sourceTree = "<group>"; };
+		79DE0C011696010100EDACE3 /* IDLEditText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLEditText.m; sourceTree = "<group>"; };
+		79DE0C04169604A000EDACE3 /* IDLTextArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLTextArea.h; sourceTree = "<group>"; };
+		79DE0C05169604A100EDACE3 /* IDLTextArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLTextArea.m; sourceTree = "<group>"; };
+		79DE0C08169605A600EDACE3 /* UITextView+IDL_View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+IDL_View.h"; sourceTree = "<group>"; };
+		79DE0C09169605A700EDACE3 /* UITextView+IDL_View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+IDL_View.m"; sourceTree = "<group>"; };
+		79DE0C0C1698A56D00EDACE3 /* IDLButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLButton.h; sourceTree = "<group>"; };
+		79DE0C0D1698A56D00EDACE3 /* IDLButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLButton.m; sourceTree = "<group>"; };
+		79DE0C121699B81000EDACE3 /* IDLXMLCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLXMLCache.h; sourceTree = "<group>"; };
+		79DE0C131699B81300EDACE3 /* IDLXMLCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLXMLCache.m; sourceTree = "<group>"; };
 		79E4337716681D7B00E49114 /* LayoutFromIB.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LayoutFromIB.xib; sourceTree = "<group>"; };
 		79E4337C16681DEB00E49114 /* layoutFromIB.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = layoutFromIB.xml; sourceTree = "<group>"; };
 		79E4337E1668226900E49114 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
@@ -451,6 +483,8 @@
 			children = (
 				79718ADA167FAC9B00414CCE /* IDLBitmapDrawable.h */,
 				79718ADB167FAC9B00414CCE /* IDLBitmapDrawable.m */,
+				79B5BFA4169B6A3600FA1D94 /* IDLClipDrawable.h */,
+				79B5BFA5169B6A3700FA1D94 /* IDLClipDrawable.m */,
 				79718ADF167FAD9D00414CCE /* IDLColorDrawable.h */,
 				79718AE0167FAD9D00414CCE /* IDLColorDrawable.m */,
 				79718B00168091D300414CCE /* IDLDrawable+IDL_Internal.h */,
@@ -459,20 +493,20 @@
 				79718AF716808D5E00414CCE /* IDLDrawableContainer+IDL_Internal.h */,
 				79718AE7167FAE3D00414CCE /* IDLDrawableContainer.h */,
 				79718AE8167FAE3D00414CCE /* IDLDrawableContainer.m */,
+				79DE0BEC1690C87100EDACE3 /* IDLDrawableLayer.h */,
+				79DE0BED1690C87200EDACE3 /* IDLDrawableLayer.m */,
 				79718AF3167FAEB500414CCE /* IDLGradientDrawable.h */,
 				79718AF4167FAEB500414CCE /* IDLGradientDrawable.m */,
 				79718AE3167FADB900414CCE /* IDLInsetDrawable.h */,
 				79718AE4167FADB900414CCE /* IDLInsetDrawable.m */,
 				79718AEF167FAEA800414CCE /* IDLLayerDrawable.h */,
 				79718AF0167FAEA800414CCE /* IDLLayerDrawable.m */,
+				79718B0E1681DE5200414CCE /* IDLNinePatchDrawable.h */,
+				79718B0F1681DE5300414CCE /* IDLNinePatchDrawable.m */,
 				79718AEB167FAE9400414CCE /* IDLStateListDrawable.h */,
 				79718AEC167FAE9400414CCE /* IDLStateListDrawable.m */,
 				79718B0416809FAE00414CCE /* UIView+IDLDrawable.h */,
 				79718B0516809FAE00414CCE /* UIView+IDLDrawable.m */,
-				79718B0E1681DE5200414CCE /* IDLNinePatchDrawable.h */,
-				79718B0F1681DE5300414CCE /* IDLNinePatchDrawable.m */,
-				79DE0BEC1690C87100EDACE3 /* IDLDrawableLayer.h */,
-				79DE0BED1690C87200EDACE3 /* IDLDrawableLayer.m */,
 			);
 			path = Drawable;
 			sourceTree = "<group>";
@@ -567,6 +601,10 @@
 		79642C1D1603C4E80095D5A2 /* iDroidLayoutExample */ = {
 			isa = PBXGroup;
 			children = (
+				79DE0BF81695FC5C00EDACE3 /* button_disabled.9@2x.png */,
+				79DE0BF91695FC5C00EDACE3 /* button_pressed.9@2x.png */,
+				79DE0BFA1695FC5C00EDACE3 /* button_normal.9@2x.png */,
+				79DE0BFB1695FC5C00EDACE3 /* background1.xml */,
 				79642CBF1603C5DB0095D5A2 /* android.jpg */,
 				79642CC01603C5DB0095D5A2 /* animations.xml */,
 				796E1DB616735F8E00E78B45 /* button_background.xml */,
@@ -682,6 +720,12 @@
 			isa = PBXGroup;
 			children = (
 				79642C581603C5500095D5A2 /* Categories */,
+				79DE0C0C1698A56D00EDACE3 /* IDLButton.h */,
+				79DE0C0D1698A56D00EDACE3 /* IDLButton.m */,
+				79DE0C001696010100EDACE3 /* IDLEditText.h */,
+				79DE0C011696010100EDACE3 /* IDLEditText.m */,
+				79DE0C04169604A000EDACE3 /* IDLTextArea.h */,
+				79DE0C05169604A100EDACE3 /* IDLTextArea.m */,
 				79642C651603C5500095D5A2 /* IDLTextView.h */,
 				79642C661603C5500095D5A2 /* IDLTextView.m */,
 				79642C671603C5500095D5A2 /* Layout */,
@@ -712,6 +756,8 @@
 				798140FE166A8A5700A63480 /* UIToolbar+IDL_View.m */,
 				79642C631603C5500095D5A2 /* UIWebView+IDL_View.h */,
 				79642C641603C5500095D5A2 /* UIWebView+IDL_View.m */,
+				79DE0C08169605A600EDACE3 /* UITextView+IDL_View.h */,
+				79DE0C09169605A700EDACE3 /* UITextView+IDL_View.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -810,6 +856,8 @@
 				7981410F166BD65800A63480 /* NSDictionary+IDL_ResourceManager.m */,
 				79B983371674D2F200F844DB /* StateList */,
 				79269317167D03FD0078EE37 /* Values */,
+				79DE0C121699B81000EDACE3 /* IDLXMLCache.h */,
+				79DE0C131699B81300EDACE3 /* IDLXMLCache.m */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -918,6 +966,12 @@
 				79718B141681FF1100414CCE /* UIImage+IDLNinePatch.h in Headers */,
 				79DE0ABD1684AFF200EDACE3 /* NSObject+IDL_KVOObserver.h in Headers */,
 				79DE0BEE1690C87400EDACE3 /* IDLDrawableLayer.h in Headers */,
+				79DE0C021696010100EDACE3 /* IDLEditText.h in Headers */,
+				79DE0C06169604A100EDACE3 /* IDLTextArea.h in Headers */,
+				79DE0C0A169605A700EDACE3 /* UITextView+IDL_View.h in Headers */,
+				79DE0C0E1698A56D00EDACE3 /* IDLButton.h in Headers */,
+				79DE0C141699B81700EDACE3 /* IDLXMLCache.h in Headers */,
+				79B5BFA6169B6A3700FA1D94 /* IDLClipDrawable.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1053,6 +1107,10 @@
 				796E1D85167169F700E78B45 /* button_color.xml in Resources */,
 				796E1DB716735F8E00E78B45 /* button_background.xml in Resources */,
 				79269316167BF7A00078EE37 /* values.xml in Resources */,
+				79DE0BFC1695FC5C00EDACE3 /* button_disabled.9@2x.png in Resources */,
+				79DE0BFD1695FC5C00EDACE3 /* button_pressed.9@2x.png in Resources */,
+				79DE0BFE1695FC5C00EDACE3 /* button_normal.9@2x.png in Resources */,
+				79DE0BFF1695FC5C00EDACE3 /* background1.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1178,6 +1236,12 @@
 				79718B151681FF1100414CCE /* UIImage+IDLNinePatch.m in Sources */,
 				79DE0ABE1684AFF200EDACE3 /* NSObject+IDL_KVOObserver.m in Sources */,
 				79DE0BEF1690C87400EDACE3 /* IDLDrawableLayer.m in Sources */,
+				79DE0C031696010100EDACE3 /* IDLEditText.m in Sources */,
+				79DE0C07169604A100EDACE3 /* IDLTextArea.m in Sources */,
+				79DE0C0B169605A700EDACE3 /* UITextView+IDL_View.m in Sources */,
+				79DE0C0F1698A56D00EDACE3 /* IDLButton.m in Sources */,
+				79DE0C151699B81700EDACE3 /* IDLXMLCache.m in Sources */,
+				79B5BFA7169B6A3700FA1D94 /* IDLClipDrawable.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

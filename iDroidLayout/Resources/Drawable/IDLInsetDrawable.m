@@ -21,16 +21,20 @@
 @implementation IDLInsetDrawableConstantState
 
 - (void)dealloc {
+    self.drawable.delegate = nil;
     self.drawable = nil;
     [super dealloc];
 }
 
-- (id)initWithState:(IDLInsetDrawableConstantState *)state {
+- (id)initWithState:(IDLInsetDrawableConstantState *)state owner:(IDLInsetDrawable *)owner {
     self = [super init];
     if (self) {
         if (state != nil) {
             self.insets = state.insets;
-            self.drawable = state.drawable;
+            IDLDrawable *copiedDrawable = [state.drawable copy];
+            copiedDrawable.delegate = owner;
+            self.drawable = copiedDrawable;
+            [copiedDrawable release];
         }
     }
     return self;
@@ -54,7 +58,7 @@
 - (id)initWithState:(IDLInsetDrawableConstantState *)state {
     self = [super init];
     if (self) {
-        IDLInsetDrawableConstantState *s = [[IDLInsetDrawableConstantState alloc] initWithState:state];
+        IDLInsetDrawableConstantState *s = [[IDLInsetDrawableConstantState alloc] initWithState:state owner:self];
         self.internalConstantState = s;
         [s release];
     }
@@ -63,13 +67,6 @@
 
 - (id)init {
     return [self initWithState:nil];
-}
-
-- (void)drawOnLayer:(CALayer *)layer {
-    CALayer *sublayer = [CALayer layer];
-    sublayer.frame = UIEdgeInsetsInsetRect(layer.frame, self.internalConstantState.insets);
-    [self.internalConstantState.drawable drawOnLayer:sublayer];
-    [layer addSublayer:sublayer];
 }
 
 - (void)drawInContext:(CGContextRef)context {
@@ -94,6 +91,10 @@
     [super onBoundsChangeToRect:bounds];
     CGRect insetRect = UIEdgeInsetsInsetRect(self.bounds, self.internalConstantState.insets);
     self.internalConstantState.drawable.bounds = insetRect;
+}
+
+- (BOOL)onLevelChangeToLevel:(NSUInteger)level {
+    return [self.internalConstantState.drawable setLevel:level];
 }
 
 - (UIEdgeInsets)padding {
@@ -132,6 +133,7 @@
         NSLog(@"<item> tag requires a 'drawable' attribute or child tag defining a drawable");
     }
     if (drawable != nil) {
+        drawable.delegate = self;
         drawable.state = self.state;
         self.internalConstantState.drawable = drawable;
         self.internalConstantState.insets = insets;
@@ -140,6 +142,12 @@
 
 - (IDLDrawableConstantState *)constantState {
     return self.internalConstantState;
+}
+
+#pragma mark - IDLDrawableDelegate
+
+- (void)drawableDidInvalidate:(IDLDrawable *)drawable {
+    [self.delegate drawableDidInvalidate:self];
 }
 
 @end

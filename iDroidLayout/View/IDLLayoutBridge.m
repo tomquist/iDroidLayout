@@ -8,6 +8,7 @@
 
 #import "IDLLayoutBridge.h"
 #import "UIView+IDL_Layout.h"
+#import "IDLMarginLayoutParams.h"
 #import "IDLLayoutInflater.h"
 
 @implementation UIView (IDLLayoutBridge)
@@ -78,19 +79,38 @@
 - (void)onLayoutWithFrame:(CGRect)frame didFrameChange:(BOOL)changed {
     UIView *firstChild = [self.subviews lastObject];
     if (firstChild != nil) {
-        [firstChild layoutWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+        CGSize size = firstChild.measuredSize;
+        IDLMarginLayoutParams *lp = (IDLMarginLayoutParams *)firstChild.layoutParams;
+        UIEdgeInsets margin = lp.margin;
+        [firstChild layoutWithFrame:CGRectMake(margin.left, margin.top, size.width, size.height)];
     }
 }
 
 - (void)onMeasureWithWidthMeasureSpec:(IDLLayoutMeasureSpec)widthMeasureSpec heightMeasureSpec:(IDLLayoutMeasureSpec)heightMeasureSpec {
-    [self measureChildrenWithWidthMeasureSpec:widthMeasureSpec heightMeasureSpec:heightMeasureSpec];
+    int size = [self.subviews count];
+    for (int i = 0; i < size; ++i) {
+        UIView *child = [self.subviews objectAtIndex:i];
+        if (child.visibility != IDLViewVisibilityGone) {
+            [self measureChildWithMargins:child parentWidthMeasureSpec:widthMeasureSpec widthUsed:0 parentHeightMeasureSpec:heightMeasureSpec heightUsed:0];
+        }
+    }
+    
+    //[self measureChildrenWithWidthMeasureSpec:widthMeasureSpec heightMeasureSpec:heightMeasureSpec];
 }
 
 - (IDLLayoutParams *)generateDefaultLayoutParams {
-    IDLLayoutParams *lp = [super generateDefaultLayoutParams];
+    IDLMarginLayoutParams *lp = [[IDLMarginLayoutParams alloc] initWithWidth:IDLLayoutParamsSizeMatchParent height:IDLLayoutParamsSizeMatchParent];
     lp.width = IDLLayoutParamsSizeMatchParent;
     lp.height = IDLLayoutParamsSizeMatchParent;
     return lp;
+}
+
+-(IDLLayoutParams *)generateLayoutParamsFromLayoutParams:(IDLLayoutParams *)layoutParams {
+    return [[[IDLMarginLayoutParams alloc] initWithLayoutParams:layoutParams] autorelease];
+}
+
+- (IDLLayoutParams *)generateLayoutParamsFromAttributes:(NSDictionary *)attrs {
+    return [[[IDLMarginLayoutParams alloc] initWithAttributes:attrs] autorelease];
 }
 
 - (void)layoutSubviews {

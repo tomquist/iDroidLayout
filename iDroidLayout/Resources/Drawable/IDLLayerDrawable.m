@@ -40,6 +40,9 @@
 @implementation IDLLayerDrawableConstantState
 
 - (void)dealloc {
+    for (IDLLayerDrawableItem *item in self.items) {
+        item.drawable.delegate = nil;
+    }
     self.items = nil;
     [super dealloc];
 }
@@ -161,14 +164,15 @@
     }
 }
 
-- (void)drawOnLayer:(CALayer *)layer {
-    for (IDLLayerDrawableItem *item in self.internalConstantState.items) {
-        CALayer *sublayer = [[CALayer alloc] init];
-        sublayer.frame = UIEdgeInsetsInsetRect(layer.bounds, item.insets);
-        [item.drawable drawOnLayer:sublayer];
-        [layer addSublayer:sublayer];
-        [sublayer release];
+- (BOOL)onLevelChangeToLevel:(NSUInteger)level {
+    IDLLayerDrawableConstantState *state = self.internalConstantState;
+    BOOL changed = FALSE;
+    for (IDLLayerDrawableItem *item in state.items) {
+        if ([item.drawable setLevel:level]) {
+            changed = TRUE;
+        }
     }
+    return changed;
 }
 
 - (void)drawInContext:(CGContextRef)context {
@@ -224,6 +228,23 @@
 
 - (IDLDrawableConstantState *)constantState {
     return self.internalConstantState;
+}
+
+- (CGSize)intrinsicSize {
+    CGSize size = CGSizeMake(-1, -1);
+    for (IDLLayerDrawableItem *item in self.internalConstantState.items) {
+        UIEdgeInsets insets = item.insets;
+        CGSize s = item.drawable.intrinsicSize;
+        s.width += insets.left + insets.right;
+        s.height += insets.top + insets.bottom;
+        if (s.width > size.width) {
+            size.width = s.width;
+        }
+        if (s.height > size.height) {
+            size.height = s.height;
+        }
+    }
+    return size;
 }
 
 #pragma mark - IDLDrawableDelegate

@@ -25,6 +25,16 @@ IDLGradientDrawableShape IDLGradientDrawableShapeFromString(NSString *string) {
     return ret;
 }
 
+IDLGradientDrawableGradientType IDLGradientDrawableGradientTypeFromString(NSString *string) {
+    IDLGradientDrawableGradientType ret = IDLGradientDrawableGradientTypeNone;
+    if ([string length] == 0 || [string isEqualToString:@"linear"]) {
+        ret = IDLGradientDrawableGradientTypeLinear;
+    } else if ([string isEqualToString:@"radial"]) {
+        ret = IDLGradientDrawableGradientTypeRadial;
+    }
+    return ret;
+}
+
 const IDLGradientDrawableCornerRadius IDLGradientDrawableCornerRadiusZero = {0,0,0,0};
 
 BOOL IDLGradientDrawableCornerRadiusEqualsCornerRadius(IDLGradientDrawableCornerRadius r1, IDLGradientDrawableCornerRadius r2) {
@@ -39,6 +49,13 @@ BOOL IDLGradientDrawableCornerRadiusEqualsCornerRadius(IDLGradientDrawableCorner
 @property (nonatomic, assign) BOOL hasPadding;
 @property (nonatomic, assign) CGFloat strokeWidth;
 @property (nonatomic, retain) UIColor *strokeColor;
+@property (nonatomic, assign) CGFloat dashWidth;
+@property (nonatomic, assign) CGFloat dashGap;
+
+@property (nonatomic, assign) IDLGradientDrawableGradientType gradientType;
+@property (nonatomic, assign) CGPoint relativeGradientCenter;
+@property (nonatomic, assign) CGFloat gradientRadius;
+@property (nonatomic, assign) BOOL gradientRadiusIsRelative;
 @property (nonatomic, assign) IDLGradientDrawableShape shape;
 @property (nonatomic, assign) IDLGradientDrawableCornerRadius corners;
 @property (nonatomic, assign) CGSize size;
@@ -75,11 +92,17 @@ BOOL IDLGradientDrawableCornerRadiusEqualsCornerRadius(IDLGradientDrawableCorner
             self.hasPadding = state.hasPadding;
             self.strokeWidth = state.strokeWidth;
             self.strokeColor = state.strokeColor;
+            self.dashWidth = state.dashWidth;
+            self.dashGap = state.dashGap;
             self.shape = state.shape;
             self.corners = state.corners;
             self.size = state.size;
             self.colorSpace = state.colorSpace;
             self.gradient = state.gradient;
+            self.relativeGradientCenter = state.relativeGradientCenter;
+            self.gradientRadius = state.gradientRadius;
+            self.gradientRadiusIsRelative = state.gradientRadiusIsRelative;
+            self.gradientType = state.gradientType;
         } else {
             CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
             self.colorSpace = colorSpace;
@@ -166,9 +189,10 @@ BOOL IDLGradientDrawableCornerRadiusEqualsCornerRadius(IDLGradientDrawableCorner
 }
 
 - (void)createPathInContext:(CGContextRef)context forRect:(CGRect)rect {
-    IDLGradientDrawableCornerRadius corners = self.internalConstantState.corners;
+    IDLGradientDrawableConstantState *state = self.internalConstantState;
+    IDLGradientDrawableCornerRadius corners = state.corners;
     CGContextBeginPath(context);
-    switch (self.internalConstantState.shape) {
+    switch (state.shape) {
         case IDLGradientDrawableShapeRectangle:
             CGContextMoveToPoint(context, rect.origin.x, rect.origin.y + corners.topLeft);
             CGContextAddLineToPoint(context, rect.origin.x, rect.origin.y + rect.size.height - corners.bottomLeft);
@@ -194,6 +218,12 @@ BOOL IDLGradientDrawableCornerRadiusEqualsCornerRadius(IDLGradientDrawableCorner
         case IDLGradientDrawableShapeRing:
             
             break;
+        case IDLGradientDrawableShapeLine: {
+            CGFloat y = CGRectGetMidY(rect);
+            CGContextMoveToPoint(context, rect.origin.x, y);
+            CGContextAddLineToPoint(context, rect.origin.x + rect.size.width, y);
+            break;
+        }
         default:
             break;
     }
@@ -201,108 +231,53 @@ BOOL IDLGradientDrawableCornerRadiusEqualsCornerRadius(IDLGradientDrawableCorner
 
 - (void)drawInContext:(CGContextRef)context {
     CGRect rect = self.bounds;
-    if ([self.internalConstantState.colors count] == 1) {
-        [self createPathInContext:context forRect:rect];
-        CGContextSetFillColorWithColor(context, [self.internalConstantState.colors[0] CGColor]);
-        CGContextDrawPath(context, kCGPathFill);
-    } else if ([self.internalConstantState.colors count] > 1) {
-        [self createPathInContext:context forRect:rect];
-        CGContextSaveGState(context);
-        CGContextClip(context);
-        CGGradientRef gradient = [self.internalConstantState currentGradient];
-        CGContextDrawLinearGradient(context, gradient, rect.origin, CGPointMake(rect.origin.x, rect.origin.y + rect.size.height), 0);
-        CGContextRestoreGState(context);
+    IDLGradientDrawableConstantState *state = self.internalConstantState;
+    if (state.shape != IDLGradientDrawableShapeLine) {
+        if ([state.colors count] == 1) {
+            [self createPathInContext:context forRect:rect];
+            CGContextSetFillColorWithColor(context, [state.colors[0] CGColor]);
+            CGContextDrawPath(context, kCGPathFill);
+        } else if ([state.colors count] > 1) {
+            [self createPathInContext:context forRect:rect];
+            CGContextSaveGState(context);
+            CGContextClip(context);
+            
+            if (state.gradientType == IDLGradientDrawableGradientTypeLinear) {
+                CGGradientRef gradient = [state currentGradient];
+                CGContextDrawLinearGradient(context, gradient, rect.origin, CGPointMake(rect.origin.x, rect.origin.y + rect.size.height), 0);
+            } else if (state.gradientType == IDLGradientDrawableGradientTypeRadial) {
+                CGGradientRef gradient = [state currentGradient];
+                CGPoint relativeCenterPoint = state.relativeGradientCenter;
+                CGPoint centerPoint = CGPointMake(rect.origin.x + rect.size.width * relativeCenterPoint.x, rect.origin.y + rect.size.height * relativeCenterPoint.y);
+                CGFloat radius = state.gradientRadius;
+                if (state.gradientRadiusIsRelative) {
+                    radius *= MIN(rect.size.width, rect.size.height);
+                }
+                CGContextDrawRadialGradient(context, gradient, centerPoint, 0, centerPoint, radius, kCGGradientDrawsAfterEndLocation);
+            }
+            CGContextRestoreGState(context);
+        }
     }
-    BOOL drawStroke = self.internalConstantState.strokeWidth > 0 && self.internalConstantState.strokeColor != nil;
+    BOOL drawStroke = state.strokeWidth > 0 && state.strokeColor != nil;
     if (drawStroke) {
         [self createPathInContext:context forRect:rect];
-        CGContextSetLineWidth(context, self.internalConstantState.strokeWidth);
-        CGContextSetStrokeColorWithColor(context, [self.internalConstantState.strokeColor CGColor]);
+        CGContextSetLineWidth(context, state.strokeWidth);
+        if (state.dashWidth > 0.f) {
+            CGFloat lengths[2] = {state.dashWidth, state.dashGap};
+            CGContextSetLineDash(context, 0, lengths, 2);
+        }
+        CGContextSetStrokeColorWithColor(context, [state.strokeColor CGColor]);
         CGContextStrokePath(context);
     }
     OUTLINE_RECT(context, rect);
 }
 
-- (void)drawOnLayer:(CALayer *)layer {
-    CALayer *sublayer;
-    BOOL drawStroke = self.internalConstantState.strokeWidth > 0 && self.internalConstantState.strokeColor != nil;
-    if ([self.internalConstantState.colors count] == 1) {
-        CALayer *tmpSublayer = [CALayer layer];
-        tmpSublayer.backgroundColor = [self.internalConstantState.colors[0] CGColor];
-        [layer addSublayer:tmpSublayer];
-        sublayer = tmpSublayer;
-    } else {
-        CAGradientLayer *tmpSublayer = [CAGradientLayer layer];
-        tmpSublayer.frame = layer.bounds;
-        NSArray *cgColors = self.internalConstantState.cgColors;
-        [tmpSublayer setColors:cgColors];
-        [layer addSublayer:tmpSublayer];
-        sublayer = tmpSublayer;
-    }
-    if (self.internalConstantState.shape != IDLGradientDrawableShapeLine) {
-        // Apply mask to layer
-        CGMutablePathRef path = CGPathCreateMutable();
-        CGRect rect = sublayer.bounds;
-        IDLGradientDrawableCornerRadius corners = self.internalConstantState.corners;
-        switch (self.internalConstantState.shape) {
-            case IDLGradientDrawableShapeRectangle:
-                CGPathMoveToPoint(path, NULL, rect.origin.x, rect.origin.y + corners.topLeft);
-                CGPathAddLineToPoint(path, NULL, rect.origin.x, rect.origin.y + rect.size.height - corners.bottomLeft);
-                if (corners.bottomLeft > 0) {
-                    CGPathAddArc(path, NULL, rect.origin.x + corners.bottomLeft, rect.origin.y + rect.size.height - corners.bottomLeft, corners.bottomLeft, M_PI / 4, M_PI / 2, true);
-                }
-                CGPathAddLineToPoint(path, NULL, rect.origin.x + rect.size.width - corners.bottomRight, rect.origin.y + rect.size.height);
-                if (corners.bottomRight > 0) {
-                    CGPathAddArc(path, NULL, rect.origin.x + rect.size.width - corners.bottomRight, rect.origin.y + rect.size.height - corners.bottomRight, corners.bottomRight, M_PI / 2, 0.0f, true);
-                }
-                CGPathAddLineToPoint(path, NULL, rect.origin.x + rect.size.width, rect.origin.y + corners.topRight);
-                if (corners.topRight > 0) {
-                    CGPathAddArc(path, NULL, rect.origin.x + rect.size.width - corners.topRight, rect.origin.y + corners.topRight, corners.topRight, 0.0f, -M_PI / 2, true);
-                }
-                CGPathAddLineToPoint(path, NULL, rect.origin.x + corners.topLeft, rect.origin.y);
-                if (corners.topLeft > 0) {
-                    CGPathAddArc(path, NULL, rect.origin.x + corners.topLeft, rect.origin.y + corners.topLeft, corners.topLeft, - M_PI / 2, M_PI, true);
-                }
-                break;
-            case IDLGradientDrawableShapeOval:
-                CGPathAddEllipseInRect(path, NULL, rect);
-                break;
-            case IDLGradientDrawableShapeRing:
-                
-                break;
-            default:
-                break;
-        }
-        if (self.internalConstantState.shape != IDLGradientDrawableShapeRectangle || !IDLGradientDrawableCornerRadiusEqualsCornerRadius(corners, IDLGradientDrawableCornerRadiusZero)) {
-            CAShapeLayer *mask = [[CAShapeLayer alloc] init];
-            mask.fillColor = [[UIColor blackColor] CGColor];
-            mask.frame = sublayer.bounds;
-            mask.path = path;
-            sublayer.mask = mask;
-            [mask release];
-        }
-        if (drawStroke) {
-            CAShapeLayer *strokeLayer = [[CAShapeLayer alloc] init];
-            strokeLayer.strokeColor = [self.internalConstantState.strokeColor CGColor];
-            strokeLayer.fillColor = [[UIColor clearColor] CGColor];
-            strokeLayer.lineWidth = self.internalConstantState.strokeWidth;
-            strokeLayer.frame = sublayer.bounds;
-            strokeLayer.path = path;
-            [sublayer addSublayer:strokeLayer];
-            [strokeLayer release];
-        }
-        CGPathRelease(path);
-        
-    } else {
-        
-    }
-}
-
 - (void)inflateWithElement:(TBXMLElement *)element {
     [super inflateWithElement:element];
+    IDLGradientDrawableConstantState *state = self.internalConstantState;
     NSMutableDictionary *attrs = [TBXML attributesFromXMLElement:element reuseDictionary:nil];
     NSString *shape = [attrs objectForKey:@"shape"];
-    self.internalConstantState.shape = IDLGradientDrawableShapeFromString(shape);
+    state.shape = IDLGradientDrawableShapeFromString(shape);
     
     TBXMLElement *child = element->firstChild;
     while (child != NULL) {
@@ -313,10 +288,40 @@ BOOL IDLGradientDrawableCornerRadiusEqualsCornerRadius(IDLGradientDrawableCorner
             UIColor *centerColor = [attrs colorFromIDLValueForKey:@"centerColor"];
             UIColor *endColor = [attrs colorFromIDLValueForKey:@"endColor"];
             if (centerColor != nil) {
-                self.internalConstantState.colors = @[startColor?startColor:[UIColor blackColor], centerColor, endColor?endColor:[UIColor blackColor]];
+                state.colors = @[startColor?startColor:[UIColor blackColor], centerColor, endColor?endColor:[UIColor blackColor]];
             } else {
-                self.internalConstantState.colors = @[startColor?startColor:[UIColor blackColor], endColor?endColor:[UIColor blackColor]];
+                state.colors = @[startColor?startColor:[UIColor blackColor], endColor?endColor:[UIColor blackColor]];
             }
+            
+            state.gradientType = IDLGradientDrawableGradientTypeFromString([attrs objectForKey:@"type"]);
+            
+            if (state.gradientType == IDLGradientDrawableGradientTypeRadial) {
+                
+                if ([attrs objectForKey:@"gradientRadius"] == nil) {
+                    state.gradientRadius = 1;
+                    state.gradientRadiusIsRelative = TRUE;
+                } else {
+                    if ([attrs isFractionIDLValueForKey:@"gradientRadius"]) {
+                        state.gradientRadiusIsRelative = TRUE;
+                        state.gradientRadius = [attrs fractionValueFromIDLValueForKey:@"gradientRadius"];
+                    } else {
+                        state.gradientRadiusIsRelative = FALSE;
+                        state.gradientRadius = [attrs dimensionFromIDLValueForKey:@"gradientRadius"];
+                    }
+                }
+                
+                CGPoint gradientCenter = CGPointMake(.5f, .5f);
+                NSString *centerX = [attrs objectForKey:@"centerX"];
+                if (centerX != nil) {
+                    gradientCenter.x = [centerX floatValue];
+                }
+                NSString *centerY = [attrs objectForKey:@"centerY"];
+                if (centerY != nil) {
+                    gradientCenter.y = [centerY floatValue];
+                }
+                state.relativeGradientCenter = gradientCenter;
+            }
+            
         } else if ([name isEqualToString:@"padding"]) {
             attrs = [TBXML attributesFromXMLElement:child reuseDictionary:attrs];
             UIEdgeInsets padding = UIEdgeInsetsZero;
@@ -324,8 +329,8 @@ BOOL IDLGradientDrawableCornerRadiusEqualsCornerRadius(IDLGradientDrawableCorner
             padding.top = [[attrs objectForKey:@"top"] floatValue];
             padding.right = [[attrs objectForKey:@"right"] floatValue];
             padding.bottom = [[attrs objectForKey:@"bottom"] floatValue];
-            self.internalConstantState.padding = padding;
-            self.internalConstantState.hasPadding = TRUE;
+            state.padding = padding;
+            state.hasPadding = TRUE;
         } else if ([name isEqualToString:@"corners"]) {
             IDLGradientDrawableCornerRadius radius =  IDLGradientDrawableCornerRadiusZero;
             attrs = [TBXML attributesFromXMLElement:child reuseDictionary:attrs];
@@ -338,24 +343,28 @@ BOOL IDLGradientDrawableCornerRadiusEqualsCornerRadius(IDLGradientDrawableCorner
             if (topRightRadius != nil) radius.topRight = [topRightRadius floatValue];
             if (bottomLeftRadius != nil) radius.bottomLeft = [bottomLeftRadius floatValue];
             if (bottomRightRadius != nil) radius.bottomRight = [bottomRightRadius floatValue];
-            self.internalConstantState.corners = radius;
+            state.corners = radius;
         } else if ([name isEqualToString:@"solid"]) {
             attrs = [TBXML attributesFromXMLElement:child reuseDictionary:attrs];
             UIColor *color = [attrs colorFromIDLValueForKey:@"color"];
             if (color == nil) {
                 color = [UIColor blackColor];
             }
-            self.internalConstantState.colors = @[color];
+            state.colors = @[color];
         } else if ([name isEqualToString:@"size"]) {
             attrs = [TBXML attributesFromXMLElement:child reuseDictionary:attrs];
             CGSize size = CGSizeZero;
             size.width = [attrs dimensionFromIDLValueForKey:@"width" defaultValue:-1.f];
             size.height = [attrs dimensionFromIDLValueForKey:@"height" defaultValue:-1.f];
-            self.internalConstantState.size = size;
+            state.size = size;
         } else if ([name isEqualToString:@"stroke"]) {
             attrs = [TBXML attributesFromXMLElement:child reuseDictionary:attrs];
-            self.internalConstantState.strokeWidth = [attrs dimensionFromIDLValueForKey:@"width"];
-            self.internalConstantState.strokeColor = [attrs colorFromIDLValueForKey:@"color"];
+            state.strokeWidth = [attrs dimensionFromIDLValueForKey:@"width"];
+            state.strokeColor = [attrs colorFromIDLValueForKey:@"color"];
+            state.dashWidth = [attrs dimensionFromIDLValueForKey:@"dashWidth"];
+            if (state.dashWidth != 0.f) {
+                state.dashGap = [attrs dimensionFromIDLValueForKey:@"dashGap"];
+            }
         }
         child = child->nextSibling;
     }

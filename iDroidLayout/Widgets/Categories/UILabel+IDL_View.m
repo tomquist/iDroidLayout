@@ -13,11 +13,25 @@
 #import "NSDictionary+IDL_ResourceManager.h"
 #import "UIView+IDLDrawable.h"
 #import "NSObject+IDL_KVOObserver.h"
+#import "IDLColorDrawable.h"
 
 #include "objc/runtime.h"
 #include "objc/message.h"
 
 @implementation UILabel (Layout)
+
++ (void)load {
+    Class c = self;
+    SEL origSEL = @selector(drawRect:);
+    SEL overrideSEL = @selector(idl_drawRect:);
+    Method origMethod = class_getInstanceMethod(c, origSEL);
+    Method overrideMethod = class_getInstanceMethod(c, overrideSEL);
+    if(class_addMethod(c, origSEL, method_getImplementation(overrideMethod), method_getTypeEncoding(overrideMethod))) {
+        class_replaceMethod(c, overrideSEL, method_getImplementation(origMethod), method_getTypeEncoding(origMethod));
+    } else {
+        method_exchangeImplementations(origMethod, overrideMethod);
+    }
+}
 
 - (void)setupFromAttributes:(NSDictionary *)attrs {
     [super setupFromAttributes:attrs];
@@ -122,22 +136,44 @@
     [self setMeasuredDimensionWidth:width height:height];
 }
 
-- (void)onBackgroundDrawableChanged {
-    __block id selfRef = self;
-    if (![self idl_hasObserverWithIdentifier:@"uiLabelFrameObserver"]) {
-        [self idl_addObserver:^(NSString *keyPath, id object, NSDictionary *change) {
-            [selfRef onBackgroundDrawableChanged];
-        } withIdentifier:@"uiLabelFrameObserver" forKeyPaths:@[@"frame"] options:NSKeyValueObservingOptionNew];
-    }
-    
-    IDLDrawable *drawable = self.backgroundDrawable;
-    if (drawable != nil && !CGSizeEqualToSize(CGSizeZero, self.bounds.size)) {
-        UIImage *image = [drawable renderToImageOfSize:self.bounds.size];
-        self.backgroundColor = [UIColor colorWithPatternImage:image];
-    } else {
-        self.backgroundColor = nil;
-    }
+- (void)setBackgroundDrawable:(IDLDrawable *)backgroundDrawable {
+    self.backgroundDrawable.delegate = nil;
+    [super setBackgroundDrawable:backgroundDrawable];
 }
 
+- (void)onBackgroundDrawableChanged {
+    static NSString *BackgroundDrawableFrameTag = @"backgroundDrawableFrame";
+    IDLDrawable *drawable = self.backgroundDrawable;
+    if (drawable != nil) {
+        drawable.delegate = self;
+        drawable.state = UIControlStateNormal;
+        self.backgroundColor = [UIColor clearColor];
+        
+        if (![self idl_hasObserverWithIdentifier:BackgroundDrawableFrameTag]) {
+            __block UIView *selfRef = self;
+            [self idl_addObserver:^(NSString *keyPath, id object, NSDictionary *change) {
+                selfRef.backgroundDrawable.bounds = selfRef.bounds;
+                [selfRef setNeedsDisplay];
+            } withIdentifier:BackgroundDrawableFrameTag forKeyPaths:@[@"frame"] options:NSKeyValueObservingOptionNew];
+        }
+    } else {
+        [self idl_removeObserverWithIdentifier:BackgroundDrawableFrameTag];
+    }
+    [self setNeedsDisplay];
+}
+
+- (void)idl_drawRect:(CGRect)rect {
+    IDLDrawable *drawable = self.backgroundDrawable;
+    if (drawable != nil) {
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        drawable.bounds = rect;
+        [drawable drawInContext:context];
+    }
+    [self idl_drawRect:rect];
+}
+
+- (void)drawableDidInvalidate:(IDLDrawable *)drawable {
+    [self setNeedsDisplay];
+}
 
 @end

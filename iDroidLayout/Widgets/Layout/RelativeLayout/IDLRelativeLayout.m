@@ -138,6 +138,8 @@
 }
 
 - (void)applyHorizontalSizeRulesWithChildLayoutParams:(IDLRelativeLayoutLayoutParams *)childParams myWidth:(CGFloat)myWidth {
+    UIEdgeInsets childParamsMargin = childParams.margin;
+    
     NSArray *rules = childParams.rules;
     IDLRelativeLayoutLayoutParams *anchorParams;
     
@@ -152,10 +154,10 @@
     anchorParams = [self relatedViewParamsWithRules:rules relation:RelativeLayoutRuleLeftOf];
     if (anchorParams != nil) {
         childParams.right = anchorParams.left - (anchorParams.margin.left +
-                                                 childParams.margin.right);
+                                                 childParamsMargin.right);
     } else if (childParams.alignWithParent && [rules objectAtIndex:RelativeLayoutRuleLeftOf] != [NSNull null]) {
         if (myWidth >= 0) {
-            childParams.right = myWidth - padding.right - childParams.margin.right;
+            childParams.right = myWidth - padding.right - childParamsMargin.right;
         } else {
             // FIXME uh oh...
         }
@@ -164,24 +166,24 @@
     anchorParams = [self relatedViewParamsWithRules:rules relation:RelativeLayoutRuleRightOf];
     if (anchorParams != nil) {
         childParams.left = anchorParams.right + (anchorParams.margin.right +
-                                                 childParams.margin.left);
+                                                 childParamsMargin.left);
     } else if (childParams.alignWithParent && [rules objectAtIndex:RelativeLayoutRuleRightOf] != [NSNull null]) {
-        childParams.left = padding.left + childParams.margin.left;
+        childParams.left = padding.left + childParamsMargin.left;
     }
     
     anchorParams = [self relatedViewParamsWithRules:rules relation:RelativeLayoutRuleAlignLeft];
     if (anchorParams != nil) {
-        childParams.left = anchorParams.left + childParams.margin.left;
+        childParams.left = anchorParams.left + childParamsMargin.left;
     } else if (childParams.alignWithParent && [rules objectAtIndex:RelativeLayoutRuleAlignLeft] != [NSNull null]) {
-        childParams.left = padding.left + childParams.margin.left;
+        childParams.left = padding.left + childParamsMargin.left;
     }
     
     anchorParams = [self relatedViewParamsWithRules:rules relation:RelativeLayoutRuleAlignRight];
     if (anchorParams != nil) {
-        childParams.right = anchorParams.right - childParams.margin.right;
+        childParams.right = anchorParams.right - childParamsMargin.right;
     } else if (childParams.alignWithParent && [rules objectAtIndex:RelativeLayoutRuleAlignRight] != [NSNull null]) {
         if (myWidth >= 0) {
-            childParams.right = myWidth - padding.right - childParams.margin.right;
+            childParams.right = myWidth - padding.right - childParamsMargin.right;
         } else {
             // FIXME uh oh...
         }
@@ -189,13 +191,13 @@
     
     id alignParentLeft = [rules objectAtIndex:RelativeLayoutRuleAlignParentLeft];
     if ([NSNull null] != alignParentLeft && [alignParentLeft boolValue]) {
-        childParams.left = padding.left + childParams.margin.left;
+        childParams.left = padding.left + childParamsMargin.left;
     }
     
     id alignParentRight = [rules objectAtIndex:RelativeLayoutRuleAlignParentRight];
     if ([NSNull null] != alignParentRight && [alignParentRight boolValue]) {
         if (myWidth >= 0) {
-            childParams.right = myWidth - padding.right - childParams.margin.right;
+            childParams.right = myWidth - padding.right - childParamsMargin.right;
         } else {
             // FIXME uh oh...
         }
@@ -280,8 +282,9 @@
 }
 
 - (void)measureChild:(UIView *)child horizontalWithLayoutParams:(IDLRelativeLayoutLayoutParams *)params myWidth:(CGFloat)myWidth myHeight:(CGFloat)myHeight {
+    UIEdgeInsets paramsMargin = params.margin;
     UIEdgeInsets padding = self.padding;
-    IDLLayoutMeasureSpec childWidthMeasureSpec = [self childMeasureSpecForChildStart:params.left childEnd:params.right childSize:params.width startMargin:params.margin.left endMargin:params.margin.right startPadding:padding.left endPadding:padding.right mySize:myWidth];
+    IDLLayoutMeasureSpec childWidthMeasureSpec = [self childMeasureSpecForChildStart:params.left childEnd:params.right childSize:params.width startMargin:paramsMargin.left endMargin:paramsMargin.right startPadding:padding.left endPadding:padding.right mySize:myWidth];
     IDLLayoutMeasureSpec childHeightMeasureSpec;
     if (params.width == IDLLayoutParamsSizeMatchParent) {
         childHeightMeasureSpec = IDLLayoutMeasureSpecMake(myHeight - padding.top - padding.bottom, IDLLayoutMeasureSpecModeExactly);
@@ -302,9 +305,10 @@
  * @param myHeight Height of the RelativeLayout
  */
 - (void)measureChild:(UIView *)child withLayoutParams:(IDLRelativeLayoutLayoutParams *)params myWidth:(CGFloat)myWidth myHeight:(CGFloat)myHeight {
+    UIEdgeInsets paramsMargin = params.margin;
     UIEdgeInsets padding = self.padding;
-    IDLLayoutMeasureSpec childWidthMeasureSpec = [self childMeasureSpecForChildStart:params.left childEnd:params.right childSize:params.width startMargin:params.margin.left endMargin:params.margin.right startPadding:padding.left endPadding:padding.right mySize:myWidth];
-    IDLLayoutMeasureSpec childHeightMeasureSpec = [self childMeasureSpecForChildStart:params.top childEnd:params.bottom childSize:params.height startMargin:params.margin.top endMargin:params.margin.bottom startPadding:padding.top endPadding:padding.bottom mySize:myHeight];
+    IDLLayoutMeasureSpec childWidthMeasureSpec = [self childMeasureSpecForChildStart:params.left childEnd:params.right childSize:params.width startMargin:paramsMargin.left endMargin:paramsMargin.right startPadding:padding.left endPadding:padding.right mySize:myWidth];
+    IDLLayoutMeasureSpec childHeightMeasureSpec = [self childMeasureSpecForChildStart:params.top childEnd:params.bottom childSize:params.height startMargin:paramsMargin.top endMargin:paramsMargin.bottom startPadding:padding.top endPadding:padding.bottom mySize:myHeight];
     [child measureWithWidthMeasureSpec:childWidthMeasureSpec heightMeasureSpec:childHeightMeasureSpec];
 }
 
@@ -392,6 +396,7 @@
 - (void)applyVerticalSizeRulesWithChildLayoutParams:(IDLRelativeLayoutLayoutParams *)childParams myHeight:(CGFloat)myHeight {
     NSArray *rules = childParams.rules;
     IDLRelativeLayoutLayoutParams *anchorParams;
+    UIEdgeInsets childParamsMargin = childParams.margin;
     UIEdgeInsets padding = self.padding;
     
     childParams.top = -1;
@@ -400,10 +405,10 @@
     anchorParams = [self relatedViewParamsWithRules:rules relation:RelativeLayoutRuleAbove];
     if (anchorParams != nil) {
         childParams.bottom = anchorParams.top - (anchorParams.margin.top +
-                                                 childParams.margin.bottom);
+                                                 childParamsMargin.bottom);
     } else if (childParams.alignWithParent && [rules objectAtIndex:RelativeLayoutRuleAbove] != [NSNull null]) {
         if (myHeight >= 0) {
-            childParams.bottom = myHeight - padding.bottom - childParams.margin.bottom;
+            childParams.bottom = myHeight - padding.bottom - childParamsMargin.bottom;
         } else {
             // FIXME uh oh...
         }
@@ -412,24 +417,24 @@
     anchorParams = [self relatedViewParamsWithRules:rules relation:RelativeLayoutRuleBelow];
     if (anchorParams != nil) {
         childParams.top = anchorParams.bottom + (anchorParams.margin.bottom +
-                                                 childParams.margin.top);
+                                                 childParamsMargin.top);
     } else if (childParams.alignWithParent && [rules objectAtIndex:RelativeLayoutRuleBelow] != [NSNull null]) {
-        childParams.top = padding.top + childParams.margin.top;
+        childParams.top = padding.top + childParamsMargin.top;
     }
     
     anchorParams = [self relatedViewParamsWithRules:rules relation:RelativeLayoutRuleAlignTop];
     if (anchorParams != nil) {
-        childParams.top = anchorParams.top + childParams.margin.top;
+        childParams.top = anchorParams.top + childParamsMargin.top;
     } else if (childParams.alignWithParent && [rules objectAtIndex:RelativeLayoutRuleAlignTop] != [NSNull null]) {
-        childParams.top = padding.top + childParams.margin.top;
+        childParams.top = padding.top + childParamsMargin.top;
     }
     
     anchorParams = [self relatedViewParamsWithRules:rules relation:RelativeLayoutRuleAlignBottom];
     if (anchorParams != nil) {
-        childParams.bottom = anchorParams.bottom - childParams.margin.bottom;
+        childParams.bottom = anchorParams.bottom - childParamsMargin.bottom;
     } else if (childParams.alignWithParent && [rules objectAtIndex:RelativeLayoutRuleAlignBottom] != [NSNull null]) {
         if (myHeight >= 0) {
-            childParams.bottom = myHeight - padding.bottom - childParams.margin.bottom;
+            childParams.bottom = myHeight - padding.bottom - childParamsMargin.bottom;
         } else {
             // FIXME uh oh...
         }
@@ -437,13 +442,13 @@
     
     id alignParentTop = [rules objectAtIndex:RelativeLayoutRuleAlignParentTop];
     if ([NSNull null] != alignParentTop && [alignParentTop boolValue]) {
-        childParams.top = padding.top + childParams.margin.top;
+        childParams.top = padding.top + childParamsMargin.top;
     }
     
     id alignParentBottom = [rules objectAtIndex:RelativeLayoutRuleAlignParentBottom];
     if ([NSNull null] != alignParentBottom && [alignParentBottom boolValue]) {
         if (myHeight >= 0) {
-            childParams.bottom = myHeight - padding.bottom - childParams.margin.bottom;
+            childParams.bottom = myHeight - padding.bottom - childParamsMargin.bottom;
         } else {
             // FIXME uh oh...
         }
@@ -573,6 +578,7 @@
         
         if (child.visibility != IDLViewVisibilityGone) {
             IDLRelativeLayoutLayoutParams *params = (IDLRelativeLayoutLayoutParams *)child.layoutParams;
+            UIEdgeInsets paramsMargin = params.margin;
             
             [self applyVerticalSizeRulesWithChildLayoutParams:params myHeight:myHeight];
             [self measureChild:child withLayoutParams:params myWidth:myWidth myHeight:myHeight];
@@ -589,13 +595,13 @@
             }
             
             if (child != ignore || verticalGravity) {
-                left = MIN(left, params.left - params.margin.left);
-                top = MIN(top, params.top - params.margin.top);
+                left = MIN(left, params.left - paramsMargin.left);
+                top = MIN(top, params.top - paramsMargin.top);
             }
             
             if (child != ignore || horizontalGravity) {
-                right = MAX(right, params.right + params.margin.right);
-                bottom = MAX(bottom, params.bottom + params.margin.bottom);
+                right = MAX(right, params.right + paramsMargin.right);
+                bottom = MAX(bottom, params.bottom + paramsMargin.bottom);
             }
         }
     }
@@ -608,14 +614,15 @@
                 IDLRelativeLayoutLayoutParams *params = (IDLRelativeLayoutLayoutParams *)child.layoutParams;
                 [self alignChild:child baselineWithLayoutParams:params];
                 
+                UIEdgeInsets paramsMargin = params.margin;
                 if (child != ignore || verticalGravity) {
-                    left = MIN(left, params.left - params.margin.left);
-                    top = MIN(top, params.top - params.margin.top);
+                    left = MIN(left, params.left - paramsMargin.left);
+                    top = MIN(top, params.top - paramsMargin.top);
                 }
                 
                 if (child != ignore || horizontalGravity) {
-                    right = MAX(right, params.right + params.margin.right);
-                    bottom = MAX(bottom, params.bottom + params.margin.bottom);
+                    right = MAX(right, params.right + paramsMargin.right);
+                    bottom = MAX(bottom, params.bottom + paramsMargin.bottom);
                 }
             }
         }

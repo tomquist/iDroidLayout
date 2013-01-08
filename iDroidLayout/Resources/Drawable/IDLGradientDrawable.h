@@ -15,6 +15,12 @@ typedef enum IDLGradientDrawableShape {
     IDLGradientDrawableShapeRing
 } IDLGradientDrawableShape;
 
+typedef enum IDLGradientDrawableGradientType {
+    IDLGradientDrawableGradientTypeNone = 0,
+    IDLGradientDrawableGradientTypeLinear,
+    IDLGradientDrawableGradientTypeRadial
+} IDLGradientDrawableGradientType;
+
 typedef struct IDLGradientDrawableCornerRadius {
     CGFloat topLeft;
     CGFloat topRight;

@@ -8,7 +8,7 @@
 
 #import "IDLDrawable.h"
 
-@interface IDLInsetDrawable : IDLDrawable
+@interface IDLInsetDrawable : IDLDrawable <IDLDrawableDelegate>
 
 @end
 

@@ -102,8 +102,10 @@
 
 - (void)measureChildWithMargins:(UIView *)child parentWidthMeasureSpec:(IDLLayoutMeasureSpec)parentWidthMeasureSpec widthUsed:(CGFloat)widthUsed parentHeightMeasureSpec:(IDLLayoutMeasureSpec)parentHeightMeasureSpec heightUsed:(CGFloat)heightUsed {
     IDLMarginLayoutParams *lp = (IDLMarginLayoutParams *) child.layoutParams;
-    IDLLayoutMeasureSpec childWidthMeasureSpec = [self childMeasureSpecWithMeasureSpec:parentWidthMeasureSpec padding:self.padding.left + self.padding.right + lp.margin.left + lp.margin.right + widthUsed childDimension:lp.width];
-    IDLLayoutMeasureSpec childHeightMeasureSpec = [self childMeasureSpecWithMeasureSpec:parentHeightMeasureSpec padding:self.padding.top + self.padding.bottom + lp.margin.top + lp.margin.bottom + heightUsed childDimension:lp.height];
+    UIEdgeInsets lpMargin = lp.margin;
+    UIEdgeInsets padding = self.padding;
+    IDLLayoutMeasureSpec childWidthMeasureSpec = [self childMeasureSpecWithMeasureSpec:parentWidthMeasureSpec padding:padding.left + padding.right + lpMargin.left + lpMargin.right + widthUsed childDimension:lp.width];
+    IDLLayoutMeasureSpec childHeightMeasureSpec = [self childMeasureSpecWithMeasureSpec:parentHeightMeasureSpec padding:padding.top + padding.bottom + lpMargin.top + lpMargin.bottom + heightUsed childDimension:lp.height];
     
     [child measureWithWidthMeasureSpec:childWidthMeasureSpec heightMeasureSpec:childHeightMeasureSpec];
 }
@@ -119,9 +121,9 @@
  */
 -(void)measureChild:(UIView *)child withParentWidthMeasureSpec:(IDLLayoutMeasureSpec)parentWidthMeasureSpec parentHeightMeasureSpec:(IDLLayoutMeasureSpec)parentHeightMeasureSpec {
     IDLLayoutParams *lp = child.layoutParams;
-    
-    IDLLayoutMeasureSpec childWidthMeasureSpec = [self childMeasureSpecWithMeasureSpec:parentWidthMeasureSpec padding:(self.padding.left + self.padding.right) childDimension:lp.width];
-    IDLLayoutMeasureSpec childHeightMeasureSpec = [self childMeasureSpecWithMeasureSpec:parentHeightMeasureSpec padding:(self.padding.top + self.padding.bottom) childDimension:lp.height];
+    UIEdgeInsets padding = self.padding;
+    IDLLayoutMeasureSpec childWidthMeasureSpec = [self childMeasureSpecWithMeasureSpec:parentWidthMeasureSpec padding:(padding.left + padding.right) childDimension:lp.width];
+    IDLLayoutMeasureSpec childHeightMeasureSpec = [self childMeasureSpecWithMeasureSpec:parentHeightMeasureSpec padding:(padding.top + padding.bottom) childDimension:lp.height];
     [child measureWithWidthMeasureSpec:childWidthMeasureSpec heightMeasureSpec:childHeightMeasureSpec];
 }
 

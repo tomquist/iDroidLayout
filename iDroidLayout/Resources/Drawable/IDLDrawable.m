@@ -7,7 +7,7 @@
 //
 
 #import "IDLDrawable.h"
-#import "TBXML.h"
+#import "IDLXMLCache.h"
 #import "IDLStateListDrawable.h"
 #import "IDLLayerDrawable.h"
 #import "IDLColorDrawable.h"
@@ -15,6 +15,7 @@
 #import "IDLBitmapDrawable.h"
 #import "IDLNinePatchDrawable.h"
 #import "IDLGradientDrawable.h"
+#import "IDLClipDrawable.h"
 #import "IDLDrawable+IDL_Internal.h"
 
 @implementation IDLDrawableConstantState
@@ -28,8 +29,6 @@
 @end
 
 @implementation IDLDrawable
-
-@synthesize state = _state;
 
 - (id)initWithState:(IDLDrawableConstantState *)state {
     self = [super init];
@@ -55,6 +54,10 @@
     
 }
 
+- (BOOL)onLevelChangeToLevel:(NSUInteger)level {
+    return FALSE;
+}
+
 - (CGSize)intrinsicSize {
     return CGSizeMake(-1, -1);
 }
@@ -66,19 +69,7 @@
     return size;
 }
 
-- (void)drawOnLayer:(CALayer *)layer {
-    
-}
-
 - (void)drawInContext:(CGContextRef)context {
-#warning This is just a wrapper around to old lazy/slow way of drawing. Do proper drawing in IDLBitmapDrawable and IDLGradientDrawable
-    
-    CALayer *layer = [[CALayer alloc] init];
-    layer.frame = self.bounds;
-    [self drawOnLayer:layer];
-    [layer renderInContext:context];
-    [layer release];
-    
     OUTLINE_RECT(context, self.bounds);
 }
 
@@ -102,15 +93,12 @@
     [self.delegate drawableDidInvalidate:self];
 }
 
-- (UIImage *)renderToImageOfSize:(CGSize)imageSize {
-    CALayer *layer = [[CALayer alloc] init];
-    layer.frame = CGRectMake(0, 0, imageSize.width, imageSize.height);
-    [self drawOnLayer:layer];
-    UIGraphicsBeginImageContext(layer.bounds.size);
-    [layer renderInContext:UIGraphicsGetCurrentContext()];
+- (UIImage *)renderToImage {
+    UIGraphicsBeginImageContext(_bounds.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [self drawInContext:context];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    [layer release];
     return image;
 }
 
@@ -141,6 +129,15 @@
     }
 }
 
+- (BOOL)setLevel:(NSUInteger)level {
+    BOOL ret = FALSE;
+    if (_level != level) {
+        _level = level;
+        ret = [self onLevelChangeToLevel:level];
+    }
+    return ret;
+}
+
 + (IDLDrawable *)createFromXMLElement:(TBXMLElement *)element {
     IDLDrawable *drawable = nil;
     NSString *tagName = [TBXML elementName:element];
@@ -159,6 +156,8 @@
         drawableClass = [IDLNinePatchDrawable class];
     } else if ([tagName isEqualToString:@"shape"]) {
         drawableClass = [IDLGradientDrawable class];
+    } else if ([tagName isEqualToString:@"clip"]) {
+        drawableClass = [IDLClipDrawable class];
     } else {
         drawableClass = NSClassFromString(tagName);
     }
@@ -183,11 +182,15 @@
 }
 
 + (IDLDrawable *)createFromXMLURL:(NSURL *)url {
-    IDLDrawable *drawable = [self createFromXMLData:[NSData dataWithContentsOfURL:url]];
-    if (drawable == nil) {
-        NSLog(@"Drawable-Filepath: %@", [url absoluteString]);
+    NSError *error = nil;
+    TBXML *xml = [[IDLXMLCache sharedInstance] xmlForUrl:url error:&error];
+    IDLDrawable *ret = nil;
+    if (xml == nil || error != nil) {
+        NSLog(@"Could not parse drawable %@: %@", [url absoluteString], error);
+    } else {
+        ret = [self createFromXMLElement:xml.rootXMLElement];
     }
-    return drawable;
+    return ret;
 }
 
 - (IDLDrawableConstantState *)constantState {
@@ -202,6 +205,10 @@
     } else {
         return nil;
     }
+}
+
+- (IDLDrawable *)currentDrawable {
+    return self;
 }
 
 @end

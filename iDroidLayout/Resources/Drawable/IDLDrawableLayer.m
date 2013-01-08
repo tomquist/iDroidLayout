@@ -14,27 +14,18 @@
     self = [super init];
     if (self) {
         self.contentsScale = [UIScreen mainScreen].scale;
+        self.needsDisplayOnBoundsChange = TRUE;
+        self.contentsGravity = kCAGravityTop;
+        NSMutableDictionary *newActions = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[NSNull null], kCAOnOrderIn,
+                                           [NSNull null], kCAOnOrderOut,
+                                           [NSNull null], @"sublayers",
+                                           [NSNull null], @"contents",
+                                           nil];
+        self.actions = newActions;
+        [newActions release];
     }
     return self;
 }
-
-/*- (void)setDrawable:(IDLDrawable *)drawable {
-    if (_drawable != drawable) {
-        [_drawable release];
-        _drawable = [drawable retain];
-    }
-    NSArray *sublayers = [self.sublayers copy];
-    for (CALayer *l in sublayers) {
-        [l removeFromSuperlayer];
-    }
-    [sublayers release];
-    [drawable drawOnLayer:self];
-}
-
-- (void)layoutSublayers {
-    [super layoutSublayers];
-    self.drawable = self.drawable;
-}*/
 
 - (void)setDrawable:(IDLDrawable *)drawable {
     if (_drawable != drawable) {

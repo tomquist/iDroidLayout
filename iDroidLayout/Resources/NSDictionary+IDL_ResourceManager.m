@@ -69,4 +69,48 @@
     return ret;
 }
 
+- (float)fractionValueFromIDLValueForKey:(NSString *)key {
+    return [self fractionValueFromIDLValueForKey:key defaultValue:0];
+}
+
+- (float)fractionValueFromIDLValueForKey:(NSString *)key defaultValue:(CGFloat)defaultValue {
+    float ret = defaultValue;
+    id value = [self objectForKey:key];
+    if (value == nil) {
+        ret = defaultValue;
+    } else if ([value isKindOfClass:[NSString class]]) {
+        NSString *stringValue = nil;
+        if ([[IDLResourceManager currentResourceManager] isValidIdentifier:value]) {
+#warning Implement dimension resources
+        } else {
+            stringValue = value;
+        }
+        if ([stringValue hasSuffix:@"%"]) {
+            ret = [stringValue floatValue] / 100.f;
+        }
+    } else if ([value isKindOfClass:[NSNumber class]]) {
+        ret = [value floatValue];
+    }
+    return ret;
+}
+
+- (BOOL)isFractionIDLValueForKey:(NSString *)key {
+    BOOL ret = FALSE;
+    id value = [self objectForKey:key];
+    if (value == nil) {
+        ret = FALSE;
+    } else if ([value isKindOfClass:[NSString class]]) {
+        NSString *stringValue = nil;
+        if ([[IDLResourceManager currentResourceManager] isValidIdentifier:value]) {
+#warning Implement dimension resources
+        } else {
+            stringValue = value;
+        }
+        ret = [stringValue hasSuffix:@"%"];
+    } else if ([value isKindOfClass:[NSNumber class]]) {
+        ret = FALSE;
+    }
+    return ret;
+}
+
 @end

@@ -79,13 +79,11 @@
     return [self initWithState:nil];
 }
 
-- (void)drawOnLayer:(CALayer *)layer {
-    layer.backgroundColor = self.internalConstantState.color.CGColor;
-}
-
 - (void)drawInContext:(CGContextRef)context {
-    CGContextSetFillColorWithColor(context, [self.internalConstantState.color CGColor]);
+    UIGraphicsPushContext(context);
+    [self.internalConstantState.color set];
     CGContextFillRect(context, self.bounds);
+    UIGraphicsPopContext();
     OUTLINE_RECT(context, self.bounds);
 }
 
@@ -104,6 +102,10 @@
 
 - (IDLDrawableConstantState *)constantState {
     return self.internalConstantState;
+}
+
+- (UIColor *)color {
+    return self.internalConstantState.color;
 }
 
 @end

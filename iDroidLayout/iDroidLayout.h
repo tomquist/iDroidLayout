@@ -33,3 +33,7 @@
 #import <iDroidLayout/IDLLayoutBridge.h>
 #import <iDroidLayout/IDLTableViewCell.h>
 #import <iDroidLayout/IDLLayoutViewController.h>
+
+// Resources
+#import <iDroidLayout/IDLResourceManager.h>
+#import <iDroidLayout/IDLStyle.h>

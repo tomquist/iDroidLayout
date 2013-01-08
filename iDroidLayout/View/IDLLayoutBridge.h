@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Tom Quist. All rights reserved.
 //
 
-#import "IDLViewGroup.h"
+#import "IDLLinearLayout.h"
 
 @interface IDLLayoutBridge : IDLViewGroup {
     CGRect _lastFrame;

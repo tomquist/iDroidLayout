@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "IDLGravity.h"
+#import "IDLDrawable.h"
 
-@interface UILabel (IDL_View)
+@interface UILabel (IDL_View) <IDLDrawableDelegate>
 
 @property (nonatomic, assign) IDLViewContentGravity gravity;
 

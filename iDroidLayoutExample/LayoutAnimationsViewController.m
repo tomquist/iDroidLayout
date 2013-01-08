@@ -25,7 +25,7 @@
     } else {
         textLabel.text = @"Short text";
     }
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:0.2 animations:^{
         [self.view layoutIfNeeded];        
     }];
 }

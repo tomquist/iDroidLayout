@@ -24,6 +24,7 @@
 - (void)outlineRect:(CGRect)rect inContext:(CGContextRef)context;
 - (void)onBoundsChangeToRect:(CGRect)bounds;
 - (void)onStateChangeToState:(UIControlState)state;
+- (BOOL)onLevelChangeToLevel:(NSUInteger)level;
 - (void)invalidateSelf;
 
 @end

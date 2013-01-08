@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "IDLDrawable.h"
 
-@interface UIScrollView (IDL_ViewGroup)
+@interface UIScrollView (IDL_ViewGroup) <IDLDrawableDelegate>
 
 @end

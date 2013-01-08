@@ -18,6 +18,8 @@
 @property (nonatomic, readonly) CGSize intrinsicSize;
 @property (nonatomic, assign) UIControlState state;
 @property (nonatomic, assign) CGRect bounds;
+@property (nonatomic, readonly) NSUInteger level;
+
 @property (nonatomic, readonly) IDLDrawable *currentDrawable;
 @property (nonatomic, readonly, getter = isStateful) BOOL stateful;
 @property (nonatomic, readonly) BOOL hasPadding;
@@ -26,10 +28,10 @@
 
 @property (nonatomic, assign) id<IDLDrawableDelegate> delegate;
 
-- (void)drawOnLayer:(CALayer *)layer;
 - (void)drawInContext:(CGContextRef)context;
 
-- (UIImage *)renderToImageOfSize:(CGSize)imageSize;
+- (UIImage *)renderToImage;
+- (BOOL)setLevel:(NSUInteger)level;
 
 + (IDLDrawable *)createFromXMLData:(NSData *)data;
 + (IDLDrawable *)createFromXMLURL:(NSURL *)url;

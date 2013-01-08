@@ -11,6 +11,8 @@
 #import "IDLMarginLayoutParams.h"
 #import "UIView+IDL_ViewGroup.h"
 #import "IDLFrameLayoutLayoutParams.h"
+#import "UIView+IDLDrawable.h"
+#import "NSObject+IDL_KVOObserver.h"
 
 #pragma mark - import libs
 #include <objc/runtime.h>
@@ -19,7 +21,20 @@
 
 #define DEFAULT_CHILD_GRAVITY IDLViewContentGravityTop | IDLViewContentGravityLeft
 
-@implementation UIScrollView (Layout)
+@implementation UIScrollView (IDL_ViewGroup)
+
++ (void)load {
+    Class c = self;
+    SEL origSEL = @selector(drawRect:);
+    SEL overrideSEL = @selector(idl_drawRect:);
+    Method origMethod = class_getInstanceMethod(c, origSEL);
+    Method overrideMethod = class_getInstanceMethod(c, overrideSEL);
+    if(class_addMethod(c, origSEL, method_getImplementation(overrideMethod), method_getTypeEncoding(overrideMethod))) {
+        class_replaceMethod(c, overrideSEL, method_getImplementation(origMethod), method_getTypeEncoding(origMethod));
+    } else {
+        method_exchangeImplementations(origMethod, overrideMethod);
+    }
+}
 
 static char matchParentChildrenKey;
 
@@ -74,8 +89,9 @@ static char matchParentChildrenKey;
         if (child.visibility != IDLViewVisibilityGone) {
             [self measureChildWithMargins:child parentWidthMeasureSpec:widthMeasureSpec widthUsed:0 parentHeightMeasureSpec:heightMeasureSpec heightUsed:0];
             IDLFrameLayoutLayoutParams *lp = (IDLFrameLayoutLayoutParams *)child.layoutParams;
-            maxWidth = MAX(maxWidth, child.measuredSize.width + lp.margin.left + lp.margin.right);
-            maxHeight = MAX(maxHeight, child.measuredSize.height + lp.margin.top + lp.margin.bottom);
+            UIEdgeInsets lpMargin = lp.margin;
+            maxWidth = MAX(maxWidth, child.measuredSize.width + lpMargin.left + lpMargin.right);
+            maxHeight = MAX(maxHeight, child.measuredSize.height + lpMargin.top + lpMargin.bottom);
             childState = [UIView combineMeasuredStatesCurrentState:childState newState:child.measuredState];
             if (measureMatchParentChildren) {
                 if (lp.width == IDLLayoutParamsSizeMatchParent || lp.height == IDLLayoutParamsSizeMatchParent) {
@@ -106,21 +122,22 @@ static char matchParentChildrenKey;
             }
             
             IDLMarginLayoutParams *lp = (IDLMarginLayoutParams *)child.layoutParams;
+            UIEdgeInsets lpMargin = lp.margin;
             IDLLayoutMeasureSpec childWidthMeasureSpec;
             IDLLayoutMeasureSpec childHeightMeasureSpec;
             
             if (lp.width == IDLLayoutParamsSizeMatchParent) {
-                childWidthMeasureSpec.size = self.measuredSize.width - padding.left - padding.right - lp.margin.left - lp.margin.right;
+                childWidthMeasureSpec.size = self.measuredSize.width - padding.left - padding.right - lpMargin.left - lpMargin.right;
                 childWidthMeasureSpec.mode = IDLLayoutMeasureSpecModeExactly;
             } else {
-                childWidthMeasureSpec = [self childMeasureSpecWithMeasureSpec:widthMeasureSpec padding:(padding.left + padding.right + lp.margin.left + lp.margin.right) childDimension:lp.width];
+                childWidthMeasureSpec = [self childMeasureSpecWithMeasureSpec:widthMeasureSpec padding:(padding.left + padding.right + lpMargin.left + lpMargin.right) childDimension:lp.width];
             }
             
             if (lp.height == IDLLayoutParamsSizeMatchParent) {
-                childHeightMeasureSpec.size = self.measuredSize.height - padding.top - padding.bottom - lp.margin.top - lp.margin.bottom;
+                childHeightMeasureSpec.size = self.measuredSize.height - padding.top - padding.bottom - lpMargin.top - lpMargin.bottom;
                 childHeightMeasureSpec.mode = IDLLayoutMeasureSpecModeExactly;
             } else {
-                childHeightMeasureSpec = [self childMeasureSpecWithMeasureSpec:heightMeasureSpec padding:(padding.top + padding.bottom + lp.margin.top + lp.margin.bottom) childDimension:lp.height];
+                childHeightMeasureSpec = [self childMeasureSpecWithMeasureSpec:heightMeasureSpec padding:(padding.top + padding.bottom + lpMargin.top + lpMargin.bottom) childDimension:lp.height];
             }
             [child measureWithWidthMeasureSpec:childWidthMeasureSpec heightMeasureSpec:childHeightMeasureSpec];
         }
@@ -164,6 +181,7 @@ static char matchParentChildrenKey;
         
         if (child.visibility != IDLViewVisibilityGone && ![NSStringFromClass([child class]) isEqualToString:@"UIWebDocumentView"]) {
             IDLFrameLayoutLayoutParams *lp = (IDLFrameLayoutLayoutParams *)child.layoutParams;
+            UIEdgeInsets lpMargin = lp.margin;
             
             CGFloat width = child.measuredSize.width;
             CGFloat height = child.measuredSize.height;
@@ -180,31 +198,30 @@ static char matchParentChildrenKey;
             
             switch (gravity & HORIZONTAL_GRAVITY_MASK) {
                 case IDLViewContentGravityLeft:
-                    childLeft = parentLeft + lp.margin.left;
+                    childLeft = parentLeft + lpMargin.left;
                     break;
                 case IDLViewContentGravityCenterHorizontal:
-                    childLeft = parentLeft + (parentRight - parentLeft - width) / 2 + lp.margin.left - lp.margin.right;
+                    childLeft = parentLeft + (parentRight - parentLeft - width) / 2 + lpMargin.left - lpMargin.right;
                     break;
                 case IDLViewContentGravityRight:
-                    childLeft = parentRight - width - lp.margin.right;
+                    childLeft = parentRight - width - lpMargin.right;
                     break;
                 default:
-                    childLeft = parentLeft + lp.margin.left;
+                    childLeft = parentLeft + lpMargin.left;
             }
             
             switch (verticalGravity) {
                 case IDLViewContentGravityTop:
-                    childTop = parentTop + lp.margin.top;
+                    childTop = parentTop + lpMargin.top;
                     break;
                 case IDLViewContentGravityCenterVertical:
-                    childTop = parentTop + (parentBottom - parentTop - height) / 2 +
-                    lp.margin.top - lp.margin.bottom;
+                    childTop = parentTop + (parentBottom - parentTop - height) / 2 + lpMargin.top - lpMargin.bottom;
                     break;
                 case IDLViewContentGravityBottom:
-                    childTop = parentBottom - height - lp.margin.bottom;
+                    childTop = parentBottom - height - lpMargin.bottom;
                     break;
                 default:
-                    childTop = parentTop + lp.margin.top;
+                    childTop = parentTop + lpMargin.top;
             }
             
             [child layoutWithFrame:CGRectMake(childLeft, childTop, width, height)];
@@ -224,7 +241,8 @@ static char matchParentChildrenKey;
     IDLLayoutMeasureSpec childWidthMeasureSpec;
     IDLLayoutMeasureSpec childHeightMeasureSpec;
     
-    childWidthMeasureSpec = [self childMeasureSpecWithMeasureSpec:parentWidthMeasureSpec padding:self.padding.left + self.padding.right childDimension:lp.width];
+    UIEdgeInsets padding = self.padding;
+    childWidthMeasureSpec = [self childMeasureSpecWithMeasureSpec:parentWidthMeasureSpec padding:padding.left + padding.right childDimension:lp.width];
     
     childHeightMeasureSpec.size = 0;
     childHeightMeasureSpec.mode = IDLLayoutMeasureSpecModeUnspecified;
@@ -237,17 +255,75 @@ static char matchParentChildrenKey;
         return;
     }
     IDLMarginLayoutParams *lp = (IDLMarginLayoutParams *)child.layoutParams;
+    UIEdgeInsets lpMargin = lp.margin;
     UIEdgeInsets padding = self.padding;
-    IDLLayoutMeasureSpec childWidthMeasureSpec = [self childMeasureSpecWithMeasureSpec:parentWidthMeasureSpec padding:(padding.left + padding.right + lp.margin.left + lp.margin.right + widthUsed) childDimension:lp.width];
+    IDLLayoutMeasureSpec childWidthMeasureSpec = [self childMeasureSpecWithMeasureSpec:parentWidthMeasureSpec padding:(padding.left + padding.right + lpMargin.left + lpMargin.right + widthUsed) childDimension:lp.width];
     IDLLayoutMeasureSpec childHeightMeasureSpec;
-    childHeightMeasureSpec.size = lp.margin.top + lp.margin.bottom + parentHeightMeasureSpec.size;
+    childHeightMeasureSpec.size = lpMargin.top + lpMargin.bottom + parentHeightMeasureSpec.size;
     childHeightMeasureSpec.mode = IDLLayoutMeasureSpecModeUnspecified;
     
     [child measureWithWidthMeasureSpec:childWidthMeasureSpec heightMeasureSpec:childHeightMeasureSpec];
 }
 
 - (BOOL)isViewGroup {
-    return TRUE;
+    BOOL ret = FALSE;
+    if ([self class] == [UIScrollView class]) {
+        ret = TRUE;
+    }
+    return ret;
 }
+
+- (void)setBackgroundDrawable:(IDLDrawable *)backgroundDrawable {
+    self.backgroundDrawable.delegate = nil;
+    [super setBackgroundDrawable:backgroundDrawable];
+}
+
+- (void)onBackgroundDrawableChanged {
+    static NSString *BackgroundDrawableFrameTag = @"backgroundDrawableFrame";
+    IDLDrawable *drawable = self.backgroundDrawable;
+    if (drawable != nil) {
+        drawable.delegate = self;
+        drawable.state = UIControlStateNormal;
+        drawable.bounds = self.bounds;
+        self.backgroundColor = [UIColor clearColor];
+
+        if (![self idl_hasObserverWithIdentifier:BackgroundDrawableFrameTag]) {
+            __block UIView *selfRef = self;
+            [self idl_addObserver:^(NSString *keyPath, id object, NSDictionary *change) {
+                selfRef.backgroundDrawable.bounds = selfRef.bounds;
+                [selfRef setNeedsDisplay];
+            } withIdentifier:BackgroundDrawableFrameTag forKeyPaths:@[@"frame"] options:NSKeyValueObservingOptionNew];
+        }
+    } else {
+        [self idl_removeObserverWithIdentifier:BackgroundDrawableFrameTag];
+    }
+    
+    [self setNeedsDisplay];
+}
+
+- (void)idl_drawRect:(CGRect)rect {
+    IDLDrawable *drawable = self.backgroundDrawable;
+    if (drawable != nil) {
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        CGContextSaveGState(context);
+        drawable.bounds = self.bounds;
+        [drawable drawInContext:context];
+        CGContextRestoreGState(context);
+    } else {
+        if (self.isOpaque) {
+            UIColor *color = self.backgroundColor;
+            if (color == nil) color = [UIColor whiteColor];
+            CGContextRef context = UIGraphicsGetCurrentContext();
+            CGContextSetFillColorWithColor(context, [color CGColor]);
+            CGContextFillRect(context, self.bounds);
+        }
+    }
+    [self idl_drawRect:rect];
+}
+
+- (void)drawableDidInvalidate:(IDLDrawable *)drawable {
+    [self setNeedsDisplay];
+}
+
 
 @end

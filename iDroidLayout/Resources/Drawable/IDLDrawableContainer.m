@@ -36,6 +36,14 @@
 
 @implementation IDLDrawableContainerConstantState
 
+- (void)dealloc {
+    for (IDLDrawable *drawable in self.drawables) {
+        drawable.delegate = nil;
+    }
+    self.drawables = nil;
+    [super dealloc];
+}
+
 - (id)initWithState:(IDLDrawableContainerConstantState *)state owner:(IDLDrawableContainer *)owner {
     self = [super init];
     if (self) {
@@ -44,10 +52,12 @@
             NSMutableArray *drawables = [[NSMutableArray alloc] initWithCapacity:[state.drawables count]];
             for (IDLDrawable *drawable in state.drawables) {
                 IDLDrawable *copiedDrawable = [drawable copy];
+                copiedDrawable.delegate = owner;
                 [drawables addObject:copiedDrawable];
                 [copiedDrawable release];
             }
-            self.drawables = state.drawables;
+            self.drawables = drawables;
+            [drawables release];
             self.constantIntrinsicSize = state.constantIntrinsicSize;
             self.constantMinimumSize = state.constantMinimumSize;
             self.constantSizeComputed = state.constantSizeComputed;
@@ -180,24 +190,22 @@
     return self;
 }
 
-- (void)drawOnLayer:(CALayer *)layer {
-    [self.currentDrawable drawOnLayer:layer];
-}
-
 - (void)drawInContext:(CGContextRef)context {
     [self.currentDrawable drawInContext:context];
 }
 
 - (BOOL)selectDrawableAtIndex:(NSInteger)index {
     BOOL ret = TRUE;
+    IDLDrawableContainerConstantState *state = self.internalConstantState;
     if (index == self.currentIndex) {
         ret = FALSE;
-    } else if (index >= 0 && index < [self.internalConstantState.drawables count]) {
-        IDLDrawable *drawable = [self.internalConstantState.drawables objectAtIndex:index];
+    } else if (index >= 0 && index < [state.drawables count]) {
+        IDLDrawable *drawable = [state.drawables objectAtIndex:index];
         self.currentDrawable = drawable;
         self.currentIndex = index;
         drawable.state = self.state;
         drawable.bounds = self.bounds;
+        [drawable setLevel:self.level];
     } else {
         self.currentDrawable = nil;
         self.currentIndex = -1;
@@ -208,8 +216,9 @@
 
 - (CGSize)intrinsicSize {
     CGSize ret = CGSizeZero;
-    if (self.internalConstantState.isConstantSize) {
-        ret = self.internalConstantState.constantIntrinsicSize;
+    IDLDrawableContainerConstantState *state = self.internalConstantState;
+    if (state.isConstantSize) {
+        ret = state.constantIntrinsicSize;
     } else {
         ret = self.currentDrawable.intrinsicSize;
     }
@@ -218,8 +227,9 @@
 
 - (CGSize)minimumSize {
     CGSize ret = CGSizeZero;
-    if (self.internalConstantState.isConstantSize) {
-        ret = self.internalConstantState.constantMinimumSize;
+    IDLDrawableContainerConstantState *state = self.internalConstantState;
+    if (state.isConstantSize) {
+        ret = state.constantMinimumSize;
     } else {
         ret = self.currentDrawable.minimumSize;
     }
@@ -233,6 +243,14 @@
 
 - (void)onBoundsChangeToRect:(CGRect)bounds {
     self.currentDrawable.bounds = bounds;
+}
+
+- (BOOL)onLevelChangeToLevel:(NSUInteger)level {
+    BOOL ret = FALSE;
+    if (_currentDrawable != nil) {
+        ret = [_currentDrawable setLevel:level];
+    }
+    return ret;
 }
 
 - (BOOL)isStateful {
@@ -251,6 +269,9 @@
     return self.internalConstantState;
 }
 
+- (IDLDrawable *)currentDrawable {
+    return _currentDrawable;
+}
 
 #pragma mark - IDLDrawableDelegate
 

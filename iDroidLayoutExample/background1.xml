@@ -1,0 +1,5 @@
+<selector>
+    <item state_pressed="true" drawable="@drawable/button_pressed.9.png"/>
+    <item state_disabled="true" drawable="@drawable/button_disabled.9.png"/>
+    <item drawable="@drawable/button_normal.9.png"/>
+</selector>

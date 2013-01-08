@@ -53,7 +53,6 @@
                 IDLStateListDrawableItem *origItem = [state.items objectAtIndex:i];
                 IDLStateListDrawableItem *item = [[IDLStateListDrawableItem alloc] init];
                 item.drawable = [self.drawables objectAtIndex:i];
-                item.drawable.delegate = owner;
                 item.state = origItem.state;
                 [items addObject:item];
                 [item release];

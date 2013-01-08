@@ -20,21 +20,19 @@
             <TextView
                 id="username_label"
                 layout_width="100"
-                layout_height="wrap_content"
+                layout_height="40"
                 layout_alignParentLeft="true"
                 layout_gravity="center_vertical"
                 gravity="left|center_vertical"
                 font="Helvetica-Bold"
                 text="@string/values.username_label"/>
-            <UITextField
+            <EditText
                 id="username"
+                background="@drawable/background1"
                 layout_width="match_parent"
-                layout_height="20"
+                layout_height="40"
                 layout_toRightOf="username_label"
-                layout_alignParentRight="true"
-                borderWidth="1"
-                borderColor="#000000"
-                cornerRadius="5"/>
+                layout_alignParentRight="true"/>
         </RelativeLayout>
         <RelativeLayout
             layout_width="match_parent"
@@ -43,21 +41,19 @@
             <TextView
                 id="password_label"
                 layout_width="100"
-                layout_height="wrap_content"
+                layout_height="40"
                 layout_alignParentLeft="true"
                 layout_gravity="center_vertical"
                 gravity="left|center_vertical"
                 font="Helvetica-Bold"
                 text="@string/values.password_label"/>
-            <UITextField
+            <EditText
                 id="password"
+                background="@drawable/background1"
                 layout_width="match_parent"
-                layout_height="20"
+                layout_height="40"
                 layout_toRightOf="password_label"
-                layout_alignParentRight="true"
-                borderWidth="1"
-                borderColor="#000000"
-                cornerRadius="5"/>    
+                layout_alignParentRight="true"/>    
         </RelativeLayout>
         <TextView
             layout_width="wrap_content"
@@ -66,14 +62,12 @@
             text="@string/values.formular_hint"
             textSize="10"
             textColor="#aaaaaa"/>
-        <UITextView
+        <TextArea
             id="freeText"
+            background="@drawable/background1"
             layout_width="match_parent"
             layout_height="200"
-            layout_marginBottom="10"
-            borderWidth="1"
-            borderColor="#000000"
-            cornerRadius="5"/>
+            layout_marginBottom="10"/>
         <TextView
             id="androidStatus"
             layout_width="match_parent"
@@ -96,7 +90,7 @@
             <UIButton
                 id="toggleButton"
                 onClick="didPressToggleButton"
-                type="roundedRect"
+                background="@drawable/background1"
                 textColor="@color/button_color"
                 layout_width="wrap_content"
                 layout_height="30"
