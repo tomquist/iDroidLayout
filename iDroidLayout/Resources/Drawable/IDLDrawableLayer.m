@@ -10,6 +10,11 @@
 
 @implementation IDLDrawableLayer
 
+- (void)dealloc {
+    self.drawable = nil;
+    [super dealloc];
+}
+
 - (id)init {
     self = [super init];
     if (self) {
@@ -33,6 +38,7 @@
         [_drawable release];
         _drawable = [drawable retain];
         _drawable.delegate = self;
+        [self setNeedsDisplay];
     }
 }
 

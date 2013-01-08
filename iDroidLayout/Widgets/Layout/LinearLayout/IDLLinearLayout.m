@@ -54,10 +54,6 @@
     return self;
 }
 
-- (void)setMeasuredDimensionWidth:(IDLLayoutMeasuredDimension)width height:(IDLLayoutMeasuredDimension)height {
-    [super setMeasuredDimensionWidth:width height:height];
-}
-
 - (void)setGravity:(IDLViewContentGravity)gravity {
     if (_gravity != gravity) {
         if ((gravity & RELATIVE_HORIZONTAL_GRAVITY_MASK) == 0) {
@@ -346,7 +342,8 @@
     CGFloat heightSize = _totalLength;
     
     // Check against our minimum height
-    heightSize = MAX(heightSize, self.minHeight);
+    CGSize minSize = self.minSize;
+    heightSize = MAX(heightSize, minSize.height);
     
     // Reconcile our calculated size with the heightMeasureSpec
     IDLLayoutMeasuredDimension heightSizeAndState = [UIView resolveSizeAndStateForSize:heightSize measureSpec:heightMeasureSpec childMeasureState:IDLLayoutMeasuredStateNone];
@@ -459,9 +456,10 @@
     maxWidth += padding.left + padding.right;
     
     // Check against our minimum width
-    maxWidth = MAX(maxWidth, self.minWidth);
+    maxWidth = MAX(maxWidth, minSize.width);
     
-    [self setMeasuredDimensionWidth:[UIView resolveSizeAndStateForSize:maxWidth measureSpec:widthMeasureSpec childMeasureState:childState.widthState] height:heightSizeAndState];
+    IDLLayoutMeasuredSize measuredSize = IDLLayoutMeasuredSizeMake([UIView resolveSizeAndStateForSize:maxWidth measureSpec:widthMeasureSpec childMeasureState:childState.widthState] , heightSizeAndState);
+    [self setMeasuredDimensionSize:measuredSize];
     
     if (matchWidth) {
         [self forceUniformWidthWithCount:count heightMeasureSpec:heightMeasureSpec];
@@ -700,7 +698,8 @@
     CGFloat widthSize = _totalLength;
     
     // Check against our minimum width
-    widthSize = MAX(widthSize, self.minWidth);
+    CGSize minSize = self.minSize;
+    widthSize = MAX(widthSize, minSize.width);
     
     // Reconcile our calculated size with the widthMeasureSpec
     IDLLayoutMeasuredDimension widthSizeAndState = [UIView resolveSizeAndStateForSize:widthSize measureSpec:widthMeasureSpec childMeasureState:IDLLayoutMeasuredStateNone];
@@ -851,10 +850,11 @@
     maxHeight += padding.top + padding.bottom;
     
     // Check against our minimum height
-    maxHeight = MAX(maxHeight, self.minHeight);
+    maxHeight = MAX(maxHeight, minSize.height);
     
     widthSizeAndState.state |= childState.widthState;
-    [self setMeasuredDimensionWidth:widthSizeAndState height:[UIView resolveSizeAndStateForSize:maxHeight measureSpec:heightMeasureSpec childMeasureState:childState.heightState]];
+    IDLLayoutMeasuredSize measuredSize = IDLLayoutMeasuredSizeMake(widthSizeAndState, [UIView resolveSizeAndStateForSize:maxHeight measureSpec:heightMeasureSpec childMeasureState:childState.heightState]);
+    [self setMeasuredDimensionSize:measuredSize];
     
     if (matchHeight) {
         [self forceUniformHeightWithCount:count widthMeasureSpec:widthMeasureSpec];

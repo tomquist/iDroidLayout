@@ -66,33 +66,32 @@
     CGFloat heightSize = heightMeasureSpec.size;
     
     CGSize imageSize = self.image.size;
-    IDLLayoutMeasuredDimension width;
-    width.size = imageSize.width;
-    width.state = IDLLayoutMeasuredStateNone;
-    IDLLayoutMeasuredDimension height;
-    height.size = imageSize.height;
-    height.state = IDLLayoutMeasuredStateNone;
+    IDLLayoutMeasuredSize measuredSize;
+    measuredSize.width.size = imageSize.width;
+    measuredSize.width.state = IDLLayoutMeasuredStateNone;
+    measuredSize.height.size = imageSize.height;
+    measuredSize.height.state = IDLLayoutMeasuredStateNone;
     //UIEdgeInsets padding = self.padding;
     switch (widthMode) {
         case IDLLayoutMeasureSpecModeExactly: {
-            width.size = widthSize;
+            measuredSize.width.size = widthSize;
             if ([self isImageScaling]) {
                 if (imageSize.width <= 0.f) {
-                    height.size = 0;
+                    measuredSize.height.size = 0;
                 } else {
-                    height.size = (width.size/imageSize.width)*imageSize.height;
+                    measuredSize.height.size = (measuredSize.width.size/imageSize.width)*imageSize.height;
                 }
             }
             break;
         }
         case IDLLayoutMeasureSpecModeAtMost: {
             if (widthSize < imageSize.width) {
-                width.size = widthSize;
+                measuredSize.width.size = widthSize;
                 if ([self isImageScaling]) {
                     if (imageSize.width <= 0.f) {
-                        height.size = 0.f;
+                        measuredSize.height.size = 0.f;
                     } else {
-                        height.size = (width.size/imageSize.width)*imageSize.height;
+                        measuredSize.height.size = (measuredSize.width.size/imageSize.width)*imageSize.height;
                     }
                 }
             }
@@ -104,19 +103,19 @@
     }
     switch (heightMode) {
         case IDLLayoutMeasureSpecModeExactly:
-            height.size = heightSize;
+            measuredSize.height.size = heightSize;
             break;
         case IDLLayoutMeasureSpecModeAtMost:
-            height.size = MIN(heightSize, height.size);
+            measuredSize.height.size = MIN(heightSize, measuredSize.height.size);
             break;
         case IDLLayoutMeasureSpecModeUnspecified:
         default:
             break;
     }
     //if (widthMode == IDLLayoutMeasureSpecModeAtMost || widthMode == IDLLayoutMeasureSpecModeUnspecified) {
-    width.size = MIN(width.size, (imageSize.height>0.f?(height.size/imageSize.height) * imageSize.width:0.f));
+    measuredSize.width.size = MIN(measuredSize.width.size, (imageSize.height>0.f?(measuredSize.height.size/imageSize.height) * imageSize.width:0.f));
     //}
-    [self setMeasuredDimensionWidth:width height:height];
+    [self setMeasuredDimensionSize:measuredSize];
 }
 
 @end

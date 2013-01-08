@@ -37,6 +37,11 @@ typedef struct IDLLayoutMeasuredDimension {
     IDLLayoutMeasuredState state;
 } IDLLayoutMeasuredDimension;
 
+typedef struct IDLLayoutMeasuredSize {
+    IDLLayoutMeasuredDimension width;
+    IDLLayoutMeasuredDimension height;
+} IDLLayoutMeasuredSize;
+
 typedef struct IDLLayoutMeasuredWidthHeightState {
     IDLLayoutMeasuredState widthState;
     IDLLayoutMeasuredState heightState;
@@ -50,13 +55,14 @@ typedef enum IDLViewVisibility {
 
 IDLViewVisibility IDLViewVisibilityFromString(NSString *visibilityString);
 
+IDLLayoutMeasuredSize IDLLayoutMeasuredSizeMake(IDLLayoutMeasuredDimension width, IDLLayoutMeasuredDimension height);
+
 BOOL BOOLFromString(NSString *boolString);
 
 @interface UIView (IDL_Layout)
 
 @property (nonatomic, retain) IDLLayoutParams *layoutParams;
-@property (nonatomic, assign) CGFloat minWidth;
-@property (nonatomic, assign) CGFloat minHeight;
+@property (nonatomic, assign) CGSize minSize;
 @property (nonatomic, assign) UIEdgeInsets padding;
 @property (nonatomic, readonly) CGSize measuredSize;
 @property (nonatomic, readonly) IDLLayoutMeasuredWidthHeightState measuredState;
@@ -74,7 +80,7 @@ BOOL BOOLFromString(NSString *boolString);
 
 
 - (void)onLayoutWithFrame:(CGRect)frame didFrameChange:(BOOL)changed;
-- (void)setMeasuredDimensionWidth:(IDLLayoutMeasuredDimension)width height:(IDLLayoutMeasuredDimension)height;
+- (void)setMeasuredDimensionSize:(IDLLayoutMeasuredSize)size;
 - (void)requestLayout;
 - (void)onFinishInflate;
 - (UIView *)findViewById:(NSString *)identifier;

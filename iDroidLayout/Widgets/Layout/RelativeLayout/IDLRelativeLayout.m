@@ -629,6 +629,7 @@
     }
     
     UIEdgeInsets padding = self.padding;
+    CGSize minSize = self.minSize;
     if (isWrapContentWidth) {
         // Width already has left padding in it since it was calculated by looking at
         // the right of each child view
@@ -638,7 +639,7 @@
             width = MAX(width, self.layoutParams.width);
         }
         
-        width = MAX(width, self.minWidth);
+        width = MAX(width, minSize.width);
         width = [UIView resolveSizeForSize:width measureSpec:widthMeasureSpec];
         
         if (offsetHorizontalAxis) {
@@ -672,7 +673,7 @@
             height = MAX(height, self.layoutParams.height);
         }
         
-        height = MAX(height, self.minHeight);
+        height = MAX(height, minSize.height);
         height = [UIView resolveSizeForSize:height measureSpec:heightMeasureSpec];
         
         if (offsetVerticalAxis) {
@@ -722,13 +723,12 @@
             }
         }
     }
-    IDLLayoutMeasuredDimension widthDim;
-    IDLLayoutMeasuredDimension heightDim;
-    widthDim.state = IDLLayoutMeasuredStateNone;
-    widthDim.size = width;
-    heightDim.state = IDLLayoutMeasuredStateNone;
-    heightDim.size = height;
-    [self setMeasuredDimensionWidth:widthDim height:heightDim];
+    IDLLayoutMeasuredSize measuredSize;
+    measuredSize.width.state = IDLLayoutMeasuredStateNone;
+    measuredSize.width.size = width;
+    measuredSize.height.state = IDLLayoutMeasuredStateNone;
+    measuredSize.height.size = height;
+    [self setMeasuredDimensionSize:measuredSize];
     
 }
 

@@ -102,7 +102,7 @@
     IDLMarginLayoutParams *lp = [[IDLMarginLayoutParams alloc] initWithWidth:IDLLayoutParamsSizeMatchParent height:IDLLayoutParamsSizeMatchParent];
     lp.width = IDLLayoutParamsSizeMatchParent;
     lp.height = IDLLayoutParamsSizeMatchParent;
-    return lp;
+    return [lp autorelease];;
 }
 
 -(IDLLayoutParams *)generateLayoutParamsFromLayoutParams:(IDLLayoutParams *)layoutParams {

@@ -44,31 +44,30 @@ UIBarStyle UIBarStyleFromString(NSString *barStyle) {
     CGFloat widthSize = widthMeasureSpec.size;
     CGFloat heightSize = heightMeasureSpec.size;
     
-    IDLLayoutMeasuredDimension width;
-    width.state = IDLLayoutMeasuredStateNone;
-    IDLLayoutMeasuredDimension height;
-    height.state = IDLLayoutMeasuredStateNone;
+    IDLLayoutMeasuredSize measuredSize;
+    measuredSize.width.state = IDLLayoutMeasuredStateNone;
+    measuredSize.height.state = IDLLayoutMeasuredStateNone;
     
     switch (widthMode) {
         case IDLLayoutMeasureSpecModeAtMost:
         case IDLLayoutMeasureSpecModeExactly:
-            width.size = widthSize;
+            measuredSize.width.size = widthSize;
             break;
         default:
-            width.size = 320.f;
+            measuredSize.width.size = 320.f;
             break;
     }
     switch (heightMode) {
         case IDLLayoutMeasureSpecModeExactly:
-            height.size = heightSize;
+            measuredSize.height.size = heightSize;
             break;
         default:
-            height.size = 44.f;
+            measuredSize.height.size = 44.f;
             break;
     }
-    width.size = MAX(width.size, self.minWidth);
+    measuredSize.width.size = MAX(measuredSize.width.size, self.minSize.width);
     
-    [self setMeasuredDimensionWidth:width height:height];
+    [self setMeasuredDimensionSize:measuredSize];
 }
 
 @end

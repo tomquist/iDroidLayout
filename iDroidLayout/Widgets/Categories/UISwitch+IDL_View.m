@@ -43,14 +43,13 @@
 }
 
 - (void)onMeasureWithWidthMeasureSpec:(IDLLayoutMeasureSpec)widthMeasureSpec heightMeasureSpec:(IDLLayoutMeasureSpec)heightMeasureSpec {
-    IDLLayoutMeasuredDimension width;
-    width.state = IDLLayoutMeasuredStateNone;
-    width.size = self.frame.size.width;
-    IDLLayoutMeasuredDimension height;
-    height.state = IDLLayoutMeasuredStateNone;
-    height.size = self.frame.size.height;
+    IDLLayoutMeasuredSize size;
+    size.width.state = IDLLayoutMeasuredStateNone;
+    size.width.size = self.frame.size.width;
+    size.height.state = IDLLayoutMeasuredStateNone;
+    size.height.size = self.frame.size.height;
     
-    [self setMeasuredDimensionWidth:width height:height];
+    [self setMeasuredDimensionSize:size];
 }
 
 @end

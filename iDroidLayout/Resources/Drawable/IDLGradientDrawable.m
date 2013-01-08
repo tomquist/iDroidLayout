@@ -71,8 +71,14 @@ BOOL IDLGradientDrawableCornerRadiusEqualsCornerRadius(IDLGradientDrawableCorner
     self.colors = nil;
     self.cgColors = nil;
     self.strokeColor = nil;
-    self.colorSpace = nil;
-    self.gradient = nil;
+    if (_colorSpace != NULL) {
+        CGColorSpaceRelease(_colorSpace);
+        _colorSpace = NULL;
+    }
+    if (_gradient != NULL) {
+        CGGradientRelease(_gradient);
+        _gradient = NULL;
+    }
     [super dealloc];
 }
 
@@ -80,14 +86,13 @@ BOOL IDLGradientDrawableCornerRadiusEqualsCornerRadius(IDLGradientDrawableCorner
     self = [super init];
     if (self) {
         if (state != nil) {
-            NSArray *colors = [state.colors copy];
+            NSArray *colors = [[NSArray alloc] initWithArray:state.colors];
             self.colors = colors;
             [colors release];
             
-            colors = [state.cgColors copy];
-            self.cgColors = colors;
-            [colors release];
-            
+            NSArray *cgColors = [[NSArray alloc] initWithArray:state.cgColors];
+            self.cgColors = cgColors;
+            [cgColors release];
             self.padding = state.padding;
             self.hasPadding = state.hasPadding;
             self.strokeWidth = state.strokeWidth;
@@ -97,16 +102,14 @@ BOOL IDLGradientDrawableCornerRadiusEqualsCornerRadius(IDLGradientDrawableCorner
             self.shape = state.shape;
             self.corners = state.corners;
             self.size = state.size;
-            self.colorSpace = state.colorSpace;
-            self.gradient = state.gradient;
+            _colorSpace = CGColorSpaceRetain(state.colorSpace);
+            _gradient = CGGradientRetain(state.gradient);
             self.relativeGradientCenter = state.relativeGradientCenter;
             self.gradientRadius = state.gradientRadius;
             self.gradientRadiusIsRelative = state.gradientRadiusIsRelative;
             self.gradientType = state.gradientType;
         } else {
-            CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-            self.colorSpace = colorSpace;
-            CGColorSpaceRelease(colorSpace);
+            _colorSpace = CGColorSpaceCreateDeviceRGB();
         }
 
     }
@@ -122,41 +125,16 @@ BOOL IDLGradientDrawableCornerRadiusEqualsCornerRadius(IDLGradientDrawableCorner
                 [cgColors addObject:(id)cgColor];
             }
         }
-        self.cgColors = cgColors;
-        [cgColors release];
+        _cgColors = cgColors;
     }
     return _cgColors;
 }
 
-- (void)setColorSpace:(CGColorSpaceRef)colorSpace {
-    if (_colorSpace != colorSpace) {
-        if (_colorSpace != NULL) {
-            CGColorSpaceRelease(_colorSpace);
-        }
-        if (colorSpace != NULL) {
-            _colorSpace = CGColorSpaceRetain(colorSpace);
-        }
-    }
-}
-
-- (void)setGradient:(CGGradientRef)gradient {
-    if (_gradient != gradient) {
-        if (_gradient != NULL) {
-            CGGradientRelease(_gradient);
-        }
-        if (gradient != NULL) {
-            _gradient = CGGradientRetain(gradient);
-        }
-    }
-}
-
 - (CGGradientRef)currentGradient {
-    if (self.gradient == nil) {
-        CGGradientRef gradient = CGGradientCreateWithColors(self.colorSpace, (CFArrayRef)self.cgColors, NULL);
-        self.gradient = gradient;
-        CGGradientRelease(gradient);
+    if (_gradient == NULL) {
+        _gradient = CGGradientCreateWithColors(self.colorSpace, (CFArrayRef)self.cgColors, NULL);
     }
-    return self.gradient;
+    return _gradient;
 }
 
 @end

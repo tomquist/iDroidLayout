@@ -20,36 +20,37 @@
     CGFloat widthSize = widthMeasureSpec.size;
     CGFloat heightSize = heightMeasureSpec.size;
     
-    IDLLayoutMeasuredDimension width;
-    width.state = IDLLayoutMeasuredStateNone;
+    IDLLayoutMeasuredSize measuredSize;
+    measuredSize.width.state = IDLLayoutMeasuredStateNone;
     IDLLayoutMeasuredDimension height;
-    height.state = IDLLayoutMeasuredStateNone;
+    measuredSize.height.state = IDLLayoutMeasuredStateNone;
     UIEdgeInsets padding = self.padding;
     
     
     if (widthMode == IDLLayoutMeasureSpecModeExactly) {
-        width.size = widthSize;
+        measuredSize.width.size = widthSize;
     } else {
         CGSize size = [self.text sizeWithFont:self.font];
-        width.size = size.width + padding.left + padding.right;
+        measuredSize.width.size = size.width + padding.left + padding.right;
         if (widthMode == IDLLayoutMeasureSpecModeAtMost) {
-            width.size = MIN(width.size, widthSize);
+            measuredSize.width.size = MIN(measuredSize.width.size, widthSize);
         }
     }
-    width.size = MAX(width.size, self.minWidth);
+    CGSize minSize = self.minSize;
+    measuredSize.width.size = MAX(measuredSize.width.size, minSize.width);
     
     if (heightMode == IDLLayoutMeasureSpecModeExactly) {
-        height.size = heightSize;
+        measuredSize.height.size = heightSize;
     } else {
-        CGSize size = [self.text sizeWithFont:self.font constrainedToSize:CGSizeMake(width.size - padding.left - padding.right, CGFLOAT_MAX)];
+        CGSize size = [self.text sizeWithFont:self.font constrainedToSize:CGSizeMake(measuredSize.width.size - padding.left - padding.right, CGFLOAT_MAX)];
         height.size = MAX(size.height, self.font.lineHeight) + padding.top + padding.bottom;
         if (heightMode == IDLLayoutMeasureSpecModeAtMost) {
             height.size = MIN(height.size, heightSize);
         }
     }
-    height.size = MAX(height.size, self.minHeight);
+    height.size = MAX(height.size, minSize.height);
     
-    [self setMeasuredDimensionWidth:width height:height];
+    [self setMeasuredDimensionSize:measuredSize];
 }
 
 

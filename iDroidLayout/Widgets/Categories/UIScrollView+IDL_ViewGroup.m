@@ -106,11 +106,13 @@ static char matchParentChildrenKey;
     maxHeight += padding.top + padding.bottom;
     
     // Check against our minimum height and width
-    maxHeight = MAX(maxHeight, self.minHeight);
-    maxWidth = MAX(maxWidth, self.minWidth);
+    CGSize minSize = self.minSize;
+    maxHeight = MAX(maxHeight, minSize.height);
+    maxWidth = MAX(maxWidth, minSize.width);
     
     // Check against our foreground's minimum height and width
-    [self setMeasuredDimensionWidth:[UIView resolveSizeAndStateForSize:maxWidth measureSpec:widthMeasureSpec childMeasureState:childState.widthState] height:[UIView resolveSizeAndStateForSize:maxHeight measureSpec:heightMeasureSpec childMeasureState:childState.heightState]];
+    IDLLayoutMeasuredSize measuredSize = IDLLayoutMeasuredSizeMake([UIView resolveSizeAndStateForSize:maxWidth measureSpec:widthMeasureSpec childMeasureState:childState.widthState], [UIView resolveSizeAndStateForSize:maxHeight measureSpec:heightMeasureSpec childMeasureState:childState.heightState]);
+    [self setMeasuredDimensionSize:measuredSize];
     
     count = [matchParentChildren count];
     if (count > 1) {

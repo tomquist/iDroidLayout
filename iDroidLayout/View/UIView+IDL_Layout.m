@@ -40,6 +40,11 @@ IDLViewVisibility IDLViewVisibilityFromString(NSString *visibilityString) {
     return visibility;
 }
 
+IDLLayoutMeasuredSize IDLLayoutMeasuredSizeMake(IDLLayoutMeasuredDimension width, IDLLayoutMeasuredDimension height) {
+    IDLLayoutMeasuredSize ret = {width, height};
+    return ret;
+}
+
 BOOL BOOLFromString(NSString *boolString) {
     return [boolString isEqualToString:@"true"] || [boolString isEqualToString:@"TRUE"] || [boolString isEqualToString:@"yes"] || [boolString isEqualToString:@"YES"] || [boolString boolValue];
 }
@@ -47,12 +52,8 @@ BOOL BOOLFromString(NSString *boolString) {
 @implementation UIView (IDL_Layout)
 
 static char identifierKey;
-static char minWidthKey;
-static char minHeightKey;
-static char measuredWidthSizeKey;
-static char measuredWidthStateKey;
-static char measuredHeightSizeKey;
-static char measuredHeightStateKey;
+static char minSizeKey;
+static char measuredSizeKey;
 static char paddingKey;
 static char layoutParamsKey;
 static char isLayoutRequestedKey;
@@ -102,11 +103,10 @@ static char visibilityKey;
         self.alpha = alpha;
     }
     
-    // minWidth/minHeight
+    // minSize
     CGFloat minWidth = [[attrs objectForKey:@"minWidth"] floatValue];
     CGFloat minHeight = [[attrs objectForKey:@"minHeight"] floatValue];
-    self.minWidth = minWidth;
-    self.minHeight = minHeight;
+    self.minSize = CGSizeMake(minWidth, minHeight);
     
     // identifier
     NSString *identifier = [attrs objectForKey:@"id"];
@@ -212,7 +212,15 @@ static char visibilityKey;
                              &identifierKey,
                              identifier,
                              OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    if (NSClassFromString(@"PXEngine") != NULL) {
+    static int hasPixate;
+    if (hasPixate == 0) {
+        if (NSClassFromString(@"PXEngine") != NULL) {
+            hasPixate = 1;
+            [self setValue:identifier forKey:@"styleId"];
+        } else {
+            hasPixate = -1;
+        }
+    } else if (hasPixate > 0) {
         [self setValue:identifier forKey:@"styleId"];
     }
 }
@@ -236,9 +244,37 @@ static char visibilityKey;
 - (void)setVisibility:(IDLViewVisibility)visibility {
     IDLViewVisibility curVisibility = self.visibility;
     [self setHidden:(visibility != IDLViewVisibilityVisible)];
+    NSValue *newVisibilityObj = nil;
+    switch (visibility) {
+        case IDLViewVisibilityGone: {
+            static NSValue *visibilityGone;
+            if (!visibilityGone) {
+                visibilityGone = [[NSValue alloc] initWithBytes:&visibility objCType:@encode(IDLViewVisibility)];
+            }
+            newVisibilityObj = visibilityGone;
+        break;
+        }
+        case IDLViewVisibilityVisible: {
+            static NSValue *visibilityVisible;
+            if (!visibilityVisible) {
+                visibilityVisible = [[NSValue alloc] initWithBytes:&visibility objCType:@encode(IDLViewVisibility)];
+            }
+            newVisibilityObj = visibilityVisible;
+            break;
+        }
+        case IDLViewVisibilityInvisible: {
+            static NSValue *visibilityInvisible;
+            if (!visibilityInvisible) {
+                visibilityInvisible = [[NSValue alloc] initWithBytes:&visibility objCType:@encode(IDLViewVisibility)];
+            }
+            newVisibilityObj = visibilityInvisible;
+            break;
+        }
+    }
+
     objc_setAssociatedObject(self,
                              &visibilityKey,
-                             @(visibility),
+                             newVisibilityObj,
                              OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     if ((curVisibility != visibility) && (curVisibility == IDLViewVisibilityGone || visibility == IDLViewVisibilityGone)) {
         [self requestLayout];
@@ -246,8 +282,9 @@ static char visibilityKey;
 }
 
 - (IDLViewVisibility)visibility {
-    NSNumber *value = objc_getAssociatedObject(self, &visibilityKey);
-    IDLViewVisibility visibility = [value intValue];
+    IDLViewVisibility visibility = IDLViewVisibilityVisible;
+    NSValue *value = objc_getAssociatedObject(self, &visibilityKey);
+    [value getValue:&visibility];
     if (visibility == IDLViewVisibilityVisible && self.isHidden) {
         // Visibility has been set independently
         visibility = IDLViewVisibilityInvisible;
@@ -255,57 +292,42 @@ static char visibilityKey;
     return visibility;
 }
 
-- (CGFloat)minWidth {
-    NSNumber *value = objc_getAssociatedObject(self, &minWidthKey);
-    return [value floatValue];
+- (CGSize)minSize {
+    CGSize ret = CGSizeZero;
+    NSValue *value = objc_getAssociatedObject(self, &minSizeKey);
+    [value getValue:&ret];
+    return ret;
+
 }
 
-- (CGFloat)minHeight {
-    NSNumber *value = objc_getAssociatedObject(self, &minHeightKey);
-    return [value floatValue];
+- (void)setMinSize:(CGSize)size {
+    NSValue *v = [[NSValue alloc] initWithBytes:&size objCType:@encode(CGSize)];
+    objc_setAssociatedObject(self,
+                             &minSizeKey,
+                             v,
+                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    [v release];
 }
 
-- (void)setMinWidth:(CGFloat)minWidth {
-    objc_setAssociatedObject(self,
-                             &minWidthKey,
-                             @(minWidth),
-                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (CGSize)suggestedMinimumSize {
+    CGSize size = self.minSize;
+    return size;
 }
 
-- (void)setMinHeight:(CGFloat)minHeight {
+- (void)setMeasuredDimensionSize:(IDLLayoutMeasuredSize)size {
+    NSValue *value = [[NSValue alloc] initWithBytes:&size objCType:@encode(IDLLayoutMeasuredSize)];
     objc_setAssociatedObject(self,
-                             &minHeightKey,
-                             @(minHeight),
+                             &measuredSizeKey,
+                             value,
                              OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    [value release];
 }
 
-- (CGFloat)suggestedMinimumWidth {
-    CGFloat suggestedMinWidth = [self minWidth];
-    return suggestedMinWidth;
-}
-
-- (CGFloat)suggestedMinimumHeight {
-    CGFloat suggestedMinHeight = [self minHeight];
-    return suggestedMinHeight;
-}
-
-- (void)setMeasuredDimensionWidth:(IDLLayoutMeasuredDimension)width height:(IDLLayoutMeasuredDimension)height {
-    objc_setAssociatedObject(self,
-                             &measuredWidthSizeKey,
-                             @(width.size),
-                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    objc_setAssociatedObject(self,
-                             &measuredWidthStateKey,
-                             @(width.state),
-                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    objc_setAssociatedObject(self,
-                             &measuredHeightSizeKey,
-                             @(height.size),
-                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    objc_setAssociatedObject(self,
-                             &measuredHeightStateKey,
-                             @(height.state),
-                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (IDLLayoutMeasuredSize)measuredDimensionSize {
+    NSValue *value = objc_getAssociatedObject(self, &measuredSizeKey);
+    IDLLayoutMeasuredSize ret;
+    [value getValue:&ret];
+    return ret;
 }
 
 - (BOOL)isLayoutRequested {
@@ -320,28 +342,17 @@ static char visibilityKey;
                              OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (IDLLayoutMeasuredDimension)measuredWidth {
-    NSNumber *sizeValue = objc_getAssociatedObject(self, &measuredWidthSizeKey);
-    NSNumber *stateValue = objc_getAssociatedObject(self, &measuredWidthStateKey);
-    IDLLayoutMeasuredDimension ret = {[sizeValue floatValue], [stateValue intValue]};
-    return ret;
-}
-
-- (IDLLayoutMeasuredDimension)measuredHeight {
-    NSNumber *sizeValue = objc_getAssociatedObject(self, &measuredHeightSizeKey);
-    NSNumber *stateValue = objc_getAssociatedObject(self, &measuredHeightStateKey);
-    IDLLayoutMeasuredDimension ret = {[sizeValue floatValue], [stateValue intValue]};
-    return ret;
-}
-
 - (CGSize)measuredSize {
-    return CGSizeMake([self measuredWidth].size, [self measuredHeight].size);
+    IDLLayoutMeasuredSize size = [self measuredDimensionSize];
+    return CGSizeMake(size.width.size, size.height.size);
 }
 
 - (void)onMeasureWithWidthMeasureSpec:(IDLLayoutMeasureSpec)widthMeasureSpec heightMeasureSpec:(IDLLayoutMeasureSpec)heightMeasureSpec {
-    IDLLayoutMeasuredDimension width = [self defaultSizeForSize:[self suggestedMinimumWidth] measureSpec:widthMeasureSpec];
-    IDLLayoutMeasuredDimension height = [self defaultSizeForSize:[self suggestedMinimumHeight] measureSpec:heightMeasureSpec];
-    [self setMeasuredDimensionWidth:width height:height];
+    CGSize minSize = [self suggestedMinimumSize];
+    IDLLayoutMeasuredSize size;
+    size.width = [self defaultSizeForSize:minSize.width measureSpec:widthMeasureSpec];
+    size.height = [self defaultSizeForSize:minSize.height measureSpec:heightMeasureSpec];
+    [self setMeasuredDimensionSize:size];
 }
 
 - (void)measureWithWidthMeasureSpec:(IDLLayoutMeasureSpec)widthMeasureSpec heightMeasureSpec:(IDLLayoutMeasureSpec)heightMeasureSpec {
@@ -373,12 +384,12 @@ static char visibilityKey;
     if (changed) {
         NSString *identifier = self.identifier;
         if (identifier != nil) {
-            NSLog(@"%@ (%@) changed size: ", NSStringFromClass([self class]), identifier);
+            //NSLog(@"%@ (%@) changed size: ", NSStringFromClass([self class]), identifier);
         } else {
-            NSLog(@"%@ changed size: ", NSStringFromClass([self class]));            
+            //NSLog(@"%@ changed size: ", NSStringFromClass([self class]));
         }
-        NSLog(@"OldRect: %@", NSStringFromCGRect(oldFrame));
-        NSLog(@"NewRect: %@", NSStringFromCGRect(newFrame));
+        //NSLog(@"OldRect: %@", NSStringFromCGRect(oldFrame));
+        //NSLog(@"NewRect: %@", NSStringFromCGRect(newFrame));
     }
 }
 
@@ -412,8 +423,9 @@ static char visibilityKey;
 
 - (IDLLayoutMeasuredWidthHeightState)measuredState {
     IDLLayoutMeasuredWidthHeightState ret;
-    ret.widthState = [self measuredWidth].state;
-    ret.heightState = [self measuredHeight].state;
+    IDLLayoutMeasuredSize measuredSize = [self measuredDimensionSize];
+    ret.widthState = measuredSize.width.state;
+    ret.heightState = measuredSize.height.state;
     return ret;
 }
 
