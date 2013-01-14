@@ -78,6 +78,10 @@ IDLClipDrawableOrientation IDLClipDrawableOrientationFromString(NSString *string
     return self;
 }
 
+- (id)init {
+    return [self initWithState:nil];
+}
+
 - (void)drawInContext:(CGContextRef)context {
     NSUInteger level = self.level;
     if (level > 0) {
@@ -161,7 +165,7 @@ IDLClipDrawableOrientation IDLClipDrawableOrientationFromString(NSString *string
 }
 
 - (BOOL)hasPadding {
-    return self.hasPadding;
+    return self.internalConstantState.drawable.hasPadding;
 }
 
 #pragma mark - IDLDrawableDelegate

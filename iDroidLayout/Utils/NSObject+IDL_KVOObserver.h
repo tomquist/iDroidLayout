@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void(^IDLKVOObserverBlock)(NSString* keyPath, id object, NSDictionary *change);
+typedef void(^IDLKVOObserverBlock)(NSString *keyPath, id object, NSDictionary *change);
 
 @interface NSObject (IDL_KVOObserver)
 

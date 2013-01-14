@@ -55,7 +55,7 @@
     return ret;
 }
 
-+ (IDLDrawableStateList *)createWithSingleDrawableIdentifier:(NSString *)imageIdentifier {
++ (instancetype)createWithSingleDrawableIdentifier:(NSString *)imageIdentifier {
     IDLDrawableStateList *list = [[[self alloc] init] autorelease];
     IDLDrawableStateItem *item = [[IDLDrawableStateItem alloc] initWithControlState:UIControlStateNormal drawableResourceIdentifier:imageIdentifier];
     list.internalItems = [NSArray arrayWithObject:item];

@@ -95,7 +95,7 @@
     return self.internalConstantState.image;
 }
 
-- (UIImage *)resizeImage:(UIImage*)image toWidth:(NSInteger)width height:(NSInteger)height {
+- (UIImage *)resizeImage:(UIImage *)image toWidth:(NSInteger)width height:(NSInteger)height {
     // Create a graphics context with the target size
     // On iOS 4 and later, use UIGraphicsBeginImageContextWithOptions to take the scale into consideration
     // On iOS prior to 4, fall back to use UIGraphicsBeginImageContext

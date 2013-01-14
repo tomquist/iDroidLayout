@@ -32,6 +32,26 @@
     return self;
 }
 
+- (id)initWithLayer:(id)layer {
+    self = [super init];
+    if (self) {
+        IDLDrawableLayer *l = layer;
+        self.drawable = [[l.drawable copy] autorelease];
+        self.drawable.delegate = self;
+        self.drawable.level = l.drawable.level;
+        self.drawable.bounds = l.drawable.bounds;
+    }
+    return self;
+}
+
++ (BOOL)needsDisplayForKey:(NSString*)key {
+    if ([key isEqualToString:@"drawable"]) {
+        return YES;
+    } else {
+        return [super needsDisplayForKey:key];
+    }
+}
+
 - (void)setDrawable:(IDLDrawable *)drawable {
     if (_drawable != drawable) {
         _drawable.delegate = nil;

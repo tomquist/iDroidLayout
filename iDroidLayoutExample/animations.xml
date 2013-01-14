@@ -28,7 +28,7 @@
     <UIButton
         id="button"
         onClick="didPressButton"
-        type="roundedRect"
+        background="@drawable/button_background"
         layout_width="100"
         layout_height="30"
         layout_gravity="center_horizontal"

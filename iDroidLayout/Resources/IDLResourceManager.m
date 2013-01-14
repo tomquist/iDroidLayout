@@ -14,7 +14,7 @@
 #import "IDLColorDrawable.h"
 #import "UIImage+IDLNinePatch.h"
 
-typedef enum IDLResourceType {
+typedef NS_ENUM(NSInteger, IDLResourceType) {
     IDLResourceTypeUnknown,
     IDLResourceTypeString,
     IDLResourceTypeLayout,
@@ -23,7 +23,7 @@ typedef enum IDLResourceType {
     IDLResourceTypeStyle,
     IDLResourceTypeValue,
     IDLResourceTypeArray
-} IDLResourceType;
+};
 
 NSString *NSStringFromIDLResourceType(IDLResourceType type) {
     NSString *ret;
@@ -171,7 +171,7 @@ static IDLResourceManager *currentResourceManager;
     currentResourceManager = [[self defaultResourceManager] retain];
 }
 
-+ (IDLResourceManager *)defaultResourceManager {
++ (instancetype)defaultResourceManager {
     static IDLResourceManager *resourceManager;
     if (resourceManager == nil) {
         resourceManager = [[self alloc] init];

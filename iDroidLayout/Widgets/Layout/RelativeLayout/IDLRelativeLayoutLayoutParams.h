@@ -8,82 +8,82 @@
 
 #import "IDLMarginLayoutParams.h"
 
-typedef enum RelativeLayoutRule {
+typedef NS_ENUM(NSUInteger ,IDLRelativeLayoutRule) {
     /**
      * Rule that aligns a child's right edge with another child's left edge.
      */
-    RelativeLayoutRuleLeftOf = 0,
+    IDLRelativeLayoutRuleLeftOf = 0,
     /**
      * Rule that aligns a child's left edge with another child's right edge.
      */
-    RelativeLayoutRuleRightOf = 1,
+    IDLRelativeLayoutRuleRightOf = 1,
     /**
      * Rule that aligns a child's bottom edge with another child's top edge.
      */
-    RelativeLayoutRuleAbove = 2,
+    IDLRelativeLayoutRuleAbove = 2,
     /**
      * Rule that aligns a child's top edge with another child's bottom edge.
      */
-    RelativeLayoutRuleBelow = 3,
+    IDLRelativeLayoutRuleBelow = 3,
     
     /**
      * Rule that aligns a child's baseline with another child's baseline.
      */
-    RelativeLayoutRuleAlignBaseline = 4,
+    IDLRelativeLayoutRuleAlignBaseline = 4,
     /**
      * Rule that aligns a child's left edge with another child's left edge.
      */
-    RelativeLayoutRuleAlignLeft = 5,
+    IDLRelativeLayoutRuleAlignLeft = 5,
     /**
      * Rule that aligns a child's top edge with another child's top edge.
      */
-    RelativeLayoutRuleAlignTop = 6,
+    IDLRelativeLayoutRuleAlignTop = 6,
     /**
      * Rule that aligns a child's right edge with another child's right edge.
      */
-    RelativeLayoutRuleAlignRight = 7,
+    IDLRelativeLayoutRuleAlignRight = 7,
     /**
      * Rule that aligns a child's bottom edge with another child's bottom edge.
      */
-    RelativeLayoutRuleAlignBottom = 8,
+    IDLRelativeLayoutRuleAlignBottom = 8,
     
     /**
      * Rule that aligns the child's left edge with its RelativeLayout
      * parent's left edge.
      */
-    RelativeLayoutRuleAlignParentLeft = 9,
+    IDLRelativeLayoutRuleAlignParentLeft = 9,
     /**
      * Rule that aligns the child's top edge with its RelativeLayout
      * parent's top edge.
      */
-    RelativeLayoutRuleAlignParentTop = 10,
+    IDLRelativeLayoutRuleAlignParentTop = 10,
     /**
      * Rule that aligns the child's right edge with its RelativeLayout
      * parent's right edge.
      */
-    RelativeLayoutRuleAlignParentRight = 11,
+    IDLRelativeLayoutRuleAlignParentRight = 11,
     /**
      * Rule that aligns the child's bottom edge with its RelativeLayout
      * parent's bottom edge.
      */
-    RelativeLayoutRuleAlignParentBottom = 12,
+    IDLRelativeLayoutRuleAlignParentBottom = 12,
     
     /**
      * Rule that centers the child with respect to the bounds of its
      * RelativeLayout parent.
      */
-    RelativeLayoutRuleCenterInParent = 13,
+    IDLRelativeLayoutRuleCenterInParent = 13,
     /**
      * Rule that centers the child horizontally with respect to the
      * bounds of its RelativeLayout parent.
      */
-    RelativeLayoutRuleCenterHorizontal = 14,
+    IDLRelativeLayoutRuleCenterHorizontal = 14,
     /**
      * Rule that centers the child vertically with respect to the
      * bounds of its RelativeLayout parent.
      */
-    RelativeLayoutRuleCenterVertical = 15
-} RelativeLayoutRule;
+    IDLRelativeLayoutRuleCenterVertical = 15
+};
 
 @interface IDLRelativeLayoutLayoutParams : IDLMarginLayoutParams {
     BOOL _alignParentLeft;

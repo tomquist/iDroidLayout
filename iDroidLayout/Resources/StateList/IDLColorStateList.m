@@ -35,7 +35,7 @@
     return ret;
 }
 
-+ (IDLColorStateList *)createWithSingleColorIdentifier:(NSString *)colorIdentifier {
++ (instancetype)createWithSingleColorIdentifier:(NSString *)colorIdentifier {
     IDLColorStateList *list = [[[self alloc] init] autorelease];
     IDLColorStateItem *item = [[IDLColorStateItem alloc] initWithControlState:UIControlStateNormal colorResourceIdentifier:colorIdentifier];
     list.internalItems = [NSArray arrayWithObject:item];
@@ -43,11 +43,11 @@
     return list;
 }
 
-+ (IDLColorStateList *)createFromXMLData:(NSData *)data {
++ (instancetype)createFromXMLData:(NSData *)data {
     return (IDLColorStateList *)[super createFromXMLData:data];
 }
 
-+ (IDLColorStateList *)createFromXMLURL:(NSURL *)url {
++ (instancetype)createFromXMLURL:(NSURL *)url {
     return (IDLColorStateList *)[super createFromXMLURL:url];
 }
 

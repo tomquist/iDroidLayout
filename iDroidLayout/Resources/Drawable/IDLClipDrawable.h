@@ -8,11 +8,11 @@
 
 #import <iDroidLayout/iDroidLayout.h>
 
-typedef enum IDLClipDrawableOrientation {
+typedef NS_ENUM(NSInteger, IDLClipDrawableOrientation) {
     IDLClipDrawableOrientationNone = 0,
     IDLClipDrawableOrientationHorizontal = 1,
     IDLClipDrawableOrientationVertical = 2
-} IDLClipDrawableOrientation;
+};
 
 @interface IDLClipDrawable : IDLDrawable <IDLDrawableDelegate>
 

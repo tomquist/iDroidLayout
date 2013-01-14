@@ -90,9 +90,8 @@
             <UIButton
                 id="submitButton"
                 onClick="didPressSubmitButton"
-                type="roundedRect"
                 textColor="@color/button_color"
-                background="@drawable/button_background"
+                background="@drawable/background1"
                 layout_width="200"
                 layout_height="60"
                 layout_gravity="center_horizontal"
@@ -100,9 +99,8 @@
             <UIButton
                 id="toggleButton"
                 onClick="didPressToggleButton"
-                type="roundedRect"
                 textColor="@color/button_color"
-                background="#0000ff"
+                background="@drawable/background1"
                 layout_width="200"
                 layout_height="60"
                 layout_marginLeft="20"

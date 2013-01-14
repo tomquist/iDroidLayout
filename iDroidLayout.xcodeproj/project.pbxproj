@@ -161,6 +161,8 @@
 		79814111166BD65900A63480 /* NSDictionary+IDL_ResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7981410F166BD65800A63480 /* NSDictionary+IDL_ResourceManager.m */; };
 		79B5BFA6169B6A3700FA1D94 /* IDLClipDrawable.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B5BFA4169B6A3600FA1D94 /* IDLClipDrawable.h */; };
 		79B5BFA7169B6A3700FA1D94 /* IDLClipDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B5BFA5169B6A3700FA1D94 /* IDLClipDrawable.m */; };
+		79B5BFBF16A2CFF300FA1D94 /* IDLRotateDrawable.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B5BFBD16A2CFEF00FA1D94 /* IDLRotateDrawable.h */; };
+		79B5BFC016A2CFF300FA1D94 /* IDLRotateDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B5BFBE16A2CFF100FA1D94 /* IDLRotateDrawable.m */; };
 		79B983481674D2F200F844DB /* IDLColorStateItem+IDL_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B983381674D2F200F844DB /* IDLColorStateItem+IDL_Internal.h */; };
 		79B983491674D2F200F844DB /* IDLColorStateItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B983391674D2F200F844DB /* IDLColorStateItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		79B9834A1674D2F200F844DB /* IDLColorStateItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B9833A1674D2F200F844DB /* IDLColorStateItem.m */; };
@@ -179,7 +181,7 @@
 		79B983571674D2F200F844DB /* IDLResourceStateList.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B983471674D2F200F844DB /* IDLResourceStateList.m */; };
 		79DE0ABD1684AFF200EDACE3 /* NSObject+IDL_KVOObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 79DE0ABB1684AFF200EDACE3 /* NSObject+IDL_KVOObserver.h */; settings = {ATTRIBUTES = (); }; };
 		79DE0ABE1684AFF200EDACE3 /* NSObject+IDL_KVOObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DE0ABC1684AFF200EDACE3 /* NSObject+IDL_KVOObserver.m */; };
-		79DE0BEE1690C87400EDACE3 /* IDLDrawableLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 79DE0BEC1690C87100EDACE3 /* IDLDrawableLayer.h */; };
+		79DE0BEE1690C87400EDACE3 /* IDLDrawableLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 79DE0BEC1690C87100EDACE3 /* IDLDrawableLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		79DE0BEF1690C87400EDACE3 /* IDLDrawableLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DE0BED1690C87200EDACE3 /* IDLDrawableLayer.m */; };
 		79DE0BFC1695FC5C00EDACE3 /* button_disabled.9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79DE0BF81695FC5C00EDACE3 /* button_disabled.9@2x.png */; };
 		79DE0BFD1695FC5C00EDACE3 /* button_pressed.9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79DE0BF91695FC5C00EDACE3 /* button_pressed.9@2x.png */; };
@@ -387,6 +389,8 @@
 		7981410F166BD65800A63480 /* NSDictionary+IDL_ResourceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+IDL_ResourceManager.m"; sourceTree = "<group>"; };
 		79B5BFA4169B6A3600FA1D94 /* IDLClipDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLClipDrawable.h; sourceTree = "<group>"; };
 		79B5BFA5169B6A3700FA1D94 /* IDLClipDrawable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLClipDrawable.m; sourceTree = "<group>"; };
+		79B5BFBD16A2CFEF00FA1D94 /* IDLRotateDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLRotateDrawable.h; sourceTree = "<group>"; };
+		79B5BFBE16A2CFF100FA1D94 /* IDLRotateDrawable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLRotateDrawable.m; sourceTree = "<group>"; };
 		79B983381674D2F200F844DB /* IDLColorStateItem+IDL_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IDLColorStateItem+IDL_Internal.h"; sourceTree = "<group>"; };
 		79B983391674D2F200F844DB /* IDLColorStateItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLColorStateItem.h; sourceTree = "<group>"; };
 		79B9833A1674D2F200F844DB /* IDLColorStateItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLColorStateItem.m; sourceTree = "<group>"; };
@@ -503,6 +507,8 @@
 				79718AF0167FAEA800414CCE /* IDLLayerDrawable.m */,
 				79718B0E1681DE5200414CCE /* IDLNinePatchDrawable.h */,
 				79718B0F1681DE5300414CCE /* IDLNinePatchDrawable.m */,
+				79B5BFBD16A2CFEF00FA1D94 /* IDLRotateDrawable.h */,
+				79B5BFBE16A2CFF100FA1D94 /* IDLRotateDrawable.m */,
 				79718AEB167FAE9400414CCE /* IDLStateListDrawable.h */,
 				79718AEC167FAE9400414CCE /* IDLStateListDrawable.m */,
 				79718B0416809FAE00414CCE /* UIView+IDLDrawable.h */,
@@ -972,6 +978,7 @@
 				79DE0C0E1698A56D00EDACE3 /* IDLButton.h in Headers */,
 				79DE0C141699B81700EDACE3 /* IDLXMLCache.h in Headers */,
 				79B5BFA6169B6A3700FA1D94 /* IDLClipDrawable.h in Headers */,
+				79B5BFBF16A2CFF300FA1D94 /* IDLRotateDrawable.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1242,6 +1249,7 @@
 				79DE0C0F1698A56D00EDACE3 /* IDLButton.m in Sources */,
 				79DE0C151699B81700EDACE3 /* IDLXMLCache.m in Sources */,
 				79B5BFA7169B6A3700FA1D94 /* IDLClipDrawable.m in Sources */,
+				79B5BFC016A2CFF300FA1D94 /* IDLRotateDrawable.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

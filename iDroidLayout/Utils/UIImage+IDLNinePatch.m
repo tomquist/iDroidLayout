@@ -201,6 +201,29 @@ static char ninePatchPaddingsKey;
             } else {
                 ret = [image autorelease];
             }
+        } else {
+            NSString *retinaFileName = [fileName stringByAppendingString:@"@2x"];
+            NSURL *retinaImageURL = [bundle URLForResource:retinaFileName withExtension:extension];
+            if (retinaImageURL != nil) {
+                UIImage *nonScaledImage = [[UIImage alloc] initWithContentsOfFile:[retinaImageURL path]];
+                UIImage *retinaImage = nil;
+                if (nonScaledImage != nil) {
+                    if (nonScaledImage.scale >= 2.f) {
+                        retinaImage = [nonScaledImage retain];
+                    } else {
+                        retinaImage = [[UIImage alloc] initWithCGImage:nonScaledImage.CGImage scale:2.f orientation:nonScaledImage.imageOrientation];
+                    }
+                    [nonScaledImage release];
+                }
+                if (retinaImage != nil) {
+                    if ([self isNinePatchImageFile:[retinaImageURL lastPathComponent]]) {
+                        ret = [self idl_ninePatchImageFromImage:retinaImage];
+                        [retinaImage release];
+                    } else {
+                        ret = [retinaImage autorelease];
+                    }
+                }
+            }
         }
     }
     return ret;

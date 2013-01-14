@@ -67,7 +67,7 @@
     return ret;
 }
 
-+ (IDLResourceStateList *)inflateParser:(TBXML *)parser {
++ (instancetype)inflateParser:(TBXML *)parser {
     IDLResourceStateList *ret = nil;
     TBXMLElement *root = parser.rootXMLElement;
     if ([[TBXML elementName:root] isEqualToString:@"selector"]) {
@@ -92,7 +92,7 @@
     return ret;
 }
 
-+ (IDLResourceStateList *)createFromXMLData:(NSData *)data {
++ (instancetype)createFromXMLData:(NSData *)data {
     if (data == nil) return nil;
     IDLResourceStateList *ret = nil;
     NSError *error = nil;
@@ -105,7 +105,7 @@
     return ret;
 }
 
-+ (IDLResourceStateList *)createFromXMLURL:(NSURL *)url {
++ (instancetype)createFromXMLURL:(NSURL *)url {
     return [self createFromXMLData:[NSData dataWithContentsOfURL:url]];
 }
 

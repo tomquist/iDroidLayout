@@ -269,7 +269,7 @@ static char matchParentChildrenKey;
 
 - (BOOL)isViewGroup {
     BOOL ret = FALSE;
-    if ([self class] == [UIScrollView class]) {
+    if ([self class] == [UIScrollView class] || [NSStringFromClass([self class]) hasSuffix:@"UIScrollView"]) {
         ret = TRUE;
     }
     return ret;

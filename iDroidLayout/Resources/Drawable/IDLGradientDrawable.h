@@ -8,18 +8,18 @@
 
 #import "IDLDrawable.h"
 
-typedef enum IDLGradientDrawableShape {
+typedef NS_ENUM(NSInteger, IDLGradientDrawableShape) {
     IDLGradientDrawableShapeRectangle = 0,
     IDLGradientDrawableShapeOval,
     IDLGradientDrawableShapeLine,
     IDLGradientDrawableShapeRing
-} IDLGradientDrawableShape;
+};
 
-typedef enum IDLGradientDrawableGradientType {
+typedef NS_ENUM(NSInteger, IDLGradientDrawableGradientType) {
     IDLGradientDrawableGradientTypeNone = 0,
     IDLGradientDrawableGradientTypeLinear,
     IDLGradientDrawableGradientTypeRadial
-} IDLGradientDrawableGradientType;
+};
 
 typedef struct IDLGradientDrawableCornerRadius {
     CGFloat topLeft;

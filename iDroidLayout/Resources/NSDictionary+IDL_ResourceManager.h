@@ -19,5 +19,8 @@
 - (float)fractionValueFromIDLValueForKey:(NSString *)key;
 - (float)fractionValueFromIDLValueForKey:(NSString *)key defaultValue:(CGFloat)defaultValue;
 - (BOOL)isFractionIDLValueForKey:(NSString *)key;
+- (BOOL)boolFromIDLValueForKey:(NSString *)key;
+- (BOOL)boolFromIDLValueForKey:(NSString *)key defauleValue:(BOOL)defaultValue;
+
 
 @end

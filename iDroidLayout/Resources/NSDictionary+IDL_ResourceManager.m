@@ -113,4 +113,25 @@
     return ret;
 }
 
+- (BOOL)boolFromIDLValueForKey:(NSString *)key {
+    return [self boolFromIDLValueForKey:key defauleValue:FALSE];
+}
+
+- (BOOL)boolFromIDLValueForKey:(NSString *)key defauleValue:(BOOL)defaultValue {
+    BOOL ret = defaultValue;
+    id value = [self objectForKey:key];
+    if (value == nil) {
+        ret = defaultValue;
+    } else if ([value isKindOfClass:[NSString class]]) {
+        if ([[IDLResourceManager currentResourceManager] isValidIdentifier:value]) {
+#warning Implement dimension resources
+        } else {
+            ret = [value boolValue];
+        }
+    } else if ([value isKindOfClass:[NSNumber class]]) {
+        ret = [value boolValue];
+    }
+    return ret;
+}
+
 @end

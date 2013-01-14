@@ -12,7 +12,7 @@
 
 @property (nonatomic, readonly) NSArray *items;
 
-+ (IDLResourceStateList *)createFromXMLData:(NSData *)data;
-+ (IDLResourceStateList *)createFromXMLURL:(NSURL *)url;
++ (instancetype)createFromXMLData:(NSData *)data;
++ (instancetype)createFromXMLURL:(NSURL *)url;
 
 @end

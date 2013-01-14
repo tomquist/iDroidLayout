@@ -14,11 +14,11 @@
  */
 FOUNDATION_EXPORT NSString *const IDLViewAttributeActionTarget;
 
-typedef enum IDLLayoutMeasureSpecMode {
+typedef NS_ENUM(NSInteger, IDLLayoutMeasureSpecMode) {
     IDLLayoutMeasureSpecModeUnspecified,
     IDLLayoutMeasureSpecModeExactly,
     IDLLayoutMeasureSpecModeAtMost
-} IDLLayoutMeasureSpecMode;
+};
 
 typedef struct IDLLayoutMeasureSpec {
     CGFloat size;
@@ -27,10 +27,10 @@ typedef struct IDLLayoutMeasureSpec {
 
 IDLLayoutMeasureSpec IDLLayoutMeasureSpecMake(CGFloat size, IDLLayoutMeasureSpecMode mode);
 
-typedef enum IDLLayoutMeasuredState {
+typedef NS_OPTIONS(NSInteger, IDLLayoutMeasuredState) {
     IDLLayoutMeasuredStateNone = 0x0,
     IDLLayoutMeasuredStateTooSmall = 0x1
-} IDLLayoutMeasuredState;
+};
 
 typedef struct IDLLayoutMeasuredDimension {
     CGFloat size;
@@ -47,11 +47,11 @@ typedef struct IDLLayoutMeasuredWidthHeightState {
     IDLLayoutMeasuredState heightState;
 } IDLLayoutMeasuredWidthHeightState;
 
-typedef enum IDLViewVisibility {
+typedef NS_OPTIONS(NSInteger, IDLViewVisibility) {
     IDLViewVisibilityVisible = 0x00000000,
     IDLViewVisibilityInvisible = 0x00000004,
     IDLViewVisibilityGone = 0x00000008
-} IDLViewVisibility;
+};
 
 IDLViewVisibility IDLViewVisibilityFromString(NSString *visibilityString);
 

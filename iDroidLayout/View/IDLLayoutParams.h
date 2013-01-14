@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-typedef enum IDLLayoutParamsSize {
+enum IDLLayoutParamsSize {
     IDLLayoutParamsSizeMatchParent = -1,
     IDLLayoutParamsSizeWrapContent = -2
-} IDLLayoutParamsSize;
+};
 
 @interface IDLLayoutParams : NSObject {
     CGFloat _width;

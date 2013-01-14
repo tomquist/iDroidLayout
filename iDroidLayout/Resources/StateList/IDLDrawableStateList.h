@@ -17,7 +17,7 @@
 
 + (IDLDrawableStateList *)createFromXMLData:(NSData *)data;
 + (IDLDrawableStateList *)createFromXMLURL:(NSURL *)url;
-+ (IDLDrawableStateList *)createWithSingleDrawableIdentifier:(NSString *)imageIdentifier;
++ (instancetype)createWithSingleDrawableIdentifier:(NSString *)imageIdentifier;
 + (IDLDrawableStateList *)createFromColorStateList:(IDLColorStateList *)colorStateList;
 
 @end

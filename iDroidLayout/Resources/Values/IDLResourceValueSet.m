@@ -44,7 +44,7 @@
     return nonMutableArray;
 }
 
-+ (IDLResourceValueSet *)inflateParser:(TBXML *)parser {
++ (instancetype)inflateParser:(TBXML *)parser {
     IDLResourceValueSet *ret = nil;
     TBXMLElement *root = parser.rootXMLElement;
     if ([[TBXML elementName:root] isEqualToString:@"resources"]) {

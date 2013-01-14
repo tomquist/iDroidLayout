@@ -45,12 +45,18 @@ BOOL IDLGradientDrawableCornerRadiusEqualsCornerRadius(IDLGradientDrawableCorner
 
 @property (nonatomic, retain) NSArray *colors;
 @property (nonatomic, retain) NSArray *cgColors;
+@property (nonatomic, assign) CGFloat *colorPositions;
 @property (nonatomic, assign) UIEdgeInsets padding;
 @property (nonatomic, assign) BOOL hasPadding;
 @property (nonatomic, assign) CGFloat strokeWidth;
 @property (nonatomic, retain) UIColor *strokeColor;
 @property (nonatomic, assign) CGFloat dashWidth;
 @property (nonatomic, assign) CGFloat dashGap;
+
+@property (nonatomic, assign) CGFloat innerRadius;
+@property (nonatomic, assign) CGFloat innerRadiusRatio;
+@property (nonatomic, assign) CGFloat thickness;
+@property (nonatomic, assign) CGFloat thicknessRatio;
 
 @property (nonatomic, assign) IDLGradientDrawableGradientType gradientType;
 @property (nonatomic, assign) CGPoint relativeGradientCenter;
@@ -69,6 +75,9 @@ BOOL IDLGradientDrawableCornerRadiusEqualsCornerRadius(IDLGradientDrawableCorner
 
 - (void)dealloc {
     self.colors = nil;
+    if (self.colorPositions != NULL) {
+        free(self.colorPositions);
+    }
     self.cgColors = nil;
     self.strokeColor = nil;
     if (_colorSpace != NULL) {
@@ -90,6 +99,13 @@ BOOL IDLGradientDrawableCornerRadiusEqualsCornerRadius(IDLGradientDrawableCorner
             self.colors = colors;
             [colors release];
             
+            if (state.colorPositions != NULL) {
+                self.colorPositions = malloc([self.colors count] * sizeof(CGFloat));
+                for (NSInteger i=0; i<[self.colors count]; i++) {
+                    _colorPositions[i] = state.colorPositions[i];
+                }
+            }
+        
             NSArray *cgColors = [[NSArray alloc] initWithArray:state.cgColors];
             self.cgColors = cgColors;
             [cgColors release];
@@ -99,6 +115,12 @@ BOOL IDLGradientDrawableCornerRadiusEqualsCornerRadius(IDLGradientDrawableCorner
             self.strokeColor = state.strokeColor;
             self.dashWidth = state.dashWidth;
             self.dashGap = state.dashGap;
+            
+            self.innerRadius = state.innerRadius;
+            self.innerRadiusRatio = state.innerRadiusRatio;
+            self.thickness = state.thickness;
+            self.thicknessRatio = state.thicknessRatio;
+            
             self.shape = state.shape;
             self.corners = state.corners;
             self.size = state.size;
@@ -110,6 +132,8 @@ BOOL IDLGradientDrawableCornerRadiusEqualsCornerRadius(IDLGradientDrawableCorner
             self.gradientType = state.gradientType;
         } else {
             _colorSpace = CGColorSpaceCreateDeviceRGB();
+            _innerRadius = -1;
+            _thickness = -1;
         }
 
     }
@@ -132,7 +156,7 @@ BOOL IDLGradientDrawableCornerRadiusEqualsCornerRadius(IDLGradientDrawableCorner
 
 - (CGGradientRef)currentGradient {
     if (_gradient == NULL) {
-        _gradient = CGGradientCreateWithColors(self.colorSpace, (CFArrayRef)self.cgColors, NULL);
+        _gradient = CGGradientCreateWithColors(self.colorSpace, (CFArrayRef)self.cgColors, _colorPositions);
     }
     return _gradient;
 }
@@ -193,9 +217,21 @@ BOOL IDLGradientDrawableCornerRadiusEqualsCornerRadius(IDLGradientDrawableCorner
         case IDLGradientDrawableShapeOval:
             CGContextAddEllipseInRect(context, rect);
             break;
-        case IDLGradientDrawableShapeRing:
+        case IDLGradientDrawableShapeRing: {
+            CGFloat thickness = state.thickness != -1 ? state.thickness : rect.size.width / state.thicknessRatio;
+            // inner radius
+            CGFloat radius = state.innerRadius != -1 ? state.innerRadius : rect.size.width / state.innerRadiusRatio;
+            CGFloat x = rect.size.width/2.f;
+            CGFloat y = rect.size.height/2.f;
+            CGRect innerRect = UIEdgeInsetsInsetRect(rect, UIEdgeInsetsMake(y - radius, x - radius, y - radius, x - radius));
+            rect = UIEdgeInsetsInsetRect(innerRect, UIEdgeInsetsMake(-thickness, -thickness, -thickness, -thickness));
             
+            CGRect r = UIEdgeInsetsInsetRect(innerRect, UIEdgeInsetsMake(-thickness/2, -thickness/2, -thickness/2, -thickness/2));
+            CGContextSetLineWidth(context, thickness);
+            CGContextAddEllipseInRect(context, r);
+            CGContextReplacePathWithStrokedPath(context);
             break;
+        }
         case IDLGradientDrawableShapeLine: {
             CGFloat y = CGRectGetMidY(rect);
             CGContextMoveToPoint(context, rect.origin.x, y);
@@ -257,21 +293,34 @@ BOOL IDLGradientDrawableCornerRadiusEqualsCornerRadius(IDLGradientDrawableCorner
     NSString *shape = [attrs objectForKey:@"shape"];
     state.shape = IDLGradientDrawableShapeFromString(shape);
     
+    if (state.shape == IDLGradientDrawableShapeRing) {
+        state.innerRadius = [attrs dimensionFromIDLValueForKey:@"innerRadius" defaultValue:-1];
+        if (state.innerRadius == -1) {
+            state.innerRadiusRatio = [attrs dimensionFromIDLValueForKey:@"innerRadiusRatio" defaultValue:3];
+        }
+        state.thickness = [attrs dimensionFromIDLValueForKey:@"thickness" defaultValue:-1];
+        if (state.thickness == -1) {
+            state.thicknessRatio = [attrs dimensionFromIDLValueForKey:@"thicknessRatio" defaultValue:9];
+        }
+    }
+    
     TBXMLElement *child = element->firstChild;
     while (child != NULL) {
         NSString *name = [TBXML elementName:child];
         if ([name isEqualToString:@"gradient"]) {
             attrs = [TBXML attributesFromXMLElement:child reuseDictionary:attrs];
-            UIColor *startColor = [attrs colorFromIDLValueForKey:@"startColor"];
-            UIColor *centerColor = [attrs colorFromIDLValueForKey:@"centerColor"];
-            UIColor *endColor = [attrs colorFromIDLValueForKey:@"endColor"];
-            if (centerColor != nil) {
-                state.colors = @[startColor?startColor:[UIColor blackColor], centerColor, endColor?endColor:[UIColor blackColor]];
-            } else {
-                state.colors = @[startColor?startColor:[UIColor blackColor], endColor?endColor:[UIColor blackColor]];
-            }
             
             state.gradientType = IDLGradientDrawableGradientTypeFromString([attrs objectForKey:@"type"]);
+            
+            CGPoint gradientCenter = CGPointMake(.5f, .5f);
+            NSString *centerX = [attrs objectForKey:@"centerX"];
+            if (centerX != nil) {
+                gradientCenter.x = [centerX floatValue];
+            }
+            NSString *centerY = [attrs objectForKey:@"centerY"];
+            if (centerY != nil) {
+                gradientCenter.y = [centerY floatValue];
+            }
             
             if (state.gradientType == IDLGradientDrawableGradientTypeRadial) {
                 
@@ -288,17 +337,26 @@ BOOL IDLGradientDrawableCornerRadiusEqualsCornerRadius(IDLGradientDrawableCorner
                     }
                 }
                 
-                CGPoint gradientCenter = CGPointMake(.5f, .5f);
-                NSString *centerX = [attrs objectForKey:@"centerX"];
-                if (centerX != nil) {
-                    gradientCenter.x = [centerX floatValue];
-                }
-                NSString *centerY = [attrs objectForKey:@"centerY"];
-                if (centerY != nil) {
-                    gradientCenter.y = [centerY floatValue];
-                }
                 state.relativeGradientCenter = gradientCenter;
             }
+            
+            
+            UIColor *startColor = [attrs colorFromIDLValueForKey:@"startColor"];
+            UIColor *centerColor = [attrs colorFromIDLValueForKey:@"centerColor"];
+            UIColor *endColor = [attrs colorFromIDLValueForKey:@"endColor"];
+            if (centerColor != nil) {
+                state.colors = @[startColor?startColor:[UIColor blackColor], centerColor, endColor?endColor:[UIColor blackColor]];
+                if (state.gradientType == IDLGradientDrawableGradientTypeLinear) {
+                    state.colorPositions = malloc(sizeof(CGFloat)*3);
+                    state.colorPositions[0] = 0.f;
+                    // Since 0.5f is default value, try to take the one that isn't 0.5f
+                    state.colorPositions[1] = gradientCenter.x != .5f ? gradientCenter.x : gradientCenter.y;
+                    state.colorPositions[2] = 1.f;
+                }
+            } else {
+                state.colors = @[startColor?startColor:[UIColor blackColor], endColor?endColor:[UIColor blackColor]];
+            }
+
             
         } else if ([name isEqualToString:@"padding"]) {
             attrs = [TBXML attributesFromXMLElement:child reuseDictionary:attrs];

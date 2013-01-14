@@ -16,8 +16,8 @@
 - (UIColor *)colorForControlState:(UIControlState)controlState;
 - (IDLDrawable *)convertToDrawable;
 
-+ (IDLColorStateList *)createFromXMLData:(NSData *)data;
-+ (IDLColorStateList *)createFromXMLURL:(NSURL *)url;
-+ (IDLColorStateList *)createWithSingleColorIdentifier:(NSString *)colorIdentifier;
++ (instancetype)createFromXMLData:(NSData *)data;
++ (instancetype)createFromXMLURL:(NSURL *)url;
++ (instancetype)createWithSingleColorIdentifier:(NSString *)colorIdentifier;
 
 @end

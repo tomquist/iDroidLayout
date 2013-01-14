@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
+FOUNDATION_EXPORT NSUInteger const IDLDrawableMaxLevel;
+
 @class IDLDrawableConstantState;
 @protocol IDLDrawableDelegate;
 

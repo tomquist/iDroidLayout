@@ -55,6 +55,7 @@
 
 
 - (void)setContentVerticalAlignment:(UIControlContentVerticalAlignment)contentVerticalAlignment {
+    [super setContentVerticalAlignment:contentVerticalAlignment];
     _contentVerticalAlignment = contentVerticalAlignment;
     [self setNeedsDisplay];
 }

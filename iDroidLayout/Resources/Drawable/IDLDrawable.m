@@ -16,7 +16,10 @@
 #import "IDLNinePatchDrawable.h"
 #import "IDLGradientDrawable.h"
 #import "IDLClipDrawable.h"
+#import "IDLRotateDrawable.h"
 #import "IDLDrawable+IDL_Internal.h"
+
+NSUInteger const IDLDrawableMaxLevel = 10000;
 
 @implementation IDLDrawableConstantState
 
@@ -158,6 +161,8 @@
         drawableClass = [IDLGradientDrawable class];
     } else if ([tagName isEqualToString:@"clip"]) {
         drawableClass = [IDLClipDrawable class];
+    } else if ([tagName isEqualToString:@"rotate"]) {
+        drawableClass = [IDLRotateDrawable class];
     } else {
         drawableClass = NSClassFromString(tagName);
     }

@@ -19,7 +19,7 @@
 #define VERTICAL_GRAVITY_MASK  (AXIS_SPECIFIED | AXIS_PULL_BEFORE | AXIS_PULL_AFTER) << AXIS_Y_SHIFT
 #define RELATIVE_HORIZONTAL_GRAVITY_MASK (IDLViewContentGravityLeft | IDLViewContentGravityRight)
 
-typedef enum IDLViewContentGravity {
+typedef NS_OPTIONS(NSInteger, IDLViewContentGravity) {
     IDLViewContentGravityNone = 0x0000,
     IDLViewContentGravityTop = (AXIS_PULL_BEFORE|AXIS_SPECIFIED)<<AXIS_Y_SHIFT,
     IDLViewContentGravityBottom = (AXIS_PULL_AFTER|AXIS_SPECIFIED)<<AXIS_Y_SHIFT,
@@ -31,7 +31,7 @@ typedef enum IDLViewContentGravity {
     IDLViewContentGravityFillHorizontal = IDLViewContentGravityLeft|IDLViewContentGravityRight,
     IDLViewContentGravityCenter = IDLViewContentGravityCenterVertical|IDLViewContentGravityCenterHorizontal,
     IDLViewContentGravityFill = IDLViewContentGravityFillVertical|IDLViewContentGravityFillHorizontal
-} IDLViewContentGravity;
+};
 
 @interface IDLGravity : NSObject
 

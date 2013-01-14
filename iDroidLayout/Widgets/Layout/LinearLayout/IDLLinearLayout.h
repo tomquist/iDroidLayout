@@ -16,10 +16,10 @@
 #define MAX_ASCENT_DESCENT_INDEX_FILL 3
 #define VERTICAL_GRAVITY_COUNT 4
 
-typedef enum LinearLayoutOrientation {
+typedef NS_ENUM(NSInteger, LinearLayoutOrientation) {
     LinearLayoutOrientationHorizontal,
     LinearLayoutOrientationVertical
-} LinearLayoutOrientation;
+};
 
 @interface IDLLinearLayout : IDLViewGroup {
     LinearLayoutOrientation _orientation;
