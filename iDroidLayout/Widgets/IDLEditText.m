@@ -22,7 +22,6 @@
     
     IDLLayoutMeasuredSize measuredSize;
     measuredSize.width.state = IDLLayoutMeasuredStateNone;
-    IDLLayoutMeasuredDimension height;
     measuredSize.height.state = IDLLayoutMeasuredStateNone;
     UIEdgeInsets padding = self.padding;
     
@@ -43,12 +42,12 @@
         measuredSize.height.size = heightSize;
     } else {
         CGSize size = [self.text sizeWithFont:self.font constrainedToSize:CGSizeMake(measuredSize.width.size - padding.left - padding.right, CGFLOAT_MAX)];
-        height.size = MAX(size.height, self.font.lineHeight) + padding.top + padding.bottom;
+        measuredSize.height.size = MAX(size.height, self.font.lineHeight) + padding.top + padding.bottom;
         if (heightMode == IDLLayoutMeasureSpecModeAtMost) {
-            height.size = MIN(height.size, heightSize);
+            measuredSize.height.size = MIN(measuredSize.height.size, heightSize);
         }
     }
-    height.size = MAX(height.size, minSize.height);
+    measuredSize.height.size = MAX(measuredSize.height.size, minSize.height);
     
     [self setMeasuredDimensionSize:measuredSize];
 }

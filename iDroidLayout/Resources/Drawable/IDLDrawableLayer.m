@@ -32,9 +32,27 @@
     return self;
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        self.contentsScale = [UIScreen mainScreen].scale;
+        self.needsDisplayOnBoundsChange = TRUE;
+        self.contentsGravity = kCAGravityTop;
+        NSMutableDictionary *newActions = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[NSNull null], kCAOnOrderIn,
+                                           [NSNull null], kCAOnOrderOut,
+                                           [NSNull null], @"sublayers",
+                                           [NSNull null], @"contents",
+                                           nil];
+        self.actions = newActions;
+        [newActions release];
+    }
+    return self;
+}
+
 - (id)initWithLayer:(id)layer {
     self = [super init];
     if (self) {
+        self.contentsScale = [UIScreen mainScreen].scale;
         IDLDrawableLayer *l = layer;
         self.drawable = [[l.drawable copy] autorelease];
         self.drawable.delegate = self;
@@ -63,6 +81,9 @@
 }
 
 - (void)drawInContext:(CGContextRef)ctx {
+    CGContextSetAllowsAntialiasing(ctx, true);
+    CGContextSetShouldAntialias(ctx, true);
+    CGContextSetInterpolationQuality(ctx, kCGInterpolationHigh);
     [self.drawable drawInContext:ctx];
 }
 

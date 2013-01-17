@@ -17,6 +17,7 @@
 #import "IDLGradientDrawable.h"
 #import "IDLClipDrawable.h"
 #import "IDLRotateDrawable.h"
+#import "IDLShadowDrawable.h"
 #import "IDLDrawable+IDL_Internal.h"
 
 NSUInteger const IDLDrawableMaxLevel = 10000;
@@ -163,6 +164,8 @@ NSUInteger const IDLDrawableMaxLevel = 10000;
         drawableClass = [IDLClipDrawable class];
     } else if ([tagName isEqualToString:@"rotate"]) {
         drawableClass = [IDLRotateDrawable class];
+    } else if ([tagName isEqualToString:@"shadow"]) {
+        drawableClass = [IDLShadowDrawable class];
     } else {
         drawableClass = NSClassFromString(tagName);
     }

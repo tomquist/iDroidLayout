@@ -31,6 +31,8 @@ IDLGradientDrawableGradientType IDLGradientDrawableGradientTypeFromString(NSStri
         ret = IDLGradientDrawableGradientTypeLinear;
     } else if ([string isEqualToString:@"radial"]) {
         ret = IDLGradientDrawableGradientTypeRadial;
+    } else if ([string isEqualToString:@"sweep"]) {
+        ret = IDLGradientDrawableGradientTypeSweep;
     }
     return ret;
 }
@@ -224,7 +226,7 @@ BOOL IDLGradientDrawableCornerRadiusEqualsCornerRadius(IDLGradientDrawableCorner
             CGFloat x = rect.size.width/2.f;
             CGFloat y = rect.size.height/2.f;
             CGRect innerRect = UIEdgeInsetsInsetRect(rect, UIEdgeInsetsMake(y - radius, x - radius, y - radius, x - radius));
-            rect = UIEdgeInsetsInsetRect(innerRect, UIEdgeInsetsMake(-thickness, -thickness, -thickness, -thickness));
+            //rect = UIEdgeInsetsInsetRect(innerRect, UIEdgeInsetsMake(-thickness, -thickness, -thickness, -thickness));
             
             CGRect r = UIEdgeInsetsInsetRect(innerRect, UIEdgeInsetsMake(-thickness/2, -thickness/2, -thickness/2, -thickness/2));
             CGContextSetLineWidth(context, thickness);
@@ -268,6 +270,39 @@ BOOL IDLGradientDrawableCornerRadiusEqualsCornerRadius(IDLGradientDrawableCorner
                     radius *= MIN(rect.size.width, rect.size.height);
                 }
                 CGContextDrawRadialGradient(context, gradient, centerPoint, 0, centerPoint, radius, kCGGradientDrawsAfterEndLocation);
+            } else if (state.gradientType == IDLGradientDrawableGradientTypeSweep) {
+                float dim = MIN(self.bounds.size.width, self.bounds.size.height);
+                int subdiv=512;
+                float r=dim/4;
+                float R=dim/2;
+                
+                float halfinteriorPerim = M_PI*r;
+                float halfexteriorPerim = M_PI*R;
+                float smallBase= halfinteriorPerim/subdiv;
+                float largeBase= halfexteriorPerim/subdiv;
+                
+                UIBezierPath *cell = [UIBezierPath bezierPath];
+                CGContextMoveToPoint(context, - smallBase/2, r);
+                CGContextAddLineToPoint(context, + smallBase/2, r);
+                CGContextAddLineToPoint(context, largeBase /2 , R);
+                CGContextAddLineToPoint(context, -largeBase /2,  R);
+                CGContextClosePath(context);
+                
+                float incr = M_PI / subdiv;
+                CGContextRef ctx = context;
+                CGContextTranslateCTM(ctx, +self.bounds.size.width/2, +self.bounds.size.height/2);
+                
+                CGContextScaleCTM(ctx, 0.9, 0.9);
+                CGContextRotateCTM(ctx, M_PI/2);
+                CGContextRotateCTM(ctx,-incr/2);
+                
+                for (int i=0;i<subdiv;i++) {
+                    // replace this color with a color extracted from your gradient object
+                    
+                    [cell fill];
+                    [cell stroke];
+                    CGContextRotateCTM(ctx, -incr);
+                }
             }
             CGContextRestoreGState(context);
         }

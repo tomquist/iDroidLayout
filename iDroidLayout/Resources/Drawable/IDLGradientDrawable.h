@@ -18,7 +18,8 @@ typedef NS_ENUM(NSInteger, IDLGradientDrawableShape) {
 typedef NS_ENUM(NSInteger, IDLGradientDrawableGradientType) {
     IDLGradientDrawableGradientTypeNone = 0,
     IDLGradientDrawableGradientTypeLinear,
-    IDLGradientDrawableGradientTypeRadial
+    IDLGradientDrawableGradientTypeRadial,
+    IDLGradientDrawableGradientTypeSweep
 };
 
 typedef struct IDLGradientDrawableCornerRadius {
