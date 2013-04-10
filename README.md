@@ -8,7 +8,7 @@ iDroid-Layout is a port of Androids layout system and its drawable and resources
 Why?
 ----
 The main reason for this project is to learn more about the Android layout system and how it works.
-Another reason is the lack of a advanced layout system in iOS (**Update:** this is not true anymore for iOS >= 6 because of the introduction of layout constraints). Currently it is a pain to build maintainable UI code in iOS. You have the choice between doing your layout in interface builder which is great for static, but not powerful enough for dynamic content, or doing all in code which is difficult to maintain.
+Another reason is the lack of a advanced layout system in iOS ( **Update:** this is not true anymore for iOS >= 6 because of the introduction of layout constraints). Currently it is a pain to build maintainable UI code in iOS. You have the choice between doing your layout in interface builder which is great for static, but not powerful enough for dynamic content, or doing all in code which is difficult to maintain.
 In Android layouts can be defined in XML. Views automatically adjust their size while taking into account their content requirements and their parents' size restrictions.
 
 
@@ -148,11 +148,11 @@ Assuming you saved the drawable XML into the file ``background.xml``. Now you ca
         background="@drawable/background"
         text="Button"/>
 
-![Button in normal state](../blob/master/Documentation/drawable_button_normal.png?raw=true)
+![Button in normal state](Documentation/drawable_button_normal.png)
 
 **Fig1:** Button with a custom drawable as background in normal state
 
-![Button in pressed state](../blob/master/Documentation/drawable_button_pressed.png?raw=true)
+![Button in pressed state](Documentation/drawable_button_pressed.png)
 
 **Fig2:** Button with a custom drawable as background in pressed state
 
