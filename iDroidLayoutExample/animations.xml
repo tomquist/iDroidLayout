@@ -1,37 +1,36 @@
-<LinearLayout
-    layout_width="match_parent"
-    layout_height="wrap_content"
-    orientation="vertical"
-    padding="10">
     <LinearLayout
         layout_width="match_parent"
         layout_height="wrap_content"
-        orientation="horizontal">
+        orientation="vertical"
+        padding="10">
         <LinearLayout
-            layout_width="wrap_content"
+            layout_width="match_parent"
             layout_height="wrap_content"
-            background="#00ff00">
+            orientation="horizontal">
             <TextView
                 id="text"
                 layout_width="wrap_content"
                 layout_height="wrap_content"
-                text="Short text"
-                gravity="left"
-                background="#00000000"/>
+                padding="10"
+                text="Some text"
+                textColor="#ffffff"
+                background="#80000000"/>
+            <TextView
+                id="otherText"
+                layout_width="match_parent"
+                layout_height="match_parent"
+                padding="10"
+                textColor="#ffffff"
+                background="#ff0000"
+                gravity="right"
+                text="Some other text"/>
         </LinearLayout>
-        <TextView
-            id="otherText"
-            layout_width="match_parent"
-            layout_height="match_parent"
-            background="#ff0000"/>
+        <UIButton
+            id="button"
+            background="#ff0000"
+            layout_width="100"
+            layout_height="30"
+            layout_gravity="center_horizontal"
+            layout_marginTop="10"
+            text="Click me"/>
     </LinearLayout>
-    <UIButton
-        id="button"
-        onClick="didPressButton"
-        background="@drawable/button_background"
-        layout_width="100"
-        layout_height="30"
-        layout_gravity="center_horizontal"
-        layout_marginTop="10"
-        text="Click me"/>
-</LinearLayout>

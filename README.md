@@ -50,16 +50,23 @@ Defining and using a layout with iDroid-Layout can be done in two simple steps:
                     id="text"
                     layout_width="wrap_content"
                     layout_height="wrap_content"
+                    padding="10"
                     text="Some text"
-                    background="#00000000"/>
+                    textColor="#ffffff"
+                    background="#80000000"/>
                 <TextView
                     id="otherText"
                     layout_width="match_parent"
                     layout_height="match_parent"
-                    background="#ff0000"/>
+                    padding="10"
+                    textColor="#ffffff"
+                    background="#ff0000"
+                    gravity="right"
+                    text="Some other text"/>
             </LinearLayout>
             <UIButton
                 id="button"
+                background="#ff0000"
                 layout_width="100"
                 layout_height="30"
                 layout_gravity="center_horizontal"
@@ -72,6 +79,10 @@ Defining and using a layout with iDroid-Layout can be done in two simple steps:
         IDLLayoutViewController *vc = [[IDLLayoutViewController alloc] initWithLayoutName:@"myLayout" bundle:nil];
         [self.navigationController pushViewController:vc animated:TRUE];
         [vc release];
+        
+3. Enjoy:
+
+    ![Layout](Documentation/layout_example.png)
     
 Resources
 ---------
