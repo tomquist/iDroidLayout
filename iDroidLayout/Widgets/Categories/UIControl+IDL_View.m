@@ -16,10 +16,15 @@
     [super setupFromAttributes:attrs];
     id delegate = [attrs objectForKey:IDLViewAttributeActionTarget];
     if (delegate != nil) {
+        NSString *onClickKeyPath = [attrs stringFromIDLValueForKey:@"onClickKeyPath"];
         NSString *onClickSelector = [attrs stringFromIDLValueForKey:@"onClick"];
         SEL selector = NULL;
         if (onClickSelector != nil && (selector = NSSelectorFromString(onClickSelector)) != NULL) {
-            [self addTarget:delegate action:selector forControlEvents:UIControlEventTouchUpInside];
+            if ([onClickKeyPath length] > 0) {
+                [self addTarget:[delegate valueForKeyPath:onClickKeyPath] action:selector forControlEvents:UIControlEventTouchUpInside];
+            } else {
+                [self addTarget:delegate action:selector forControlEvents:UIControlEventTouchUpInside];
+            }
         }
     }
 }

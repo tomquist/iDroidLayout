@@ -13,6 +13,7 @@
 #import "IDLBitmapDrawable.h"
 #import "IDLColorDrawable.h"
 #import "UIImage+IDLNinePatch.h"
+#import "IDLXMLCache.h"
 
 typedef NS_ENUM(NSInteger, IDLResourceType) {
     IDLResourceTypeUnknown,
@@ -93,6 +94,14 @@ IDLResourceType IDLResourceTypeFromString(NSString *typeString) {
 
 @implementation IDLResourceIdentifier
 
+- (void)dealloc {
+    self.bundleIdentifier = nil;
+    self.identifier = nil;
+    self.cachedObject = nil;
+    self.valueIdentifier = nil;
+    [super dealloc];
+}
+
 - (id)initWithString:(NSString *)string {
     self = [super init];
     if (self) {
@@ -159,6 +168,7 @@ IDLResourceType IDLResourceTypeFromString(NSString *typeString) {
 @interface IDLResourceManager ()
 
 @property (retain) NSMutableDictionary *resourceIdentifierCache;
+@property (retain) IDLXMLCache *xmlCache;
 
 @end
 
@@ -169,6 +179,7 @@ static IDLResourceManager *currentResourceManager;
 + (void)initialize {
     [super initialize];
     currentResourceManager = [[self defaultResourceManager] retain];
+    currentResourceManager.xmlCache = [IDLXMLCache sharedInstance];
 }
 
 + (instancetype)defaultResourceManager {
@@ -199,6 +210,7 @@ static IDLResourceManager *currentResourceManager;
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     self.resourceIdentifierCache = nil;
+    self.xmlCache = nil;
     [super dealloc];
 }
 
@@ -206,6 +218,7 @@ static IDLResourceManager *currentResourceManager;
     self = [super init];
     if (self) {
         self.resourceIdentifierCache = [NSMutableDictionary dictionary];
+        self.xmlCache = [[[IDLXMLCache alloc] init] autorelease];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveMemoryWarning) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
     }
     return self;
@@ -219,6 +232,16 @@ static IDLResourceManager *currentResourceManager;
 
 - (BOOL)isValidIdentifier:(NSString *)identifier {
     return [IDLResourceIdentifier isResourceIdentifier:identifier];
+}
+
+- (BOOL)invalidateCacheForBundle:(NSBundle *)bundle {
+    NSSet *keysToRemove = [self.resourceIdentifierCache keysOfEntriesPassingTest:^BOOL(id key, id obj, BOOL *stop) {
+        IDLResourceIdentifier *resId = obj;
+        NSBundle *resBundle = resId.bundle;
+        return (resBundle == bundle || [resBundle.bundleIdentifier isEqualToString:bundle.bundleIdentifier]);
+    }];
+    [self.resourceIdentifierCache removeObjectsForKeys:[keysToRemove allObjects]];
+    return [keysToRemove count] > 0;
 }
 
 - (IDLResourceIdentifier *)resourceIdentifierForString:(NSString *)identifierString {

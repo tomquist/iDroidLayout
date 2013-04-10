@@ -159,6 +159,7 @@
 		7981410D166ABABB00A63480 /* IDLResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7981410B166ABABB00A63480 /* IDLResourceManager.m */; };
 		79814110166BD65900A63480 /* NSDictionary+IDL_ResourceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7981410E166BD65800A63480 /* NSDictionary+IDL_ResourceManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		79814111166BD65900A63480 /* NSDictionary+IDL_ResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7981410F166BD65800A63480 /* NSDictionary+IDL_ResourceManager.m */; };
+		79B2A98D1704EF67001E4C6E /* IDLResourceManager+IDL_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B2A98B1704EF67001E4C6E /* IDLResourceManager+IDL_Internal.h */; };
 		79B5BFA6169B6A3700FA1D94 /* IDLClipDrawable.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B5BFA4169B6A3600FA1D94 /* IDLClipDrawable.h */; };
 		79B5BFA7169B6A3700FA1D94 /* IDLClipDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B5BFA5169B6A3700FA1D94 /* IDLClipDrawable.m */; };
 		79B5BFBF16A2CFF300FA1D94 /* IDLRotateDrawable.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B5BFBD16A2CFEF00FA1D94 /* IDLRotateDrawable.h */; };
@@ -197,7 +198,7 @@
 		79DE0C0B169605A700EDACE3 /* UITextView+IDL_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DE0C09169605A700EDACE3 /* UITextView+IDL_View.m */; };
 		79DE0C0E1698A56D00EDACE3 /* IDLButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 79DE0C0C1698A56D00EDACE3 /* IDLButton.h */; };
 		79DE0C0F1698A56D00EDACE3 /* IDLButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DE0C0D1698A56D00EDACE3 /* IDLButton.m */; };
-		79DE0C141699B81700EDACE3 /* IDLXMLCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 79DE0C121699B81000EDACE3 /* IDLXMLCache.h */; };
+		79DE0C141699B81700EDACE3 /* IDLXMLCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 79DE0C121699B81000EDACE3 /* IDLXMLCache.h */; settings = {ATTRIBUTES = (); }; };
 		79DE0C151699B81700EDACE3 /* IDLXMLCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DE0C131699B81300EDACE3 /* IDLXMLCache.m */; };
 		79E4337816681D7B00E49114 /* LayoutFromIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79E4337716681D7B00E49114 /* LayoutFromIB.xib */; };
 		79E4337D16681DEB00E49114 /* layoutFromIB.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79E4337C16681DEB00E49114 /* layoutFromIB.xml */; };
@@ -389,6 +390,7 @@
 		7981410B166ABABB00A63480 /* IDLResourceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLResourceManager.m; sourceTree = "<group>"; };
 		7981410E166BD65800A63480 /* NSDictionary+IDL_ResourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+IDL_ResourceManager.h"; sourceTree = "<group>"; };
 		7981410F166BD65800A63480 /* NSDictionary+IDL_ResourceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+IDL_ResourceManager.m"; sourceTree = "<group>"; };
+		79B2A98B1704EF67001E4C6E /* IDLResourceManager+IDL_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IDLResourceManager+IDL_Internal.h"; sourceTree = "<group>"; };
 		79B5BFA4169B6A3600FA1D94 /* IDLClipDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLClipDrawable.h; sourceTree = "<group>"; };
 		79B5BFA5169B6A3700FA1D94 /* IDLClipDrawable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLClipDrawable.m; sourceTree = "<group>"; };
 		79B5BFBD16A2CFEF00FA1D94 /* IDLRotateDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLRotateDrawable.h; sourceTree = "<group>"; };
@@ -864,6 +866,7 @@
 				79269407167E0E000078EE37 /* Drawable */,
 				7981410A166ABABB00A63480 /* IDLResourceManager.h */,
 				7981410B166ABABB00A63480 /* IDLResourceManager.m */,
+				79B2A98B1704EF67001E4C6E /* IDLResourceManager+IDL_Internal.h */,
 				7981410E166BD65800A63480 /* NSDictionary+IDL_ResourceManager.h */,
 				7981410F166BD65800A63480 /* NSDictionary+IDL_ResourceManager.m */,
 				79B983371674D2F200F844DB /* StateList */,
@@ -986,6 +989,7 @@
 				79B5BFA6169B6A3700FA1D94 /* IDLClipDrawable.h in Headers */,
 				79B5BFBF16A2CFF300FA1D94 /* IDLRotateDrawable.h in Headers */,
 				79B5BFC316A5D36400FA1D94 /* IDLShadowDrawable.h in Headers */,
+				79B2A98D1704EF67001E4C6E /* IDLResourceManager+IDL_Internal.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,5 +14,6 @@
 + (IDLXMLCache *)sharedInstance;
 
 - (TBXML *)xmlForUrl:(NSURL *)url error:(NSError **)error;
+- (void)purge;
 
 @end

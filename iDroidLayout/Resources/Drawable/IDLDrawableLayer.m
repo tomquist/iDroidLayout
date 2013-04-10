@@ -20,7 +20,7 @@
     if (self) {
         self.contentsScale = [UIScreen mainScreen].scale;
         self.needsDisplayOnBoundsChange = TRUE;
-        self.contentsGravity = kCAGravityTop;
+        //self.contentsGravity = kCAGravityTop;
         NSMutableDictionary *newActions = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[NSNull null], kCAOnOrderIn,
                                            [NSNull null], kCAOnOrderOut,
                                            [NSNull null], @"sublayers",
@@ -37,7 +37,7 @@
     if (self) {
         self.contentsScale = [UIScreen mainScreen].scale;
         self.needsDisplayOnBoundsChange = TRUE;
-        self.contentsGravity = kCAGravityTop;
+        //self.contentsGravity = kCAGravityTop;
         NSMutableDictionary *newActions = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[NSNull null], kCAOnOrderIn,
                                            [NSNull null], kCAOnOrderOut,
                                            [NSNull null], @"sublayers",
@@ -47,6 +47,10 @@
         [newActions release];
     }
     return self;
+}
+
+- (id<CAAction>)actionForKey:(NSString *)event {
+    return nil;
 }
 
 - (id)initWithLayer:(id)layer {

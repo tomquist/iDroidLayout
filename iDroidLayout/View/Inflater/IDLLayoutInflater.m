@@ -15,6 +15,7 @@
 #import "IDLBaseViewFactory.h"
 #import "IDLResourceManager.h"
 #import "TBXML+IDL.h"
+#import "IDLResourceManager+IDL_Internal.h"
 
 #define TAG_MERGE @"merge"
 #define TAG_INCLUDE @"include"
@@ -91,7 +92,7 @@
         if (url == nil) {
             NSLog(@"You must specifiy a valid layout reference. The layout ID %@ is not valid.", layoutToInclude);
         } else {
-            TBXML *xml = [[IDLXMLCache sharedInstance] xmlForUrl:url error:&error];
+            TBXML *xml = [[IDLResourceManager currentResourceManager].xmlCache xmlForUrl:url error:&error];
             //[TBXML newTBXMLWithXMLData:[NSData dataWithContentsOfURL:url] error:&error];
             if (error) {
                 NSLog(@"Cannot include layout %@: %@ %@", layoutToInclude, [error localizedDescription], [error userInfo]);
@@ -222,7 +223,7 @@
 - (UIView *)inflateURL:(NSURL *)url intoRootView:(UIView *)rootView attachToRoot:(BOOL)attachToRoot {
     NSDate *methodStart = [NSDate date];
     NSError *error = nil;
-    TBXML *xml = [[IDLXMLCache sharedInstance] xmlForUrl:url error:&error];
+    TBXML *xml = [[IDLResourceManager currentResourceManager].xmlCache xmlForUrl:url error:&error];
     //[[TBXML newTBXMLWithXMLData:[NSData dataWithContentsOfURL:url] error:&error] autorelease];
     if (error) {
         NSLog(@"%@ %@", [error localizedDescription], [error userInfo]);

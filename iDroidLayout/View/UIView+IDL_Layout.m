@@ -376,7 +376,9 @@ static char visibilityKey;
     CGRect oldFrame = self.frame;
     CGRect newFrame = [self roundFrame:frame];
     BOOL changed = !CGRectEqualToRect(oldFrame, newFrame);
-    if (changed) self.frame = newFrame;
+    if (changed) {
+        self.frame = newFrame;
+    }
     
     //if (changed) {
     [self onLayoutWithFrame:frame didFrameChange:changed];

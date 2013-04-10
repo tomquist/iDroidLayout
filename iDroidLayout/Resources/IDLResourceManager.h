@@ -17,6 +17,8 @@
 + (IDLResourceManager *)currentResourceManager;
 
 - (BOOL)isValidIdentifier:(NSString *)identifier;
+- (BOOL)invalidateCacheForBundle:(NSBundle *)bundle;
+
 - (NSString *)stringForIdentifier:(NSString *)identifierString;
 - (NSURL *)layoutURLForIdentifier:(NSString *)identifierString;
 - (UIImage *)imageForIdentifier:(NSString *)identifierString withCaching:(BOOL)withCaching;

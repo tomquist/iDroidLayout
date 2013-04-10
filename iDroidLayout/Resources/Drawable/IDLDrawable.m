@@ -19,6 +19,7 @@
 #import "IDLRotateDrawable.h"
 #import "IDLShadowDrawable.h"
 #import "IDLDrawable+IDL_Internal.h"
+#import "IDLResourceManager+IDL_Internal.h"
 
 NSUInteger const IDLDrawableMaxLevel = 10000;
 
@@ -191,7 +192,7 @@ NSUInteger const IDLDrawableMaxLevel = 10000;
 
 + (IDLDrawable *)createFromXMLURL:(NSURL *)url {
     NSError *error = nil;
-    TBXML *xml = [[IDLXMLCache sharedInstance] xmlForUrl:url error:&error];
+    TBXML *xml = [[IDLResourceManager currentResourceManager].xmlCache xmlForUrl:url error:&error];
     IDLDrawable *ret = nil;
     if (xml == nil || error != nil) {
         NSLog(@"Could not parse drawable %@: %@", [url absoluteString], error);

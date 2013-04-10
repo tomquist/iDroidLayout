@@ -64,4 +64,8 @@
     return xml;
 }
 
+- (void)purge {
+    [self.cache removeAllObjects];
+}
+
 @end

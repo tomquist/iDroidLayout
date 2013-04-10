@@ -1,38 +1,41 @@
 iDroid-Layout
 =============
 
-iDroid-Layout is a port of the Android Layout system to iOS. 
+iDroid-Layout is a port of Androids layout system and its drawable and resources framework to iOS. 
 
 ### THIS IS CURRENTLY A PRE-ALPHA EXPERIMENTAL VERSION AND THE API IS NOT STABLE. DON'T USE IT UNTIL YOU KNOW WHAT YOU ARE DOING!
 
 Why?
 ----
-The main reason for this project was to learn more about the Android layout system and how it works.
-Another reason is the lack of a powerful layout system in iOS. Currently it is a pain to build maintainable UI code in iOS. You have the choice between doing your layout in interface builder which is great for static but not powerfull enough for dynamic content, or doing all in code which is difficult to maintain.
+The main reason for this project is to learn more about the Android layout system and how it works.
+Another reason is the lack of a advanced layout system in iOS (**Update:** this is not true anymore for iOS >= 6 because of the introduction of layout constraints). Currently it is a pain to build maintainable UI code in iOS. You have the choice between doing your layout in interface builder which is great for static, but not powerful enough for dynamic content, or doing all in code which is difficult to maintain.
 In Android layouts can be defined in XML. Views automatically adjust their size while taking into account their content requirements and their parents' size restrictions.
 
 
 Highlights
 ----------
-- Define layouts in XML
-- Use native UI widgets like UIButton, UITextField etc. and even custom subclasses of UIView within the layout XML
-- Layout views linearly, right to left or top to bottom (LinearLayout)
-- Layout views relatively to each other and to their parents (RelativeLayout)
-- Add views to UIScrollViews and let them automatically adjust their content size according to your layout
-- Extend the layout system by implementing your own layout container
-- Load dynamic xml layouts within Interface Builder
-- Maintain your resources
-
+- Define **layouts in XML**
+- Use **native UI widgets** like UIButton, UITextField etc. and even custom subclasses of UIView within the layout XML
+- Layout views linearly, right to left or top to bottom (**LinearLayout**)
+- Layout views relatively to each other and to their parents (**RelativeLayout**)
+- Add views to **UIScrollViews** and let them automatically adjust their content size according to your layout
+- Extend the layout system by implementing **custom layout containers**
+- Load dynamic xml layouts within **Interface Builder**
+- Maintain your resources using a powerful **resource manager**
+- Define maintainable **graphics in XML** which are rendered live at runtime
+- Support for **[9-Patch](http://developer.android.com/tools/help/draw9patch.html) PNGs**
 
 Getting started
 ---------------
-iDroid-Layout is build into a cocoa framework. To install iDroid-Layout, simply copy the iDroidLayout.framework directory into your project. Then drag&drop it into the "Link Binary With Libraries" section within your Build Phases. You also have to add the framework to the "Copy Bundle Resources" section. To use the iDroid-Layout API you have to import the header "iDroidLayout.h" where necessary.
+iDroid-Layout is build into a cocoa framework. To install iDroid-Layout, simply copy the iDroidLayout.framework directory into your project. Then drag & drop it into the "Link Binary With Libraries" section within your Build Phases. To use the iDroid-Layout API you have to import the header "iDroidLayout.h" where necessary:
+
+    #import <iDroidLayout/iDroidLayout.h>
 
 Now everything is set up to use iDroid-Layout.
 
 Defining and using a layout with iDroid-Layout can be done in two simple steps:
 
-1. Create a layout xml file which contains your view hierarchy. E.g.
+1. Create a layout xml file which contains your view hierarchy and save it as ```myLayout.xml```. E.g.
 
         <LinearLayout
             layout_width="match_parent"
@@ -72,7 +75,7 @@ Defining and using a layout with iDroid-Layout can be done in two simple steps:
     
 Resources
 ---------
-iDroidLayout contains an advanced resource resolution framework. It allows to reference resources like images, layouts, strings, colors and styles. Resources identifiers allow to (cross-)reference resources. E.g. it allows you to specify texts and images for views within layouts.
+iDroid-Layout contains an advanced resource resolution framework. It allows you to reference resources like images, layouts, strings, colors and styles. Resources identifiers allow to (cross-)reference resources. E.g. it allows you to specify texts and images for views within layouts.
 
 ##### Resource-Identifier Syntax
 The syntax of a resource identifier is the following:
@@ -81,6 +84,77 @@ The syntax of a resource identifier is the following:
 - ``<resource-type>`` is the resource type (one of ``string``, ``layout``, ``drawable``, ``color`` or ``style``)
 - ``<resource-name>`` is the name of te resource file
 - ``<resource-subname>`` is an identifier of the specific resource within the resource file. This is only used for some resource types which act as a resource container.
+
+Drawables
+---------
+A drawable is an abstract concept for something that can be drawn on the screen. This could be a simple raster graphics, a color, a shape or a combination of these. The following types of drawables are currently implemented:
+
+**Bitmap**
+> A bitmap graphics (e.g. png, jpg) which can also be a 9-patch graphics
+
+**Layer List**
+> A Drawable that manages an array of other Drawables. These are drawn in array order, so the element with the largest index is be drawn on top
+
+**State List**
+> A Drawable that is references other drawables depending on the drawables state (e.g. to draw different images for different button states).
+
+**Inset Drawable**
+> Drawable that insets another drawable
+
+**Clip Drawable**
+> Drawable that clips another drawable depending on the drawables level
+
+**Shape Drawable**
+> Draws a geometric shape which can be filles with a colors or a gradient
+
+Drawables can be defined in XML and can be inflated into a drawable object tree. Here is an example:
+
+    <layer-list>
+        <item left="12" top="12" right="8" bottom="8">
+            <shape shape="rectangle">
+                <solid color="#8000"/>
+                <corners topLeftRadius="40" bottomRightRadius="10"/>
+            </shape>
+        </item>
+        <item left="10" top="10" right="10" bottom="10">
+            <shape shape="rectangle" thicknessRatio="8" innerRadiusRatio="3">
+                <gradient centerX="-0.1" centerY="-0.1" gradientRadius="300%" type="radial" startColor="#ccc" centerColor="#0fff" endColor="#0f0"/>
+                <corners topLeftRadius="40" bottomRightRadius="10"/>
+                <stroke width="1" color="#8000"/>
+                <padding left="5"/>
+            </shape>
+        </item>
+        <item>
+            <selector>
+                <item state_pressed="true">
+                    <inset insetLeft="10" insetTop="10" insetRight="10" insetBottom="10">
+                    <shape shape="rectangle">
+                        <gradient startColor="#f00" centerColor="#0fff" endColor="#0ff"/>
+                        <corners topLeftRadius="40" bottomRightRadius="10"/>
+                    </shape>
+                    </inset>
+                </item>
+            </selector
+        </item>
+    </layer-list>
+
+Assuming you saved the drawable XML into the file ``background.xml``. Now you can define a button like this in your layout:
+
+    <Button
+        textColor="#eee"
+        layout_width="match_parent"
+        layout_height="100"
+        layout_gravity="center"
+        background="@drawable/background"
+        text="Button"/>
+
+![Button in normal state](../blob/master/Documentation/drawable_button_normal.png?raw=true)
+
+**Fig1:** Button with a custom drawable as background in normal state
+
+![Button in pressed state](../blob/master/Documentation/drawable_button_pressed.png?raw=true)
+
+**Fig2:** Button with a custom drawable as background in pressed state
 
 Questions & Answers
 -------------------
@@ -105,7 +179,7 @@ Yes, simply use the class name of the view as the xml tag name (e.g. ``<MyCustom
 ##### My custom view should not be initialized using init (like the ``IDLLayoutInflater`` usually does). How can I implement a custom initialization?
 ``IDLLayoutInflater`` creates view objects using a default implementation of the ``IDLViewFactory`` protocol. You can implement a custom view factory by implementing the protocol and setting the ``viewFactory`` property of the ``IDLLayoutInflater``.
 
-##### Can I use xml layouts in ``UITableViewCell``s?
+##### Can I use XML layouts in ``UITableViewCell``s?
 Yes, you can either use ``IDLTableViewCell`` or create a custom UITableViewCell where you inflate your layout into an ``IDLLayoutBridge``.
 
 ##### Can I load xml layouts into a view defined in a xib file?
@@ -119,7 +193,7 @@ Similar to the android layouting system, you can embed other layouts within a la
         layout_height="match_parent"
         orientation="vertical">
         
-        <include layout="layoutToInclude"/>
+        <include layout="@layout/layoutToInclude"/>
         
         <TextView
             layout_width="match_parent"
@@ -132,7 +206,7 @@ You can also override all the layout parameters (any ``layout_*`` attributes), t
     <include id="title"
              layout_width="match_parent"
              layout_height="match_parent"
-             layout="layoutToInclude"
+             layout="@layout/layoutToInclude"
              visibility="gone"/>
 
 XML files always need a single root element. If you have to include multiple views from another single layout file, you need a container as a root element. This is where the ``<merge />`` tag comes into play. It allows you to include multiple views at once, without the need of an extra layout container:
