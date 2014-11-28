@@ -16,34 +16,26 @@
 @interface IDLStateListDrawableItem : NSObject
 
 @property (nonatomic, assign) UIControlState state;
-@property (nonatomic, retain) IDLDrawable *drawable;
+@property (nonatomic, strong) IDLDrawable *drawable;
 
 @end
 
 @implementation IDLStateListDrawableItem
 
-- (void)dealloc {
-    self.drawable = nil;
-    [super dealloc];
-}
 
 @end
 
 
 @interface IDLStateListDrawableConstantState ()
 
-@property (nonatomic, retain) NSMutableArray *items;
+@property (nonatomic, strong) NSMutableArray *items;
 
 @end
 
 @implementation IDLStateListDrawableConstantState
 
-- (void)dealloc {
-    self.items = nil;
-    [super dealloc];
-}
 
-- (id)initWithState:(IDLStateListDrawableConstantState *)state owner:(IDLStateListDrawable *)owner {
+- (instancetype)initWithState:(IDLStateListDrawableConstantState *)state owner:(IDLStateListDrawable *)owner {
     self = [super initWithState:state owner:owner];
     if (self) {
         if (state != nil) {
@@ -55,14 +47,11 @@
                 item.drawable = [self.drawables objectAtIndex:i];
                 item.state = origItem.state;
                 [items addObject:item];
-                [item release];
             }
             self.items = items;
-            [items release];
         } else {
             NSMutableArray *items = [[NSMutableArray alloc] initWithCapacity:10];
             self.items = items;
-            [items release];
         }
     }
     return self;
@@ -73,7 +62,6 @@
     item.drawable = drawable;
     item.state = state;
     [self.items addObject:item];
-    [item release];
     [self addChildDrawable:drawable];
 }
 
@@ -81,23 +69,18 @@
 
 @interface IDLStateListDrawable ()
 
-@property (nonatomic, retain) IDLStateListDrawableConstantState *internalConstantState;
+@property (nonatomic, strong) IDLStateListDrawableConstantState *internalConstantState;
 
 @end
 
 @implementation IDLStateListDrawable
 
-- (void)dealloc {
-    self.internalConstantState = nil;
-    [super dealloc];
-}
 
-- (id)initWithState:(IDLStateListDrawableConstantState *)state {
+- (instancetype)initWithState:(IDLStateListDrawableConstantState *)state {
     self = [super init];
     if (self) {
         IDLStateListDrawableConstantState *s = [[IDLStateListDrawableConstantState alloc] initWithState:state owner:self];
         self.internalConstantState = s;
-        [s release];
     }
     return self;
 }
@@ -106,13 +89,12 @@
     return [self initWithState:nil];
 }
 
-- (id)initWithColorStateListe:(IDLColorStateList *)colorStateList {
+- (instancetype)initWithColorStateListe:(IDLColorStateList *)colorStateList {
     self = [self init];
     if (self) {
         for (IDLColorStateItem *item in colorStateList.items) {
             IDLColorDrawable *colorDrawable = [[IDLColorDrawable alloc] initWithColor:item.color];
             [self.internalConstantState addDrawable:colorDrawable forState:item.controlState];
-            [colorDrawable release];
         }
     }
     return self;

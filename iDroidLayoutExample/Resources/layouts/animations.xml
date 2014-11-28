@@ -2,7 +2,8 @@
         layout_width="match_parent"
         layout_height="wrap_content"
         orientation="vertical"
-        padding="10">
+        padding="10"
+        layout_marginTop="64">
         <LinearLayout
             layout_width="match_parent"
             layout_height="wrap_content"
@@ -12,7 +13,7 @@
                 layout_width="wrap_content"
                 layout_height="wrap_content"
                 padding="10"
-                text="Some text"
+                text="Short text"
                 textColor="#ffffff"
                 background="#80000000"/>
             <TextView
@@ -32,5 +33,6 @@
             layout_height="30"
             layout_gravity="center_horizontal"
             layout_marginTop="10"
+            onClick="didPressButton"
             text="Click me"/>
     </LinearLayout>

@@ -15,7 +15,7 @@
     id _lock;
 }
 
-- (id)initWithPool:(id<IDLPool>)pool lock:(id)lock takeLockOwnership:(BOOL)takeLockOwnership;
-- (id)initWithPool:(id<IDLPool>)pool;
+- (instancetype)initWithPool:(id<IDLPool>)pool lock:(id)lock takeLockOwnership:(BOOL)takeLockOwnership;
+- (instancetype)initWithPool:(id<IDLPool>)pool;
 
 @end

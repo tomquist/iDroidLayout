@@ -14,26 +14,22 @@
 
 @interface IDLColorDrawableConstantState ()
 
-@property (nonatomic, retain) UIColor *color;
+@property (nonatomic, strong) UIColor *color;
 
-- (id)initWithState:(IDLColorDrawableConstantState *)state;
+- (instancetype)initWithState:(IDLColorDrawableConstantState *)state;
 
 @end
 
 @interface IDLColorDrawable ()
 
-@property (nonatomic, retain) IDLColorDrawableConstantState *internalConstantState;
+@property (nonatomic, strong) IDLColorDrawableConstantState *internalConstantState;
 
 @end
 
 @implementation IDLColorDrawableConstantState
 
-- (void)dealloc {
-    self.color = nil;
-    [super dealloc];
-}
 
-- (id)initWithState:(IDLColorDrawableConstantState *)state {
+- (instancetype)initWithState:(IDLColorDrawableConstantState *)state {
     self = [super init];
     if (self) {
         if (state != nil) {
@@ -49,27 +45,21 @@
 
 @implementation IDLColorDrawable
 
-- (void)dealloc {
-    self.internalConstantState = nil;
-    [super dealloc];
-}
 
-- (id)initWithState:(IDLColorDrawableConstantState *)state {
+- (instancetype)initWithState:(IDLColorDrawableConstantState *)state {
     self = [super init];
     if (self) {
         IDLColorDrawableConstantState *s = [[IDLColorDrawableConstantState alloc] initWithState:state];
         self.internalConstantState = s;
-        [s release];
     }
     return self;
 }
 
-- (id)initWithColor:(UIColor *)color {
+- (instancetype)initWithColor:(UIColor *)color {
     self = [super init];
     if (self) {
         IDLColorDrawableConstantState *state = [[IDLColorDrawableConstantState alloc] init];
         self.internalConstantState = state;
-        [state release];
         self.internalConstantState.color = color;
     }
     return self;

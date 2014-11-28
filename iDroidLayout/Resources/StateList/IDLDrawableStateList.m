@@ -14,15 +14,15 @@
 
 @interface IDLColorWrapperDrawableStateItem : IDLDrawableStateItem
 
-@property (nonatomic, retain) IDLColorStateItem *colorStateItem;
+@property (nonatomic, strong) IDLColorStateItem *colorStateItem;
 
-- (id)initWithColorStateItem:(IDLColorStateItem *)colorStateItem;
+- (instancetype)initWithColorStateItem:(IDLColorStateItem *)colorStateItem;
 
 @end
 
 @implementation IDLColorWrapperDrawableStateItem
 
-- (id)initWithColorStateItem:(IDLColorStateItem *)colorStateItem {
+- (instancetype)initWithColorStateItem:(IDLColorStateItem *)colorStateItem {
     self = [super initWithControlState:colorStateItem.controlState drawableResourceIdentifier:nil];
     if (self) {
         self.colorStateItem = colorStateItem;
@@ -50,16 +50,15 @@
     if (drawableIdentifier == nil) {
         NSLog(@"<item> tag requires a 'drawable' attribute. I'm ignoring this drawable state item.");
     } else {
-        ret = [[[IDLDrawableStateItem alloc] initWithControlState:controlState drawableResourceIdentifier:drawableIdentifier] autorelease];
+        ret = [[IDLDrawableStateItem alloc] initWithControlState:controlState drawableResourceIdentifier:drawableIdentifier];
     }
     return ret;
 }
 
 + (instancetype)createWithSingleDrawableIdentifier:(NSString *)imageIdentifier {
-    IDLDrawableStateList *list = [[[self alloc] init] autorelease];
+    IDLDrawableStateList *list = [[self alloc] init];
     IDLDrawableStateItem *item = [[IDLDrawableStateItem alloc] initWithControlState:UIControlStateNormal drawableResourceIdentifier:imageIdentifier];
     list.internalItems = [NSArray arrayWithObject:item];
-    [item release];
     return list;
 }
 
@@ -74,15 +73,13 @@
 + (IDLDrawableStateList *)createFromColorStateList:(IDLColorStateList *)colorStateList {
     IDLDrawableStateList *ret = nil;
     if (colorStateList != nil) {
-        ret = [[[IDLDrawableStateList alloc] init] autorelease];
+        ret = [[IDLDrawableStateList alloc] init];
         NSMutableArray *items = [[NSMutableArray alloc] initWithCapacity:[colorStateList.items count]];
         for (IDLColorStateItem *colorStateItem in colorStateList.items) {
             IDLDrawableStateItem *item = [[IDLColorWrapperDrawableStateItem alloc] initWithColorStateItem:colorStateItem];
             [items addObject:item];
-            [item release];
         }
         ret.internalItems = items;
-        [items release];
     }
     return ret;
 }

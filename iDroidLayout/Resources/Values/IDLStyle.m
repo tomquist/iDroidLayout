@@ -12,9 +12,9 @@
 
 @interface IDLStyle ()
 
-@property (nonatomic, retain) NSMutableDictionary *internalAttributes;
-@property (nonatomic, retain) NSString *parentIdentifier;
-@property (nonatomic, retain) IDLStyle *internalParentStyle;
+@property (nonatomic, strong) NSMutableDictionary *internalAttributes;
+@property (nonatomic, strong) NSString *parentIdentifier;
+@property (nonatomic, strong) IDLStyle *internalParentStyle;
 @property (nonatomic, assign) BOOL includesParentStyleAttributes;
 
 @end
@@ -24,14 +24,8 @@
 @synthesize parentIdentifier = _parentIdentifier;
 @synthesize internalParentStyle = _internalParentStyle;
 
-- (void)dealloc {
-    self.internalAttributes = nil;
-    self.parentIdentifier = nil;
-    self.internalParentStyle = nil;
-    [super dealloc];
-}
 
-- (id)initWithAttributes:(NSMutableDictionary *)attributes arentIdentifier:(NSString *)parentIdentifier {
+- (instancetype)initWithAttributes:(NSMutableDictionary *)attributes arentIdentifier:(NSString *)parentIdentifier {
     self = [super init];
     if (self) {
         if ([parentIdentifier length] > 0) {
@@ -63,8 +57,7 @@
         }
         child = child->nextSibling;
     }
-    IDLStyle *style = [[[IDLStyle alloc] initWithAttributes:attributes arentIdentifier:parentStyleId] autorelease];
-    [attributes release];
+    IDLStyle *style = [[IDLStyle alloc] initWithAttributes:attributes arentIdentifier:parentStyleId];
     return style;
 }
 

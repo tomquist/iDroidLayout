@@ -13,19 +13,19 @@
 @implementation IDLPools
 
 + (id<IDLPool>)simplePoolForPoolableManager:(id<IDLPoolableManager>)poolableManager {
-    return [[[IDLFinitePool alloc] initWithPoolableManager:poolableManager] autorelease];
+    return [[IDLFinitePool alloc] initWithPoolableManager:poolableManager];
 }
 
 + (id<IDLPool>)finitePoolWithLimit:(NSUInteger)limit forPoolableManager:(id<IDLPoolableManager>)poolableManager {
-    return [[[IDLFinitePool alloc] initWithPoolableManager:poolableManager limit:limit] autorelease];
+    return [[IDLFinitePool alloc] initWithPoolableManager:poolableManager limit:limit];
 }
 
 + (id<IDLPool>)synchronizedPoolForPool:(id<IDLPool>)pool {
-    return [[[IDLSynchronizedPool alloc] initWithPool:pool] autorelease];
+    return [[IDLSynchronizedPool alloc] initWithPool:pool];
 }
 
 + (id<IDLPool>)synchronizedPoolForPool:(id<IDLPool>)pool withLock:(id)lock takeLockOwnership:(BOOL)takeLockOwnership {
-    return [[[IDLSynchronizedPool alloc] initWithPool:pool lock:lock takeLockOwnership:takeLockOwnership] autorelease];
+    return [[IDLSynchronizedPool alloc] initWithPool:pool lock:lock takeLockOwnership:takeLockOwnership];
 }
 
 @end

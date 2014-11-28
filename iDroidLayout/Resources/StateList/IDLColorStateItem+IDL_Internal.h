@@ -10,6 +10,6 @@
 
 @interface IDLColorStateItem (IDL_Internal)
 
-- (id)initWithControlState:(UIControlState)controlState colorResourceIdentifier:(NSString *)resourceIdentifier;
+- (instancetype)initWithControlState:(UIControlState)controlState colorResourceIdentifier:(NSString *)resourceIdentifier;
 
 @end

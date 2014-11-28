@@ -19,7 +19,7 @@
 
 @implementation IDLSimplePoolableManager
 
-- (id)initWithClass:(Class)class {
+- (instancetype)initWithClass:(Class)class {
     self = [super init];
     if (self) {
         _class = class;
@@ -53,19 +53,11 @@
     static id<IDLPool> Pool;
     if (Pool == nil) {
         id<IDLPoolableManager> poolableManager = [[IDLSimplePoolableManager alloc] initWithClass:[IDLDependencyGraphNode class]];
-        Pool = [[IDLPools synchronizedPoolForPool:[IDLPools finitePoolWithLimit:POOL_LIMIT forPoolableManager:poolableManager]] retain];
-        [poolableManager release];
+        Pool = [IDLPools synchronizedPoolForPool:[IDLPools finitePoolWithLimit:POOL_LIMIT forPoolableManager:poolableManager]];
     }
     return Pool;
 }
 
-- (void) dealloc {
-    self.view = nil;
-    self.nextPoolable = nil;
-	[_dependents release];
-    [_dependencies release];
-	[super dealloc];
-}
 
 
 - (id) init {

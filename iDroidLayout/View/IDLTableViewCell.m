@@ -13,12 +13,8 @@
 
 @synthesize layoutBridge = _layoutBridge;
 
-- (void)dealloc {
-    [_layoutBridge release];
-    [super dealloc];
-}
 
-- (id)initWithLayoutResource:(NSString *)resource reuseIdentifier:(NSString *)reuseIdentifier {
+- (instancetype)initWithLayoutResource:(NSString *)resource reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
     if (self) {
         IDLLayoutBridge *bridge = [[IDLLayoutBridge alloc] initWithFrame:self.contentView.bounds];
@@ -26,14 +22,13 @@
         [self.contentView addSubview:bridge];
         IDLLayoutInflater *inflater = [[IDLLayoutInflater alloc] init];
         [inflater inflateResource:resource intoRootView:bridge attachToRoot:TRUE];
-        [inflater release];
         
         _layoutBridge = bridge;
     }
     return self;
 }
 
-- (id)initWithLayoutURL:(NSURL *)url reuseIdentifier:(NSString *)reuseIdentifier {
+- (instancetype)initWithLayoutURL:(NSURL *)url reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
     if (self) {
         IDLLayoutBridge *bridge = [[IDLLayoutBridge alloc] initWithFrame:self.contentView.bounds];
@@ -41,7 +36,6 @@
         [self.contentView addSubview:bridge];
         IDLLayoutInflater *inflater = [[IDLLayoutInflater alloc] init];
         [inflater inflateURL:url intoRootView:bridge attachToRoot:TRUE];
-        [inflater release];
         
         _layoutBridge = bridge;
     }

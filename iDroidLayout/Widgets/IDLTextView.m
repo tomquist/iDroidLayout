@@ -30,8 +30,15 @@
     if (widthMode == IDLLayoutMeasureSpecModeExactly) {
         measuredSize.width.size = widthSize;
     } else {
-        CGSize size = [self.text sizeWithFont:self.font];
-        measuredSize.width.size = size.width + padding.left + padding.right;
+        CGSize size;
+        if ([self respondsToSelector:@selector(attributedText)]) {
+            size = [self.attributedText boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX)
+                                         options:NSStringDrawingUsesLineFragmentOrigin
+                                         context:nil].size;
+        } else {
+            [self.text sizeWithFont:self.font];
+        }
+        measuredSize.width.size = ceilf(size.width) + padding.left + padding.right;
         if (widthMode == IDLLayoutMeasureSpecModeAtMost) {
             measuredSize.width.size = MIN(measuredSize.width.size, widthSize);
         }
@@ -42,8 +49,13 @@
     if (heightMode == IDLLayoutMeasureSpecModeExactly) {
         measuredSize.height.size = heightSize;
     } else {
-        CGSize size = [self.text sizeWithFont:self.font constrainedToSize:CGSizeMake(measuredSize.width.size - padding.left - padding.right, CGFLOAT_MAX) lineBreakMode:self.lineBreakMode];
-        measuredSize.height.size = MAX(size.height, self.numberOfLines * self.font.lineHeight) + padding.top + padding.bottom;
+        CGSize size;
+        if ([self respondsToSelector:@selector(attributedText)]) {
+            size = [self.text boundingRectWithSize:CGSizeMake(measuredSize.width.size - padding.left - padding.right, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: self.font} context:nil].size;
+        } else {
+            size = [self.text sizeWithFont:self.font constrainedToSize:CGSizeMake(measuredSize.width.size - padding.left - padding.right, CGFLOAT_MAX) lineBreakMode:self.lineBreakMode];
+        }
+        measuredSize.height.size = MAX(ceilf(size.height), self.numberOfLines * self.font.lineHeight) + padding.top + padding.bottom;
         if (heightMode == IDLLayoutMeasureSpecModeAtMost) {
             measuredSize.height.size = MIN(measuredSize.height.size, heightSize);
         }
@@ -89,7 +101,6 @@
 }
 
 - (CGRect)textRectForBounds:(CGRect)bounds limitedToNumberOfLines:(NSInteger)numberOfLines {
-    bounds = UIEdgeInsetsInsetRect(bounds, self.padding);
     CGRect rect = [super textRectForBounds:bounds limitedToNumberOfLines:numberOfLines];
     CGRect result;
     switch (_contentVerticalAlignment)
@@ -111,8 +122,28 @@
 }
 
 - (void)drawTextInRect:(CGRect)rect {
-    CGRect r = [self textRectForBounds:rect limitedToNumberOfLines:self.numberOfLines];
-    [super drawTextInRect:r];
+    
+    if ([self respondsToSelector:@selector(sizeThatFits:)]) {
+        rect = UIEdgeInsetsInsetRect(rect, self.padding);
+        CGRect result;
+        CGSize sizeThatFits = [self sizeThatFits:rect.size];
+        switch (_contentVerticalAlignment)
+        {
+            case UIControlContentVerticalAlignmentTop:
+                result = CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, sizeThatFits.height);
+                break;
+            case UIControlContentVerticalAlignmentBottom:
+                result = CGRectMake(rect.origin.x, rect.origin.y + (rect.size.height - sizeThatFits.height), rect.size.width, sizeThatFits.height);
+                break;
+            default:
+                result = rect;
+                break;
+        }
+        [super drawTextInRect:result];
+    } else {
+        CGRect r = [self textRectForBounds:rect limitedToNumberOfLines:self.numberOfLines];
+        [super drawTextInRect:r];
+    }
 }
 
 - (void)setText:(NSString *)text {
@@ -125,7 +156,7 @@
     [self requestLayout];
 }
 
-- (void)setLineBreakMode:(UILineBreakMode)lineBreakMode {
+- (void)setLineBreakMode:(NSLineBreakMode)lineBreakMode {
     [super setLineBreakMode:lineBreakMode];
     [self requestLayout];
 }

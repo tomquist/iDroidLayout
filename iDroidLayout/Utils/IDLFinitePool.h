@@ -19,7 +19,7 @@
     id<IDLPoolable> _root;
 }
 
-- (id)initWithPoolableManager:(id<IDLPoolableManager>)manager;
-- (id)initWithPoolableManager:(id<IDLPoolableManager>)manager limit:(NSUInteger)limit;
+- (instancetype)initWithPoolableManager:(id<IDLPoolableManager>)manager;
+- (instancetype)initWithPoolableManager:(id<IDLPoolableManager>)manager limit:(NSUInteger)limit;
 
 @end

@@ -92,11 +92,11 @@
 
 - (void)setGravity:(IDLViewContentGravity)gravity {
     if ((gravity & IDLViewContentGravityLeft) == IDLViewContentGravityLeft) {
-        self.textAlignment = UITextAlignmentLeft;
+        self.textAlignment = NSTextAlignmentLeft;
     } else if ((gravity & IDLViewContentGravityRight) == IDLViewContentGravityRight) {
-        self.textAlignment = UITextAlignmentRight;
+        self.textAlignment = NSTextAlignmentRight;
     } else {
-        self.textAlignment = UITextAlignmentCenter;
+        self.textAlignment = NSTextAlignmentCenter;
     }
 }
 
@@ -113,8 +113,11 @@
     if (widthMode == IDLLayoutMeasureSpecModeExactly) {
         measuredSize.width.size = widthSize;
     } else {
-        CGSize size = [self.text sizeWithFont:self.font];
-        measuredSize.width.size = size.width;
+        CGSize size = [self.text boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX)
+                                                        options:NSStringDrawingUsesLineFragmentOrigin
+                                                    attributes:@{NSFontAttributeName: self.font}
+                                                        context:nil].size;
+        measuredSize.width.size = ceilf(size.width);
         if (widthMode == IDLLayoutMeasureSpecModeAtMost) {
             measuredSize.width.size = MIN(measuredSize.width.size, widthSize);
         }
@@ -125,8 +128,12 @@
     if (heightMode == IDLLayoutMeasureSpecModeExactly) {
         measuredSize.height.size = heightSize;
     } else {
-        CGSize size = [self.text sizeWithFont:self.font constrainedToSize:CGSizeMake(measuredSize.width.size, CGFLOAT_MAX) lineBreakMode:self.lineBreakMode];
-        measuredSize.height.size = MAX(size.height, self.numberOfLines * self.font.lineHeight);
+        //CGSize size = [self.text sizeWithFont:self.font constrainedToSize:CGSizeMake(measuredSize.width.size, CGFLOAT_MAX) lineBreakMode:self.lineBreakMode];
+        CGSize size = [self.text boundingRectWithSize:CGSizeMake(measuredSize.width.size, CGFLOAT_MAX)
+                                              options:NSStringDrawingUsesLineFragmentOrigin
+                                           attributes:@{NSFontAttributeName: self.font}
+                                              context:nil].size;
+        measuredSize.height.size = MAX(ceilf(size.height), self.numberOfLines * self.font.lineHeight);
         if (heightMode == IDLLayoutMeasureSpecModeAtMost) {
             measuredSize.height.size = MIN(measuredSize.height.size, heightSize);
         }
@@ -150,7 +157,7 @@
         self.backgroundColor = [UIColor clearColor];
         
         if (![self idl_hasObserverWithIdentifier:BackgroundDrawableFrameTag]) {
-            __block UIView *selfRef = self;
+            __weak UIView *selfRef = self;
             [self idl_addObserver:^(NSString *keyPath, id object, NSDictionary *change) {
                 selfRef.backgroundDrawable.bounds = selfRef.bounds;
                 [selfRef setNeedsDisplay];

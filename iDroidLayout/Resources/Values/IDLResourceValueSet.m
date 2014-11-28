@@ -14,7 +14,7 @@
 
 @interface IDLResourceValueSet ()
 
-@property (nonatomic, retain) NSDictionary *values;
+@property (nonatomic, strong) NSDictionary *values;
 
 @end
 
@@ -22,10 +22,6 @@
 
 @synthesize values = _values;
 
-- (void)dealloc {
-    self.values = nil;
-    [super dealloc];
-}
 
 + (NSArray *)parseStringArrayFromElement:(TBXMLElement *)element {
     NSMutableArray *array = [[NSMutableArray alloc] init];
@@ -39,8 +35,7 @@
         }
         child = child->nextSibling;
     }
-    NSArray *nonMutableArray = [[[IDLStringArray alloc] initWithArray:array] autorelease];
-    [array release];
+    NSArray *nonMutableArray = [[IDLStringArray alloc] initWithArray:array];
     return nonMutableArray;
 }
 
@@ -48,7 +43,7 @@
     IDLResourceValueSet *ret = nil;
     TBXMLElement *root = parser.rootXMLElement;
     if ([[TBXML elementName:root] isEqualToString:@"resources"]) {
-        ret = [[[self alloc] init] autorelease];
+        ret = [[self alloc] init];
         NSCharacterSet *whiteSpaceCharSet = [NSCharacterSet whitespaceAndNewlineCharacterSet];
         NSMutableDictionary *mutableValues = [[NSMutableDictionary alloc] init];
         TBXMLElement *child = root->firstChild;
@@ -70,9 +65,7 @@
             child = child->nextSibling;
         }
         NSDictionary *nonMutableValues = [[NSDictionary alloc] initWithDictionary:mutableValues];
-        [mutableValues release];
         ret.values = nonMutableValues;
-        [nonMutableValues release];
     }
     return ret;
 }
@@ -81,12 +74,9 @@
     if (data == nil) return nil;
     IDLResourceValueSet *ret = nil;
     NSError *error = nil;
-    TBXML *xml = [[TBXML newTBXMLWithXMLData:data error:&error] autorelease];
+    TBXML *xml = [TBXML tbxmlWithXMLData:data error:&error];
     if (error == nil) {
-        @autoreleasepool {
-            ret = [[self inflateParser:xml] retain];
-        }
-        [ret autorelease];
+        ret = [self inflateParser:xml];
     } else {
         NSLog(@"Could not parse resource value set: %@", error);
     }

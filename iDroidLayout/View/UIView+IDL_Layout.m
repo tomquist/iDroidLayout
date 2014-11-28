@@ -136,7 +136,7 @@ static char visibilityKey;
     }
 }
 
-- (id)initWithAttributes:(NSDictionary *)attrs {
+- (instancetype)initWithAttributes:(NSDictionary *)attrs {
     self = [self init];
     if (self) {
         [self setupFromAttributes:attrs];         
@@ -306,7 +306,6 @@ static char visibilityKey;
                              &minSizeKey,
                              v,
                              OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    [v release];
 }
 
 - (CGSize)suggestedMinimumSize {
@@ -320,7 +319,6 @@ static char visibilityKey;
                              &measuredSizeKey,
                              value,
                              OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    [value release];
 }
 
 - (IDLLayoutMeasuredSize)measuredDimensionSize {

@@ -23,22 +23,14 @@
 @synthesize ignoreGravity = _ignoreGravity;
 @synthesize gravity = _gravity;
 
-- (void)dealloc {
-	[_ignoreGravity release];
-    [_sortedHorizontalChildren release];
-    [_sortedVerticalChildren release];
-    [_graph release];
-    [_baselineView release];
-	[super dealloc];
-}
 
 - (void)setupFromAttributes:(NSDictionary *)attrs {
     [super setupFromAttributes:attrs];
     _gravity = [IDLGravity gravityFromAttribute:[attrs objectForKey:@"gravity"]];
-    _ignoreGravity = [[attrs objectForKey:@"ignoreGravity"] retain];
+    _ignoreGravity = [attrs objectForKey:@"ignoreGravity"];
 }
 
-- (id)initWithAttributes:(NSDictionary *)attrs {
+- (instancetype)initWithAttributes:(NSDictionary *)attrs {
     self = [super initWithAttributes:attrs];
     if (self) {
         _dirtyHierarchy = TRUE;
@@ -46,7 +38,7 @@
     return self;
 }
 
-- (id)initWithFrame:(CGRect)frame {
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         _dirtyHierarchy = TRUE;
@@ -64,19 +56,19 @@
 }
 
 - (IDLLayoutParams *)generateDefaultLayoutParams {
-    return [[[IDLRelativeLayoutLayoutParams alloc] initWithWidth:IDLLayoutParamsSizeWrapContent height:IDLLayoutParamsSizeWrapContent] autorelease];
+    return [[IDLRelativeLayoutLayoutParams alloc] initWithWidth:IDLLayoutParamsSizeWrapContent height:IDLLayoutParamsSizeWrapContent];
 }
 
 - (IDLLayoutParams *)generateLayoutParamsFromAttributes:(NSDictionary *)attrs {
-    return [[[IDLRelativeLayoutLayoutParams alloc] initWithAttributes:attrs] autorelease];
+    return [[IDLRelativeLayoutLayoutParams alloc] initWithAttributes:attrs];
 }
 
 - (IDLLayoutParams *)generateLayoutParamsFromLayouParams:(IDLLayoutParams *)lp {
-    return [[[IDLRelativeLayoutLayoutParams alloc] initWithLayoutParams:lp] autorelease];
+    return [[IDLRelativeLayoutLayoutParams alloc] initWithLayoutParams:lp];
 }
 
 - (void)sortChildren {
-    int count = [self.subviews count];
+    NSUInteger count = [self.subviews count];
     if ([_sortedVerticalChildren count] != count) {
         if (_sortedVerticalChildren == nil) _sortedVerticalChildren = [[NSMutableArray alloc] initWithCapacity:count];
         else [_sortedVerticalChildren removeAllObjects];
@@ -487,12 +479,11 @@
     }
     
     if (_baselineView == nil) {
-        _baselineView = [child retain];
+        _baselineView = child;
     } else {
         IDLRelativeLayoutLayoutParams *lp = (IDLRelativeLayoutLayoutParams *)_baselineView.layoutParams;
         if (params.top < lp.top || (params.top == lp.top && params.left < lp.left)) {
-            [_baselineView release];
-            _baselineView = [child retain];
+            _baselineView = child;
         }
     }
 }
@@ -735,7 +726,7 @@
 - (void)onLayoutWithFrame:(CGRect)frame didFrameChange:(BOOL)changed {
     //  The layout has actually already been performed and the positions
     //  cached.  Apply the cached values to the children.
-    int count = [self.subviews count];
+    NSUInteger count = [self.subviews count];
     
     for (int i = 0; i < count; i++) {
         UIView *child = [self.subviews objectAtIndex:i];

@@ -16,7 +16,7 @@
 
 @implementation IDLResourceStateItem
 
-- (id)initWithControlState:(UIControlState)controlState {
+- (instancetype)initWithControlState:(UIControlState)controlState {
     self = [super init];
     if (self) {
         self.internalControlState = controlState;

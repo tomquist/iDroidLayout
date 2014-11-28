@@ -16,8 +16,8 @@ Highlights
 ----------
 - Define **layouts in XML**
 - Use **native UI widgets** like UIButton, UITextField etc. and even custom subclasses of UIView within the layout XML
-- Layout views linearly, right to left or top to bottom (**LinearLayout**)
-- Layout views relatively to each other and to their parents (**RelativeLayout**)
+- Layout views linearly, right to left or top to bottom (__LinearLayout__)
+- Layout views relatively to each other and to their parents (__RelativeLayout__)
 - Add views to **UIScrollViews** and let them automatically adjust their content size according to your layout
 - Extend the layout system by implementing **custom layout containers**
 - Load dynamic xml layouts within **Interface Builder**
@@ -29,7 +29,7 @@ Getting started
 ---------------
 iDroid-Layout is build into a cocoa framework. To install iDroid-Layout, simply copy the iDroidLayout.framework directory into your project. Then drag & drop it into the "Link Binary With Libraries" section within your Build Phases. To use the iDroid-Layout API you have to import the header "iDroidLayout.h" where necessary:
 
-    #import <iDroidLayout/iDroidLayout.h>
+    #import "iDroidLayout.h" // iDroidLayout
 
 Now everything is set up to use iDroid-Layout.
 

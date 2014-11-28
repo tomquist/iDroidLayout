@@ -7,7 +7,7 @@
 //
 
 #import "IDLFrameLayoutGravityTest.h"
-#import <iDroidLayout/iDroidLayout.h>
+#import "iDroidLayout.h" // iDroidLayout
 
 @implementation IDLFrameLayoutGravityTest
 
@@ -17,32 +17,19 @@
     IDLLayoutBridge *bridge = [[IDLLayoutBridge alloc] initWithFrame:CGRectMake(0, 0, 500, 1000)];
     UIView *inflatedView = [layoutInflater inflateResource:@"framelayout_gravity.xml" intoRootView:bridge attachToRoot:TRUE];
     
-    _parent = [[inflatedView findViewById:@"parent"] retain];
+    _parent = [inflatedView findViewById:@"parent"];
     
-    _leftView = [[inflatedView findViewById:@"left"] retain];
-    _rightView = [[inflatedView findViewById:@"right"] retain];
-    _centerHorizontalView = [[inflatedView findViewById:@"center_horizontal"] retain];
+    _leftView = [inflatedView findViewById:@"left"];
+    _rightView = [inflatedView findViewById:@"right"];
+    _centerHorizontalView = [inflatedView findViewById:@"center_horizontal"];
     
-    _leftCenterVerticalView = [[inflatedView findViewById:@"left_center_vertical"] retain];
-    _rightCenterVerticalView = [[inflatedView findViewById:@"right_center_vertical"] retain];
-    _centerView = [[inflatedView findViewById:@"center"] retain];
+    _leftCenterVerticalView = [inflatedView findViewById:@"left_center_vertical"];
+    _rightCenterVerticalView = [inflatedView findViewById:@"right_center_vertical"];
+    _centerView = [inflatedView findViewById:@"center"];
     
-    _leftBottomView = [[inflatedView findViewById:@"left_bottom"] retain];
-    _rightBottomView = [[inflatedView findViewById:@"right_bottom"] retain];
-    _centerHorizontalBottomView = [[inflatedView findViewById:@"center_horizontal_bottom"] retain];
-}
-
-- (void)tearDown {
-    [_parent release];
-    [_leftView release];
-    [_rightView release];
-    [_centerHorizontalView release];
-    [_leftCenterVerticalView release];
-    [_rightCenterVerticalView release];
-    [_centerView release];
-    [_leftBottomView release];
-    [_rightBottomView release];
-    [_centerHorizontalBottomView release];
+    _leftBottomView = [inflatedView findViewById:@"left_bottom"];
+    _rightBottomView = [inflatedView findViewById:@"right_bottom"];
+    _centerHorizontalBottomView = [inflatedView findViewById:@"center_horizontal_bottom"];
 }
 
 - (void)testLeftTopAligned {

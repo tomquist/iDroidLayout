@@ -30,16 +30,15 @@
     if (colorIdentifier == nil) {
         NSLog(@"<item> tag requires a 'color' attribute. I'm ignoring this color state item.");
     } else {
-        ret = [[[IDLColorStateItem alloc] initWithControlState:controlState colorResourceIdentifier:colorIdentifier] autorelease];
+        ret = [[IDLColorStateItem alloc] initWithControlState:controlState colorResourceIdentifier:colorIdentifier];
     }
     return ret;
 }
 
 + (instancetype)createWithSingleColorIdentifier:(NSString *)colorIdentifier {
-    IDLColorStateList *list = [[[self alloc] init] autorelease];
+    IDLColorStateList *list = [[self alloc] init];
     IDLColorStateItem *item = [[IDLColorStateItem alloc] initWithControlState:UIControlStateNormal colorResourceIdentifier:colorIdentifier];
     list.internalItems = [NSArray arrayWithObject:item];
-    [item release];
     return list;
 }
 
@@ -69,7 +68,7 @@
 }
 
 - (IDLDrawable *)convertToDrawable {
-    IDLStateListDrawable *drawable = [[[IDLStateListDrawable alloc] initWithColorStateListe:self] autorelease];
+    IDLStateListDrawable *drawable = [[IDLStateListDrawable alloc] initWithColorStateListe:self];
     return drawable;
 }
 

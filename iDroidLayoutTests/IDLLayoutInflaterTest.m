@@ -7,7 +7,7 @@
 //
 
 #import "IDLLayoutInflaterTest.h"
-#import <iDroidLayout/iDroidLayout.h>
+#import "iDroidLayout.h" // iDroidLayout
 
 @interface IDLCustomTestView : UIView
 
@@ -25,7 +25,7 @@
     
     IDLLayoutBridge *rootView = [[IDLLayoutBridge alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
     UIView *view = [inflater inflateURL:url intoRootView:rootView attachToRoot:FALSE];
-    STAssertNotNil(view, @"Inflater returned nil when inflating simple view");
+    XCTAssertNotNil(view, @"Inflater returned nil when inflating simple view");
 }
 
 - (void)testInflateAttachToRootTrue {
@@ -34,8 +34,8 @@
     
     IDLLayoutBridge *rootView = [[IDLLayoutBridge alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
     UIView *view = [inflater inflateURL:url intoRootView:rootView attachToRoot:TRUE];
-    STAssertEquals(view, rootView, @"Inflater did not return rootView");
-    STAssertEquals((NSUInteger)1, [[rootView subviews] count], @"Inflater did not attach inflated view to rootView");
+    XCTAssertEqual(view, rootView, @"Inflater did not return rootView");
+    XCTAssertEqual((NSUInteger)1, [[rootView subviews] count], @"Inflater did not attach inflated view to rootView");
 }
 
 - (void)testInflateAttachToRootFalse {
@@ -44,7 +44,7 @@
     
     IDLLayoutBridge *rootView = [[IDLLayoutBridge alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
     UIView *view = [inflater inflateURL:url intoRootView:rootView attachToRoot:FALSE];
-    STAssertNil([view superview], @"Inflater attached inflated view to rootView");
+    XCTAssertNil([view superview], @"Inflater attached inflated view to rootView");
 }
 
 - (void)testInflateCustomView {
@@ -53,7 +53,7 @@
     
     IDLLayoutBridge *rootView = [[IDLLayoutBridge alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
     UIView *view = [inflater inflateURL:url intoRootView:rootView attachToRoot:FALSE];
-    STAssertEquals([IDLCustomTestView class], [view class], @"Inflater inflated the wrong view type");
+    XCTAssertEqual([IDLCustomTestView class], [view class], @"Inflater inflated the wrong view type");
 }
 
 - (void)testInflateIDLPrefixedViews {
@@ -62,7 +62,7 @@
     
     IDLLayoutBridge *rootView = [[IDLLayoutBridge alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
     UIView *view = [inflater inflateURL:url intoRootView:rootView attachToRoot:FALSE];
-    STAssertEquals([IDLCustomTestView class], [view class], @"Inflater didn't resolve the non-prefixed view name to a prefixed class name");
+    XCTAssertEqual([IDLCustomTestView class], [view class], @"Inflater didn't resolve the non-prefixed view name to a prefixed class name");
 }
 
 
@@ -72,8 +72,8 @@
     
     IDLLayoutBridge *rootView = [[IDLLayoutBridge alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
     UIView *view = [inflater inflateURL:url intoRootView:rootView attachToRoot:FALSE];
-    STAssertEquals([IDLLinearLayout class], [view class], @"Inflater did not inflate the LinearLayout root view");
-    STAssertEquals((NSUInteger)2, [[view subviews] count], @"Inflater inflated the wrong number of subviews");
+    XCTAssertEqual([IDLLinearLayout class], [view class], @"Inflater did not inflate the LinearLayout root view");
+    XCTAssertEqual((NSUInteger)2, [[view subviews] count], @"Inflater inflated the wrong number of subviews");
 }
 
 @end

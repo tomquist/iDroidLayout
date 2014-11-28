@@ -16,27 +16,26 @@
     _rootView = [[IDLLayoutBridge alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
     IDLLayoutInflater *inflater = [[IDLLayoutInflater alloc] init];
     [inflater inflateResource:@"viewgroupchildren.xml" intoRootView:_rootView attachToRoot:TRUE];
-    _group = [[[(IDLViewGroup *)_rootView subviews] lastObject] retain];
-    [inflater release];
+    _group = [[(IDLViewGroup *)_rootView subviews] lastObject];
 }
 
 - (void)tearDown {
-    [_rootView release];
-    [_group release];
+    _rootView = nil;
+    _group = nil;
     [super tearDown];
 }
 
 - (void)testAddChild {
     UIView *view = [self createViewWithText:@"1"];
     [_group addView:view];
-    STAssertEquals((NSUInteger)1, [[_group subviews] count], @"Wrong number of children");
+    XCTAssertEqual((NSUInteger)1, [[_group subviews] count], @"Wrong number of children");
 }
 
 - (IDLTextView *)createViewWithText:(NSString *)text {
     IDLTextView *view = [[IDLTextView alloc] initWithFrame:CGRectZero];
     view.text = text;
     view.layoutParams = [[IDLLinearLayoutLayoutParams alloc] initWithWidth:IDLLayoutParamsSizeMatchParent height:IDLLayoutParamsSizeWrapContent];
-    return [view autorelease];
+    return view;
 }
 
 - (void)testAddChildAtFront {
@@ -48,8 +47,8 @@
     UIView *view = [self createViewWithText:@"X"];
     [_group addView:view atIndex:0];
     
-    STAssertEquals((NSUInteger)25, [[_group subviews] count], @"Wrong number of children");
-    STAssertEquals(view, [[_group subviews] objectAtIndex:0], @"View has not been added at front");
+    XCTAssertEqual((NSUInteger)25, [[_group subviews] count], @"Wrong number of children");
+    XCTAssertEqual(view, [[_group subviews] objectAtIndex:0], @"View has not been added at front");
 }
 
 - (void)testAddChildInMiddle {
@@ -61,8 +60,8 @@
     UIView *view = [self createViewWithText:@"X"];
     [_group addView:view atIndex:12];
     
-    STAssertEquals((NSUInteger)25, [[_group subviews] count], @"Wrong number of children");
-    STAssertEquals(view, [[_group subviews] objectAtIndex:12], @"View has not been added in the middle");
+    XCTAssertEqual((NSUInteger)25, [[_group subviews] count], @"Wrong number of children");
+    XCTAssertEqual(view, [[_group subviews] objectAtIndex:12], @"View has not been added in the middle");
 }
 
 - (void)testAddChildren {
@@ -70,7 +69,7 @@
         UIView *view = [self createViewWithText:[NSString stringWithFormat:@"%d", (i + 1)]];
         [_group addView:view];
     }
-    STAssertEquals((NSUInteger)24, [[_group subviews] count], @"Wrong number of children");
+    XCTAssertEqual((NSUInteger)24, [[_group subviews] count], @"Wrong number of children");
 }
 
 - (void)testRemoveChild {
@@ -81,8 +80,8 @@
     
     [self assertGroup:_group notContains:view];
     
-    STAssertEquals((NSUInteger)0, [[_group subviews] count], @"Wrong number of children");
-    STAssertNil([view superview], @"Superview of remove view is not nil");
+    XCTAssertEqual((NSUInteger)0, [[_group subviews] count], @"Wrong number of children");
+    XCTAssertNil([view superview], @"Superview of remove view is not nil");
 }
 
 - (void)testRemoveChildren {
@@ -94,14 +93,14 @@
         [_group addView:v];
     }
     
-    for (int i = [views count] - 1; i >= 0; i--) {
+    for (int i = (int)[views count] - 1; i >= 0; i--) {
         UIView *v = [views objectAtIndex:i];
         [_group removeViewAtIndex:i];
         [self assertGroup:_group notContains:v];
-        STAssertNil([v superview], @"Removed view still has a parent");
+        XCTAssertNil([v superview], @"Removed view still has a parent");
     }
     
-    STAssertEquals((NSUInteger)0, [[_group subviews] count], @"ViewGroup still has subviews");
+    XCTAssertEqual((NSUInteger)0, [[_group subviews] count], @"ViewGroup still has subviews");
 }
 
 - (void)testRemoveChildAtFront {
@@ -116,9 +115,9 @@
     UIView *v = [views objectAtIndex:0];
     [_group removeViewAtIndex:0];
     [self assertGroup:_group notContains:v];
-    STAssertNil([v superview], @"View still has a superview");
+    XCTAssertNil([v superview], @"View still has a superview");
     
-    STAssertEquals([views count] - 1, [[_group subviews] count], @"ViewGroup has the wrong number of subviews");
+    XCTAssertEqual([views count] - 1, [[_group subviews] count], @"ViewGroup has the wrong number of subviews");
 }
 
 - (void)testRemoveChildInMiddle {
@@ -133,9 +132,9 @@
     UIView *v = [views objectAtIndex:12];
     [_group removeViewAtIndex:12];
     [self assertGroup:_group notContains:v];
-    STAssertNil([v superview], @"View still has a superview");
+    XCTAssertNil([v superview], @"View still has a superview");
     
-    STAssertEquals([views count] - 1, [[_group subviews] count], @"ViewGroup has the wrong number of subviews");
+    XCTAssertEqual([views count] - 1, [[_group subviews] count], @"ViewGroup has the wrong number of subviews");
 }
 
 @end

@@ -13,11 +13,11 @@
 
 @interface IDLShadowDrawableConstantState ()
 
-@property (nonatomic, retain) IDLDrawable *drawable;
+@property (nonatomic, strong) IDLDrawable *drawable;
 @property (nonatomic, assign) CGFloat alpha;
 @property (nonatomic, assign) CGSize offset;
 @property (nonatomic, assign) CGFloat blur;
-@property (nonatomic, retain) UIColor *shadowColor;
+@property (nonatomic, strong) UIColor *shadowColor;
 
 @end
 
@@ -25,19 +25,15 @@
 
 - (void)dealloc {
     self.drawable.delegate = nil;
-    self.drawable = nil;
-    self.shadowColor = nil;
-    [super dealloc];
 }
 
-- (id)initWithState:(IDLShadowDrawableConstantState *)state owner:(IDLShadowDrawable *)owner {
+- (instancetype)initWithState:(IDLShadowDrawableConstantState *)state owner:(IDLShadowDrawable *)owner {
     self = [super init];
     if (self) {
         if (state != nil) {
             IDLDrawable *copiedDrawable = [state.drawable copy];
             copiedDrawable.delegate = owner;
             self.drawable = copiedDrawable;
-            [copiedDrawable release];
             
             self.alpha = state.alpha;
             self.blur = state.blur;
@@ -55,23 +51,18 @@
 
 @interface IDLShadowDrawable ()
 
-@property (nonatomic, retain) IDLShadowDrawableConstantState *internalConstantState;
+@property (nonatomic, strong) IDLShadowDrawableConstantState *internalConstantState;
 
 @end
 
 @implementation IDLShadowDrawable
 
-- (void)dealloc {
-    self.internalConstantState = nil;
-    [super dealloc];
-}
 
-- (id)initWithState:(IDLShadowDrawableConstantState *)state {
+- (instancetype)initWithState:(IDLShadowDrawableConstantState *)state {
     self = [super init];
     if (self) {
         IDLShadowDrawableConstantState *s = [[IDLShadowDrawableConstantState alloc] initWithState:state owner:self];
         self.internalConstantState = s;
-        [s release];
     }
     return self;
 }

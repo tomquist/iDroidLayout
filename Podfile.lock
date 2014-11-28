@@ -1,0 +1,21 @@
+PODS:
+  - iDroidLayout (0.0.1):
+    - iDroidLayout/no-arc (= 0.0.1)
+    - TBXML (~> 1.5)
+  - iDroidLayout/no-arc (0.0.1):
+    - TBXML (~> 1.5)
+  - TBXML (1.5)
+
+DEPENDENCIES:
+  - iDroidLayout (from `iDroidLayout.podspec`)
+  - TBXML (~> 1.5)
+
+EXTERNAL SOURCES:
+  iDroidLayout:
+    :path: iDroidLayout.podspec
+
+SPEC CHECKSUMS:
+  iDroidLayout: 74dcf8e29e7db09ce01e5fc4883775301f0f3d60
+  TBXML: a279440030ba55c40e1455cafba3b0a44e1963d4
+
+COCOAPODS: 0.35.0

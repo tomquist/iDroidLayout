@@ -35,7 +35,7 @@
     [super dealloc];
 }
 
-- (id)initWithIdentifier:(NSString *)identifier object:(id)obj keyPaths:(NSArray *)keyPaths options:(NSKeyValueObservingOptions)options observerBlock:(IDLKVOObserverBlock)block {
+- (instancetype)initWithIdentifier:(NSString *)identifier object:(id)obj keyPaths:(NSArray *)keyPaths options:(NSKeyValueObservingOptions)options observerBlock:(IDLKVOObserverBlock)block {
     self = [super init];
     if (self) {
         self.identifier = identifier;

@@ -9,7 +9,7 @@
 #import "UIView+IDLDrawable.h"
 #import "UIView+IDL_Layout.h"
 #import "NSObject+IDL_KVOObserver.h"
-#import "IDLDrawableLayer.h"
+#import "IDLDrawableLayer.h" // iDroidLayout
 #include <objc/runtime.h>
 
 @interface IDLBackgroundDrawableLayer : CALayer
@@ -68,15 +68,14 @@ static char backgroundDrawableKey;
         if (existingBackgroundLayer == nil) {
             existingBackgroundLayer = [[IDLDrawableLayer alloc] init];
             [self.layer insertSublayer:existingBackgroundLayer atIndex:0];
-            [existingBackgroundLayer release];
         }
         existingBackgroundLayer.drawable = drawable;
         existingBackgroundLayer.frame = self.bounds;
         [existingBackgroundLayer setNeedsDisplay];
         
         if (![self idl_hasObserverWithIdentifier:BackgroundDrawableFrameTag]) {
-            __block UIView *selfRef = self;
-            __block IDLDrawableLayer *layer = existingBackgroundLayer;
+            __weak UIView *selfRef = self;
+            __weak IDLDrawableLayer *layer = existingBackgroundLayer;
             [self idl_addObserver:^(NSString *keyPath, id object, NSDictionary *change) {
                 layer.frame = selfRef.bounds;
             } withIdentifier:BackgroundDrawableFrameTag forKeyPaths:@[@"frame"] options:NSKeyValueObservingOptionNew];

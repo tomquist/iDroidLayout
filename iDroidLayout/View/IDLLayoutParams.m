@@ -17,13 +17,9 @@
 @synthesize width = _width;
 @synthesize height = _height;
 
-- (void)dealloc {
-	
-	[super dealloc];
-}
 
 
-- (id)initWithWidth:(CGFloat)width height:(CGFloat)height {
+- (instancetype)initWithWidth:(CGFloat)width height:(CGFloat)height {
 	self = [super init];
 	if (self != nil) {
 		_width = width;
@@ -32,7 +28,7 @@
 	return self;
 }
 
-- (id)initWithLayoutParams:(IDLLayoutParams *)layoutParams {
+- (instancetype)initWithLayoutParams:(IDLLayoutParams *)layoutParams {
     self = [self initWithWidth:layoutParams.width height:layoutParams.height];
 	if (self != nil) {
 		
@@ -52,14 +48,13 @@
     return ret;
 }
 
-- (id)initWithAttributes:(NSDictionary *)attrs {
+- (instancetype)initWithAttributes:(NSDictionary *)attrs {
     self = [super init];
     if (self) {
         NSString *widthAttr = [attrs objectForKey:@"layout_width"];
         NSString *heightAttr = [attrs objectForKey:@"layout_height"];
         if (widthAttr == nil || heightAttr == nil) {
             NSLog(@"You have to set the layout_width and laypit_height parameters.");
-            [self release];
             return nil;
         }
         _width = [IDLLayoutParams sizeForLayoutSizeAttribute:widthAttr];

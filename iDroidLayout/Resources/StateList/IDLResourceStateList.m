@@ -14,7 +14,7 @@
 
 @interface IDLResourceStateList ()
 
-@property (nonatomic, retain) NSArray *internalItems;
+@property (nonatomic, strong) NSArray *internalItems;
 
 @end
 
@@ -22,15 +22,11 @@
 
 @synthesize internalItems = _internalItems;
 
-- (void)dealloc {
-    self.internalItems = nil;
-    [super dealloc];
-}
 
 - (id)init {
     self = [super init];
     if (self) {
-        self.internalItems = [[[NSMutableArray alloc] init] autorelease];
+        self.internalItems = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -63,7 +59,7 @@
 }
 
 + (IDLResourceStateItem *)createItemWithControlState:(UIControlState)controlState fromElement:(TBXMLElement *)element {
-    IDLResourceStateItem *ret = [[[IDLResourceStateItem alloc] initWithControlState:controlState] autorelease];
+    IDLResourceStateItem *ret = [[IDLResourceStateItem alloc] initWithControlState:controlState];
     return ret;
 }
 
@@ -71,7 +67,7 @@
     IDLResourceStateList *ret = nil;
     TBXMLElement *root = parser.rootXMLElement;
     if ([[TBXML elementName:root] isEqualToString:@"selector"]) {
-        ret = [[[self alloc] init] autorelease];
+        ret = [[self alloc] init];
         NSMutableArray *mutableItems = [[NSMutableArray alloc] init];
         TBXMLElement *child = root->firstChild;
         if (child != nil) {
@@ -86,8 +82,6 @@
         }
         NSArray *nonMutableItems = [[NSArray alloc] initWithArray:mutableItems];
         ret.internalItems = nonMutableItems;
-        [nonMutableItems release];
-        [mutableItems release];
     }
     return ret;
 }
@@ -96,7 +90,7 @@
     if (data == nil) return nil;
     IDLResourceStateList *ret = nil;
     NSError *error = nil;
-    TBXML *xml = [[TBXML newTBXMLWithXMLData:data error:&error] autorelease];
+    TBXML *xml = [TBXML tbxmlWithXMLData:data error:&error];
     if (error == nil) {
         ret = [self inflateParser:xml];
     } else {

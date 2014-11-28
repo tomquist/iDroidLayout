@@ -10,16 +10,12 @@
 
 @interface IDLXMLCache ()
 
-@property (nonatomic, retain) NSCache *cache;
+@property (nonatomic, strong) NSCache *cache;
 
 @end
 
 @implementation IDLXMLCache
 
-- (void)dealloc {
-    self.cache = nil;
-    [super dealloc];
-}
 
 + (IDLXMLCache *)sharedInstance {
     static IDLXMLCache *Instance = nil;
@@ -36,7 +32,7 @@
 - (id)init {
     self = [super init];
     if (self) {
-        self.cache = [[[NSCache alloc] init] autorelease];
+        self.cache = [[NSCache alloc] init];
     }
     return self;
 }
@@ -47,7 +43,7 @@
         NSData *data = [NSData dataWithContentsOfURL:url];
         @synchronized(self) {
             if (![self.cache objectForKey:[url absoluteString]]) {
-                xml = [[[TBXML alloc] initWithXMLData:data error:error] autorelease];
+                xml = [[TBXML alloc] initWithXMLData:data error:error];
                 if (xml != nil) {
                     [self.cache setObject:xml forKey:[url absoluteString] cost:[data length]];
                 } else if ([url isFileURL]) {

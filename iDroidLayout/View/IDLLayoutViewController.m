@@ -11,10 +11,6 @@
 
 @implementation IDLLayoutViewController
 
-- (void)dealloc {
-    [_layoutUrl release];
-    [super dealloc];
-}
 
 - (id)init {
     self = [super init];
@@ -24,20 +20,20 @@
     return self;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
         if (nibBundleOrNil == nil) {
             nibBundleOrNil = [NSBundle mainBundle];
         }
         if (nibNameOrNil != nil) {
-            _layoutUrl = [[nibBundleOrNil URLForResource:nibNameOrNil withExtension:@"xml"] retain];
+            _layoutUrl = [nibBundleOrNil URLForResource:nibNameOrNil withExtension:@"xml"];
         }
     }
     return self;
 }
 
-- (id)initWithLayoutName:(NSString *)layoutNameOrNil bundle:(NSBundle *)layoutBundleOrNil {
+- (instancetype)initWithLayoutName:(NSString *)layoutNameOrNil bundle:(NSBundle *)layoutBundleOrNil {
     self = [self initWithNibName:layoutNameOrNil bundle:layoutBundleOrNil];
     if (self) {
         
@@ -45,10 +41,10 @@
     return self;
 }
 
-- (id)initWithLayoutURL:(NSURL *)layoutURL {
+- (instancetype)initWithLayoutURL:(NSURL *)layoutURL {
     self = [super init];
     if (self) {
-        _layoutUrl = [layoutURL retain];
+        _layoutUrl = layoutURL;
     }
     return self;
 }
@@ -64,10 +60,8 @@
         IDLLayoutInflater *inflater = [[IDLLayoutInflater alloc] init];
         inflater.actionTarget = self;
         [inflater inflateURL:_layoutUrl intoRootView:bridge attachToRoot:TRUE];
-        [inflater release];
     }
     self.view = bridge;
-    [bridge release];
 }
 
 - (IDLLayoutBridge *)view {

@@ -7,225 +7,139 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		79269316167BF7A00078EE37 /* values.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79269315167BF7A00078EE37 /* values.xml */; };
-		7926931D167D03FE0078EE37 /* IDLResourceValueSet.h in Headers */ = {isa = PBXBuildFile; fileRef = 79269318167D03FE0078EE37 /* IDLResourceValueSet.h */; };
-		7926931E167D03FE0078EE37 /* IDLResourceValueSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 79269319167D03FE0078EE37 /* IDLResourceValueSet.m */; };
-		7926931F167D03FE0078EE37 /* IDLStyle+IDL_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 7926931A167D03FE0078EE37 /* IDLStyle+IDL_Internal.h */; };
-		79269320167D03FE0078EE37 /* IDLStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = 7926931B167D03FE0078EE37 /* IDLStyle.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79269321167D03FE0078EE37 /* IDLStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7926931C167D03FE0078EE37 /* IDLStyle.m */; };
-		79269324167D11970078EE37 /* IDLStringArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 79269322167D11970078EE37 /* IDLStringArray.h */; };
-		79269325167D11970078EE37 /* IDLStringArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 79269323167D11970078EE37 /* IDLStringArray.m */; };
-		7926940A167E0E0A0078EE37 /* IDLDrawable.h in Headers */ = {isa = PBXBuildFile; fileRef = 79269408167E0E0A0078EE37 /* IDLDrawable.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7926940B167E0E0A0078EE37 /* IDLDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 79269409167E0E0A0078EE37 /* IDLDrawable.m */; };
-		79642BF01603C4A30095D5A2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79642BEE1603C4A30095D5A2 /* InfoPlist.strings */; };
-		79642BFA1603C4A30095D5A2 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79642BF91603C4A30095D5A2 /* SenTestingKit.framework */; };
-		79642C011603C4A30095D5A2 /* iDroidLayout.framework in Resources */ = {isa = PBXBuildFile; fileRef = 79642BE91603C4A20095D5A2 /* iDroidLayout.framework */; };
-		79642C071603C4A30095D5A2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79642C051603C4A30095D5A2 /* InfoPlist.strings */; };
+		379C7218C2EC4D25A4F1D371 /* libPods-test.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3466C4187E343C8965C60D0 /* libPods-test.a */; };
+		3A858FE88D8844138D3781E1 /* libPods-test.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3466C4187E343C8965C60D0 /* libPods-test.a */; };
+		794BF81E182C4FF300A6DF05 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79642CEC1603D3F80095D5A2 /* Foundation.framework */; };
+		794BF82C182C4FF300A6DF05 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 794BF82B182C4FF300A6DF05 /* XCTest.framework */; };
+		794BF82D182C4FF300A6DF05 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79642CEC1603D3F80095D5A2 /* Foundation.framework */; };
+		794BF82E182C4FF300A6DF05 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79642CEA1603D3F20095D5A2 /* UIKit.framework */; };
+		794BF840182C508600A6DF05 /* IDLBitmapDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 79718ADB167FAC9B00414CCE /* IDLBitmapDrawable.m */; };
+		794BF841182C508600A6DF05 /* IDLClipDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B5BFA5169B6A3700FA1D94 /* IDLClipDrawable.m */; };
+		794BF842182C508600A6DF05 /* IDLColorDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 79718AE0167FAD9D00414CCE /* IDLColorDrawable.m */; };
+		794BF843182C508600A6DF05 /* IDLDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 79269409167E0E0A0078EE37 /* IDLDrawable.m */; };
+		794BF844182C508600A6DF05 /* IDLDrawableContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 79718AE8167FAE3D00414CCE /* IDLDrawableContainer.m */; };
+		794BF845182C508600A6DF05 /* IDLDrawableLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DE0BED1690C87200EDACE3 /* IDLDrawableLayer.m */; };
+		794BF846182C508600A6DF05 /* IDLGradientDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 79718AF4167FAEB500414CCE /* IDLGradientDrawable.m */; };
+		794BF847182C508600A6DF05 /* IDLInsetDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 79718AE4167FADB900414CCE /* IDLInsetDrawable.m */; };
+		794BF848182C508600A6DF05 /* IDLLayerDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 79718AF0167FAEA800414CCE /* IDLLayerDrawable.m */; };
+		794BF849182C508600A6DF05 /* IDLNinePatchDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 79718B0F1681DE5300414CCE /* IDLNinePatchDrawable.m */; };
+		794BF84A182C508600A6DF05 /* IDLRotateDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B5BFBE16A2CFF100FA1D94 /* IDLRotateDrawable.m */; };
+		794BF84B182C508600A6DF05 /* IDLShadowDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B5BFC216A5D36300FA1D94 /* IDLShadowDrawable.m */; };
+		794BF84C182C508600A6DF05 /* IDLStateListDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 79718AEC167FAE9400414CCE /* IDLStateListDrawable.m */; };
+		794BF84D182C508600A6DF05 /* UIView+IDLDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 79718B0516809FAE00414CCE /* UIView+IDLDrawable.m */; };
+		794BF84F182C508600A6DF05 /* NSDictionary+IDL_ResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7981410F166BD65800A63480 /* NSDictionary+IDL_ResourceManager.m */; };
+		794BF850182C508600A6DF05 /* IDLColorStateItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B9833A1674D2F200F844DB /* IDLColorStateItem.m */; };
+		794BF851182C508600A6DF05 /* IDLColorStateList.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B9833C1674D2F200F844DB /* IDLColorStateList.m */; };
+		794BF852182C508600A6DF05 /* IDLDrawableStateItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B9833F1674D2F200F844DB /* IDLDrawableStateItem.m */; };
+		794BF853182C508600A6DF05 /* IDLDrawableStateList.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B983411674D2F200F844DB /* IDLDrawableStateList.m */; };
+		794BF854182C508600A6DF05 /* IDLResourceStateItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B983441674D2F200F844DB /* IDLResourceStateItem.m */; };
+		794BF855182C508600A6DF05 /* IDLResourceStateList.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B983471674D2F200F844DB /* IDLResourceStateList.m */; };
+		794BF856182C508600A6DF05 /* IDLResourceValueSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 79269319167D03FE0078EE37 /* IDLResourceValueSet.m */; };
+		794BF857182C508600A6DF05 /* IDLStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7926931C167D03FE0078EE37 /* IDLStyle.m */; };
+		794BF858182C508600A6DF05 /* IDLStringArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 79269323167D11970078EE37 /* IDLStringArray.m */; };
+		794BF859182C508600A6DF05 /* IDLXMLCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DE0C131699B81300EDACE3 /* IDLXMLCache.m */; };
+		794BF85A182C508600A6DF05 /* IDLFinitePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C341603C5500095D5A2 /* IDLFinitePool.m */; };
+		794BF85B182C508600A6DF05 /* IDLPools.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C391603C5500095D5A2 /* IDLPools.m */; };
+		794BF85C182C508600A6DF05 /* IDLSynchronizedPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C3B1603C5500095D5A2 /* IDLSynchronizedPool.m */; };
+		794BF85D182C508600A6DF05 /* UIColor+IDL_ColorParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C3D1603C5500095D5A2 /* UIColor+IDL_ColorParser.m */; };
+		794BF85E182C508600A6DF05 /* UIImage+IDL_FromColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 796E1DB316735B1900E78B45 /* UIImage+IDL_FromColor.m */; };
+		794BF85F182C508600A6DF05 /* TBXML+IDL.m in Sources */ = {isa = PBXBuildFile; fileRef = 79718B0B1680E10F00414CCE /* TBXML+IDL.m */; };
+		794BF860182C508600A6DF05 /* UIImage+IDLNinePatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 79718B131681FF1100414CCE /* UIImage+IDLNinePatch.m */; };
+		794BF861182C508600A6DF05 /* NSObject+IDL_KVOObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DE0ABC1684AFF200EDACE3 /* NSObject+IDL_KVOObserver.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		794BF862182C508600A6DF05 /* IDLGravity.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C401603C5500095D5A2 /* IDLGravity.m */; };
+		794BF863182C508600A6DF05 /* IDLLayoutBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C421603C5500095D5A2 /* IDLLayoutBridge.m */; };
+		794BF864182C508600A6DF05 /* IDLLayoutParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C441603C5500095D5A2 /* IDLLayoutParams.m */; };
+		794BF865182C508600A6DF05 /* IDLLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C461603C5500095D5A2 /* IDLLayoutViewController.m */; };
+		794BF866182C508600A6DF05 /* IDLMarginLayoutParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C481603C5500095D5A2 /* IDLMarginLayoutParams.m */; };
+		794BF867182C508600A6DF05 /* IDLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C4A1603C5500095D5A2 /* IDLTableViewCell.m */; };
+		794BF868182C508600A6DF05 /* IDLViewGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C4C1603C5500095D5A2 /* IDLViewGroup.m */; };
+		794BF869182C508600A6DF05 /* IDLBaseViewFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C4F1603C5500095D5A2 /* IDLBaseViewFactory.m */; };
+		794BF86A182C508600A6DF05 /* IDLLayoutInflater.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C511603C5500095D5A2 /* IDLLayoutInflater.m */; };
+		794BF86B182C508600A6DF05 /* UIView+IDL_Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C541603C5500095D5A2 /* UIView+IDL_Layout.m */; };
+		794BF86C182C508600A6DF05 /* UIView+IDL_ViewGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C561603C5500095D5A2 /* UIView+IDL_ViewGroup.m */; };
+		794BF86D182C508600A6DF05 /* UIButton+IDL_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C5A1603C5500095D5A2 /* UIButton+IDL_View.m */; };
+		794BF86E182C508600A6DF05 /* UIControl+IDL_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C5C1603C5500095D5A2 /* UIControl+IDL_View.m */; };
+		794BF86F182C508600A6DF05 /* UIImageView+IDL_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C5E1603C5500095D5A2 /* UIImageView+IDL_View.m */; };
+		794BF870182C508600A6DF05 /* UILabel+IDL_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C601603C5500095D5A2 /* UILabel+IDL_View.m */; };
+		794BF871182C508600A6DF05 /* UINavigationBar+IDL_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 798140F9166A87C200A63480 /* UINavigationBar+IDL_View.m */; };
+		794BF872182C508600A6DF05 /* UIScrollView+IDL_ViewGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C621603C5500095D5A2 /* UIScrollView+IDL_ViewGroup.m */; };
+		794BF873182C508600A6DF05 /* UISearchBar+IDL_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 79814102166A8DC500A63480 /* UISearchBar+IDL_View.m */; };
+		794BF874182C508600A6DF05 /* UISwitch+IDL_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 79814106166A8F3D00A63480 /* UISwitch+IDL_View.m */; };
+		794BF875182C508600A6DF05 /* UIToolbar+IDL_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 798140FE166A8A5700A63480 /* UIToolbar+IDL_View.m */; };
+		794BF876182C508600A6DF05 /* UIWebView+IDL_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C641603C5500095D5A2 /* UIWebView+IDL_View.m */; };
+		794BF877182C508600A6DF05 /* UITextView+IDL_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DE0C09169605A700EDACE3 /* UITextView+IDL_View.m */; };
+		794BF878182C508600A6DF05 /* IDLButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DE0C0D1698A56D00EDACE3 /* IDLButton.m */; };
+		794BF879182C508600A6DF05 /* IDLEditText.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DE0C011696010100EDACE3 /* IDLEditText.m */; };
+		794BF87A182C508600A6DF05 /* IDLTextArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DE0C05169604A100EDACE3 /* IDLTextArea.m */; };
+		794BF87B182C508600A6DF05 /* IDLTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C661603C5500095D5A2 /* IDLTextView.m */; };
+		794BF87C182C508600A6DF05 /* IDLFrameLayoutLayoutParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C6B1603C5500095D5A2 /* IDLFrameLayoutLayoutParams.m */; };
+		794BF87D182C508600A6DF05 /* IDLLinearLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C701603C5500095D5A2 /* IDLLinearLayout.m */; };
+		794BF87E182C508600A6DF05 /* IDLLinearLayoutLayoutParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C721603C5500095D5A2 /* IDLLinearLayoutLayoutParams.m */; };
+		794BF87F182C508600A6DF05 /* IDLDependencyGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C751603C5500095D5A2 /* IDLDependencyGraph.m */; };
+		794BF880182C508600A6DF05 /* IDLDependencyGraphNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C771603C5500095D5A2 /* IDLDependencyGraphNode.m */; };
+		794BF881182C508600A6DF05 /* IDLRelativeLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C791603C5500095D5A2 /* IDLRelativeLayout.m */; };
+		794BF882182C508600A6DF05 /* IDLRelativeLayoutLayoutParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C7B1603C5500095D5A2 /* IDLRelativeLayoutLayoutParams.m */; };
+		794BF885182C50EC00A6DF05 /* IDLViewAsserts.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642CFB1603E8560095D5A2 /* IDLViewAsserts.m */; };
+		794BF886182C50EF00A6DF05 /* IDLViewGroupTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642CF61603E2920095D5A2 /* IDLViewGroupTest.m */; };
+		794BF887182C50F300A6DF05 /* IDLFrameLayoutGravityTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642D001605E24E0095D5A2 /* IDLFrameLayoutGravityTest.m */; };
+		794BF888182C50FF00A6DF05 /* IDLLayoutInflaterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642CE11603D0620095D5A2 /* IDLLayoutInflaterTest.m */; };
 		79642C191603C4E80095D5A2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79642BFB1603C4A30095D5A2 /* UIKit.framework */; };
 		79642C1A1603C4E80095D5A2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79642BFD1603C4A30095D5A2 /* Foundation.framework */; };
 		79642C1C1603C4E80095D5A2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79642C1B1603C4E80095D5A2 /* CoreGraphics.framework */; };
 		79642C221603C4E80095D5A2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79642C201603C4E80095D5A2 /* InfoPlist.strings */; };
 		79642C241603C4E80095D5A2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C231603C4E80095D5A2 /* main.m */; };
-		79642C7C1603C5500095D5A2 /* iDroidLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 79642C2E1603C5500095D5A2 /* iDroidLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79642C7D1603C5500095D5A2 /* TBXML.h in Headers */ = {isa = PBXBuildFile; fileRef = 79642C301603C5500095D5A2 /* TBXML.h */; };
-		79642C7E1603C5500095D5A2 /* TBXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C311603C5500095D5A2 /* TBXML.m */; };
-		79642C7F1603C5500095D5A2 /* IDLFinitePool.h in Headers */ = {isa = PBXBuildFile; fileRef = 79642C331603C5500095D5A2 /* IDLFinitePool.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79642C801603C5500095D5A2 /* IDLFinitePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C341603C5500095D5A2 /* IDLFinitePool.m */; };
-		79642C811603C5500095D5A2 /* IDLPool.h in Headers */ = {isa = PBXBuildFile; fileRef = 79642C351603C5500095D5A2 /* IDLPool.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79642C821603C5500095D5A2 /* IDLPoolable.h in Headers */ = {isa = PBXBuildFile; fileRef = 79642C361603C5500095D5A2 /* IDLPoolable.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79642C831603C5500095D5A2 /* IDLPoolableManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 79642C371603C5500095D5A2 /* IDLPoolableManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79642C841603C5500095D5A2 /* IDLPools.h in Headers */ = {isa = PBXBuildFile; fileRef = 79642C381603C5500095D5A2 /* IDLPools.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79642C851603C5500095D5A2 /* IDLPools.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C391603C5500095D5A2 /* IDLPools.m */; };
-		79642C861603C5500095D5A2 /* IDLSynchronizedPool.h in Headers */ = {isa = PBXBuildFile; fileRef = 79642C3A1603C5500095D5A2 /* IDLSynchronizedPool.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79642C871603C5500095D5A2 /* IDLSynchronizedPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C3B1603C5500095D5A2 /* IDLSynchronizedPool.m */; };
-		79642C881603C5500095D5A2 /* UIColor+IDL_ColorParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 79642C3C1603C5500095D5A2 /* UIColor+IDL_ColorParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79642C891603C5500095D5A2 /* UIColor+IDL_ColorParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C3D1603C5500095D5A2 /* UIColor+IDL_ColorParser.m */; };
-		79642C8A1603C5500095D5A2 /* IDLGravity.h in Headers */ = {isa = PBXBuildFile; fileRef = 79642C3F1603C5500095D5A2 /* IDLGravity.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79642C8B1603C5500095D5A2 /* IDLGravity.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C401603C5500095D5A2 /* IDLGravity.m */; };
-		79642C8C1603C5500095D5A2 /* IDLLayoutBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 79642C411603C5500095D5A2 /* IDLLayoutBridge.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79642C8D1603C5500095D5A2 /* IDLLayoutBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C421603C5500095D5A2 /* IDLLayoutBridge.m */; };
-		79642C8E1603C5500095D5A2 /* IDLLayoutParams.h in Headers */ = {isa = PBXBuildFile; fileRef = 79642C431603C5500095D5A2 /* IDLLayoutParams.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79642C8F1603C5500095D5A2 /* IDLLayoutParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C441603C5500095D5A2 /* IDLLayoutParams.m */; };
-		79642C901603C5500095D5A2 /* IDLLayoutViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 79642C451603C5500095D5A2 /* IDLLayoutViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79642C911603C5500095D5A2 /* IDLLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C461603C5500095D5A2 /* IDLLayoutViewController.m */; };
-		79642C921603C5500095D5A2 /* IDLMarginLayoutParams.h in Headers */ = {isa = PBXBuildFile; fileRef = 79642C471603C5500095D5A2 /* IDLMarginLayoutParams.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79642C931603C5500095D5A2 /* IDLMarginLayoutParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C481603C5500095D5A2 /* IDLMarginLayoutParams.m */; };
-		79642C941603C5500095D5A2 /* IDLTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 79642C491603C5500095D5A2 /* IDLTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79642C951603C5500095D5A2 /* IDLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C4A1603C5500095D5A2 /* IDLTableViewCell.m */; };
-		79642C961603C5500095D5A2 /* IDLViewGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 79642C4B1603C5500095D5A2 /* IDLViewGroup.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79642C971603C5500095D5A2 /* IDLViewGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C4C1603C5500095D5A2 /* IDLViewGroup.m */; };
-		79642C981603C5500095D5A2 /* IDLBaseViewFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 79642C4E1603C5500095D5A2 /* IDLBaseViewFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79642C991603C5500095D5A2 /* IDLBaseViewFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C4F1603C5500095D5A2 /* IDLBaseViewFactory.m */; };
-		79642C9A1603C5500095D5A2 /* IDLLayoutInflater.h in Headers */ = {isa = PBXBuildFile; fileRef = 79642C501603C5500095D5A2 /* IDLLayoutInflater.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79642C9B1603C5500095D5A2 /* IDLLayoutInflater.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C511603C5500095D5A2 /* IDLLayoutInflater.m */; };
-		79642C9C1603C5500095D5A2 /* IDLViewFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 79642C521603C5500095D5A2 /* IDLViewFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79642C9D1603C5500095D5A2 /* UIView+IDL_Layout.h in Headers */ = {isa = PBXBuildFile; fileRef = 79642C531603C5500095D5A2 /* UIView+IDL_Layout.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79642C9E1603C5500095D5A2 /* UIView+IDL_Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C541603C5500095D5A2 /* UIView+IDL_Layout.m */; };
-		79642C9F1603C5500095D5A2 /* UIView+IDL_ViewGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 79642C551603C5500095D5A2 /* UIView+IDL_ViewGroup.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79642CA01603C5500095D5A2 /* UIView+IDL_ViewGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C561603C5500095D5A2 /* UIView+IDL_ViewGroup.m */; };
-		79642CA11603C5500095D5A2 /* UIButton+IDL_View.h in Headers */ = {isa = PBXBuildFile; fileRef = 79642C591603C5500095D5A2 /* UIButton+IDL_View.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79642CA21603C5500095D5A2 /* UIButton+IDL_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C5A1603C5500095D5A2 /* UIButton+IDL_View.m */; };
-		79642CA31603C5500095D5A2 /* UIControl+IDL_View.h in Headers */ = {isa = PBXBuildFile; fileRef = 79642C5B1603C5500095D5A2 /* UIControl+IDL_View.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79642CA41603C5500095D5A2 /* UIControl+IDL_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C5C1603C5500095D5A2 /* UIControl+IDL_View.m */; };
-		79642CA51603C5500095D5A2 /* UIImageView+IDL_View.h in Headers */ = {isa = PBXBuildFile; fileRef = 79642C5D1603C5500095D5A2 /* UIImageView+IDL_View.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79642CA61603C5500095D5A2 /* UIImageView+IDL_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C5E1603C5500095D5A2 /* UIImageView+IDL_View.m */; };
-		79642CA71603C5500095D5A2 /* UILabel+IDL_View.h in Headers */ = {isa = PBXBuildFile; fileRef = 79642C5F1603C5500095D5A2 /* UILabel+IDL_View.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79642CA81603C5500095D5A2 /* UILabel+IDL_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C601603C5500095D5A2 /* UILabel+IDL_View.m */; };
-		79642CA91603C5500095D5A2 /* UIScrollView+IDL_ViewGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 79642C611603C5500095D5A2 /* UIScrollView+IDL_ViewGroup.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79642CAA1603C5500095D5A2 /* UIScrollView+IDL_ViewGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C621603C5500095D5A2 /* UIScrollView+IDL_ViewGroup.m */; };
-		79642CAB1603C5500095D5A2 /* UIWebView+IDL_View.h in Headers */ = {isa = PBXBuildFile; fileRef = 79642C631603C5500095D5A2 /* UIWebView+IDL_View.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79642CAC1603C5500095D5A2 /* UIWebView+IDL_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C641603C5500095D5A2 /* UIWebView+IDL_View.m */; };
-		79642CAD1603C5500095D5A2 /* IDLTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 79642C651603C5500095D5A2 /* IDLTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79642CAE1603C5500095D5A2 /* IDLTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C661603C5500095D5A2 /* IDLTextView.m */; };
-		79642CAF1603C5500095D5A2 /* IDLFrameLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 79642C691603C5500095D5A2 /* IDLFrameLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79642CB01603C5500095D5A2 /* IDLFrameLayoutLayoutParams.h in Headers */ = {isa = PBXBuildFile; fileRef = 79642C6A1603C5500095D5A2 /* IDLFrameLayoutLayoutParams.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79642CB11603C5500095D5A2 /* IDLFrameLayoutLayoutParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C6B1603C5500095D5A2 /* IDLFrameLayoutLayoutParams.m */; };
-		79642CB21603C5500095D5A2 /* IDLLayouts.h in Headers */ = {isa = PBXBuildFile; fileRef = 79642C6D1603C5500095D5A2 /* IDLLayouts.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79642CB31603C5500095D5A2 /* IDLLinearLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 79642C6F1603C5500095D5A2 /* IDLLinearLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79642CB41603C5500095D5A2 /* IDLLinearLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C701603C5500095D5A2 /* IDLLinearLayout.m */; };
-		79642CB51603C5500095D5A2 /* IDLLinearLayoutLayoutParams.h in Headers */ = {isa = PBXBuildFile; fileRef = 79642C711603C5500095D5A2 /* IDLLinearLayoutLayoutParams.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79642CB61603C5500095D5A2 /* IDLLinearLayoutLayoutParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C721603C5500095D5A2 /* IDLLinearLayoutLayoutParams.m */; };
-		79642CB71603C5500095D5A2 /* IDLDependencyGraph.h in Headers */ = {isa = PBXBuildFile; fileRef = 79642C741603C5500095D5A2 /* IDLDependencyGraph.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79642CB81603C5500095D5A2 /* IDLDependencyGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C751603C5500095D5A2 /* IDLDependencyGraph.m */; };
-		79642CB91603C5500095D5A2 /* IDLDependencyGraphNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 79642C761603C5500095D5A2 /* IDLDependencyGraphNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79642CBA1603C5500095D5A2 /* IDLDependencyGraphNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C771603C5500095D5A2 /* IDLDependencyGraphNode.m */; };
-		79642CBB1603C5500095D5A2 /* IDLRelativeLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 79642C781603C5500095D5A2 /* IDLRelativeLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79642CBC1603C5500095D5A2 /* IDLRelativeLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C791603C5500095D5A2 /* IDLRelativeLayout.m */; };
-		79642CBD1603C5500095D5A2 /* IDLRelativeLayoutLayoutParams.h in Headers */ = {isa = PBXBuildFile; fileRef = 79642C7A1603C5500095D5A2 /* IDLRelativeLayoutLayoutParams.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79642CBE1603C5500095D5A2 /* IDLRelativeLayoutLayoutParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642C7B1603C5500095D5A2 /* IDLRelativeLayoutLayoutParams.m */; };
 		79642CCD1603C5DB0095D5A2 /* android.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 79642CBF1603C5DB0095D5A2 /* android.jpg */; };
-		79642CCE1603C5DB0095D5A2 /* animations.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79642CC01603C5DB0095D5A2 /* animations.xml */; };
-		79642CCF1603C5DB0095D5A2 /* formular.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79642CC11603C5DB0095D5A2 /* formular.xml */; };
-		79642CD01603C5DB0095D5A2 /* formular~ipad.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79642CC21603C5DB0095D5A2 /* formular~ipad.xml */; };
 		79642CD11603C5DB0095D5A2 /* FormularViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642CC41603C5DB0095D5A2 /* FormularViewController.m */; };
 		79642CD21603C5DB0095D5A2 /* IDLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642CC61603C5DB0095D5A2 /* IDLAppDelegate.m */; };
 		79642CD31603C5DB0095D5A2 /* LayoutAnimationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642CC81603C5DB0095D5A2 /* LayoutAnimationsViewController.m */; };
-		79642CD41603C5DB0095D5A2 /* mainCell.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79642CC91603C5DB0095D5A2 /* mainCell.xml */; };
 		79642CD51603C5DB0095D5A2 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642CCB1603C5DB0095D5A2 /* MainViewController.m */; };
-		79642CD61603C5DB0095D5A2 /* scrollviews.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79642CCC1603C5DB0095D5A2 /* scrollviews.xml */; };
-		79642CDA1603CA1D0095D5A2 /* iDroidLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79642CD81603CA1D0095D5A2 /* iDroidLayout.framework */; };
-		79642CE21603D0620095D5A2 /* IDLLayoutInflaterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642CE11603D0620095D5A2 /* IDLLayoutInflaterTest.m */; };
-		79642CE51603D1B20095D5A2 /* testLayout1.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79642CE41603D1B20095D5A2 /* testLayout1.xml */; };
-		79642CEB1603D3F20095D5A2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79642CEA1603D3F20095D5A2 /* UIKit.framework */; };
-		79642CED1603D3F80095D5A2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79642CEC1603D3F80095D5A2 /* Foundation.framework */; };
-		79642CEE1603D3FE0095D5A2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79642C1B1603C4E80095D5A2 /* CoreGraphics.framework */; };
-		79642CF01603D7060095D5A2 /* testLayout2.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79642CEF1603D7060095D5A2 /* testLayout2.xml */; };
-		79642CF21603D8BA0095D5A2 /* testLayout3.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79642CF11603D8BA0095D5A2 /* testLayout3.xml */; };
-		79642CF41603D9B30095D5A2 /* testLayout4.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79642CF31603D9B30095D5A2 /* testLayout4.xml */; };
-		79642CF71603E2920095D5A2 /* IDLViewGroupTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642CF61603E2920095D5A2 /* IDLViewGroupTest.m */; };
-		79642CF91603E4610095D5A2 /* viewgroupchildren.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79642CF81603E4610095D5A2 /* viewgroupchildren.xml */; };
-		79642CFC1603E8560095D5A2 /* IDLViewAsserts.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642CFB1603E8560095D5A2 /* IDLViewAsserts.m */; };
-		79642CFE1605E1790095D5A2 /* framelayout_gravity.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79642CFD1605E1790095D5A2 /* framelayout_gravity.xml */; };
-		79642D011605E24E0095D5A2 /* IDLFrameLayoutGravityTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 79642D001605E24E0095D5A2 /* IDLFrameLayoutGravityTest.m */; };
-		796E1D85167169F700E78B45 /* button_color.xml in Resources */ = {isa = PBXBuildFile; fileRef = 796E1D84167169F700E78B45 /* button_color.xml */; };
-		796E1DB416735B1900E78B45 /* UIImage+IDL_FromColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 796E1DB216735B1900E78B45 /* UIImage+IDL_FromColor.h */; };
-		796E1DB516735B1900E78B45 /* UIImage+IDL_FromColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 796E1DB316735B1900E78B45 /* UIImage+IDL_FromColor.m */; };
-		796E1DB716735F8E00E78B45 /* button_background.xml in Resources */ = {isa = PBXBuildFile; fileRef = 796E1DB616735F8E00E78B45 /* button_background.xml */; };
-		79718ADC167FAC9B00414CCE /* IDLBitmapDrawable.h in Headers */ = {isa = PBXBuildFile; fileRef = 79718ADA167FAC9B00414CCE /* IDLBitmapDrawable.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79718ADD167FAC9B00414CCE /* IDLBitmapDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 79718ADB167FAC9B00414CCE /* IDLBitmapDrawable.m */; };
-		79718AE1167FAD9D00414CCE /* IDLColorDrawable.h in Headers */ = {isa = PBXBuildFile; fileRef = 79718ADF167FAD9D00414CCE /* IDLColorDrawable.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79718AE2167FAD9D00414CCE /* IDLColorDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 79718AE0167FAD9D00414CCE /* IDLColorDrawable.m */; };
-		79718AE5167FADB900414CCE /* IDLInsetDrawable.h in Headers */ = {isa = PBXBuildFile; fileRef = 79718AE3167FADB900414CCE /* IDLInsetDrawable.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79718AE6167FADB900414CCE /* IDLInsetDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 79718AE4167FADB900414CCE /* IDLInsetDrawable.m */; };
-		79718AE9167FAE3D00414CCE /* IDLDrawableContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 79718AE7167FAE3D00414CCE /* IDLDrawableContainer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79718AEA167FAE3D00414CCE /* IDLDrawableContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 79718AE8167FAE3D00414CCE /* IDLDrawableContainer.m */; };
-		79718AED167FAE9400414CCE /* IDLStateListDrawable.h in Headers */ = {isa = PBXBuildFile; fileRef = 79718AEB167FAE9400414CCE /* IDLStateListDrawable.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79718AEE167FAE9400414CCE /* IDLStateListDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 79718AEC167FAE9400414CCE /* IDLStateListDrawable.m */; };
-		79718AF1167FAEA800414CCE /* IDLLayerDrawable.h in Headers */ = {isa = PBXBuildFile; fileRef = 79718AEF167FAEA800414CCE /* IDLLayerDrawable.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79718AF2167FAEA800414CCE /* IDLLayerDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 79718AF0167FAEA800414CCE /* IDLLayerDrawable.m */; };
-		79718AF5167FAEB500414CCE /* IDLGradientDrawable.h in Headers */ = {isa = PBXBuildFile; fileRef = 79718AF3167FAEB500414CCE /* IDLGradientDrawable.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79718AF6167FAEB500414CCE /* IDLGradientDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 79718AF4167FAEB500414CCE /* IDLGradientDrawable.m */; };
-		79718AF916808D5F00414CCE /* IDLDrawableContainer+IDL_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 79718AF716808D5E00414CCE /* IDLDrawableContainer+IDL_Internal.h */; };
 		79718AFE1680912700414CCE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79718AFD1680912700414CCE /* QuartzCore.framework */; };
-		79718AFF1680912D00414CCE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79718AFD1680912700414CCE /* QuartzCore.framework */; };
-		79718B02168091D400414CCE /* IDLDrawable+IDL_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 79718B00168091D300414CCE /* IDLDrawable+IDL_Internal.h */; };
-		79718B0616809FAE00414CCE /* UIView+IDLDrawable.h in Headers */ = {isa = PBXBuildFile; fileRef = 79718B0416809FAE00414CCE /* UIView+IDLDrawable.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79718B0716809FAE00414CCE /* UIView+IDLDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 79718B0516809FAE00414CCE /* UIView+IDLDrawable.m */; };
-		79718B0C1680E10F00414CCE /* TBXML+IDL.h in Headers */ = {isa = PBXBuildFile; fileRef = 79718B0A1680E10F00414CCE /* TBXML+IDL.h */; };
-		79718B0D1680E10F00414CCE /* TBXML+IDL.m in Sources */ = {isa = PBXBuildFile; fileRef = 79718B0B1680E10F00414CCE /* TBXML+IDL.m */; };
-		79718B101681DE5400414CCE /* IDLNinePatchDrawable.h in Headers */ = {isa = PBXBuildFile; fileRef = 79718B0E1681DE5200414CCE /* IDLNinePatchDrawable.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79718B111681DE5400414CCE /* IDLNinePatchDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 79718B0F1681DE5300414CCE /* IDLNinePatchDrawable.m */; };
-		79718B141681FF1100414CCE /* UIImage+IDLNinePatch.h in Headers */ = {isa = PBXBuildFile; fileRef = 79718B121681FF1100414CCE /* UIImage+IDLNinePatch.h */; settings = {ATTRIBUTES = (); }; };
-		79718B151681FF1100414CCE /* UIImage+IDLNinePatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 79718B131681FF1100414CCE /* UIImage+IDLNinePatch.m */; };
-		798140FA166A87C200A63480 /* UINavigationBar+IDL_View.h in Headers */ = {isa = PBXBuildFile; fileRef = 798140F8166A87C200A63480 /* UINavigationBar+IDL_View.h */; };
-		798140FB166A87C200A63480 /* UINavigationBar+IDL_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 798140F9166A87C200A63480 /* UINavigationBar+IDL_View.m */; };
-		798140FF166A8A5700A63480 /* UIToolbar+IDL_View.h in Headers */ = {isa = PBXBuildFile; fileRef = 798140FD166A8A5700A63480 /* UIToolbar+IDL_View.h */; };
-		79814100166A8A5700A63480 /* UIToolbar+IDL_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 798140FE166A8A5700A63480 /* UIToolbar+IDL_View.m */; };
-		79814103166A8DC600A63480 /* UISearchBar+IDL_View.h in Headers */ = {isa = PBXBuildFile; fileRef = 79814101166A8DC500A63480 /* UISearchBar+IDL_View.h */; };
-		79814104166A8DC600A63480 /* UISearchBar+IDL_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 79814102166A8DC500A63480 /* UISearchBar+IDL_View.m */; };
-		79814107166A8F3D00A63480 /* UISwitch+IDL_View.h in Headers */ = {isa = PBXBuildFile; fileRef = 79814105166A8F3C00A63480 /* UISwitch+IDL_View.h */; };
-		79814108166A8F3D00A63480 /* UISwitch+IDL_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 79814106166A8F3D00A63480 /* UISwitch+IDL_View.m */; };
-		7981410C166ABABB00A63480 /* IDLResourceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7981410A166ABABB00A63480 /* IDLResourceManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7981410D166ABABB00A63480 /* IDLResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7981410B166ABABB00A63480 /* IDLResourceManager.m */; };
-		79814110166BD65900A63480 /* NSDictionary+IDL_ResourceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7981410E166BD65800A63480 /* NSDictionary+IDL_ResourceManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79814111166BD65900A63480 /* NSDictionary+IDL_ResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7981410F166BD65800A63480 /* NSDictionary+IDL_ResourceManager.m */; };
-		79B2A98D1704EF67001E4C6E /* IDLResourceManager+IDL_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B2A98B1704EF67001E4C6E /* IDLResourceManager+IDL_Internal.h */; };
-		79B5BFA6169B6A3700FA1D94 /* IDLClipDrawable.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B5BFA4169B6A3600FA1D94 /* IDLClipDrawable.h */; };
-		79B5BFA7169B6A3700FA1D94 /* IDLClipDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B5BFA5169B6A3700FA1D94 /* IDLClipDrawable.m */; };
-		79B5BFBF16A2CFF300FA1D94 /* IDLRotateDrawable.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B5BFBD16A2CFEF00FA1D94 /* IDLRotateDrawable.h */; };
-		79B5BFC016A2CFF300FA1D94 /* IDLRotateDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B5BFBE16A2CFF100FA1D94 /* IDLRotateDrawable.m */; };
-		79B5BFC316A5D36400FA1D94 /* IDLShadowDrawable.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B5BFC116A5D36100FA1D94 /* IDLShadowDrawable.h */; };
-		79B5BFC416A5D36400FA1D94 /* IDLShadowDrawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B5BFC216A5D36300FA1D94 /* IDLShadowDrawable.m */; };
-		79B983481674D2F200F844DB /* IDLColorStateItem+IDL_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B983381674D2F200F844DB /* IDLColorStateItem+IDL_Internal.h */; };
-		79B983491674D2F200F844DB /* IDLColorStateItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B983391674D2F200F844DB /* IDLColorStateItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79B9834A1674D2F200F844DB /* IDLColorStateItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B9833A1674D2F200F844DB /* IDLColorStateItem.m */; };
-		79B9834B1674D2F200F844DB /* IDLColorStateList.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B9833B1674D2F200F844DB /* IDLColorStateList.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79B9834C1674D2F200F844DB /* IDLColorStateList.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B9833C1674D2F200F844DB /* IDLColorStateList.m */; };
-		79B9834D1674D2F200F844DB /* IDLDrawableStateItem+IDL_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B9833D1674D2F200F844DB /* IDLDrawableStateItem+IDL_Internal.h */; };
-		79B9834E1674D2F200F844DB /* IDLDrawableStateItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B9833E1674D2F200F844DB /* IDLDrawableStateItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79B9834F1674D2F200F844DB /* IDLDrawableStateItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B9833F1674D2F200F844DB /* IDLDrawableStateItem.m */; };
-		79B983501674D2F200F844DB /* IDLDrawableStateList.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B983401674D2F200F844DB /* IDLDrawableStateList.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79B983511674D2F200F844DB /* IDLDrawableStateList.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B983411674D2F200F844DB /* IDLDrawableStateList.m */; };
-		79B983521674D2F200F844DB /* IDLResourceStateItem+IDL_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B983421674D2F200F844DB /* IDLResourceStateItem+IDL_Internal.h */; };
-		79B983531674D2F200F844DB /* IDLResourceStateItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B983431674D2F200F844DB /* IDLResourceStateItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79B983541674D2F200F844DB /* IDLResourceStateItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B983441674D2F200F844DB /* IDLResourceStateItem.m */; };
-		79B983551674D2F200F844DB /* IDLResourceStateList+IDL_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B983451674D2F200F844DB /* IDLResourceStateList+IDL_Internal.h */; };
-		79B983561674D2F200F844DB /* IDLResourceStateList.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B983461674D2F200F844DB /* IDLResourceStateList.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79B983571674D2F200F844DB /* IDLResourceStateList.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B983471674D2F200F844DB /* IDLResourceStateList.m */; };
-		79DE0ABD1684AFF200EDACE3 /* NSObject+IDL_KVOObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 79DE0ABB1684AFF200EDACE3 /* NSObject+IDL_KVOObserver.h */; settings = {ATTRIBUTES = (); }; };
-		79DE0ABE1684AFF200EDACE3 /* NSObject+IDL_KVOObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DE0ABC1684AFF200EDACE3 /* NSObject+IDL_KVOObserver.m */; };
-		79DE0BEE1690C87400EDACE3 /* IDLDrawableLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 79DE0BEC1690C87100EDACE3 /* IDLDrawableLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79DE0BEF1690C87400EDACE3 /* IDLDrawableLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DE0BED1690C87200EDACE3 /* IDLDrawableLayer.m */; };
+		79CEF923182C590D005E2FD1 /* viewgroupchildren.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79642CF81603E4610095D5A2 /* viewgroupchildren.xml */; };
+		79CEF924182C5911005E2FD1 /* testLayout1.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79642CE41603D1B20095D5A2 /* testLayout1.xml */; };
+		79CEF925182C5911005E2FD1 /* testLayout2.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79642CEF1603D7060095D5A2 /* testLayout2.xml */; };
+		79CEF926182C5911005E2FD1 /* testLayout3.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79642CF11603D8BA0095D5A2 /* testLayout3.xml */; };
+		79CEF927182C5911005E2FD1 /* testLayout4.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79642CF31603D9B30095D5A2 /* testLayout4.xml */; };
+		79CEF928182C5911005E2FD1 /* framelayout_gravity.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79642CFD1605E1790095D5A2 /* framelayout_gravity.xml */; };
+		79CEF92B182D64B8005E2FD1 /* IDLResourceManager+Drawable.m in Sources */ = {isa = PBXBuildFile; fileRef = 79CEF92A182D64B8005E2FD1 /* IDLResourceManager+Drawable.m */; };
+		79CEF92F182D6B33005E2FD1 /* IDLResourceManager+String.m in Sources */ = {isa = PBXBuildFile; fileRef = 79CEF92E182D6B33005E2FD1 /* IDLResourceManager+String.m */; };
+		79CEF932182D6C42005E2FD1 /* IDLResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 79CEF931182D6C42005E2FD1 /* IDLResourceManager.m */; };
+		79CEF934182D6D7E005E2FD1 /* IDLResourceManager+IDL_Internal.m in Sources */ = {isa = PBXBuildFile; fileRef = 79CEF933182D6D7E005E2FD1 /* IDLResourceManager+IDL_Internal.m */; };
 		79DE0BFC1695FC5C00EDACE3 /* button_disabled.9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79DE0BF81695FC5C00EDACE3 /* button_disabled.9@2x.png */; };
 		79DE0BFD1695FC5C00EDACE3 /* button_pressed.9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79DE0BF91695FC5C00EDACE3 /* button_pressed.9@2x.png */; };
 		79DE0BFE1695FC5C00EDACE3 /* button_normal.9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79DE0BFA1695FC5C00EDACE3 /* button_normal.9@2x.png */; };
-		79DE0BFF1695FC5C00EDACE3 /* background1.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79DE0BFB1695FC5C00EDACE3 /* background1.xml */; };
-		79DE0C021696010100EDACE3 /* IDLEditText.h in Headers */ = {isa = PBXBuildFile; fileRef = 79DE0C001696010100EDACE3 /* IDLEditText.h */; };
-		79DE0C031696010100EDACE3 /* IDLEditText.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DE0C011696010100EDACE3 /* IDLEditText.m */; };
-		79DE0C06169604A100EDACE3 /* IDLTextArea.h in Headers */ = {isa = PBXBuildFile; fileRef = 79DE0C04169604A000EDACE3 /* IDLTextArea.h */; };
-		79DE0C07169604A100EDACE3 /* IDLTextArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DE0C05169604A100EDACE3 /* IDLTextArea.m */; };
-		79DE0C0A169605A700EDACE3 /* UITextView+IDL_View.h in Headers */ = {isa = PBXBuildFile; fileRef = 79DE0C08169605A600EDACE3 /* UITextView+IDL_View.h */; };
-		79DE0C0B169605A700EDACE3 /* UITextView+IDL_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DE0C09169605A700EDACE3 /* UITextView+IDL_View.m */; };
-		79DE0C0E1698A56D00EDACE3 /* IDLButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 79DE0C0C1698A56D00EDACE3 /* IDLButton.h */; };
-		79DE0C0F1698A56D00EDACE3 /* IDLButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DE0C0D1698A56D00EDACE3 /* IDLButton.m */; };
-		79DE0C141699B81700EDACE3 /* IDLXMLCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 79DE0C121699B81000EDACE3 /* IDLXMLCache.h */; settings = {ATTRIBUTES = (); }; };
-		79DE0C151699B81700EDACE3 /* IDLXMLCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DE0C131699B81300EDACE3 /* IDLXMLCache.m */; };
-		79E4337816681D7B00E49114 /* LayoutFromIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79E4337716681D7B00E49114 /* LayoutFromIB.xib */; };
-		79E4337D16681DEB00E49114 /* layoutFromIB.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79E4337C16681DEB00E49114 /* layoutFromIB.xml */; };
-		79E43380166A2E7B00E49114 /* includeContainer.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79E4337F166A2E7B00E49114 /* includeContainer.xml */; };
-		79E43382166A2E8A00E49114 /* includeChild1.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79E43381166A2E8900E49114 /* includeChild1.xml */; };
-		79E43384166A2F4C00E49114 /* includeChild2.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79E43383166A2F4C00E49114 /* includeChild2.xml */; };
+		9DA2E3DD65454F249078E5B1 /* libPods-iDroidLayout.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1E9516193244B7ABBCC38AC /* libPods-iDroidLayout.a */; };
+		A7090EAA19D0CE89002D9FC0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7090EA919D0CE89002D9FC0 /* Images.xcassets */; };
+		A7434E1D1A29EEC100A74D40 /* button_color.xml in Resources */ = {isa = PBXBuildFile; fileRef = A7434E0D1A29EEC100A74D40 /* button_color.xml */; };
+		A7434E1E1A29EEC100A74D40 /* background1.xml in Resources */ = {isa = PBXBuildFile; fileRef = A7434E0F1A29EEC100A74D40 /* background1.xml */; };
+		A7434E1F1A29EEC100A74D40 /* button_background.xml in Resources */ = {isa = PBXBuildFile; fileRef = A7434E101A29EEC100A74D40 /* button_background.xml */; };
+		A7434E201A29EEC100A74D40 /* animations.xml in Resources */ = {isa = PBXBuildFile; fileRef = A7434E121A29EEC100A74D40 /* animations.xml */; };
+		A7434E211A29EEC100A74D40 /* formular.xml in Resources */ = {isa = PBXBuildFile; fileRef = A7434E131A29EEC100A74D40 /* formular.xml */; };
+		A7434E221A29EEC100A74D40 /* formular~ipad.xml in Resources */ = {isa = PBXBuildFile; fileRef = A7434E141A29EEC100A74D40 /* formular~ipad.xml */; };
+		A7434E231A29EEC100A74D40 /* includeChild1.xml in Resources */ = {isa = PBXBuildFile; fileRef = A7434E151A29EEC100A74D40 /* includeChild1.xml */; };
+		A7434E241A29EEC100A74D40 /* includeChild2.xml in Resources */ = {isa = PBXBuildFile; fileRef = A7434E161A29EEC100A74D40 /* includeChild2.xml */; };
+		A7434E251A29EEC100A74D40 /* includeContainer.xml in Resources */ = {isa = PBXBuildFile; fileRef = A7434E171A29EEC100A74D40 /* includeContainer.xml */; };
+		A7434E261A29EEC100A74D40 /* layoutFromIB.xml in Resources */ = {isa = PBXBuildFile; fileRef = A7434E181A29EEC100A74D40 /* layoutFromIB.xml */; };
+		A7434E271A29EEC100A74D40 /* mainCell.xml in Resources */ = {isa = PBXBuildFile; fileRef = A7434E191A29EEC100A74D40 /* mainCell.xml */; };
+		A7434E281A29EEC100A74D40 /* scrollviews.xml in Resources */ = {isa = PBXBuildFile; fileRef = A7434E1A1A29EEC100A74D40 /* scrollviews.xml */; };
+		A7434E291A29EEC100A74D40 /* values.xml in Resources */ = {isa = PBXBuildFile; fileRef = A7434E1C1A29EEC100A74D40 /* values.xml */; };
+		A7434E2D1A29EF6200A74D40 /* LayoutFromIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7434E2C1A29EF6200A74D40 /* LayoutFromIB.xib */; };
+		A744922219BFA61900E88C18 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A744922119BFA61900E88C18 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		79642BFF1603C4A30095D5A2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 79642BDC1603C4A20095D5A2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 79642BE81603C4A20095D5A2;
-			remoteInfo = iDroidLayout;
+/* Begin PBXCopyFilesBuildPhase section */
+		794BF81B182C4FF300A6DF05 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
 		};
-		79642C2C1603C4F80095D5A2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 79642BDC1603C4A20095D5A2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 79642BE81603C4A20095D5A2;
-			remoteInfo = iDroidLayout;
-		};
-/* End PBXContainerItemProxy section */
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		79269315167BF7A00078EE37 /* values.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = values.xml; sourceTree = "<group>"; };
+		56BBF0B37C9E59FE57393545 /* Pods-iDroidLayout.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iDroidLayout.release.xcconfig"; path = "Pods/Target Support Files/Pods-iDroidLayout/Pods-iDroidLayout.release.xcconfig"; sourceTree = "<group>"; };
 		79269318167D03FE0078EE37 /* IDLResourceValueSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLResourceValueSet.h; sourceTree = "<group>"; };
 		79269319167D03FE0078EE37 /* IDLResourceValueSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLResourceValueSet.m; sourceTree = "<group>"; };
 		7926931A167D03FE0078EE37 /* IDLStyle+IDL_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IDLStyle+IDL_Internal.h"; sourceTree = "<group>"; };
@@ -235,11 +149,12 @@
 		79269323167D11970078EE37 /* IDLStringArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLStringArray.m; sourceTree = "<group>"; };
 		79269408167E0E0A0078EE37 /* IDLDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLDrawable.h; sourceTree = "<group>"; };
 		79269409167E0E0A0078EE37 /* IDLDrawable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLDrawable.m; sourceTree = "<group>"; };
-		79642BE91603C4A20095D5A2 /* iDroidLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iDroidLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		794BF81D182C4FF300A6DF05 /* libiDroidLayout.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libiDroidLayout.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		794BF82A182C4FF300A6DF05 /* iDroidLayoutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iDroidLayoutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		794BF82B182C4FF300A6DF05 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		79642BED1603C4A30095D5A2 /* iDroidLayout-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iDroidLayout-Info.plist"; sourceTree = "<group>"; };
 		79642BEF1603C4A30095D5A2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		79642BF11603C4A30095D5A2 /* iDroidLayout-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iDroidLayout-Prefix.pch"; sourceTree = "<group>"; };
-		79642BF71603C4A30095D5A2 /* iDroidLayoutTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iDroidLayoutTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		79642BF91603C4A30095D5A2 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		79642BFB1603C4A30095D5A2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		79642BFD1603C4A30095D5A2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -252,8 +167,6 @@
 		79642C231603C4E80095D5A2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		79642C251603C4E80095D5A2 /* iDroidLayout-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iDroidLayout-Prefix.pch"; sourceTree = "<group>"; };
 		79642C2E1603C5500095D5A2 /* iDroidLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iDroidLayout.h; sourceTree = "<group>"; };
-		79642C301603C5500095D5A2 /* TBXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBXML.h; sourceTree = "<group>"; };
-		79642C311603C5500095D5A2 /* TBXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBXML.m; sourceTree = "<group>"; };
 		79642C331603C5500095D5A2 /* IDLFinitePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLFinitePool.h; sourceTree = "<group>"; };
 		79642C341603C5500095D5A2 /* IDLFinitePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLFinitePool.m; sourceTree = "<group>"; };
 		79642C351603C5500095D5A2 /* IDLPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLPool.h; sourceTree = "<group>"; };
@@ -319,40 +232,33 @@
 		79642C7A1603C5500095D5A2 /* IDLRelativeLayoutLayoutParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLRelativeLayoutLayoutParams.h; sourceTree = "<group>"; };
 		79642C7B1603C5500095D5A2 /* IDLRelativeLayoutLayoutParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLRelativeLayoutLayoutParams.m; sourceTree = "<group>"; };
 		79642CBF1603C5DB0095D5A2 /* android.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = android.jpg; sourceTree = "<group>"; };
-		79642CC01603C5DB0095D5A2 /* animations.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = animations.xml; sourceTree = "<group>"; };
-		79642CC11603C5DB0095D5A2 /* formular.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = formular.xml; sourceTree = "<group>"; };
-		79642CC21603C5DB0095D5A2 /* formular~ipad.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "formular~ipad.xml"; sourceTree = "<group>"; };
 		79642CC31603C5DB0095D5A2 /* FormularViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormularViewController.h; sourceTree = "<group>"; };
 		79642CC41603C5DB0095D5A2 /* FormularViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormularViewController.m; sourceTree = "<group>"; };
 		79642CC51603C5DB0095D5A2 /* IDLAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLAppDelegate.h; sourceTree = "<group>"; };
 		79642CC61603C5DB0095D5A2 /* IDLAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLAppDelegate.m; sourceTree = "<group>"; };
 		79642CC71603C5DB0095D5A2 /* LayoutAnimationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayoutAnimationsViewController.h; sourceTree = "<group>"; };
 		79642CC81603C5DB0095D5A2 /* LayoutAnimationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LayoutAnimationsViewController.m; sourceTree = "<group>"; };
-		79642CC91603C5DB0095D5A2 /* mainCell.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = mainCell.xml; sourceTree = "<group>"; };
 		79642CCA1603C5DB0095D5A2 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		79642CCB1603C5DB0095D5A2 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		79642CCC1603C5DB0095D5A2 /* scrollviews.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; lineEnding = 0; path = scrollviews.xml; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.xml; };
 		79642CD81603CA1D0095D5A2 /* iDroidLayout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iDroidLayout.framework; sourceTree = "<group>"; };
 		79642CE01603D0620095D5A2 /* IDLLayoutInflaterTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLLayoutInflaterTest.h; sourceTree = "<group>"; };
-		79642CE11603D0620095D5A2 /* IDLLayoutInflaterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLLayoutInflaterTest.m; sourceTree = "<group>"; };
+		79642CE11603D0620095D5A2 /* IDLLayoutInflaterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = IDLLayoutInflaterTest.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		79642CE41603D1B20095D5A2 /* testLayout1.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = testLayout1.xml; sourceTree = "<group>"; };
 		79642CEA1603D3F20095D5A2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		79642CEC1603D3F80095D5A2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		79642CEF1603D7060095D5A2 /* testLayout2.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = testLayout2.xml; sourceTree = "<group>"; };
 		79642CF11603D8BA0095D5A2 /* testLayout3.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = testLayout3.xml; sourceTree = "<group>"; };
 		79642CF31603D9B30095D5A2 /* testLayout4.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = testLayout4.xml; sourceTree = "<group>"; };
-		79642CF51603E2920095D5A2 /* IDLViewGroupTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLViewGroupTest.h; sourceTree = "<group>"; };
+		79642CF51603E2920095D5A2 /* IDLViewGroupTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IDLViewGroupTest.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		79642CF61603E2920095D5A2 /* IDLViewGroupTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLViewGroupTest.m; sourceTree = "<group>"; };
 		79642CF81603E4610095D5A2 /* viewgroupchildren.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = viewgroupchildren.xml; sourceTree = "<group>"; };
 		79642CFA1603E8560095D5A2 /* IDLViewAsserts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLViewAsserts.h; sourceTree = "<group>"; };
-		79642CFB1603E8560095D5A2 /* IDLViewAsserts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLViewAsserts.m; sourceTree = "<group>"; };
+		79642CFB1603E8560095D5A2 /* IDLViewAsserts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = IDLViewAsserts.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		79642CFD1605E1790095D5A2 /* framelayout_gravity.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = framelayout_gravity.xml; sourceTree = "<group>"; };
 		79642CFF1605E24E0095D5A2 /* IDLFrameLayoutGravityTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLFrameLayoutGravityTest.h; sourceTree = "<group>"; };
-		79642D001605E24E0095D5A2 /* IDLFrameLayoutGravityTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLFrameLayoutGravityTest.m; sourceTree = "<group>"; };
-		796E1D84167169F700E78B45 /* button_color.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = button_color.xml; sourceTree = "<group>"; };
+		79642D001605E24E0095D5A2 /* IDLFrameLayoutGravityTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = IDLFrameLayoutGravityTest.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		796E1DB216735B1900E78B45 /* UIImage+IDL_FromColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+IDL_FromColor.h"; sourceTree = "<group>"; };
 		796E1DB316735B1900E78B45 /* UIImage+IDL_FromColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+IDL_FromColor.m"; sourceTree = "<group>"; };
-		796E1DB616735F8E00E78B45 /* button_background.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = button_background.xml; sourceTree = "<group>"; };
 		79718ADA167FAC9B00414CCE /* IDLBitmapDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLBitmapDrawable.h; sourceTree = "<group>"; };
 		79718ADB167FAC9B00414CCE /* IDLBitmapDrawable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLBitmapDrawable.m; sourceTree = "<group>"; };
 		79718ADF167FAD9D00414CCE /* IDLColorDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLColorDrawable.h; sourceTree = "<group>"; };
@@ -369,12 +275,12 @@
 		79718AF4167FAEB500414CCE /* IDLGradientDrawable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLGradientDrawable.m; sourceTree = "<group>"; };
 		79718AF716808D5E00414CCE /* IDLDrawableContainer+IDL_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IDLDrawableContainer+IDL_Internal.h"; sourceTree = "<group>"; };
 		79718AFD1680912700414CCE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		79718B00168091D300414CCE /* IDLDrawable+IDL_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IDLDrawable+IDL_Internal.h"; sourceTree = "<group>"; };
+		79718B00168091D300414CCE /* IDLDrawable+IDL_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "IDLDrawable+IDL_Internal.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		79718B0416809FAE00414CCE /* UIView+IDLDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+IDLDrawable.h"; sourceTree = "<group>"; };
 		79718B0516809FAE00414CCE /* UIView+IDLDrawable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+IDLDrawable.m"; sourceTree = "<group>"; };
 		79718B0A1680E10F00414CCE /* TBXML+IDL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TBXML+IDL.h"; sourceTree = "<group>"; };
 		79718B0B1680E10F00414CCE /* TBXML+IDL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TBXML+IDL.m"; sourceTree = "<group>"; };
-		79718B0E1681DE5200414CCE /* IDLNinePatchDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLNinePatchDrawable.h; sourceTree = "<group>"; };
+		79718B0E1681DE5200414CCE /* IDLNinePatchDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IDLNinePatchDrawable.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		79718B0F1681DE5300414CCE /* IDLNinePatchDrawable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLNinePatchDrawable.m; sourceTree = "<group>"; };
 		79718B121681FF1100414CCE /* UIImage+IDLNinePatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+IDLNinePatch.h"; sourceTree = "<group>"; };
 		79718B131681FF1100414CCE /* UIImage+IDLNinePatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+IDLNinePatch.m"; sourceTree = "<group>"; };
@@ -387,15 +293,14 @@
 		79814105166A8F3C00A63480 /* UISwitch+IDL_View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISwitch+IDL_View.h"; sourceTree = "<group>"; };
 		79814106166A8F3D00A63480 /* UISwitch+IDL_View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISwitch+IDL_View.m"; sourceTree = "<group>"; };
 		7981410A166ABABB00A63480 /* IDLResourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLResourceManager.h; sourceTree = "<group>"; };
-		7981410B166ABABB00A63480 /* IDLResourceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLResourceManager.m; sourceTree = "<group>"; };
 		7981410E166BD65800A63480 /* NSDictionary+IDL_ResourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+IDL_ResourceManager.h"; sourceTree = "<group>"; };
 		7981410F166BD65800A63480 /* NSDictionary+IDL_ResourceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+IDL_ResourceManager.m"; sourceTree = "<group>"; };
-		79B2A98B1704EF67001E4C6E /* IDLResourceManager+IDL_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IDLResourceManager+IDL_Internal.h"; sourceTree = "<group>"; };
-		79B5BFA4169B6A3600FA1D94 /* IDLClipDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLClipDrawable.h; sourceTree = "<group>"; };
+		79B2A98B1704EF67001E4C6E /* IDLResourceManager+IDL_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "IDLResourceManager+IDL_Internal.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		79B5BFA4169B6A3600FA1D94 /* IDLClipDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IDLClipDrawable.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		79B5BFA5169B6A3700FA1D94 /* IDLClipDrawable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLClipDrawable.m; sourceTree = "<group>"; };
-		79B5BFBD16A2CFEF00FA1D94 /* IDLRotateDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLRotateDrawable.h; sourceTree = "<group>"; };
+		79B5BFBD16A2CFEF00FA1D94 /* IDLRotateDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IDLRotateDrawable.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		79B5BFBE16A2CFF100FA1D94 /* IDLRotateDrawable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLRotateDrawable.m; sourceTree = "<group>"; };
-		79B5BFC116A5D36100FA1D94 /* IDLShadowDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLShadowDrawable.h; sourceTree = "<group>"; };
+		79B5BFC116A5D36100FA1D94 /* IDLShadowDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IDLShadowDrawable.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		79B5BFC216A5D36300FA1D94 /* IDLShadowDrawable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLShadowDrawable.m; sourceTree = "<group>"; };
 		79B983381674D2F200F844DB /* IDLColorStateItem+IDL_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IDLColorStateItem+IDL_Internal.h"; sourceTree = "<group>"; };
 		79B983391674D2F200F844DB /* IDLColorStateItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLColorStateItem.h; sourceTree = "<group>"; };
@@ -413,14 +318,21 @@
 		79B983451674D2F200F844DB /* IDLResourceStateList+IDL_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IDLResourceStateList+IDL_Internal.h"; sourceTree = "<group>"; };
 		79B983461674D2F200F844DB /* IDLResourceStateList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLResourceStateList.h; sourceTree = "<group>"; };
 		79B983471674D2F200F844DB /* IDLResourceStateList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLResourceStateList.m; sourceTree = "<group>"; };
+		79CEF929182D64B8005E2FD1 /* IDLResourceManager+Drawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IDLResourceManager+Drawable.h"; sourceTree = "<group>"; };
+		79CEF92A182D64B8005E2FD1 /* IDLResourceManager+Drawable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IDLResourceManager+Drawable.m"; sourceTree = "<group>"; };
+		79CEF92C182D6949005E2FD1 /* iDroidLayout.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = iDroidLayout.podspec; sourceTree = "<group>"; };
+		79CEF92D182D6B33005E2FD1 /* IDLResourceManager+String.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IDLResourceManager+String.h"; sourceTree = "<group>"; };
+		79CEF92E182D6B33005E2FD1 /* IDLResourceManager+String.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IDLResourceManager+String.m"; sourceTree = "<group>"; };
+		79CEF930182D6C42005E2FD1 /* IDLResourceManager+Core.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IDLResourceManager+Core.h"; sourceTree = "<group>"; };
+		79CEF931182D6C42005E2FD1 /* IDLResourceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLResourceManager.m; sourceTree = "<group>"; };
+		79CEF933182D6D7E005E2FD1 /* IDLResourceManager+IDL_Internal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IDLResourceManager+IDL_Internal.m"; sourceTree = "<group>"; };
 		79DE0ABB1684AFF200EDACE3 /* NSObject+IDL_KVOObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+IDL_KVOObserver.h"; sourceTree = "<group>"; };
 		79DE0ABC1684AFF200EDACE3 /* NSObject+IDL_KVOObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+IDL_KVOObserver.m"; sourceTree = "<group>"; };
-		79DE0BEC1690C87100EDACE3 /* IDLDrawableLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLDrawableLayer.h; sourceTree = "<group>"; };
+		79DE0BEC1690C87100EDACE3 /* IDLDrawableLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IDLDrawableLayer.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		79DE0BED1690C87200EDACE3 /* IDLDrawableLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLDrawableLayer.m; sourceTree = "<group>"; };
 		79DE0BF81695FC5C00EDACE3 /* button_disabled.9@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_disabled.9@2x.png"; sourceTree = "<group>"; };
 		79DE0BF91695FC5C00EDACE3 /* button_pressed.9@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_pressed.9@2x.png"; sourceTree = "<group>"; };
 		79DE0BFA1695FC5C00EDACE3 /* button_normal.9@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_normal.9@2x.png"; sourceTree = "<group>"; };
-		79DE0BFB1695FC5C00EDACE3 /* background1.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = background1.xml; sourceTree = "<group>"; };
 		79DE0C001696010100EDACE3 /* IDLEditText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLEditText.h; sourceTree = "<group>"; };
 		79DE0C011696010100EDACE3 /* IDLEditText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLEditText.m; sourceTree = "<group>"; };
 		79DE0C04169604A000EDACE3 /* IDLTextArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLTextArea.h; sourceTree = "<group>"; };
@@ -431,31 +343,50 @@
 		79DE0C0D1698A56D00EDACE3 /* IDLButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLButton.m; sourceTree = "<group>"; };
 		79DE0C121699B81000EDACE3 /* IDLXMLCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLXMLCache.h; sourceTree = "<group>"; };
 		79DE0C131699B81300EDACE3 /* IDLXMLCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLXMLCache.m; sourceTree = "<group>"; };
-		79E4337716681D7B00E49114 /* LayoutFromIB.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LayoutFromIB.xib; sourceTree = "<group>"; };
-		79E4337C16681DEB00E49114 /* layoutFromIB.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = layoutFromIB.xml; sourceTree = "<group>"; };
 		79E4337E1668226900E49114 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		79E4337F166A2E7B00E49114 /* includeContainer.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = includeContainer.xml; sourceTree = "<group>"; };
-		79E43381166A2E8900E49114 /* includeChild1.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = includeChild1.xml; sourceTree = "<group>"; };
-		79E43383166A2F4C00E49114 /* includeChild2.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = includeChild2.xml; sourceTree = "<group>"; };
+		9E59CE07804409ABE477E469 /* Pods-test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test.release.xcconfig"; path = "Pods/Target Support Files/Pods-test/Pods-test.release.xcconfig"; sourceTree = "<group>"; };
+		A1E9516193244B7ABBCC38AC /* libPods-iDroidLayout.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iDroidLayout.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7090EA919D0CE89002D9FC0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A72BE4321A2953D30021D5E1 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		A7434E0D1A29EEC100A74D40 /* button_color.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = button_color.xml; sourceTree = "<group>"; };
+		A7434E0F1A29EEC100A74D40 /* background1.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = background1.xml; sourceTree = "<group>"; };
+		A7434E101A29EEC100A74D40 /* button_background.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = button_background.xml; sourceTree = "<group>"; };
+		A7434E121A29EEC100A74D40 /* animations.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = animations.xml; sourceTree = "<group>"; };
+		A7434E131A29EEC100A74D40 /* formular.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = formular.xml; sourceTree = "<group>"; };
+		A7434E141A29EEC100A74D40 /* formular~ipad.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "formular~ipad.xml"; sourceTree = "<group>"; };
+		A7434E151A29EEC100A74D40 /* includeChild1.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = includeChild1.xml; sourceTree = "<group>"; };
+		A7434E161A29EEC100A74D40 /* includeChild2.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = includeChild2.xml; sourceTree = "<group>"; };
+		A7434E171A29EEC100A74D40 /* includeContainer.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = includeContainer.xml; sourceTree = "<group>"; };
+		A7434E181A29EEC100A74D40 /* layoutFromIB.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = layoutFromIB.xml; sourceTree = "<group>"; };
+		A7434E191A29EEC100A74D40 /* mainCell.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = mainCell.xml; sourceTree = "<group>"; };
+		A7434E1A1A29EEC100A74D40 /* scrollviews.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = scrollviews.xml; sourceTree = "<group>"; };
+		A7434E1C1A29EEC100A74D40 /* values.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = values.xml; sourceTree = "<group>"; };
+		A7434E2C1A29EF6200A74D40 /* LayoutFromIB.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LayoutFromIB.xib; sourceTree = "<group>"; };
+		A744922119BFA61900E88C18 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		B3466C4187E343C8965C60D0 /* libPods-test.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-test.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBE74CB85776E59394A12EA5 /* Pods-iDroidLayout.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iDroidLayout.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iDroidLayout/Pods-iDroidLayout.debug.xcconfig"; sourceTree = "<group>"; };
+		CE5AE02A60FF0464DE8F3699 /* Pods-test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test.debug.xcconfig"; path = "Pods/Target Support Files/Pods-test/Pods-test.debug.xcconfig"; sourceTree = "<group>"; };
+		ECD90B80D62044CD8D222D68 /* libPods-framework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-framework.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		79642BE31603C4A20095D5A2 /* Frameworks */ = {
+		794BF81A182C4FF300A6DF05 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				794BF81E182C4FF300A6DF05 /* Foundation.framework in Frameworks */,
+				9DA2E3DD65454F249078E5B1 /* libPods-iDroidLayout.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		79642BF31603C4A30095D5A2 /* Frameworks */ = {
+		794BF827182C4FF300A6DF05 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79718AFF1680912D00414CCE /* QuartzCore.framework in Frameworks */,
-				79642CEE1603D3FE0095D5A2 /* CoreGraphics.framework in Frameworks */,
-				79642CED1603D3F80095D5A2 /* Foundation.framework in Frameworks */,
-				79642CEB1603D3F20095D5A2 /* UIKit.framework in Frameworks */,
-				79642BFA1603C4A30095D5A2 /* SenTestingKit.framework in Frameworks */,
+				794BF82C182C4FF300A6DF05 /* XCTest.framework in Frameworks */,
+				794BF82E182C4FF300A6DF05 /* UIKit.framework in Frameworks */,
+				794BF82D182C4FF300A6DF05 /* Foundation.framework in Frameworks */,
+				3A858FE88D8844138D3781E1 /* libPods-test.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,7 +398,7 @@
 				79642C191603C4E80095D5A2 /* UIKit.framework in Frameworks */,
 				79642C1A1603C4E80095D5A2 /* Foundation.framework in Frameworks */,
 				79642C1C1603C4E80095D5A2 /* CoreGraphics.framework in Frameworks */,
-				79642CDA1603CA1D0095D5A2 /* iDroidLayout.framework in Frameworks */,
+				379C7218C2EC4D25A4F1D371 /* libPods-test.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -528,21 +459,25 @@
 		79642BDA1603C4A20095D5A2 = {
 			isa = PBXGroup;
 			children = (
+				A744922119BFA61900E88C18 /* Default-568h@2x.png */,
+				79CEF92C182D6949005E2FD1 /* iDroidLayout.podspec */,
+				A72BE4321A2953D30021D5E1 /* LICENSE */,
 				79E4337E1668226900E49114 /* README.md */,
 				79642BEB1603C4A20095D5A2 /* iDroidLayout */,
 				79642C021603C4A30095D5A2 /* iDroidLayoutTests */,
 				79642C1D1603C4E80095D5A2 /* iDroidLayoutExample */,
 				79642BF81603C4A30095D5A2 /* Frameworks */,
 				79642BEA1603C4A20095D5A2 /* Products */,
+				8D59B24C5A560594F59AECA8 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
 		79642BEA1603C4A20095D5A2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				79642BE91603C4A20095D5A2 /* iDroidLayout.framework */,
-				79642BF71603C4A30095D5A2 /* iDroidLayoutTests.octest */,
 				79642C171603C4E80095D5A2 /* iDroidLayoutExample.app */,
+				794BF81D182C4FF300A6DF05 /* libiDroidLayout.a */,
+				794BF82A182C4FF300A6DF05 /* iDroidLayoutTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -552,7 +487,6 @@
 			children = (
 				79814109166AB8A700A63480 /* Resources */,
 				79642C2E1603C5500095D5A2 /* iDroidLayout.h */,
-				79642C2F1603C5500095D5A2 /* TBXML */,
 				79642C321603C5500095D5A2 /* Utils */,
 				79642C3E1603C5500095D5A2 /* View */,
 				79642C571603C5500095D5A2 /* Widgets */,
@@ -582,6 +516,10 @@
 				79642BF91603C4A30095D5A2 /* SenTestingKit.framework */,
 				79642CEA1603D3F20095D5A2 /* UIKit.framework */,
 				79642BFB1603C4A30095D5A2 /* UIKit.framework */,
+				794BF82B182C4FF300A6DF05 /* XCTest.framework */,
+				ECD90B80D62044CD8D222D68 /* libPods-framework.a */,
+				B3466C4187E343C8965C60D0 /* libPods-test.a */,
+				A1E9516193244B7ABBCC38AC /* libPods-iDroidLayout.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -615,33 +553,17 @@
 		79642C1D1603C4E80095D5A2 /* iDroidLayoutExample */ = {
 			isa = PBXGroup;
 			children = (
-				79DE0BF81695FC5C00EDACE3 /* button_disabled.9@2x.png */,
-				79DE0BF91695FC5C00EDACE3 /* button_pressed.9@2x.png */,
-				79DE0BFA1695FC5C00EDACE3 /* button_normal.9@2x.png */,
-				79DE0BFB1695FC5C00EDACE3 /* background1.xml */,
-				79642CBF1603C5DB0095D5A2 /* android.jpg */,
-				79642CC01603C5DB0095D5A2 /* animations.xml */,
-				796E1DB616735F8E00E78B45 /* button_background.xml */,
-				796E1D84167169F700E78B45 /* button_color.xml */,
-				79642CC11603C5DB0095D5A2 /* formular.xml */,
+				A7434E0B1A29EEC100A74D40 /* Resources */,
 				79642CC31603C5DB0095D5A2 /* FormularViewController.h */,
 				79642CC41603C5DB0095D5A2 /* FormularViewController.m */,
-				79642CC21603C5DB0095D5A2 /* formular~ipad.xml */,
 				79642CC51603C5DB0095D5A2 /* IDLAppDelegate.h */,
 				79642CC61603C5DB0095D5A2 /* IDLAppDelegate.m */,
-				79E43381166A2E8900E49114 /* includeChild1.xml */,
-				79E43383166A2F4C00E49114 /* includeChild2.xml */,
-				79E4337F166A2E7B00E49114 /* includeContainer.xml */,
 				79642CC71603C5DB0095D5A2 /* LayoutAnimationsViewController.h */,
 				79642CC81603C5DB0095D5A2 /* LayoutAnimationsViewController.m */,
-				79E4337716681D7B00E49114 /* LayoutFromIB.xib */,
-				79E4337C16681DEB00E49114 /* layoutFromIB.xml */,
-				79642CC91603C5DB0095D5A2 /* mainCell.xml */,
 				79642CCA1603C5DB0095D5A2 /* MainViewController.h */,
 				79642CCB1603C5DB0095D5A2 /* MainViewController.m */,
-				79642CCC1603C5DB0095D5A2 /* scrollviews.xml */,
 				79642C1E1603C4E80095D5A2 /* Supporting Files */,
-				79269315167BF7A00078EE37 /* values.xml */,
+				A7090EA919D0CE89002D9FC0 /* Images.xcassets */,
 			);
 			path = iDroidLayoutExample;
 			sourceTree = "<group>";
@@ -655,15 +577,6 @@
 				79642C251603C4E80095D5A2 /* iDroidLayout-Prefix.pch */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		79642C2F1603C5500095D5A2 /* TBXML */ = {
-			isa = PBXGroup;
-			children = (
-				79642C301603C5500095D5A2 /* TBXML.h */,
-				79642C311603C5500095D5A2 /* TBXML.m */,
-			);
-			path = TBXML;
 			sourceTree = "<group>";
 		};
 		79642C321603C5500095D5A2 /* Utils */ = {
@@ -864,15 +777,21 @@
 			isa = PBXGroup;
 			children = (
 				79269407167E0E000078EE37 /* Drawable */,
-				7981410A166ABABB00A63480 /* IDLResourceManager.h */,
-				7981410B166ABABB00A63480 /* IDLResourceManager.m */,
+				79CEF930182D6C42005E2FD1 /* IDLResourceManager+Core.h */,
+				79CEF929182D64B8005E2FD1 /* IDLResourceManager+Drawable.h */,
+				79CEF92A182D64B8005E2FD1 /* IDLResourceManager+Drawable.m */,
 				79B2A98B1704EF67001E4C6E /* IDLResourceManager+IDL_Internal.h */,
+				79CEF933182D6D7E005E2FD1 /* IDLResourceManager+IDL_Internal.m */,
+				79CEF92D182D6B33005E2FD1 /* IDLResourceManager+String.h */,
+				79CEF92E182D6B33005E2FD1 /* IDLResourceManager+String.m */,
+				7981410A166ABABB00A63480 /* IDLResourceManager.h */,
+				79CEF931182D6C42005E2FD1 /* IDLResourceManager.m */,
+				79DE0C121699B81000EDACE3 /* IDLXMLCache.h */,
+				79DE0C131699B81300EDACE3 /* IDLXMLCache.m */,
 				7981410E166BD65800A63480 /* NSDictionary+IDL_ResourceManager.h */,
 				7981410F166BD65800A63480 /* NSDictionary+IDL_ResourceManager.m */,
 				79B983371674D2F200F844DB /* StateList */,
 				79269317167D03FD0078EE37 /* Values */,
-				79DE0C121699B81000EDACE3 /* IDLXMLCache.h */,
-				79DE0C131699B81300EDACE3 /* IDLXMLCache.m */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -900,113 +819,94 @@
 			path = StateList;
 			sourceTree = "<group>";
 		};
+		8D59B24C5A560594F59AECA8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CBE74CB85776E59394A12EA5 /* Pods-iDroidLayout.debug.xcconfig */,
+				56BBF0B37C9E59FE57393545 /* Pods-iDroidLayout.release.xcconfig */,
+				CE5AE02A60FF0464DE8F3699 /* Pods-test.debug.xcconfig */,
+				9E59CE07804409ABE477E469 /* Pods-test.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A7434E0B1A29EEC100A74D40 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A7434E0C1A29EEC100A74D40 /* colors */,
+				A7434E0E1A29EEC100A74D40 /* drawables */,
+				A7434E111A29EEC100A74D40 /* layouts */,
+				A7434E1B1A29EEC100A74D40 /* values */,
+				A7434E2B1A29EF6200A74D40 /* xibs */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A7434E0C1A29EEC100A74D40 /* colors */ = {
+			isa = PBXGroup;
+			children = (
+				A7434E0D1A29EEC100A74D40 /* button_color.xml */,
+			);
+			path = colors;
+			sourceTree = "<group>";
+		};
+		A7434E0E1A29EEC100A74D40 /* drawables */ = {
+			isa = PBXGroup;
+			children = (
+				79642CBF1603C5DB0095D5A2 /* android.jpg */,
+				79DE0BF81695FC5C00EDACE3 /* button_disabled.9@2x.png */,
+				79DE0BF91695FC5C00EDACE3 /* button_pressed.9@2x.png */,
+				79DE0BFA1695FC5C00EDACE3 /* button_normal.9@2x.png */,
+				A7434E0F1A29EEC100A74D40 /* background1.xml */,
+				A7434E101A29EEC100A74D40 /* button_background.xml */,
+			);
+			path = drawables;
+			sourceTree = "<group>";
+		};
+		A7434E111A29EEC100A74D40 /* layouts */ = {
+			isa = PBXGroup;
+			children = (
+				A7434E121A29EEC100A74D40 /* animations.xml */,
+				A7434E131A29EEC100A74D40 /* formular.xml */,
+				A7434E141A29EEC100A74D40 /* formular~ipad.xml */,
+				A7434E151A29EEC100A74D40 /* includeChild1.xml */,
+				A7434E161A29EEC100A74D40 /* includeChild2.xml */,
+				A7434E171A29EEC100A74D40 /* includeContainer.xml */,
+				A7434E181A29EEC100A74D40 /* layoutFromIB.xml */,
+				A7434E191A29EEC100A74D40 /* mainCell.xml */,
+				A7434E1A1A29EEC100A74D40 /* scrollviews.xml */,
+			);
+			path = layouts;
+			sourceTree = "<group>";
+		};
+		A7434E1B1A29EEC100A74D40 /* values */ = {
+			isa = PBXGroup;
+			children = (
+				A7434E1C1A29EEC100A74D40 /* values.xml */,
+			);
+			path = values;
+			sourceTree = "<group>";
+		};
+		A7434E2B1A29EF6200A74D40 /* xibs */ = {
+			isa = PBXGroup;
+			children = (
+				A7434E2C1A29EF6200A74D40 /* LayoutFromIB.xib */,
+			);
+			path = xibs;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		79642BE41603C4A20095D5A2 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				79642C7C1603C5500095D5A2 /* iDroidLayout.h in Headers */,
-				79642C7F1603C5500095D5A2 /* IDLFinitePool.h in Headers */,
-				79642C811603C5500095D5A2 /* IDLPool.h in Headers */,
-				79642C821603C5500095D5A2 /* IDLPoolable.h in Headers */,
-				79642C831603C5500095D5A2 /* IDLPoolableManager.h in Headers */,
-				79642C841603C5500095D5A2 /* IDLPools.h in Headers */,
-				79642C861603C5500095D5A2 /* IDLSynchronizedPool.h in Headers */,
-				79642C881603C5500095D5A2 /* UIColor+IDL_ColorParser.h in Headers */,
-				79642C8A1603C5500095D5A2 /* IDLGravity.h in Headers */,
-				79642C8C1603C5500095D5A2 /* IDLLayoutBridge.h in Headers */,
-				79642C8E1603C5500095D5A2 /* IDLLayoutParams.h in Headers */,
-				79642C901603C5500095D5A2 /* IDLLayoutViewController.h in Headers */,
-				79642C921603C5500095D5A2 /* IDLMarginLayoutParams.h in Headers */,
-				79642C941603C5500095D5A2 /* IDLTableViewCell.h in Headers */,
-				79642C961603C5500095D5A2 /* IDLViewGroup.h in Headers */,
-				79642C981603C5500095D5A2 /* IDLBaseViewFactory.h in Headers */,
-				79642C9A1603C5500095D5A2 /* IDLLayoutInflater.h in Headers */,
-				79642C9C1603C5500095D5A2 /* IDLViewFactory.h in Headers */,
-				79642C9D1603C5500095D5A2 /* UIView+IDL_Layout.h in Headers */,
-				79642C9F1603C5500095D5A2 /* UIView+IDL_ViewGroup.h in Headers */,
-				79642CA11603C5500095D5A2 /* UIButton+IDL_View.h in Headers */,
-				79642CA31603C5500095D5A2 /* UIControl+IDL_View.h in Headers */,
-				79642CA51603C5500095D5A2 /* UIImageView+IDL_View.h in Headers */,
-				79642CA71603C5500095D5A2 /* UILabel+IDL_View.h in Headers */,
-				79642CA91603C5500095D5A2 /* UIScrollView+IDL_ViewGroup.h in Headers */,
-				79642CAB1603C5500095D5A2 /* UIWebView+IDL_View.h in Headers */,
-				79642CAD1603C5500095D5A2 /* IDLTextView.h in Headers */,
-				79642CAF1603C5500095D5A2 /* IDLFrameLayout.h in Headers */,
-				79642CB01603C5500095D5A2 /* IDLFrameLayoutLayoutParams.h in Headers */,
-				79642CB21603C5500095D5A2 /* IDLLayouts.h in Headers */,
-				79642CB31603C5500095D5A2 /* IDLLinearLayout.h in Headers */,
-				79642CB51603C5500095D5A2 /* IDLLinearLayoutLayoutParams.h in Headers */,
-				79642CB71603C5500095D5A2 /* IDLDependencyGraph.h in Headers */,
-				79642CB91603C5500095D5A2 /* IDLDependencyGraphNode.h in Headers */,
-				79642CBB1603C5500095D5A2 /* IDLRelativeLayout.h in Headers */,
-				79642CBD1603C5500095D5A2 /* IDLRelativeLayoutLayoutParams.h in Headers */,
-				79642C7D1603C5500095D5A2 /* TBXML.h in Headers */,
-				798140FA166A87C200A63480 /* UINavigationBar+IDL_View.h in Headers */,
-				798140FF166A8A5700A63480 /* UIToolbar+IDL_View.h in Headers */,
-				79814103166A8DC600A63480 /* UISearchBar+IDL_View.h in Headers */,
-				79814107166A8F3D00A63480 /* UISwitch+IDL_View.h in Headers */,
-				7981410C166ABABB00A63480 /* IDLResourceManager.h in Headers */,
-				79814110166BD65900A63480 /* NSDictionary+IDL_ResourceManager.h in Headers */,
-				796E1DB416735B1900E78B45 /* UIImage+IDL_FromColor.h in Headers */,
-				79B983481674D2F200F844DB /* IDLColorStateItem+IDL_Internal.h in Headers */,
-				79B983491674D2F200F844DB /* IDLColorStateItem.h in Headers */,
-				79B9834B1674D2F200F844DB /* IDLColorStateList.h in Headers */,
-				79B9834D1674D2F200F844DB /* IDLDrawableStateItem+IDL_Internal.h in Headers */,
-				79B9834E1674D2F200F844DB /* IDLDrawableStateItem.h in Headers */,
-				79B983501674D2F200F844DB /* IDLDrawableStateList.h in Headers */,
-				79B983521674D2F200F844DB /* IDLResourceStateItem+IDL_Internal.h in Headers */,
-				79B983531674D2F200F844DB /* IDLResourceStateItem.h in Headers */,
-				79B983551674D2F200F844DB /* IDLResourceStateList+IDL_Internal.h in Headers */,
-				79B983561674D2F200F844DB /* IDLResourceStateList.h in Headers */,
-				7926931D167D03FE0078EE37 /* IDLResourceValueSet.h in Headers */,
-				7926931F167D03FE0078EE37 /* IDLStyle+IDL_Internal.h in Headers */,
-				79269320167D03FE0078EE37 /* IDLStyle.h in Headers */,
-				79269324167D11970078EE37 /* IDLStringArray.h in Headers */,
-				7926940A167E0E0A0078EE37 /* IDLDrawable.h in Headers */,
-				79718ADC167FAC9B00414CCE /* IDLBitmapDrawable.h in Headers */,
-				79718AE1167FAD9D00414CCE /* IDLColorDrawable.h in Headers */,
-				79718AE5167FADB900414CCE /* IDLInsetDrawable.h in Headers */,
-				79718AE9167FAE3D00414CCE /* IDLDrawableContainer.h in Headers */,
-				79718AED167FAE9400414CCE /* IDLStateListDrawable.h in Headers */,
-				79718AF1167FAEA800414CCE /* IDLLayerDrawable.h in Headers */,
-				79718AF5167FAEB500414CCE /* IDLGradientDrawable.h in Headers */,
-				79718AF916808D5F00414CCE /* IDLDrawableContainer+IDL_Internal.h in Headers */,
-				79718B02168091D400414CCE /* IDLDrawable+IDL_Internal.h in Headers */,
-				79718B0616809FAE00414CCE /* UIView+IDLDrawable.h in Headers */,
-				79718B0C1680E10F00414CCE /* TBXML+IDL.h in Headers */,
-				79718B101681DE5400414CCE /* IDLNinePatchDrawable.h in Headers */,
-				79718B141681FF1100414CCE /* UIImage+IDLNinePatch.h in Headers */,
-				79DE0ABD1684AFF200EDACE3 /* NSObject+IDL_KVOObserver.h in Headers */,
-				79DE0BEE1690C87400EDACE3 /* IDLDrawableLayer.h in Headers */,
-				79DE0C021696010100EDACE3 /* IDLEditText.h in Headers */,
-				79DE0C06169604A100EDACE3 /* IDLTextArea.h in Headers */,
-				79DE0C0A169605A700EDACE3 /* UITextView+IDL_View.h in Headers */,
-				79DE0C0E1698A56D00EDACE3 /* IDLButton.h in Headers */,
-				79DE0C141699B81700EDACE3 /* IDLXMLCache.h in Headers */,
-				79B5BFA6169B6A3700FA1D94 /* IDLClipDrawable.h in Headers */,
-				79B5BFBF16A2CFF300FA1D94 /* IDLRotateDrawable.h in Headers */,
-				79B5BFC316A5D36400FA1D94 /* IDLShadowDrawable.h in Headers */,
-				79B2A98D1704EF67001E4C6E /* IDLResourceManager+IDL_Internal.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
-		79642BE81603C4A20095D5A2 /* iDroidLayout */ = {
+		794BF81C182C4FF300A6DF05 /* iDroidLayout */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 79642C0D1603C4A30095D5A2 /* Build configuration list for PBXNativeTarget "iDroidLayout" */;
+			buildConfigurationList = 794BF83A182C4FF300A6DF05 /* Build configuration list for PBXNativeTarget "iDroidLayout" */;
 			buildPhases = (
-				79642BE11603C4A20095D5A2 /* ShellScript */,
-				79642BE21603C4A20095D5A2 /* Sources */,
-				79642BE31603C4A20095D5A2 /* Frameworks */,
-				79642BE41603C4A20095D5A2 /* Headers */,
-				79642BE51603C4A20095D5A2 /* Resources */,
-				79642BE61603C4A20095D5A2 /* ShellScript */,
-				79642BE71603C4A20095D5A2 /* ShellScript */,
+				CE73E425522D4927B538D1A0 /* Check Pods Manifest.lock */,
+				794BF819182C4FF300A6DF05 /* Sources */,
+				794BF81A182C4FF300A6DF05 /* Frameworks */,
+				794BF81B182C4FF300A6DF05 /* CopyFiles */,
+				7F32A33097484BDC996A4F63 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1014,40 +914,40 @@
 			);
 			name = iDroidLayout;
 			productName = iDroidLayout;
-			productReference = 79642BE91603C4A20095D5A2 /* iDroidLayout.framework */;
-			productType = "com.apple.product-type.bundle";
+			productReference = 794BF81D182C4FF300A6DF05 /* libiDroidLayout.a */;
+			productType = "com.apple.product-type.library.static";
 		};
-		79642BF61603C4A30095D5A2 /* iDroidLayoutTests */ = {
+		794BF829182C4FF300A6DF05 /* iDroidLayoutTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 79642C101603C4A30095D5A2 /* Build configuration list for PBXNativeTarget "iDroidLayoutTests" */;
+			buildConfigurationList = 794BF83D182C4FF300A6DF05 /* Build configuration list for PBXNativeTarget "iDroidLayoutTests" */;
 			buildPhases = (
-				79642BF21603C4A30095D5A2 /* Sources */,
-				79642BF31603C4A30095D5A2 /* Frameworks */,
-				79642BF41603C4A30095D5A2 /* Resources */,
-				79642BF51603C4A30095D5A2 /* ShellScript */,
+				794BF826182C4FF300A6DF05 /* Sources */,
+				794BF827182C4FF300A6DF05 /* Frameworks */,
+				794BF828182C4FF300A6DF05 /* Resources */,
+				FFD041228F604A6DB1E553ED /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				79642C001603C4A30095D5A2 /* PBXTargetDependency */,
 			);
 			name = iDroidLayoutTests;
 			productName = iDroidLayoutTests;
-			productReference = 79642BF71603C4A30095D5A2 /* iDroidLayoutTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productReference = 794BF82A182C4FF300A6DF05 /* iDroidLayoutTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		79642C161603C4E80095D5A2 /* iDroidLayoutExample */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 79642C291603C4E80095D5A2 /* Build configuration list for PBXNativeTarget "iDroidLayoutExample" */;
 			buildPhases = (
+				68591BE15B6C48308F7AB629 /* Check Pods Manifest.lock */,
 				79642C131603C4E80095D5A2 /* Sources */,
 				79642C141603C4E80095D5A2 /* Frameworks */,
 				79642C151603C4E80095D5A2 /* Resources */,
+				16A3F35118434304864F65B7 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				79642C2D1603C4F80095D5A2 /* PBXTargetDependency */,
 			);
 			name = iDroidLayoutExample;
 			productName = iDroidLayoutExample;
@@ -1060,8 +960,13 @@
 		79642BDC1603C4A20095D5A2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Tom Quist";
+				TargetAttributes = {
+					794BF829182C4FF300A6DF05 = {
+						TestTargetID = 79642BE81603C4A20095D5A2;
+					};
+				};
 			};
 			buildConfigurationList = 79642BDF1603C4A20095D5A2 /* Build configuration list for PBXProject "iDroidLayout" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1075,34 +980,24 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				79642BE81603C4A20095D5A2 /* iDroidLayout */,
-				79642BF61603C4A30095D5A2 /* iDroidLayoutTests */,
+				794BF81C182C4FF300A6DF05 /* iDroidLayout */,
+				794BF829182C4FF300A6DF05 /* iDroidLayoutTests */,
 				79642C161603C4E80095D5A2 /* iDroidLayoutExample */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		79642BE51603C4A20095D5A2 /* Resources */ = {
+		794BF828182C4FF300A6DF05 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79642BF01603C4A30095D5A2 /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		79642BF41603C4A30095D5A2 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				79642C011603C4A30095D5A2 /* iDroidLayout.framework in Resources */,
-				79642C071603C4A30095D5A2 /* InfoPlist.strings in Resources */,
-				79642CE51603D1B20095D5A2 /* testLayout1.xml in Resources */,
-				79642CF01603D7060095D5A2 /* testLayout2.xml in Resources */,
-				79642CF21603D8BA0095D5A2 /* testLayout3.xml in Resources */,
-				79642CF41603D9B30095D5A2 /* testLayout4.xml in Resources */,
-				79642CF91603E4610095D5A2 /* viewgroupchildren.xml in Resources */,
-				79642CFE1605E1790095D5A2 /* framelayout_gravity.xml in Resources */,
+				79CEF928182C5911005E2FD1 /* framelayout_gravity.xml in Resources */,
+				79CEF923182C590D005E2FD1 /* viewgroupchildren.xml in Resources */,
+				79CEF925182C5911005E2FD1 /* testLayout2.xml in Resources */,
+				79CEF924182C5911005E2FD1 /* testLayout1.xml in Resources */,
+				79CEF927182C5911005E2FD1 /* testLayout4.xml in Resources */,
+				79CEF926182C5911005E2FD1 /* testLayout3.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1111,168 +1006,192 @@
 			buildActionMask = 2147483647;
 			files = (
 				79642C221603C4E80095D5A2 /* InfoPlist.strings in Resources */,
+				A7434E1E1A29EEC100A74D40 /* background1.xml in Resources */,
 				79642CCD1603C5DB0095D5A2 /* android.jpg in Resources */,
-				79642CCE1603C5DB0095D5A2 /* animations.xml in Resources */,
-				79642CCF1603C5DB0095D5A2 /* formular.xml in Resources */,
-				79642CD01603C5DB0095D5A2 /* formular~ipad.xml in Resources */,
-				79642CD41603C5DB0095D5A2 /* mainCell.xml in Resources */,
-				79642CD61603C5DB0095D5A2 /* scrollviews.xml in Resources */,
-				79E4337816681D7B00E49114 /* LayoutFromIB.xib in Resources */,
-				79E4337D16681DEB00E49114 /* layoutFromIB.xml in Resources */,
-				79E43380166A2E7B00E49114 /* includeContainer.xml in Resources */,
-				79E43382166A2E8A00E49114 /* includeChild1.xml in Resources */,
-				79E43384166A2F4C00E49114 /* includeChild2.xml in Resources */,
-				796E1D85167169F700E78B45 /* button_color.xml in Resources */,
-				796E1DB716735F8E00E78B45 /* button_background.xml in Resources */,
-				79269316167BF7A00078EE37 /* values.xml in Resources */,
+				A7434E261A29EEC100A74D40 /* layoutFromIB.xml in Resources */,
+				A7434E1D1A29EEC100A74D40 /* button_color.xml in Resources */,
+				A7090EAA19D0CE89002D9FC0 /* Images.xcassets in Resources */,
+				A7434E251A29EEC100A74D40 /* includeContainer.xml in Resources */,
+				A744922219BFA61900E88C18 /* Default-568h@2x.png in Resources */,
+				A7434E2D1A29EF6200A74D40 /* LayoutFromIB.xib in Resources */,
+				A7434E1F1A29EEC100A74D40 /* button_background.xml in Resources */,
+				A7434E281A29EEC100A74D40 /* scrollviews.xml in Resources */,
+				A7434E231A29EEC100A74D40 /* includeChild1.xml in Resources */,
+				A7434E211A29EEC100A74D40 /* formular.xml in Resources */,
+				A7434E241A29EEC100A74D40 /* includeChild2.xml in Resources */,
+				A7434E291A29EEC100A74D40 /* values.xml in Resources */,
 				79DE0BFC1695FC5C00EDACE3 /* button_disabled.9@2x.png in Resources */,
+				A7434E201A29EEC100A74D40 /* animations.xml in Resources */,
+				A7434E271A29EEC100A74D40 /* mainCell.xml in Resources */,
 				79DE0BFD1695FC5C00EDACE3 /* button_pressed.9@2x.png in Resources */,
 				79DE0BFE1695FC5C00EDACE3 /* button_normal.9@2x.png in Resources */,
-				79DE0BFF1695FC5C00EDACE3 /* background1.xml in Resources */,
+				A7434E221A29EEC100A74D40 /* formular~ipad.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		79642BE11603C4A20095D5A2 /* ShellScript */ = {
+		16A3F35118434304864F65B7 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\n\nset +u\nif [[ $UFW_MASTER_SCRIPT_RUNNING ]]\nthen\n    # Nothing for the slave script to do\n    exit 0\nfi\nset -u\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\n    UFW_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\n    echo \"Could not find platform name from SDK_NAME: $SDK_NAME\"\n    exit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\n\tUFW_SDK_VERSION=${BASH_REMATCH[1]}\nelse\n    echo \"Could not find sdk version  from SDK_NAME: $SDK_NAME\"\n    exit 1\nfi\n\nif [[ \"$UFW_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\n    UFW_OTHER_PLATFORM=iphonesimulator\nelse\n    UFW_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$UFW_SDK_PLATFORM$ ]]\nthen\n    UFW_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${UFW_OTHER_PLATFORM}\"\nelse\n    echo \"Could not find $UFW_SDK_PLATFORM in $BUILT_PRODUCTS_DIR\"\n    exit 1\nfi\n\n\n# Short-circuit if all binaries are up to date\n\nif [[ -f \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" ]] && \\\n   [[ -f \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/${EXECUTABLE_PATH}\" ]] && \\\n   [[ ! \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" -nt \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/${EXECUTABLE_PATH}\" ]]\n   [[ -f \"${UFW_OTHER_BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" ]] && \\\n   [[ -f \"${UFW_OTHER_BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/${EXECUTABLE_PATH}\" ]] && \\\n   [[ ! \"${UFW_OTHER_BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" -nt \"${UFW_OTHER_BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/${EXECUTABLE_PATH}\" ]]\nthen\n    exit 0\nfi\n\n\n# Clean other platform if needed\n\nif [[ ! -f \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" ]]\nthen\n\techo \"Platform \\\"$UFW_SDK_PLATFORM\\\" was cleaned recently. Cleaning \\\"$UFW_OTHER_PLATFORM\\\" as well\"\n\techo xcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${UFW_OTHER_PLATFORM}${UFW_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" CONFIGURATION_TEMP_DIR=\"${PROJECT_TEMP_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\" clean\n\txcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${UFW_OTHER_PLATFORM}${UFW_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" CONFIGURATION_TEMP_DIR=\"${PROJECT_TEMP_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\" clean\nfi\n\n\n# Make sure we are building from fresh binaries\n\nrm -rf \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\"\nrm -rf \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework\"\nrm -rf \"${UFW_OTHER_BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\"\nrm -rf \"${UFW_OTHER_BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-test/Pods-test-resources.sh\"\n";
 		};
-		79642BE61603C4A20095D5A2 /* ShellScript */ = {
+		68591BE15B6C48308F7AB629 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "HEADERS_ROOT=$SRCROOT/$PRODUCT_NAME\nFRAMEWORK_HEADERS_DIR=\"$BUILT_PRODUCTS_DIR/$WRAPPER_NAME/Versions/$FRAMEWORK_VERSION/Headers\"\n\n## only header files expected at this point\nPUBLIC_HEADERS=$(find $FRAMEWORK_HEADERS_DIR/. -not -type d 2> /dev/null | sed -e \"s@.*/@@g\")\n\nFIND_OPTS=\"\"\nfor PUBLIC_HEADER in $PUBLIC_HEADERS; do\n  if [ -n \"$FIND_OPTS\" ]; then\n    FIND_OPTS=\"$FIND_OPTS -o\"\n  fi\n  FIND_OPTS=\"$FIND_OPTS -name '$PUBLIC_HEADER'\"\ndone\n\n#if [ -n \"$FIND_OPTS\" ]; then\n#  for ORIG_HEADER in $(eval \"find $HEADERS_ROOT/. $FIND_OPTS\" 2> /dev/null | sed -e \"s@^$HEADERS_ROOT/./@@g\"); do\n#    PUBLIC_HEADER=$(basename $ORIG_HEADER)\n#    RELATIVE_PATH=$(dirname $ORIG_HEADER)\n#    if [ -e $FRAMEWORK_HEADERS_DIR/$PUBLIC_HEADER ]; then\n#mkdir -p \"$FRAMEWORK_HEADERS_DIR/$RELATIVE_PATH\"\n#mv \"$FRAMEWORK_HEADERS_DIR/$PUBLIC_HEADER\" \"$FRAMEWORK_HEADERS_DIR/$PUBLIC_HEADER\"\n#    fi\n#  done\n#fi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 		};
-		79642BE71603C4A20095D5A2 /* ShellScript */ = {
+		7F32A33097484BDC996A4F63 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\n\nset +u\nif [[ $UFW_MASTER_SCRIPT_RUNNING ]]\nthen\n    # Nothing for the slave script to do\n    exit 0\nfi\nset -u\nexport UFW_MASTER_SCRIPT_RUNNING=1\n\n\n# Functions\n\n## List files in the specified directory, storing to the specified array.\n#\n# @param $1 The path to list\n# @param $2 The name of the array to fill\n#\n##\nlist_files ()\n{\n    filelist=$(ls \"$1\")\n    while read line\n    do\n        eval \"$2[\\${#$2[*]}]=\\\"\\$line\\\"\"\n    done <<< \"$filelist\"\n}\n\n\n# Sanity check\n\nif [[ ! -f \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" ]]\nthen\n    echo \"Framework target \\\"${TARGET_NAME}\\\" had no source files to build from. Make sure your source files have the correct target membership\"\n    exit 1\nfi\n\n\n# Gather information\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\n    UFW_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\n    echo \"Could not find platform name from SDK_NAME: $SDK_NAME\"\n    exit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\n    UFW_SDK_VERSION=${BASH_REMATCH[1]}\nelse\n    echo \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\n    exit 1\nfi\n\nif [[ \"$UFW_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\n    UFW_OTHER_PLATFORM=iphonesimulator\nelse\n    UFW_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$UFW_SDK_PLATFORM$ ]]\nthen\n    UFW_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${UFW_OTHER_PLATFORM}\"\nelse\n    echo \"Could not find $UFW_SDK_PLATFORM in $BUILT_PRODUCTS_DIR\"\n    exit 1\nfi\n\n\n# Short-circuit if all binaries are up to date.\n# We already checked the other platform in the prerun script.\n\nif [[ -f \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" ]] && [[ -f \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/${EXECUTABLE_PATH}\" ]] && [[ ! \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" -nt \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/${EXECUTABLE_PATH}\" ]]\nthen\n    exit 0\nfi\n\n\n# Make sure the other platform gets built\n\necho \"Build other platform\"\n\necho xcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${UFW_OTHER_PLATFORM}${UFW_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" CONFIGURATION_TEMP_DIR=\"${PROJECT_TEMP_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\" $ACTION\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${UFW_OTHER_PLATFORM}${UFW_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" CONFIGURATION_TEMP_DIR=\"${PROJECT_TEMP_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\" $ACTION\n\n\n# Build the fat static library binary\n\necho \"Create universal static library\"\n\necho \"$PLATFORM_DEVELOPER_BIN_DIR/libtool\" -static \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" \"${UFW_OTHER_BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" -o \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}.temp\"\n\"$PLATFORM_DEVELOPER_BIN_DIR/libtool\" -static \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" \"${UFW_OTHER_BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" -o \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}.temp\"\n\necho mv \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}.temp\" \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\"\nmv \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}.temp\" \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\"\n\n\n# Build framework structure\n\necho \"Build symlinks\"\n\necho ln -sfh A \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Versions/Current\"\nln -sfh A \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Versions/Current\"\necho ln -sfh Versions/Current/Headers \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Headers\"\nln -sfh Versions/Current/Headers \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Headers\"\necho ln -sfh Versions/Current/Resources \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Resources\"\nln -sfh Versions/Current/Resources \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Resources\"\necho ln -sfh \"Versions/Current/${EXECUTABLE_NAME}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/${EXECUTABLE_NAME}\"\nln -sfh \"Versions/Current/${EXECUTABLE_NAME}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/${EXECUTABLE_NAME}\"\n\n\n# Link to binary for unit tests\n\nmkdir -p \"${BUILT_PRODUCTS_DIR}/.fake_fw_testing.framework\"\nln -sfh \"../${WRAPPER_NAME}/${EXECUTABLE_NAME}\" \"${BUILT_PRODUCTS_DIR}/.fake_fw_testing.framework/.fake_fw_testing\"\n\n\n# Build embedded framework structure\n\necho \"Build Embedded Framework\"\n\necho rm -rf \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework\"\nrm -rf \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework\"\necho mkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/Resources\"\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/Resources\"\necho cp -a \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/\"\ncp -a \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/\"\n\ndeclare -a UFW_FILE_LIST\nlist_files \"${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\" UFW_FILE_LIST\nfor filename in \"${UFW_FILE_LIST[@]}\"\ndo\n    if [[ \"${filename}\" != \"Info.plist\" ]] && [[ ! \"${filename}\" =~ .*\\.lproj$ ]]\n    then\n        echo ln -sfh \"../${WRAPPER_NAME}/Resources/${filename}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/Resources/${filename}\"\n        ln -sfh \"../${WRAPPER_NAME}/Resources/${filename}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/Resources/${filename}\"\n    fi\ndone\n\n\n# Replace other platform's framework with a copy of this one (so that both have the same universal binary)\n\necho \"Copy from $UFW_SDK_PLATFORM to $UFW_OTHER_PLATFORM\"\n\necho rm -rf \"${BUILD_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\"\nrm -rf \"${BUILD_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\"\necho cp -a \"${BUILD_DIR}/${CONFIGURATION}-${UFW_SDK_PLATFORM}\" \"${BUILD_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\"\ncp -a \"${BUILD_DIR}/${CONFIGURATION}-${UFW_SDK_PLATFORM}\" \"${BUILD_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iDroidLayout/Pods-iDroidLayout-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
-		79642BF51603C4A30095D5A2 /* ShellScript */ = {
+		CE73E425522D4927B538D1A0 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FFD041228F604A6DB1E553ED /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-test/Pods-test-resources.sh\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		79642BE21603C4A20095D5A2 /* Sources */ = {
+		794BF819182C4FF300A6DF05 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79642C7E1603C5500095D5A2 /* TBXML.m in Sources */,
-				79642C801603C5500095D5A2 /* IDLFinitePool.m in Sources */,
-				79642C851603C5500095D5A2 /* IDLPools.m in Sources */,
-				79642C871603C5500095D5A2 /* IDLSynchronizedPool.m in Sources */,
-				79642C891603C5500095D5A2 /* UIColor+IDL_ColorParser.m in Sources */,
-				79642C8B1603C5500095D5A2 /* IDLGravity.m in Sources */,
-				79642C8D1603C5500095D5A2 /* IDLLayoutBridge.m in Sources */,
-				79642C8F1603C5500095D5A2 /* IDLLayoutParams.m in Sources */,
-				79642C911603C5500095D5A2 /* IDLLayoutViewController.m in Sources */,
-				79642C931603C5500095D5A2 /* IDLMarginLayoutParams.m in Sources */,
-				79642C951603C5500095D5A2 /* IDLTableViewCell.m in Sources */,
-				79642C971603C5500095D5A2 /* IDLViewGroup.m in Sources */,
-				79642C991603C5500095D5A2 /* IDLBaseViewFactory.m in Sources */,
-				79642C9B1603C5500095D5A2 /* IDLLayoutInflater.m in Sources */,
-				79642C9E1603C5500095D5A2 /* UIView+IDL_Layout.m in Sources */,
-				79642CA01603C5500095D5A2 /* UIView+IDL_ViewGroup.m in Sources */,
-				79642CA21603C5500095D5A2 /* UIButton+IDL_View.m in Sources */,
-				79642CA41603C5500095D5A2 /* UIControl+IDL_View.m in Sources */,
-				79642CA61603C5500095D5A2 /* UIImageView+IDL_View.m in Sources */,
-				79642CA81603C5500095D5A2 /* UILabel+IDL_View.m in Sources */,
-				79642CAA1603C5500095D5A2 /* UIScrollView+IDL_ViewGroup.m in Sources */,
-				79642CAC1603C5500095D5A2 /* UIWebView+IDL_View.m in Sources */,
-				79642CAE1603C5500095D5A2 /* IDLTextView.m in Sources */,
-				79642CB11603C5500095D5A2 /* IDLFrameLayoutLayoutParams.m in Sources */,
-				79642CB41603C5500095D5A2 /* IDLLinearLayout.m in Sources */,
-				79642CB61603C5500095D5A2 /* IDLLinearLayoutLayoutParams.m in Sources */,
-				79642CB81603C5500095D5A2 /* IDLDependencyGraph.m in Sources */,
-				79642CBA1603C5500095D5A2 /* IDLDependencyGraphNode.m in Sources */,
-				79642CBC1603C5500095D5A2 /* IDLRelativeLayout.m in Sources */,
-				79642CBE1603C5500095D5A2 /* IDLRelativeLayoutLayoutParams.m in Sources */,
-				798140FB166A87C200A63480 /* UINavigationBar+IDL_View.m in Sources */,
-				79814100166A8A5700A63480 /* UIToolbar+IDL_View.m in Sources */,
-				79814104166A8DC600A63480 /* UISearchBar+IDL_View.m in Sources */,
-				79814108166A8F3D00A63480 /* UISwitch+IDL_View.m in Sources */,
-				7981410D166ABABB00A63480 /* IDLResourceManager.m in Sources */,
-				79814111166BD65900A63480 /* NSDictionary+IDL_ResourceManager.m in Sources */,
-				796E1DB516735B1900E78B45 /* UIImage+IDL_FromColor.m in Sources */,
-				79B9834A1674D2F200F844DB /* IDLColorStateItem.m in Sources */,
-				79B9834C1674D2F200F844DB /* IDLColorStateList.m in Sources */,
-				79B9834F1674D2F200F844DB /* IDLDrawableStateItem.m in Sources */,
-				79B983511674D2F200F844DB /* IDLDrawableStateList.m in Sources */,
-				79B983541674D2F200F844DB /* IDLResourceStateItem.m in Sources */,
-				79B983571674D2F200F844DB /* IDLResourceStateList.m in Sources */,
-				7926931E167D03FE0078EE37 /* IDLResourceValueSet.m in Sources */,
-				79269321167D03FE0078EE37 /* IDLStyle.m in Sources */,
-				79269325167D11970078EE37 /* IDLStringArray.m in Sources */,
-				7926940B167E0E0A0078EE37 /* IDLDrawable.m in Sources */,
-				79718ADD167FAC9B00414CCE /* IDLBitmapDrawable.m in Sources */,
-				79718AE2167FAD9D00414CCE /* IDLColorDrawable.m in Sources */,
-				79718AE6167FADB900414CCE /* IDLInsetDrawable.m in Sources */,
-				79718AEA167FAE3D00414CCE /* IDLDrawableContainer.m in Sources */,
-				79718AEE167FAE9400414CCE /* IDLStateListDrawable.m in Sources */,
-				79718AF2167FAEA800414CCE /* IDLLayerDrawable.m in Sources */,
-				79718AF6167FAEB500414CCE /* IDLGradientDrawable.m in Sources */,
-				79718B0716809FAE00414CCE /* UIView+IDLDrawable.m in Sources */,
-				79718B0D1680E10F00414CCE /* TBXML+IDL.m in Sources */,
-				79718B111681DE5400414CCE /* IDLNinePatchDrawable.m in Sources */,
-				79718B151681FF1100414CCE /* UIImage+IDLNinePatch.m in Sources */,
-				79DE0ABE1684AFF200EDACE3 /* NSObject+IDL_KVOObserver.m in Sources */,
-				79DE0BEF1690C87400EDACE3 /* IDLDrawableLayer.m in Sources */,
-				79DE0C031696010100EDACE3 /* IDLEditText.m in Sources */,
-				79DE0C07169604A100EDACE3 /* IDLTextArea.m in Sources */,
-				79DE0C0B169605A700EDACE3 /* UITextView+IDL_View.m in Sources */,
-				79DE0C0F1698A56D00EDACE3 /* IDLButton.m in Sources */,
-				79DE0C151699B81700EDACE3 /* IDLXMLCache.m in Sources */,
-				79B5BFA7169B6A3700FA1D94 /* IDLClipDrawable.m in Sources */,
-				79B5BFC016A2CFF300FA1D94 /* IDLRotateDrawable.m in Sources */,
-				79B5BFC416A5D36400FA1D94 /* IDLShadowDrawable.m in Sources */,
+				794BF840182C508600A6DF05 /* IDLBitmapDrawable.m in Sources */,
+				794BF841182C508600A6DF05 /* IDLClipDrawable.m in Sources */,
+				794BF842182C508600A6DF05 /* IDLColorDrawable.m in Sources */,
+				794BF843182C508600A6DF05 /* IDLDrawable.m in Sources */,
+				794BF844182C508600A6DF05 /* IDLDrawableContainer.m in Sources */,
+				794BF845182C508600A6DF05 /* IDLDrawableLayer.m in Sources */,
+				794BF846182C508600A6DF05 /* IDLGradientDrawable.m in Sources */,
+				794BF847182C508600A6DF05 /* IDLInsetDrawable.m in Sources */,
+				794BF848182C508600A6DF05 /* IDLLayerDrawable.m in Sources */,
+				794BF849182C508600A6DF05 /* IDLNinePatchDrawable.m in Sources */,
+				794BF84A182C508600A6DF05 /* IDLRotateDrawable.m in Sources */,
+				794BF84B182C508600A6DF05 /* IDLShadowDrawable.m in Sources */,
+				794BF84C182C508600A6DF05 /* IDLStateListDrawable.m in Sources */,
+				794BF84D182C508600A6DF05 /* UIView+IDLDrawable.m in Sources */,
+				794BF84F182C508600A6DF05 /* NSDictionary+IDL_ResourceManager.m in Sources */,
+				794BF850182C508600A6DF05 /* IDLColorStateItem.m in Sources */,
+				794BF851182C508600A6DF05 /* IDLColorStateList.m in Sources */,
+				794BF852182C508600A6DF05 /* IDLDrawableStateItem.m in Sources */,
+				794BF853182C508600A6DF05 /* IDLDrawableStateList.m in Sources */,
+				794BF854182C508600A6DF05 /* IDLResourceStateItem.m in Sources */,
+				794BF855182C508600A6DF05 /* IDLResourceStateList.m in Sources */,
+				794BF856182C508600A6DF05 /* IDLResourceValueSet.m in Sources */,
+				794BF857182C508600A6DF05 /* IDLStyle.m in Sources */,
+				794BF858182C508600A6DF05 /* IDLStringArray.m in Sources */,
+				794BF859182C508600A6DF05 /* IDLXMLCache.m in Sources */,
+				794BF85A182C508600A6DF05 /* IDLFinitePool.m in Sources */,
+				794BF85B182C508600A6DF05 /* IDLPools.m in Sources */,
+				794BF85C182C508600A6DF05 /* IDLSynchronizedPool.m in Sources */,
+				794BF85D182C508600A6DF05 /* UIColor+IDL_ColorParser.m in Sources */,
+				794BF85E182C508600A6DF05 /* UIImage+IDL_FromColor.m in Sources */,
+				794BF85F182C508600A6DF05 /* TBXML+IDL.m in Sources */,
+				79CEF932182D6C42005E2FD1 /* IDLResourceManager.m in Sources */,
+				794BF860182C508600A6DF05 /* UIImage+IDLNinePatch.m in Sources */,
+				794BF861182C508600A6DF05 /* NSObject+IDL_KVOObserver.m in Sources */,
+				794BF862182C508600A6DF05 /* IDLGravity.m in Sources */,
+				794BF863182C508600A6DF05 /* IDLLayoutBridge.m in Sources */,
+				794BF864182C508600A6DF05 /* IDLLayoutParams.m in Sources */,
+				794BF865182C508600A6DF05 /* IDLLayoutViewController.m in Sources */,
+				794BF866182C508600A6DF05 /* IDLMarginLayoutParams.m in Sources */,
+				794BF867182C508600A6DF05 /* IDLTableViewCell.m in Sources */,
+				794BF868182C508600A6DF05 /* IDLViewGroup.m in Sources */,
+				79CEF92B182D64B8005E2FD1 /* IDLResourceManager+Drawable.m in Sources */,
+				794BF869182C508600A6DF05 /* IDLBaseViewFactory.m in Sources */,
+				794BF86A182C508600A6DF05 /* IDLLayoutInflater.m in Sources */,
+				794BF86B182C508600A6DF05 /* UIView+IDL_Layout.m in Sources */,
+				794BF86C182C508600A6DF05 /* UIView+IDL_ViewGroup.m in Sources */,
+				794BF86D182C508600A6DF05 /* UIButton+IDL_View.m in Sources */,
+				79CEF934182D6D7E005E2FD1 /* IDLResourceManager+IDL_Internal.m in Sources */,
+				794BF86E182C508600A6DF05 /* UIControl+IDL_View.m in Sources */,
+				794BF86F182C508600A6DF05 /* UIImageView+IDL_View.m in Sources */,
+				794BF870182C508600A6DF05 /* UILabel+IDL_View.m in Sources */,
+				794BF871182C508600A6DF05 /* UINavigationBar+IDL_View.m in Sources */,
+				794BF872182C508600A6DF05 /* UIScrollView+IDL_ViewGroup.m in Sources */,
+				794BF873182C508600A6DF05 /* UISearchBar+IDL_View.m in Sources */,
+				794BF874182C508600A6DF05 /* UISwitch+IDL_View.m in Sources */,
+				794BF875182C508600A6DF05 /* UIToolbar+IDL_View.m in Sources */,
+				794BF876182C508600A6DF05 /* UIWebView+IDL_View.m in Sources */,
+				794BF877182C508600A6DF05 /* UITextView+IDL_View.m in Sources */,
+				794BF878182C508600A6DF05 /* IDLButton.m in Sources */,
+				794BF879182C508600A6DF05 /* IDLEditText.m in Sources */,
+				794BF87A182C508600A6DF05 /* IDLTextArea.m in Sources */,
+				794BF87B182C508600A6DF05 /* IDLTextView.m in Sources */,
+				794BF87C182C508600A6DF05 /* IDLFrameLayoutLayoutParams.m in Sources */,
+				79CEF92F182D6B33005E2FD1 /* IDLResourceManager+String.m in Sources */,
+				794BF87D182C508600A6DF05 /* IDLLinearLayout.m in Sources */,
+				794BF87E182C508600A6DF05 /* IDLLinearLayoutLayoutParams.m in Sources */,
+				794BF87F182C508600A6DF05 /* IDLDependencyGraph.m in Sources */,
+				794BF880182C508600A6DF05 /* IDLDependencyGraphNode.m in Sources */,
+				794BF881182C508600A6DF05 /* IDLRelativeLayout.m in Sources */,
+				794BF882182C508600A6DF05 /* IDLRelativeLayoutLayoutParams.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		79642BF21603C4A30095D5A2 /* Sources */ = {
+		794BF826182C4FF300A6DF05 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79642CE21603D0620095D5A2 /* IDLLayoutInflaterTest.m in Sources */,
-				79642CF71603E2920095D5A2 /* IDLViewGroupTest.m in Sources */,
-				79642CFC1603E8560095D5A2 /* IDLViewAsserts.m in Sources */,
-				79642D011605E24E0095D5A2 /* IDLFrameLayoutGravityTest.m in Sources */,
+				794BF886182C50EF00A6DF05 /* IDLViewGroupTest.m in Sources */,
+				794BF885182C50EC00A6DF05 /* IDLViewAsserts.m in Sources */,
+				794BF888182C50FF00A6DF05 /* IDLLayoutInflaterTest.m in Sources */,
+				794BF887182C50F300A6DF05 /* IDLFrameLayoutGravityTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1289,19 +1208,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		79642C001603C4A30095D5A2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 79642BE81603C4A20095D5A2 /* iDroidLayout */;
-			targetProxy = 79642BFF1603C4A30095D5A2 /* PBXContainerItemProxy */;
-		};
-		79642C2D1603C4F80095D5A2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 79642BE81603C4A20095D5A2 /* iDroidLayout */;
-			targetProxy = 79642C2C1603C4F80095D5A2 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		79642BEE1603C4A30095D5A2 /* InfoPlist.strings */ = {
@@ -1331,14 +1237,154 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		794BF83B182C4FF300A6DF05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CBE74CB85776E59394A12EA5 /* Pods-iDroidLayout.debug.xcconfig */;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				DSTROOT = /tmp/iDroidLayout.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iDroidLayout/iDroidLayout-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		794BF83C182C4FF300A6DF05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 56BBF0B37C9E59FE57393545 /* Pods-iDroidLayout.release.xcconfig */;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				DSTROOT = /tmp/iDroidLayout.dst;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iDroidLayout/iDroidLayout-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		794BF83E182C4FF300A6DF05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE5AE02A60FF0464DE8F3699 /* Pods-test.debug.xcconfig */;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iDroidLayout/iDroidLayout-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "iDroidLayoutTests/iDroidLayoutTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		794BF83F182C4FF300A6DF05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9E59CE07804409ABE477E469 /* Pods-test.release.xcconfig */;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				ENABLE_NS_ASSERTIONS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iDroidLayout/iDroidLayout-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "iDroidLayoutTests/iDroidLayoutTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
 		79642C0B1603C4A30095D5A2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1348,10 +1394,13 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1360,127 +1409,36 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		79642C0E1603C4A30095D5A2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = (
-					armv6,
-					"$(ARCHS_STANDARD_32_BIT)",
-				);
-				CONTENTS_FOLDER_PATH = "$(WRAPPER_NAME)/Versions/$(FRAMEWORK_VERSION)";
-				DEAD_CODE_STRIPPING = NO;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				FRAMEWORK_VERSION = A;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "iDroidLayout/iDroidLayout-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-					"OUTLINE_DRAWABLE=0",
-				);
-				GCC_THUMB_SUPPORT = NO;
-				INFOPLIST_FILE = "iDroidLayout/iDroidLayout-Info.plist";
-				INFOPLIST_PATH = "$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/Info.plist";
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				LINK_WITH_STANDARD_LIBRARIES = NO;
-				MACH_O_TYPE = mh_object;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				UNLOCALIZED_RESOURCES_FOLDER_PATH = "$(CONTENTS_FOLDER_PATH)/Resources";
-				WRAPPER_EXTENSION = framework;
-			};
-			name = Debug;
-		};
-		79642C0F1603C4A30095D5A2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = (
-					armv6,
-					"$(ARCHS_STANDARD_32_BIT)",
-				);
-				CONTENTS_FOLDER_PATH = "$(WRAPPER_NAME)/Versions/$(FRAMEWORK_VERSION)";
-				DEAD_CODE_STRIPPING = NO;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				FRAMEWORK_VERSION = A;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "iDroidLayout/iDroidLayout-Prefix.pch";
-				GCC_THUMB_SUPPORT = NO;
-				INFOPLIST_FILE = "iDroidLayout/iDroidLayout-Info.plist";
-				INFOPLIST_PATH = "$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/Info.plist";
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				LINK_WITH_STANDARD_LIBRARIES = NO;
-				MACH_O_TYPE = mh_object;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				UNLOCALIZED_RESOURCES_FOLDER_PATH = "$(CONTENTS_FOLDER_PATH)/Resources";
-				WRAPPER_EXTENSION = framework;
-			};
-			name = Release;
-		};
-		79642C111603C4A30095D5A2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "iDroidLayout/iDroidLayout-Prefix.pch";
-				INFOPLIST_FILE = "iDroidLayoutTests/iDroidLayoutTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				OTHER_LDFLAGS = (
-					"-framework",
-					SenTestingKit,
-					"-framework",
-					.fake_fw_testing,
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Debug;
-		};
-		79642C121603C4A30095D5A2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "iDroidLayout/iDroidLayout-Prefix.pch";
-				INFOPLIST_FILE = "iDroidLayoutTests/iDroidLayoutTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				OTHER_LDFLAGS = (
-					"-framework",
-					SenTestingKit,
-					"-framework",
-					.fake_fw_testing,
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Release;
-		};
 		79642C2A1603C4E80095D5A2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE5AE02A60FF0464DE8F3699 /* Pods-test.debug.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1489,7 +1447,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iDroidLayoutExample/iDroidLayout-Prefix.pch";
 				INFOPLIST_FILE = "iDroidLayoutExample/iDroidLayout-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1499,7 +1457,11 @@
 		};
 		79642C2B1603C4E80095D5A2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9E59CE07804409ABE477E469 /* Pods-test.release.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1508,7 +1470,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iDroidLayoutExample/iDroidLayout-Prefix.pch";
 				INFOPLIST_FILE = "iDroidLayoutExample/iDroidLayout-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1519,29 +1481,29 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		794BF83A182C4FF300A6DF05 /* Build configuration list for PBXNativeTarget "iDroidLayout" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				794BF83B182C4FF300A6DF05 /* Debug */,
+				794BF83C182C4FF300A6DF05 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		794BF83D182C4FF300A6DF05 /* Build configuration list for PBXNativeTarget "iDroidLayoutTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				794BF83E182C4FF300A6DF05 /* Debug */,
+				794BF83F182C4FF300A6DF05 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		79642BDF1603C4A20095D5A2 /* Build configuration list for PBXProject "iDroidLayout" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				79642C0B1603C4A30095D5A2 /* Debug */,
 				79642C0C1603C4A30095D5A2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		79642C0D1603C4A30095D5A2 /* Build configuration list for PBXNativeTarget "iDroidLayout" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				79642C0E1603C4A30095D5A2 /* Debug */,
-				79642C0F1603C4A30095D5A2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		79642C101603C4A30095D5A2 /* Build configuration list for PBXNativeTarget "iDroidLayoutTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				79642C111603C4A30095D5A2 /* Debug */,
-				79642C121603C4A30095D5A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

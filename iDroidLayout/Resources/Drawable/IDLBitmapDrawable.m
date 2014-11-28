@@ -14,21 +14,17 @@
 
 @interface IDLBitmapDrawableConstantState ()
 
-@property (nonatomic, retain) UIImage *image;
+@property (nonatomic, strong) UIImage *image;
 @property (nonatomic, assign) IDLViewContentGravity gravity;
 
-- (id)initWithState:(IDLBitmapDrawableConstantState *)state;
+- (instancetype)initWithState:(IDLBitmapDrawableConstantState *)state;
 
 @end
 
 @implementation IDLBitmapDrawableConstantState
 
-- (void)dealloc {
-    self.image = nil;
-    [super dealloc];
-}
 
-- (id)initWithState:(IDLBitmapDrawableConstantState *)state {
+- (instancetype)initWithState:(IDLBitmapDrawableConstantState *)state {
     self = [super init];
     if (self) {
         if (state != nil) {
@@ -46,8 +42,8 @@
 
 @interface IDLBitmapDrawable ()
 
-@property (nonatomic, retain) IDLBitmapDrawableConstantState *internalConstantState;
-@property (nonatomic, retain) UIImage *scaledImageCache;
+@property (nonatomic, strong) IDLBitmapDrawableConstantState *internalConstantState;
+@property (nonatomic, strong) UIImage *scaledImageCache;
 
 @end
 
@@ -55,30 +51,25 @@
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    self.internalConstantState = nil;
-    self.scaledImageCache = nil;
-    [super dealloc];
 }
 
-- (id)initWithImage:(UIImage *)image {
+- (instancetype)initWithImage:(UIImage *)image {
     self = [super init];
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveMemoryWarning) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
         IDLBitmapDrawableConstantState *state = [[IDLBitmapDrawableConstantState alloc] initWithState:nil];
         state.image = image;
         self.internalConstantState = state;
-        [state release];
     }
     return self;
 }
 
-- (id)initWithState:(IDLBitmapDrawableConstantState *)state {
+- (instancetype)initWithState:(IDLBitmapDrawableConstantState *)state {
     self = [super init];
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveMemoryWarning) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
         IDLBitmapDrawableConstantState *s = [[IDLBitmapDrawableConstantState alloc] initWithState:state];
         self.internalConstantState = s;
-        [s release];
     }
     return self;
 }
@@ -96,14 +87,8 @@
 }
 
 - (UIImage *)resizeImage:(UIImage *)image toWidth:(NSInteger)width height:(NSInteger)height {
-    // Create a graphics context with the target size
-    // On iOS 4 and later, use UIGraphicsBeginImageContextWithOptions to take the scale into consideration
-    // On iOS prior to 4, fall back to use UIGraphicsBeginImageContext
     CGSize size = CGSizeMake(width, height);
-    if (NULL != UIGraphicsBeginImageContextWithOptions)
-        UIGraphicsBeginImageContextWithOptions(size, NO, 0);
-    else
-        UIGraphicsBeginImageContext(size);
+    UIGraphicsBeginImageContextWithOptions(size, NO, 0);
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     

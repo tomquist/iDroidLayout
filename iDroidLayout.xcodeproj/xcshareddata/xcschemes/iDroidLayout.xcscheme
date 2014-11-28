@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0450"
+   LastUpgradeVersion = "0610"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "79642BE81603C4A20095D5A2"
-               BuildableName = "iDroidLayout.framework"
+               BlueprintIdentifier = "794BF81C182C4FF300A6DF05"
+               BuildableName = "libiDroidLayout.a"
                BlueprintName = "iDroidLayout"
                ReferencedContainer = "container:iDroidLayout.xcodeproj">
             </BuildableReference>
@@ -32,8 +32,8 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "79642BF61603C4A30095D5A2"
-               BuildableName = "iDroidLayoutTests.octest"
+               BlueprintIdentifier = "794BF829182C4FF300A6DF05"
+               BuildableName = "iDroidLayoutTests.xctest"
                BlueprintName = "iDroidLayoutTests"
                ReferencedContainer = "container:iDroidLayout.xcodeproj">
             </BuildableReference>
@@ -49,6 +49,15 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "794BF81C182C4FF300A6DF05"
+            BuildableName = "libiDroidLayout.a"
+            BlueprintName = "iDroidLayout"
+            ReferencedContainer = "container:iDroidLayout.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

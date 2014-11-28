@@ -14,18 +14,14 @@
 
 @interface IDLDrawableStateItem ()
 
-@property (nonatomic, retain) NSString *resourceIdentifier;
+@property (nonatomic, strong) NSString *resourceIdentifier;
 
 @end
 
 @implementation IDLDrawableStateItem
 
-- (void)dealloc {
-    self.resourceIdentifier = nil;
-    [super dealloc];
-}
 
-- (id)initWithControlState:(UIControlState)controlState drawableResourceIdentifier:(NSString *)resourceIdentifier {
+- (instancetype)initWithControlState:(UIControlState)controlState drawableResourceIdentifier:(NSString *)resourceIdentifier {
     self = [super initWithControlState:controlState];
     if (self) {
         self.resourceIdentifier = resourceIdentifier;

@@ -10,27 +10,22 @@
 
 @implementation IDLFinitePool
 
-- (void)dealloc {
-	[_manager release];
-    [_root release];
-	[super dealloc];
-}
 
 
-- (id)initWithPoolableManager:(id<IDLPoolableManager>)manager {
+- (instancetype)initWithPoolableManager:(id<IDLPoolableManager>)manager {
 	self = [super init];
 	if (self != nil) {
-		_manager = [manager retain];
+		_manager = manager;
         _limit = 0;
         _infinite = TRUE;
 	}
 	return self;
 }
 
-- (id)initWithPoolableManager:(id<IDLPoolableManager>)manager limit:(NSUInteger)limit {
+- (instancetype)initWithPoolableManager:(id<IDLPoolableManager>)manager limit:(NSUInteger)limit {
     self = [super init];
     if (self) {
-        _manager = [manager retain];
+        _manager = manager;
         _limit = limit;
         _infinite = (limit == 0);
     }
@@ -40,9 +35,8 @@
 - (id<IDLPoolable>)acquire {
     id<IDLPoolable> element;
     if (_root != nil) {
-        element = [[_root retain] autorelease];
-        [_root release];
-        _root = [element.nextPoolable retain];
+        element = _root;
+        _root = element.nextPoolable;
         _poolCount--;
     } else {
         element = [_manager newInstance];
@@ -53,7 +47,7 @@
         [_manager onAcquiredElement:element];
     }
     
-    return [element autorelease];
+    return element;
 }
 
 
@@ -61,8 +55,7 @@
     if (_infinite || _poolCount < _limit) {
         _poolCount++;
         element.nextPoolable = _root;
-        [_root release];
-        _root = [element retain];
+        _root = element;
     }
     [_manager onReleasedElement:element];
 }

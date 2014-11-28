@@ -14,7 +14,7 @@
 @interface IDLInsetDrawableConstantState ()
 
 @property (nonatomic, assign) UIEdgeInsets insets;
-@property (nonatomic, retain) IDLDrawable *drawable;
+@property (nonatomic, strong) IDLDrawable *drawable;
 
 @end
 
@@ -22,11 +22,9 @@
 
 - (void)dealloc {
     self.drawable.delegate = nil;
-    self.drawable = nil;
-    [super dealloc];
 }
 
-- (id)initWithState:(IDLInsetDrawableConstantState *)state owner:(IDLInsetDrawable *)owner {
+- (instancetype)initWithState:(IDLInsetDrawableConstantState *)state owner:(IDLInsetDrawable *)owner {
     self = [super init];
     if (self) {
         if (state != nil) {
@@ -34,7 +32,6 @@
             IDLDrawable *copiedDrawable = [state.drawable copy];
             copiedDrawable.delegate = owner;
             self.drawable = copiedDrawable;
-            [copiedDrawable release];
         }
     }
     return self;
@@ -44,23 +41,18 @@
 
 @interface IDLInsetDrawable ()
 
-@property (nonatomic, retain) IDLInsetDrawableConstantState *internalConstantState;
+@property (nonatomic, strong) IDLInsetDrawableConstantState *internalConstantState;
 
 @end
 
 @implementation IDLInsetDrawable
 
-- (void)dealloc {
-    self.internalConstantState = nil;
-    [super dealloc];
-}
 
-- (id)initWithState:(IDLInsetDrawableConstantState *)state {
+- (instancetype)initWithState:(IDLInsetDrawableConstantState *)state {
     self = [super init];
     if (self) {
         IDLInsetDrawableConstantState *s = [[IDLInsetDrawableConstantState alloc] initWithState:state owner:self];
         self.internalConstantState = s;
-        [s release];
     }
     return self;
 }

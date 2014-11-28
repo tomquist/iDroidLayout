@@ -12,10 +12,10 @@
 
 @interface IDLDrawableContainerConstantState ()
 
-@property (nonatomic, assign) IDLDrawableContainer *owner;
+@property (nonatomic, weak) IDLDrawableContainer *owner;
 
 // Drawables
-@property (nonatomic, retain) NSMutableArray *drawables;
+@property (nonatomic, strong) NSMutableArray *drawables;
 
 // Dimension
 @property (nonatomic, assign) CGSize constantIntrinsicSize;
@@ -40,11 +40,9 @@
     for (IDLDrawable *drawable in self.drawables) {
         drawable.delegate = nil;
     }
-    self.drawables = nil;
-    [super dealloc];
 }
 
-- (id)initWithState:(IDLDrawableContainerConstantState *)state owner:(IDLDrawableContainer *)owner {
+- (instancetype)initWithState:(IDLDrawableContainerConstantState *)state owner:(IDLDrawableContainer *)owner {
     self = [super init];
     if (self) {
         self.owner = owner;
@@ -54,10 +52,8 @@
                 IDLDrawable *copiedDrawable = [drawable copy];
                 copiedDrawable.delegate = owner;
                 [drawables addObject:copiedDrawable];
-                [copiedDrawable release];
             }
             self.drawables = drawables;
-            [drawables release];
             self.constantIntrinsicSize = state.constantIntrinsicSize;
             self.constantMinimumSize = state.constantMinimumSize;
             self.constantSizeComputed = state.constantSizeComputed;
@@ -69,7 +65,6 @@
         } else {
             NSMutableArray *drawables = [[NSMutableArray alloc] initWithCapacity:10];
             self.drawables = drawables;
-            [drawables release];
         }
     }
     return self;
@@ -166,8 +161,8 @@
 
 @interface IDLDrawableContainer ()
 
-@property (nonatomic, retain) IDLDrawableContainerConstantState *internalConstantState;
-@property (nonatomic, retain) IDLDrawable *currentDrawable;
+@property (nonatomic, strong) IDLDrawableContainerConstantState *internalConstantState;
+@property (nonatomic, strong) IDLDrawable *currentDrawable;
 @property (nonatomic, assign) NSInteger currentIndex;
 
 @end
@@ -176,11 +171,6 @@
 
 @synthesize currentDrawable = _currentDrawable;
 
-- (void)dealloc {
-    self.internalConstantState = nil;
-    self.currentDrawable = nil;
-    [super dealloc];
-}
 
 - (id)init {
     self = [super init];

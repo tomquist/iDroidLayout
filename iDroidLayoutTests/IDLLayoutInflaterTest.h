@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 Tom Quist. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface IDLLayoutInflaterTest : SenTestCase
+@interface IDLLayoutInflaterTest : XCTestCase
 
 @end

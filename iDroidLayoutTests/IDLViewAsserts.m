@@ -7,7 +7,7 @@
 //
 
 #import "IDLViewAsserts.h"
-#import <iDroidLayout/iDroidLayout.h>
+#import "iDroidLayout.h" // iDroidLayout
 
 @implementation IDLViewAsserts
 
@@ -25,11 +25,11 @@
             if (!found) {
                 found = TRUE;
             } else {
-                STFail([NSString stringWithFormat:@"child %@ is duplicated in parent", child]);
+                XCTFail(@"child %@ is duplicated in parent", child);
             }
         }
     }
-    STAssertTrue(found, [NSString stringWithFormat:@"group does not contain %@", child]);
+    XCTAssertTrue(found, @"group does not contain %@", child);
 }
 
 /**
@@ -42,7 +42,7 @@
     NSUInteger count = [[parent subviews] count];
     for (int i = 0; i < count; i++) {
         if ([[parent subviews] objectAtIndex:i] == child) {
-            STFail([NSString stringWithFormat:@"child %@ is found in parent", child]);
+            XCTFail(@"child %@ is found in parent", child);
         }
     }
 }
@@ -82,11 +82,11 @@
 - (void)assertView:(UIView *)first isLeftAlignedToView:(UIView *)second {
     UIView *commonAncestor = [self findMostCommonAncestorOfView:first andView:second];
     if (commonAncestor == nil) {
-        STFail(@"Views can't be aligned because they don't have a common ancestor");
+        XCTFail(@"Views can't be aligned because they don't have a common ancestor");
     }
     CGPoint origin1 = [commonAncestor convertPoint:first.frame.origin fromView:first];
     CGPoint origin2 = [commonAncestor convertPoint:second.frame.origin fromView:second];
-    STAssertEquals(origin1.x, origin2.x, @"views are not left aligned");
+    XCTAssertEqual(origin1.x, origin2.x, @"views are not left aligned");
 }
 
 /**
@@ -99,11 +99,11 @@
 - (void)assertView:(UIView *)first isRightAlignedToView:(UIView *)second {
     UIView *commonAncestor = [self findMostCommonAncestorOfView:first andView:second];
     if (commonAncestor == nil) {
-        STFail(@"Views can't be aligned because they don't have a common ancestor");
+        XCTFail(@"Views can't be aligned because they don't have a common ancestor");
     }
     CGPoint origin1 = [commonAncestor convertPoint:first.frame.origin fromView:first];
     CGPoint origin2 = [commonAncestor convertPoint:second.frame.origin fromView:second];
-    STAssertEquals(origin1.x + first.measuredSize.width, origin2.x + second.measuredSize.width, @"views are not right aligned");
+    XCTAssertEqual(origin1.x + first.measuredSize.width, origin2.x + second.measuredSize.width, @"views are not right aligned");
 }
 
 /**
@@ -116,11 +116,11 @@
 - (void)assertView:(UIView *)first isTopAlignedToView:(UIView *)second {
     UIView *commonAncestor = [self findMostCommonAncestorOfView:first andView:second];
     if (commonAncestor == nil) {
-        STFail(@"Views can't be aligned because they don't have a common ancestor");
+        XCTFail(@"Views can't be aligned because they don't have a common ancestor");
     }
     CGPoint origin1 = [commonAncestor convertPoint:first.frame.origin fromView:first];
     CGPoint origin2 = [commonAncestor convertPoint:second.frame.origin fromView:second];
-    STAssertEquals(origin1.y, origin2.y, @"views are not top aligned");
+    XCTAssertEqual(origin1.y, origin2.y, @"views are not top aligned");
 }
 
 /**
@@ -133,11 +133,11 @@
 - (void)assertView:(UIView *)first isBottomAlignedToView:(UIView *)second {
     UIView *commonAncestor = [self findMostCommonAncestorOfView:first andView:second];
     if (commonAncestor == nil) {
-        STFail(@"Views can't be aligned because they don't have a common ancestor");
+        XCTFail(@"Views can't be aligned because they don't have a common ancestor");
     }
     CGPoint origin1 = [commonAncestor convertPoint:first.frame.origin fromView:first];
     CGPoint origin2 = [commonAncestor convertPoint:second.frame.origin fromView:second];
-    STAssertEquals(origin1.y + first.measuredSize.height, origin2.y + second.measuredSize.height, @"views are not bottom aligned");
+    XCTAssertEqual(origin1.y + first.measuredSize.height, origin2.y + second.measuredSize.height, @"views are not bottom aligned");
 }
 
 @end

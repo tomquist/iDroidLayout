@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 Tom Quist. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import <UIKit/UIKit.h>
 
-@interface IDLViewAsserts : SenTestCase
+@interface IDLViewAsserts : XCTestCase
 
 - (void)assertGroup:(UIView *)parent contains:(UIView *)child;
 - (void)assertGroup:(UIView *)parent notContains:(UIView *)child;

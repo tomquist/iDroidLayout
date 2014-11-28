@@ -10,7 +10,7 @@
 
 @interface IDLStyle : NSObject
 
-@property (nonatomic, readonly) IDLStyle *parentStyle;
-@property (nonatomic, readonly) NSDictionary *attributes;
+@property (weak, nonatomic, readonly) IDLStyle *parentStyle;
+@property (weak, nonatomic, readonly) NSDictionary *attributes;
 
 @end

@@ -28,7 +28,7 @@ FOUNDATION_EXPORT NSUInteger const IDLDrawableMaxLevel;
 @property (nonatomic, readonly) UIEdgeInsets padding;
 @property (nonatomic, readonly) IDLDrawableConstantState *constantState;
 
-@property (nonatomic, assign) id<IDLDrawableDelegate> delegate;
+@property (nonatomic, weak) id<IDLDrawableDelegate> delegate;
 
 - (void)drawInContext:(CGContextRef)context;
 

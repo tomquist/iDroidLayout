@@ -15,10 +15,6 @@
 @synthesize gravity = _gravity;
 @synthesize weightSum = _weightSum;
 
-- (void) dealloc {
-	
-	[super dealloc];
-}
 
 
 - (void)setupFromAttributes:(NSDictionary *)attrs {
@@ -32,7 +28,7 @@
     }
 }
 
-- (id)initWithFrame:(CGRect)frame {
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         _gravity = IDLViewContentGravityLeft | IDLViewContentGravityTop;
@@ -44,7 +40,7 @@
     return self;
 }
 
-- (id)initWithAttributes:(NSDictionary *)attrs {
+- (instancetype)initWithAttributes:(NSDictionary *)attrs {
     self = [super initWithAttributes:attrs];
     if (self) {
         _baselineAligned = TRUE;
@@ -1077,19 +1073,19 @@
  */
 -(IDLLayoutParams *)generateDefaultLayoutParams {
     if (_orientation == LinearLayoutOrientationHorizontal) {
-        return [[[IDLLinearLayoutLayoutParams alloc] initWithWidth:IDLLayoutParamsSizeWrapContent height:IDLLayoutParamsSizeWrapContent] autorelease];
+        return [[IDLLinearLayoutLayoutParams alloc] initWithWidth:IDLLayoutParamsSizeWrapContent height:IDLLayoutParamsSizeWrapContent];
     } else if (_orientation == LinearLayoutOrientationVertical) {
-        return [[[IDLLinearLayoutLayoutParams alloc] initWithWidth:IDLLayoutParamsSizeMatchParent height:IDLLayoutParamsSizeWrapContent] autorelease];
+        return [[IDLLinearLayoutLayoutParams alloc] initWithWidth:IDLLayoutParamsSizeMatchParent height:IDLLayoutParamsSizeWrapContent];
     }
     return nil;
 }
 
 -(IDLLayoutParams *)generateLayoutParamsFromLayoutParams:(IDLLayoutParams *)layoutParams {
-    return [[[IDLLinearLayoutLayoutParams alloc] initWithLayoutParams:layoutParams] autorelease];
+    return [[IDLLinearLayoutLayoutParams alloc] initWithLayoutParams:layoutParams];
 }
 
 - (IDLLayoutParams *)generateLayoutParamsFromAttributes:(NSDictionary *)attrs {
-    return [[[IDLLinearLayoutLayoutParams alloc] initWithAttributes:attrs] autorelease];
+    return [[IDLLinearLayoutLayoutParams alloc] initWithAttributes:attrs];
 }
 
 @end

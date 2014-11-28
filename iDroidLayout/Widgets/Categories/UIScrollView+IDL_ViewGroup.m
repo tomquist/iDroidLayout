@@ -39,11 +39,11 @@
 static char matchParentChildrenKey;
 
 - (IDLLayoutParams *)generateDefaultLayoutParams {
-    return [[[IDLFrameLayoutLayoutParams alloc] initWithWidth:IDLLayoutParamsSizeMatchParent height:IDLLayoutParamsSizeMatchParent] autorelease];
+    return [[IDLFrameLayoutLayoutParams alloc] initWithWidth:IDLLayoutParamsSizeMatchParent height:IDLLayoutParamsSizeMatchParent];
 }
 
 - (IDLLayoutParams *)generateLayoutParamsFromAttributes:(NSDictionary *)attrs {
-    return [[[IDLFrameLayoutLayoutParams alloc] initWithAttributes:attrs] autorelease];
+    return [[IDLFrameLayoutLayoutParams alloc] initWithAttributes:attrs];
 }
 
 - (BOOL)checkLayoutParams:(IDLLayoutParams *)layoutParams {
@@ -290,7 +290,7 @@ static char matchParentChildrenKey;
         self.backgroundColor = [UIColor clearColor];
 
         if (![self idl_hasObserverWithIdentifier:BackgroundDrawableFrameTag]) {
-            __block UIView *selfRef = self;
+            __weak UIView *selfRef = self;
             [self idl_addObserver:^(NSString *keyPath, id object, NSDictionary *change) {
                 selfRef.backgroundDrawable.bounds = selfRef.bounds;
                 [selfRef setNeedsDisplay];

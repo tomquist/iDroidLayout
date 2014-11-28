@@ -11,7 +11,7 @@
 
 @interface IDLStateListDrawable : IDLDrawableContainer
 
-- (id)initWithColorStateListe:(IDLColorStateList *)colorStateList;
+- (instancetype)initWithColorStateListe:(IDLColorStateList *)colorStateList;
 
 @end
 

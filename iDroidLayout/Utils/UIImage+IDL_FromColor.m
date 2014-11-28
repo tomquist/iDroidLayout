@@ -25,16 +25,16 @@
         image = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         if ([image respondsToSelector:@selector(resizableImageWithCapInsets:resizingMode:)]) {
-            image = [[image resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode:UIImageResizingModeStretch] retain];
+            image = [image resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode:UIImageResizingModeStretch];
         } else if ([image respondsToSelector:@selector(resizableImageWithCapInsets:)]) {
-            image = [[image resizableImageWithCapInsets:UIEdgeInsetsZero] retain];
+            image = [image resizableImageWithCapInsets:UIEdgeInsetsZero];
         } else if ([image respondsToSelector:@selector(stretchableImageWithLeftCapWidth:topCapHeight:)]) {
-            image = [[image stretchableImageWithLeftCapWidth:0 topCapHeight:0] retain];
+            image = [image stretchableImageWithLeftCapWidth:0 topCapHeight:0];
         } else {
-            image = [image retain];
+            image = image;
         }
     }
-    return [image autorelease];;
+    return image;;
 }
 
 @end

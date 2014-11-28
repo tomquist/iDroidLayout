@@ -49,10 +49,6 @@
     return dict;
 }
 
-- (void)dealloc {
-    [_viewFactory release];
-    [super dealloc];
-}
 
 - (id)init {
     self = [super init];
@@ -238,7 +234,7 @@
 
 - (UIView *)inflateResource:(NSString *)resource intoRootView:(UIView *)rootView attachToRoot:(BOOL)attachToRoot {
     NSError *error = nil;
-    TBXML *xml = [[TBXML newTBXMLWithXMLFile:resource error:&error] autorelease];
+    TBXML *xml = [TBXML tbxmlWithXMLFile:resource error:&error];
     if (error) {
         NSLog(@"%@ %@", [error localizedDescription], [error userInfo]);
         return nil;

@@ -13,23 +13,19 @@
 
 @interface IDLLayerDrawableItem : NSObject
 
-@property (nonatomic, retain) IDLDrawable *drawable;
+@property (nonatomic, strong) IDLDrawable *drawable;
 @property (nonatomic, assign) UIEdgeInsets insets;
 
 @end
 
 @implementation IDLLayerDrawableItem
 
-- (void)dealloc {
-    self.drawable = nil;
-    [super dealloc];
-}
 
 @end
 
 @interface IDLLayerDrawableConstantState ()
 
-@property (nonatomic, retain) NSMutableArray *items;
+@property (nonatomic, strong) NSMutableArray *items;
 
 @property (nonatomic, assign, getter = isPaddingComputed) BOOL paddingComputed;
 @property (nonatomic, assign) BOOL hasPadding;
@@ -43,11 +39,9 @@
     for (IDLLayerDrawableItem *item in self.items) {
         item.drawable.delegate = nil;
     }
-    self.items = nil;
-    [super dealloc];
 }
 
-- (id)initWithState:(IDLLayerDrawableConstantState *)state owner:(IDLLayerDrawable *)owner {
+- (instancetype)initWithState:(IDLLayerDrawableConstantState *)state owner:(IDLLayerDrawable *)owner {
     self = [super init];
     if (self) {
         if (state != nil) {
@@ -58,17 +52,13 @@
                 drawable.delegate = owner;
                 item.drawable = drawable;
                 item.insets = origItem.insets;
-                [drawable release];
                 [items addObject:item];
-                [item release];
             }
             self.items = items;
-            [items release];
 
         } else {
             NSMutableArray *items = [[NSMutableArray alloc] initWithCapacity:10];
             self.items = items;
-            [items release];
 
         }
     }
@@ -81,7 +71,6 @@
     item.insets = insets;
     [self.items addObject:item];
     _paddingComputed = FALSE;
-    [item release];
 }
 
 - (void)computePadding {
@@ -124,23 +113,18 @@
 
 @interface IDLLayerDrawable ()
 
-@property (nonatomic, retain) IDLLayerDrawableConstantState *internalConstantState;
+@property (nonatomic, strong) IDLLayerDrawableConstantState *internalConstantState;
 
 @end
 
 @implementation IDLLayerDrawable
 
-- (void)dealloc {
-    self.internalConstantState = nil;
-    [super dealloc];
-}
 
-- (id)initWithState:(IDLLayerDrawableConstantState *)state {
+- (instancetype)initWithState:(IDLLayerDrawableConstantState *)state {
     self = [super init];
     if (self) {
         IDLLayerDrawableConstantState *s = [[IDLLayerDrawableConstantState alloc] initWithState:state owner:self];
         self.internalConstantState = s;
-        [s release];
     }
     return self;
 }

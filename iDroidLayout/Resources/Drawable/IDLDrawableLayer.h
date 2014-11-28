@@ -7,11 +7,11 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
-#import <iDroidLayout/IDLDrawable.h>
+#import "IDLDrawable.h" // iDroidLayout
 
 @interface IDLDrawableLayer : CALayer <IDLDrawableDelegate> {
 }
 
-@property (nonatomic, retain) IDLDrawable *drawable;
+@property (nonatomic, strong) IDLDrawable *drawable;
 
 @end

@@ -10,6 +10,6 @@
 
 @interface IDLDrawableStateItem (IDL_Internal)
 
-- (id)initWithControlState:(UIControlState)controlState drawableResourceIdentifier:(NSString *)resourceIdentifier;
+- (instancetype)initWithControlState:(UIControlState)controlState drawableResourceIdentifier:(NSString *)resourceIdentifier;
 
 @end

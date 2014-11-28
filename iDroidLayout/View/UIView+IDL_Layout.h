@@ -71,7 +71,7 @@ BOOL BOOLFromString(NSString *boolString);
 @property (nonatomic, assign) NSString *identifier;
 @property (nonatomic, assign) IDLViewVisibility visibility;
 
-- (id)initWithAttributes:(NSDictionary *)attrs;
+- (instancetype)initWithAttributes:(NSDictionary *)attrs;
 - (void)setupFromAttributes:(NSDictionary *)attrs;
 - (void)onMeasureWithWidthMeasureSpec:(IDLLayoutMeasureSpec)widthMeasureSpec heightMeasureSpec:(IDLLayoutMeasureSpec)heightMeasureSpec;
 - (void)measureWithWidthMeasureSpec:(IDLLayoutMeasureSpec)widthMeasureSpec heightMeasureSpec:(IDLLayoutMeasureSpec)heightMeasureSpec;

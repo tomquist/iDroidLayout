@@ -21,7 +21,7 @@ IDLClipDrawableOrientation IDLClipDrawableOrientationFromString(NSString *string
 
 @interface IDLClipDrawableConstantState ()
 
-@property (nonatomic, retain) IDLDrawable *drawable;
+@property (nonatomic, strong) IDLDrawable *drawable;
 @property (nonatomic, assign) IDLClipDrawableOrientation orientation;
 @property (nonatomic, assign) IDLViewContentGravity gravity;
 
@@ -31,18 +31,15 @@ IDLClipDrawableOrientation IDLClipDrawableOrientationFromString(NSString *string
 
 - (void)dealloc {
     self.drawable.delegate = nil;
-    self.drawable = nil;
-    [super dealloc];
 }
 
-- (id)initWithState:(IDLClipDrawableConstantState *)state owner:(IDLClipDrawable *)owner {
+- (instancetype)initWithState:(IDLClipDrawableConstantState *)state owner:(IDLClipDrawable *)owner {
     self = [super init];
     if (self) {
         if (state != nil) {
             IDLDrawable *copiedDrawable = [state.drawable copy];
             copiedDrawable.delegate = owner;
             self.drawable = copiedDrawable;
-            [copiedDrawable release];
             
             self.orientation = state.orientation;
             self.gravity = state.gravity;
@@ -57,23 +54,18 @@ IDLClipDrawableOrientation IDLClipDrawableOrientationFromString(NSString *string
 
 @interface IDLClipDrawable ()
 
-@property (nonatomic, retain) IDLClipDrawableConstantState *internalConstantState;
+@property (nonatomic, strong) IDLClipDrawableConstantState *internalConstantState;
 
 @end
 
 @implementation IDLClipDrawable
 
-- (void)dealloc {
-    self.internalConstantState = nil;
-    [super dealloc];
-}
 
-- (id)initWithState:(IDLClipDrawableConstantState *)state {
+- (instancetype)initWithState:(IDLClipDrawableConstantState *)state {
     self = [super init];
     if (self) {
         IDLClipDrawableConstantState *s = [[IDLClipDrawableConstantState alloc] initWithState:state owner:self];
         self.internalConstantState = s;
-        [s release];
     }
     return self;
 }

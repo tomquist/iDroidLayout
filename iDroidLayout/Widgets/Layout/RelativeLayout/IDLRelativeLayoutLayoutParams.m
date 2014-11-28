@@ -27,10 +27,6 @@
 @synthesize bottom = _bottom;
 @synthesize alignWithParent = _alignWithParent;
 
-- (void) dealloc {
-	[_rules release];
-	[super dealloc];
-}
 
 - (id) initWithAttributes:(NSDictionary *)attrs {
 	self = [super initWithAttributes:attrs];

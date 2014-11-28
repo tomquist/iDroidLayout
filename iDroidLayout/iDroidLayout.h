@@ -7,33 +7,33 @@
 //
 
 // Core
-#import <iDroidLayout/UIView+IDL_Layout.h>
-#import <iDroidLayout/UIView+IDL_ViewGroup.h>
-#import <iDroidLayout/UIView+IDLDrawable.h>
-#import <iDroidLayout/IDLViewGroup.h>
+#import "UIView+IDL_Layout.h" // iDroidLayout
+#import "UIView+IDL_ViewGroup.h" // iDroidLayout
+#import "UIView+IDLDrawable.h" // iDroidLayout
+#import "IDLViewGroup.h" // iDroidLayout
 
 // Layout
-#import <iDroidLayout/IDLLayouts.h>
+#import "IDLLayouts.h" // iDroidLayout
 
 // Views
-#import <iDroidLayout/IDLTextView.h>
-#import <iDroidLayout/UILabel+IDL_View.h>
-#import <iDroidLayout/UIControl+IDL_View.h>
+#import "IDLTextView.h" // iDroidLayout
+#import "UILabel+IDL_View.h" // iDroidLayout
+#import "UIControl+IDL_View.h" // iDroidLayout
 
 // Drawable
-#import <iDroidLayout/IDLDrawable.h>
-#import <iDroidLayout/IDLBitmapDrawable.h>
-#import <iDroidLayout/IDLColorDrawable.h>
-#import <iDroidLayout/IDLStateListDrawable.h>
-#import <iDroidLayout/IDLLayerDrawable.h>
-#import <iDroidLayout/IDLInsetDrawable.h>
+#import "IDLDrawable.h" // iDroidLayout
+#import "IDLBitmapDrawable.h" // iDroidLayout
+#import "IDLColorDrawable.h" // iDroidLayout
+#import "IDLStateListDrawable.h" // iDroidLayout
+#import "IDLLayerDrawable.h" // iDroidLayout
+#import "IDLInsetDrawable.h" // iDroidLayout
 
 // Utils
-#import <iDroidLayout/IDLLayoutInflater.h>
-#import <iDroidLayout/IDLLayoutBridge.h>
-#import <iDroidLayout/IDLTableViewCell.h>
-#import <iDroidLayout/IDLLayoutViewController.h>
+#import "IDLLayoutInflater.h" // iDroidLayout
+#import "IDLLayoutBridge.h" // iDroidLayout
+#import "IDLTableViewCell.h" // iDroidLayout
+#import "IDLLayoutViewController.h" // iDroidLayout
 
 // Resources
-#import <iDroidLayout/IDLResourceManager.h>
-#import <iDroidLayout/IDLStyle.h>
+#import "IDLResourceManager.h" // iDroidLayout
+#import "IDLStyle.h" // iDroidLayout

@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Tom Quist. All rights reserved.
 //
 
-#import <iDroidLayout/iDroidLayout.h>
+#import "iDroidLayout.h" // iDroidLayout
 #import "TBXML.h"
 
 #if OUTLINE_DRAWABLE
@@ -17,7 +17,7 @@
 
 @interface IDLDrawable (IDL_Internal)
 
-- (id)initWithState:(IDLDrawableConstantState *)state;
+- (instancetype)initWithState:(IDLDrawableConstantState *)state;
 
 - (void)inflateWithElement:(TBXMLElement *)element;
 + (IDLDrawable *)createFromXMLElement:(TBXMLElement *)element;

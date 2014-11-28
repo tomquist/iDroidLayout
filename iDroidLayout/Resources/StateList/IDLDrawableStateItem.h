@@ -10,6 +10,6 @@
 
 @interface IDLDrawableStateItem : IDLResourceStateItem
 
-@property (nonatomic, readonly) UIImage *image;
+@property (weak, nonatomic, readonly) UIImage *image;
 
 @end

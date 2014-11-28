@@ -10,7 +10,7 @@
 
 @interface IDLResourceStateList : NSObject
 
-@property (nonatomic, readonly) NSArray *items;
+@property (weak, nonatomic, readonly) NSArray *items;
 
 + (instancetype)createFromXMLData:(NSData *)data;
 + (instancetype)createFromXMLURL:(NSURL *)url;

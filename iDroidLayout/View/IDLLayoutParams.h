@@ -22,8 +22,8 @@ enum IDLLayoutParamsSize {
 @property (nonatomic, assign) CGFloat width;
 @property (nonatomic, assign) CGFloat height;
 
-- (id)initWithWidth:(CGFloat)width height:(CGFloat)height;
-- (id)initWithLayoutParams:(IDLLayoutParams *)layoutParams;
-- (id)initWithAttributes:(NSDictionary *)attrs;
+- (instancetype)initWithWidth:(CGFloat)width height:(CGFloat)height;
+- (instancetype)initWithLayoutParams:(IDLLayoutParams *)layoutParams;
+- (instancetype)initWithAttributes:(NSDictionary *)attrs;
 
 @end

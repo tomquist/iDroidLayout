@@ -12,13 +12,9 @@
 
 @synthesize margin = _margin;
 
-- (void) dealloc {
-	
-	[super dealloc];
-}
 
 
-- (id)initWithWidth:(CGFloat)width height:(CGFloat)height {
+- (instancetype)initWithWidth:(CGFloat)width height:(CGFloat)height {
 	self = [super initWithWidth:width height:height];
 	if (self != nil) {
 		
@@ -26,7 +22,7 @@
 	return self;
 }
 
-- (id)initWithLayoutParams:(IDLLayoutParams *)layoutParams {
+- (instancetype)initWithLayoutParams:(IDLLayoutParams *)layoutParams {
     self = [super initWithLayoutParams:layoutParams];
     if (self != nil) {
         if ([layoutParams isKindOfClass:[IDLMarginLayoutParams class]]) {
@@ -37,7 +33,7 @@
     return self;
 }
 
-- (id)initWithAttributes:(NSDictionary *)attrs {
+- (instancetype)initWithAttributes:(NSDictionary *)attrs {
     self = [super initWithAttributes:attrs];
     if (self) {
         NSString *marginString = [attrs objectForKey:@"layout_margin"];

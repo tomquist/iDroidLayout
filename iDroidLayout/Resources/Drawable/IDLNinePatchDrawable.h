@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Tom Quist. All rights reserved.
 //
 
-#import <iDroidLayout/iDroidLayout.h>
+#import "iDroidLayout.h" // iDroidLayout
 
 @interface IDLNinePatchDrawable : IDLBitmapDrawable
 

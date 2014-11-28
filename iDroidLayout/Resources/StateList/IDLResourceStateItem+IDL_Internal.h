@@ -10,6 +10,6 @@
 
 @interface IDLResourceStateItem (IDLInternal)
 
-- (id)initWithControlState:(UIControlState)controlState;
+- (instancetype)initWithControlState:(UIControlState)controlState;
 
 @end

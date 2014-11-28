@@ -12,7 +12,7 @@
 
 @synthesize gravity = _gravity;
 
-- (id)initWithAttributes:(NSDictionary *)attrs {
+- (instancetype)initWithAttributes:(NSDictionary *)attrs {
     self = [super initWithAttributes:attrs];
     if (self) {
         NSString *gravityString = [attrs objectForKey:@"layout_gravity"];

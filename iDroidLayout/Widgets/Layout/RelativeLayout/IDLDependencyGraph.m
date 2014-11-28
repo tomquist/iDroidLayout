@@ -15,12 +15,6 @@
 
 @synthesize keyNodes = _keyNodes;
 
-- (void)dealloc {
-	[_nodes release];
-    [_keyNodes release];
-    [_roots release];
-	[super dealloc];
-}
 
 
 - (id)init {
@@ -34,7 +28,7 @@
 }
 
 - (void)clear {
-    int count = [_nodes count];
+    NSUInteger count = [_nodes count];
     
     for (int i = 0; i < count; i++) {
         IDLDependencyGraphNode *node = [_nodes objectAtIndex:i];
@@ -68,7 +62,7 @@
 - (NSMutableArray *)findRootsWithRules:(NSArray *)rulesFilter {
     NSMutableDictionary *keyNodes = _keyNodes;
     NSMutableArray *nodes = _nodes;
-    int count = [nodes count];
+    NSUInteger count = [nodes count];
     
     // Find roots can be invoked several times, so make sure to clear
     // all dependents and dependencies before running the algorithm

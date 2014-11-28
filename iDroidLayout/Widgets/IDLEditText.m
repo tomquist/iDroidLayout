@@ -30,7 +30,7 @@
         measuredSize.width.size = widthSize;
     } else {
         CGSize size = [self.text sizeWithFont:self.font];
-        measuredSize.width.size = size.width + padding.left + padding.right;
+        measuredSize.width.size = ceilf(size.width) + padding.left + padding.right;
         if (widthMode == IDLLayoutMeasureSpecModeAtMost) {
             measuredSize.width.size = MIN(measuredSize.width.size, widthSize);
         }
@@ -42,7 +42,7 @@
         measuredSize.height.size = heightSize;
     } else {
         CGSize size = [self.text sizeWithFont:self.font constrainedToSize:CGSizeMake(measuredSize.width.size - padding.left - padding.right, CGFLOAT_MAX)];
-        measuredSize.height.size = MAX(size.height, self.font.lineHeight) + padding.top + padding.bottom;
+        measuredSize.height.size = MAX(ceilf(size.height), self.font.lineHeight) + padding.top + padding.bottom;
         if (heightMode == IDLLayoutMeasureSpecModeAtMost) {
             measuredSize.height.size = MIN(measuredSize.height.size, heightSize);
         }

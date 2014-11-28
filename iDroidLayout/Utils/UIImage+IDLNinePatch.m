@@ -31,7 +31,7 @@ static char ninePatchPaddingsKey;
 + (BOOL)isNinePatchImageFile:(NSString *)fileName {
     static NSArray *ninePatchSuffixes = nil;
     if (ninePatchSuffixes == nil) {
-        ninePatchSuffixes = [@[@".9.png", @".9@2x.png", @"@2x.9.png"] retain];
+        ninePatchSuffixes = @[@".9.png", @".9@2x.png", @"@2x.9.png"];
     }
     BOOL ret = FALSE;
     for (NSString *suffix in ninePatchSuffixes) {
@@ -58,7 +58,7 @@ static char ninePatchPaddingsKey;
 
 - (void)writePixelMaskForRect:(CGRect)rect toBuffer:(unsigned char *)buffer {
     CGImageRef croppedImageRef = CGImageCreateWithImageInRect(self.CGImage, rect);
-    CGContextRef context = CGBitmapContextCreate(buffer, rect.size.width, rect.size.height, 8, rect.size.width, NULL, kCGImageAlphaOnly);
+    CGContextRef context = CGBitmapContextCreate(buffer, rect.size.width, rect.size.height, 8, rect.size.width, NULL, (CGBitmapInfo)kCGImageAlphaOnly);
     CGContextDrawImage(context, CGRectMake(0, 0, CGImageGetWidth(croppedImageRef), CGImageGetHeight(croppedImageRef)), croppedImageRef);
     CGImageRelease(croppedImageRef);
     CGContextRelease(context);
@@ -76,7 +76,7 @@ static char ninePatchPaddingsKey;
         }
     }
     if (searchForEnd) {
-        for (int i=length-1; i>=0; i--) {
+        for (int i=(int)length-1; i>=0; i--) {
             unsigned char color = buffer[i];
             if (color > threshold) {
                 (*end) = length - i - 1;
@@ -174,18 +174,16 @@ static char ninePatchPaddingsKey;
             UIImage *retinaImage = nil;
             if (nonScaledImage != nil) {
                 if (nonScaledImage.scale >= 2.f) {
-                    retinaImage = [nonScaledImage retain];
+                    retinaImage = nonScaledImage;
                 } else {
                     retinaImage = [[UIImage alloc] initWithCGImage:nonScaledImage.CGImage scale:2.f orientation:nonScaledImage.imageOrientation];
                 }
-                [nonScaledImage release];
             }
             if (retinaImage != nil) {
                 if ([self isNinePatchImageFile:[retinaImageURL lastPathComponent]]) {
                     ret = [self idl_ninePatchImageFromImage:retinaImage];
-                    [retinaImage release];
                 } else {
-                    ret = [retinaImage autorelease];
+                    ret = retinaImage;
                 }
             }
         }
@@ -197,9 +195,8 @@ static char ninePatchPaddingsKey;
             UIImage *image = [[UIImage alloc] initWithContentsOfFile:imageURL.path];
             if ([self isNinePatchImageFile:[imageURL lastPathComponent]]) {
                 ret = [self idl_ninePatchImageFromImage:image];
-                [image release];
             } else {
-                ret = [image autorelease];
+                ret = image;
             }
         } else {
             NSString *retinaFileName = [fileName stringByAppendingString:@"@2x"];
@@ -209,18 +206,16 @@ static char ninePatchPaddingsKey;
                 UIImage *retinaImage = nil;
                 if (nonScaledImage != nil) {
                     if (nonScaledImage.scale >= 2.f) {
-                        retinaImage = [nonScaledImage retain];
+                        retinaImage = nonScaledImage;
                     } else {
                         retinaImage = [[UIImage alloc] initWithCGImage:nonScaledImage.CGImage scale:2.f orientation:nonScaledImage.imageOrientation];
                     }
-                    [nonScaledImage release];
                 }
                 if (retinaImage != nil) {
                     if ([self isNinePatchImageFile:[retinaImageURL lastPathComponent]]) {
                         ret = [self idl_ninePatchImageFromImage:retinaImage];
-                        [retinaImage release];
                     } else {
-                        ret = [retinaImage autorelease];
+                        ret = retinaImage;
                     }
                 }
             }
@@ -242,7 +237,6 @@ static char ninePatchPaddingsKey;
     } else if ([nonScaledImage respondsToSelector:@selector(stretchableImageWithLeftCapWidth:topCapHeight:)]) {
         resizableImage = [nonScaledImage stretchableImageWithLeftCapWidth:insets.left topCapHeight:insets.top];
     }
-    [nonScaledImage release];
     return resizableImage;
 }
 

@@ -54,7 +54,8 @@
 		layout_width="match_parent"
 		layout_height="match_parent"
 		layout_above="button_bar_scroll_view"
-		layout_alignParentTop="true">
+		layout_alignParentTop="true"
+        paddingTop="64">
 		<LinearLayout
 			layout_width="match_parent"
 			layout_height="wrap_content"

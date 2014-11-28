@@ -7,20 +7,13 @@
 //
 
 #import "MainViewController.h"
-#import <iDroidLayout/iDroidLayout.h>
+#import "iDroidLayout.h" // iDroidLayout
 #import "FormularViewController.h"
 #import "LayoutAnimationsViewController.h"
 #import "IDLResourceManager.h"
 
 @implementation MainViewController
 
-- (void)dealloc {
-    [_tableCellLayoutURL release];
-    [_tableView release];
-    [_titles release];
-    [_descriptions release];
-    [super dealloc];
-}
 
 - (id)init {
     self = [super initWithNibName:nil bundle:nil];
@@ -33,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _tableCellLayoutURL = [[[NSBundle mainBundle] URLForResource:@"mainCell" withExtension:@"xml"] retain];
+    _tableCellLayoutURL = [[NSBundle mainBundle] URLForResource:@"mainCell" withExtension:@"xml"];
     
     _tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -41,19 +34,15 @@
     _tableView.delegate = self;
     [self.view addSubview:_tableView];
     
-    _titles = [[[IDLResourceManager currentResourceManager] stringArrayForIdentifier:@"@array/values.main_menu_titles"] retain];
-    _descriptions = [[[IDLResourceManager currentResourceManager] stringArrayForIdentifier:@"@array/values.main_menu_descriptions"] retain];
+    _titles = [[IDLResourceManager currentResourceManager] stringArrayForIdentifier:@"@array/values.main_menu_titles"];
+    _descriptions = [[IDLResourceManager currentResourceManager] stringArrayForIdentifier:@"@array/values.main_menu_descriptions"];
 }
 
 - (void)viewDidUnload {
     [super viewDidUnload];
-    [_tableView release];
     _tableView = nil;
-    [_tableCellLayoutURL release];
     _tableCellLayoutURL = nil;
-    [_titles release];
     _titles = nil;
-    [_descriptions release];
     _descriptions = nil;
 }
 
@@ -67,7 +56,7 @@
     static NSString *CellIdentifier = @"Cell";
     IDLTableViewCell *cell = (IDLTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[IDLTableViewCell alloc] initWithLayoutURL:_tableCellLayoutURL reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[IDLTableViewCell alloc] initWithLayoutURL:_tableCellLayoutURL reuseIdentifier:CellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
     }
     UILabel *titleLabel = (UILabel *)[cell.layoutBridge findViewById:@"title"];
@@ -88,22 +77,23 @@
     UIViewController *vc = nil;
     switch (indexPath.row) {
         case 0:
-            vc = [[[FormularViewController alloc] initWithLayoutName:@"formular" bundle:nil] autorelease];
+            vc = [[FormularViewController alloc] initWithLayoutName:@"formular" bundle:nil];
             break;
         case 1:
-            vc = [[[LayoutAnimationsViewController alloc] initWithLayoutName:@"animations" bundle:nil] autorelease];
+            vc = [[LayoutAnimationsViewController alloc] initWithLayoutName:@"animations" bundle:nil];
             break;
-        case 2:
-            vc = [[[IDLLayoutViewController alloc] initWithLayoutName:@"scrollviews" bundle:nil] autorelease];
+        case 2: {
+            vc = [[IDLLayoutViewController alloc] initWithLayoutName:@"scrollviews" bundle:nil];
             UIButton *toggleButton = (UIButton *)[vc.view findViewById:@"toggleButton"];
             toggleButton.titleLabel.numberOfLines = 0;
             [toggleButton addTarget:self action:@selector(didPressToggleButton:) forControlEvents:UIControlEventTouchUpInside];
             break;
+        }
         case 3:
-            vc = [[[UIViewController alloc] initWithNibName:@"LayoutFromIB" bundle:nil] autorelease];
+            vc = [[UIViewController alloc] initWithNibName:@"LayoutFromIB" bundle:nil];
             break;
         case 4:
-            vc = [[[IDLLayoutViewController alloc] initWithLayoutName:@"includeContainer" bundle:nil] autorelease];
+            vc = [[IDLLayoutViewController alloc] initWithLayoutName:@"includeContainer" bundle:nil];
             break;
         default:
             break;

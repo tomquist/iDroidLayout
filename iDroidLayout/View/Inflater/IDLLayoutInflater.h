@@ -14,8 +14,8 @@
     id<IDLViewFactory> _viewFactory;
 }
 
-@property (nonatomic, retain) id<IDLViewFactory> viewFactory;
-@property (nonatomic, assign) id actionTarget;
+@property (nonatomic, strong) id<IDLViewFactory> viewFactory;
+@property (nonatomic, weak) id actionTarget;
 
 - (UIView *)inflateURL:(NSURL *)url intoRootView:(UIView *)rootView attachToRoot:(BOOL)attachToRoot;
 - (UIView *)inflateResource:(NSString *)resource intoRootView:(UIView *)rootView attachToRoot:(BOOL)attachToRoot;

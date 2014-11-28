@@ -7,7 +7,7 @@
 //
 
 #import "IDLViewAsserts.h"
-#import <iDroidLayout/iDroidLayout.h>
+#import "iDroidLayout.h" // iDroidLayout
 
 @interface IDLViewGroupTest : IDLViewAsserts {
     UIView *_rootView;

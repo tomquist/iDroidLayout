@@ -11,7 +11,7 @@
 
 @interface IDLStringArray ()
 
-@property (nonatomic, retain) NSMutableArray *content;
+@property (nonatomic, strong) NSMutableArray *content;
 @property (nonatomic, assign) CFMutableBitVectorRef resolvedInfo;
 
 @end
@@ -19,15 +19,13 @@
 @implementation IDLStringArray
 
 - (void)dealloc {
-    self.content = nil;
     CFRelease(_resolvedInfo);
-    [super dealloc];
 }
 
-- (id)initWithArray:(NSArray *)array {
+- (instancetype)initWithArray:(NSArray *)array {
     self = [super init];
     if (self) {
-        self.content = [[array mutableCopy] autorelease];
+        self.content = [array mutableCopy];
         _resolvedInfo = CFBitVectorCreateMutable(CFAllocatorGetDefault(), [array count]);
         CFBitVectorSetCount(_resolvedInfo, [array count]);
     }

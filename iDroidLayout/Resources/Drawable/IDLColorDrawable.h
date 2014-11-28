@@ -10,9 +10,9 @@
 
 @interface IDLColorDrawable : IDLDrawable
 
-- (id)initWithColor:(UIColor *)color;
+- (instancetype)initWithColor:(UIColor *)color;
 
-@property (nonatomic, readonly) UIColor *color;
+@property (strong, nonatomic, readonly) UIColor *color;
 
 @end
 

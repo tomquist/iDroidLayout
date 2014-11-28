@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Tom Quist. All rights reserved.
 //
 
-#import <iDroidLayout/iDroidLayout.h>
+#import "iDroidLayout.h" // iDroidLayout
 
 typedef NS_ENUM(NSInteger, IDLClipDrawableOrientation) {
     IDLClipDrawableOrientationNone = 0,

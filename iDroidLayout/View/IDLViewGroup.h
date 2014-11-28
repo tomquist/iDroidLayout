@@ -15,6 +15,6 @@
 
 + (IDLLayoutMeasureSpec)childMeasureSpecForMeasureSpec:(IDLLayoutMeasureSpec)spec padding:(CGFloat)padding childDimension:(CGFloat)childDimension;
 
-- (id)initWithAttributes:(NSDictionary *)attrs;
+- (instancetype)initWithAttributes:(NSDictionary *)attrs;
 
 @end

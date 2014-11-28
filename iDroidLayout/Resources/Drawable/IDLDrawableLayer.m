@@ -12,7 +12,6 @@
 
 - (void)dealloc {
     self.drawable = nil;
-    [super dealloc];
 }
 
 - (id)init {
@@ -27,7 +26,6 @@
                                            [NSNull null], @"contents",
                                            nil];
         self.actions = newActions;
-        [newActions release];
     }
     return self;
 }
@@ -44,7 +42,6 @@
                                            [NSNull null], @"contents",
                                            nil];
         self.actions = newActions;
-        [newActions release];
     }
     return self;
 }
@@ -54,11 +51,11 @@
 }
 
 - (id)initWithLayer:(id)layer {
-    self = [super init];
+    self = [super initWithLayer:layer];
     if (self) {
         self.contentsScale = [UIScreen mainScreen].scale;
         IDLDrawableLayer *l = layer;
-        self.drawable = [[l.drawable copy] autorelease];
+        self.drawable = [l.drawable copy];
         self.drawable.delegate = self;
         self.drawable.level = l.drawable.level;
         self.drawable.bounds = l.drawable.bounds;
@@ -77,8 +74,7 @@
 - (void)setDrawable:(IDLDrawable *)drawable {
     if (_drawable != drawable) {
         _drawable.delegate = nil;
-        [_drawable release];
-        _drawable = [drawable retain];
+        _drawable = drawable;
         _drawable.delegate = self;
         [self setNeedsDisplay];
     }

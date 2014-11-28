@@ -19,7 +19,7 @@
     BOOL _isPooled;
 }
 
-@property (nonatomic, retain) UIView *view;
+@property (nonatomic, strong) UIView *view;
 @property (nonatomic, readonly) NSMutableSet *dependents;
 @property (nonatomic, readonly) NSMutableDictionary *dependencies;
 

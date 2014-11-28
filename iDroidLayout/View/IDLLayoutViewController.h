@@ -13,8 +13,8 @@
     NSURL *_layoutUrl;
 }
 
-@property (nonatomic, retain) IDLLayoutBridge *view;
+@property (nonatomic, strong) IDLLayoutBridge *view;
 
-- (id)initWithLayoutName:(NSString *)layoutNameOrNil bundle:(NSBundle *)layoutBundleOrNil;
+- (instancetype)initWithLayoutName:(NSString *)layoutNameOrNil bundle:(NSBundle *)layoutBundleOrNil;
 
 @end

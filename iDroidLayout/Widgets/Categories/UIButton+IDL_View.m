@@ -103,7 +103,7 @@
         measuredSize.width.size = widthSize;
     } else {
         CGSize size = [self.currentTitle sizeWithFont:self.titleLabel.font];
-        measuredSize.width.size = size.width + padding.left + padding.right;
+        measuredSize.width.size = ceilf(size.width) + padding.left + padding.right;
         if (widthMode == IDLLayoutMeasureSpecModeAtMost) {
             measuredSize.width.size = MIN(measuredSize.width.size, widthSize);
         }
@@ -115,7 +115,7 @@
         measuredSize.height.size = heightSize;
     } else {
         CGSize size = [self.currentTitle sizeWithFont:self.titleLabel.font constrainedToSize:CGSizeMake(measuredSize.width.size - padding.left - padding.right, CGFLOAT_MAX) lineBreakMode:self.titleLabel.lineBreakMode];
-        measuredSize.height.size = size.height + padding.top + padding.bottom;
+        measuredSize.height.size = ceilf(size.height) + padding.top + padding.bottom;
         if (heightMode == IDLLayoutMeasureSpecModeAtMost) {
             measuredSize.height.size = MIN(measuredSize.height.size, heightSize);
         }

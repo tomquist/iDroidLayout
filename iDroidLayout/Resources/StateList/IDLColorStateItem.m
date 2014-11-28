@@ -13,18 +13,14 @@
 
 @interface IDLColorStateItem ()
 
-@property (nonatomic, retain) NSString *resourceIdentifier;
+@property (nonatomic, strong) NSString *resourceIdentifier;
 
 @end
 
 @implementation IDLColorStateItem
 
-- (void)dealloc {
-    self.resourceIdentifier = nil;
-    [super dealloc];
-}
 
-- (id)initWithControlState:(UIControlState)controlState colorResourceIdentifier:(NSString *)resourceIdentifier {
+- (instancetype)initWithControlState:(UIControlState)controlState colorResourceIdentifier:(NSString *)resourceIdentifier {
     self = [super initWithControlState:controlState];
     if (self) {
         self.resourceIdentifier = resourceIdentifier;

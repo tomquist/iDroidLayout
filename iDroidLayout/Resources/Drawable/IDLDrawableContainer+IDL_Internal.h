@@ -12,7 +12,7 @@
 
 @property (nonatomic, readonly) NSInteger currentIndex;
 
-- (id)initWithState:(IDLDrawableContainerConstantState *)state;
+- (instancetype)initWithState:(IDLDrawableContainerConstantState *)state;
 - (BOOL)selectDrawableAtIndex:(NSInteger)index;
 
 @end
@@ -39,7 +39,7 @@
 @property (nonatomic, assign) UIEdgeInsets padding;
 @property (nonatomic, assign) BOOL hasPadding;
 
-- (id)initWithState:(IDLDrawableContainerConstantState *)state owner:(IDLDrawableContainer *)owner;
+- (instancetype)initWithState:(IDLDrawableContainerConstantState *)state owner:(IDLDrawableContainer *)owner;
 - (void)addChildDrawable:(IDLDrawable *)drawable;
 
 @end

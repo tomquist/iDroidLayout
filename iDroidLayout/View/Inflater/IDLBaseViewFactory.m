@@ -60,7 +60,7 @@
     if (![viewClass instancesRespondToSelector:@selector(initWithAttributes:)]) {
         @throw [NSException exceptionWithName:@"InvalidViewClass" reason:[NSString stringWithFormat:@"Class %@ could not be instantiated. Missing selector initWithAttributes:", name] userInfo:nil];
     }
-    return [[[viewClass alloc] initWithAttributes:attrs] autorelease];
+    return [[viewClass alloc] initWithAttributes:attrs];
 }
 
 @end
