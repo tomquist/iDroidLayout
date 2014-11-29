@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		379C7218C2EC4D25A4F1D371 /* libPods-test.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3466C4187E343C8965C60D0 /* libPods-test.a */; };
 		3A858FE88D8844138D3781E1 /* libPods-test.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3466C4187E343C8965C60D0 /* libPods-test.a */; };
+		612C221C0DFA5F8D8793E74A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BEC328CA92BF2305F205EEC /* libPods.a */; };
 		794BF81E182C4FF300A6DF05 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79642CEC1603D3F80095D5A2 /* Foundation.framework */; };
 		794BF82C182C4FF300A6DF05 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 794BF82B182C4FF300A6DF05 /* XCTest.framework */; };
 		794BF82D182C4FF300A6DF05 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79642CEC1603D3F80095D5A2 /* Foundation.framework */; };
@@ -107,7 +108,6 @@
 		79DE0BFC1695FC5C00EDACE3 /* button_disabled.9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79DE0BF81695FC5C00EDACE3 /* button_disabled.9@2x.png */; };
 		79DE0BFD1695FC5C00EDACE3 /* button_pressed.9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79DE0BF91695FC5C00EDACE3 /* button_pressed.9@2x.png */; };
 		79DE0BFE1695FC5C00EDACE3 /* button_normal.9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79DE0BFA1695FC5C00EDACE3 /* button_normal.9@2x.png */; };
-		9DA2E3DD65454F249078E5B1 /* libPods-iDroidLayout.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1E9516193244B7ABBCC38AC /* libPods-iDroidLayout.a */; };
 		A7090EAA19D0CE89002D9FC0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7090EA919D0CE89002D9FC0 /* Images.xcassets */; };
 		A7434E1D1A29EEC100A74D40 /* button_color.xml in Resources */ = {isa = PBXBuildFile; fileRef = A7434E0D1A29EEC100A74D40 /* button_color.xml */; };
 		A7434E1E1A29EEC100A74D40 /* background1.xml in Resources */ = {isa = PBXBuildFile; fileRef = A7434E0F1A29EEC100A74D40 /* background1.xml */; };
@@ -139,6 +139,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0BEC328CA92BF2305F205EEC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F4DA7618F4472EFB5E3AEFD /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		56BBF0B37C9E59FE57393545 /* Pods-iDroidLayout.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iDroidLayout.release.xcconfig"; path = "Pods/Target Support Files/Pods-iDroidLayout/Pods-iDroidLayout.release.xcconfig"; sourceTree = "<group>"; };
 		79269318167D03FE0078EE37 /* IDLResourceValueSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLResourceValueSet.h; sourceTree = "<group>"; };
 		79269319167D03FE0078EE37 /* IDLResourceValueSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLResourceValueSet.m; sourceTree = "<group>"; };
@@ -363,6 +365,7 @@
 		A7434E1C1A29EEC100A74D40 /* values.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = values.xml; sourceTree = "<group>"; };
 		A7434E2C1A29EF6200A74D40 /* LayoutFromIB.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LayoutFromIB.xib; sourceTree = "<group>"; };
 		A744922119BFA61900E88C18 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		ACEF216E1FD53171368A9187 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B3466C4187E343C8965C60D0 /* libPods-test.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-test.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBE74CB85776E59394A12EA5 /* Pods-iDroidLayout.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iDroidLayout.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iDroidLayout/Pods-iDroidLayout.debug.xcconfig"; sourceTree = "<group>"; };
 		CE5AE02A60FF0464DE8F3699 /* Pods-test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test.debug.xcconfig"; path = "Pods/Target Support Files/Pods-test/Pods-test.debug.xcconfig"; sourceTree = "<group>"; };
@@ -375,7 +378,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				794BF81E182C4FF300A6DF05 /* Foundation.framework in Frameworks */,
-				9DA2E3DD65454F249078E5B1 /* libPods-iDroidLayout.a in Frameworks */,
+				612C221C0DFA5F8D8793E74A /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,6 +523,7 @@
 				ECD90B80D62044CD8D222D68 /* libPods-framework.a */,
 				B3466C4187E343C8965C60D0 /* libPods-test.a */,
 				A1E9516193244B7ABBCC38AC /* libPods-iDroidLayout.a */,
+				0BEC328CA92BF2305F205EEC /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -826,6 +830,8 @@
 				56BBF0B37C9E59FE57393545 /* Pods-iDroidLayout.release.xcconfig */,
 				CE5AE02A60FF0464DE8F3699 /* Pods-test.debug.xcconfig */,
 				9E59CE07804409ABE477E469 /* Pods-test.release.xcconfig */,
+				0F4DA7618F4472EFB5E3AEFD /* Pods.debug.xcconfig */,
+				ACEF216E1FD53171368A9187 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1072,7 +1078,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iDroidLayout/Pods-iDroidLayout-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CE73E425522D4927B538D1A0 /* Check Pods Manifest.lock */ = {
@@ -1239,7 +1245,7 @@
 /* Begin XCBuildConfiguration section */
 		794BF83B182C4FF300A6DF05 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CBE74CB85776E59394A12EA5 /* Pods-iDroidLayout.debug.xcconfig */;
+			baseConfigurationReference = 0F4DA7618F4472EFB5E3AEFD /* Pods.debug.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1272,7 +1278,7 @@
 		};
 		794BF83C182C4FF300A6DF05 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 56BBF0B37C9E59FE57393545 /* Pods-iDroidLayout.release.xcconfig */;
+			baseConfigurationReference = ACEF216E1FD53171368A9187 /* Pods.release.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;

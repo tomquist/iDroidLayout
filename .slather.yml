@@ -1,0 +1,5 @@
+coverage_service: coveralls
+xcodeproj: iDroidLayout.xcodeproj
+source_directory: iDroidLayout
+ignore:
+  - iDroidLayoutTests/*

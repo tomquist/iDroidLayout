@@ -1,4 +1,4 @@
-iDroid-Layout
+iDroid-Layout [![Build Status](https://travis-ci.org/tomquist/iDroidLayout.svg?branch=develop)](https://travis-ci.org/tomquist/iDroidLayout)
 =============
 
 iDroid-Layout is a port of Androids layout system and its drawable and resources framework to iOS. 
@@ -27,11 +27,14 @@ Highlights
 
 Getting started
 ---------------
-iDroid-Layout is build into a cocoa framework. To install iDroid-Layout, simply copy the iDroidLayout.framework directory into your project. Then drag & drop it into the "Link Binary With Libraries" section within your Build Phases. To use the iDroid-Layout API you have to import the header "iDroidLayout.h" where necessary:
 
-    #import "iDroidLayout.h" // iDroidLayout
+iDroidLayout can be installed using CocoaPods:
 
-Now everything is set up to use iDroid-Layout.
+#### Podfile
+
+```ruby
+pod 'iDroidLayout'
+```
 
 Defining and using a layout with iDroid-Layout can be done in two simple steps:
 
