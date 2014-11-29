@@ -1,5 +1,5 @@
 language: objective-c
-xcode_workspace iDroidLayout.xcworkspace
+xcode_workspace: iDroidLayout.xcworkspace
 xcode_scheme: iDroidLayout
 cache:
   - bundler
