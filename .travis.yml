@@ -1,6 +1,7 @@
 language: objective-c
 xcode_workspace: iDroidLayout.xcworkspace
 xcode_scheme: iDroidLayout
+xcode_sdk: iphonesimulator8.1
 cache:
   - bundler
   - cocoapods
