@@ -168,7 +168,7 @@ Assuming you saved the drawable XML into the file ``background.xml``. Now you ca
         layout_gravity="center"
         background="@drawable/background"
         text="Button"/>
-``
+```
 
 ![Button in normal state](Documentation/drawable_button_normal.png)
 
