@@ -84,7 +84,6 @@ Defining and using a layout with iDroid-Layout can be done in two simple steps:
 ```objc
         IDLLayoutViewController *vc = [[IDLLayoutViewController alloc] initWithLayoutName:@"myLayout" bundle:nil];
         [self.navigationController pushViewController:vc animated:TRUE];
-        [vc release];
 ```
         
 3. Enjoy:
@@ -187,9 +186,7 @@ Questions & Answers
     IDLLayoutBridge *bridge = [[IDLLayoutBridge alloc] initWithFrame:CGRectMake(100, 100, 120, 220)];
     IDLLayoutInflater *inflater = [[IDLLayoutInflater alloc] init];
     [inflater inflateURL:[[NSBundle mainBundle] URLForResource:@"myLayout" withExtension:@"xml"] intoRootView:bridge attachToRoot:TRUE];
-    [inflater release];
     [self.view addSubview:bridge];
-    [bridge release];
 ```
 
 ##### Can I use native views?
