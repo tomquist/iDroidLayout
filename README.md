@@ -40,6 +40,7 @@ Defining and using a layout with iDroid-Layout can be done in two simple steps:
 
 1. Create a layout xml file which contains your view hierarchy and save it as ```myLayout.xml```. E.g.
 
+```xml
         <LinearLayout
             layout_width="match_parent"
             layout_height="wrap_content"
@@ -76,12 +77,15 @@ Defining and using a layout with iDroid-Layout can be done in two simple steps:
                 layout_marginTop="10"
                 text="Click me"/>
         </LinearLayout>
+```
 
 2. Create an instance of IDLLayoutViewController:
 
+```objc
         IDLLayoutViewController *vc = [[IDLLayoutViewController alloc] initWithLayoutName:@"myLayout" bundle:nil];
         [self.navigationController pushViewController:vc animated:TRUE];
         [vc release];
+```
         
 3. Enjoy:
 
@@ -123,6 +127,7 @@ A drawable is an abstract concept for something that can be drawn on the screen.
 
 Drawables can be defined in XML and can be inflated into a drawable object tree. Here is an example:
 
+```xml
     <layer-list>
         <item left="12" top="12" right="8" bottom="8">
             <shape shape="rectangle">
@@ -151,9 +156,11 @@ Drawables can be defined in XML and can be inflated into a drawable object tree.
             </selector
         </item>
     </layer-list>
+```
 
 Assuming you saved the drawable XML into the file ``background.xml``. Now you can define a button like this in your layout:
 
+```xml
     <Button
         textColor="#eee"
         layout_width="match_parent"
@@ -161,6 +168,7 @@ Assuming you saved the drawable XML into the file ``background.xml``. Now you ca
         layout_gravity="center"
         background="@drawable/background"
         text="Button"/>
+``
 
 ![Button in normal state](Documentation/drawable_button_normal.png)
 
@@ -175,14 +183,14 @@ Questions & Answers
 ##### I don't want my whole view hierarchy to be loaded from a layout XML. How can I load a layout into a specific part of my existing view hierarchy?
 ``IDLLayoutBridge`` is a UIView which acts as a bridge between the plain old view layout mechanism and the iDroid-Layout mechanism. First you have to create an IDLLayoutBridge object and add it to your view hierarchy. Now you can load the xml layout into the ``IDLLayoutBridge`` view using ``IDLLayoutInflater``:
 
-
+```objc
     IDLLayoutBridge *bridge = [[IDLLayoutBridge alloc] initWithFrame:CGRectMake(100, 100, 120, 220)];
     IDLLayoutInflater *inflater = [[IDLLayoutInflater alloc] init];
     [inflater inflateURL:[[NSBundle mainBundle] URLForResource:@"myLayout" withExtension:@"xml"] intoRootView:bridge attachToRoot:TRUE];
     [inflater release];
     [self.view addSubview:bridge];
     [bridge release];
-
+```
 
 ##### Can I use native views?
 Yes, you can use native views. Simply use the class name of the view as the xml tag name (e.g. ``<UIButton/>``). However, for some of the native views the ``onMeasureWithWidthMeasureSpec:heightMeasureSpec:`` selector is not yet implemented, so you should not use ``wrap_content`` for the view's width and height.
@@ -202,6 +210,7 @@ Yes, a layout xml file can be inflated into a view in interface builder. Simple 
 ##### Can I re-use layouts within other layouts?
 Similar to the android layouting system, you can embed other layouts within a layout XML file using the ``<include />`` and ``<merge />`` tags. Inside the layout to which you want to add the re-usable component, add the <include/> tag. Here's an example:
 
+```xml
     <LinearLayout
         layout_width="match_parent"
         layout_height="match_parent"
@@ -214,17 +223,21 @@ Similar to the android layouting system, you can embed other layouts within a la
             layout_height="wrap_content"
             text="Some text"/>
     </LinearLayout>
+```
     
 You can also override all the layout parameters (any ``layout_*`` attributes), the id and the visibility of the included layout's root view by specifying them in the ``<include/>`` tag. For example:
 
+```xml
     <include id="title"
              layout_width="match_parent"
              layout_height="match_parent"
              layout="@layout/layoutToInclude"
              visibility="gone"/>
+```
 
 XML files always need a single root element. If you have to include multiple views from another single layout file, you need a container as a root element. This is where the ``<merge />`` tag comes into play. It allows you to include multiple views at once, without the need of an extra layout container:
 
+```xml
     <merge>
         <TextView
             layout_width="match_parent"
@@ -235,5 +248,6 @@ XML files always need a single root element. If you have to include multiple vie
             layout_height="wrap_content"
             text="Second text view"/>
     </merge>
+```
 
 Now, when you include this layout in another layout (using the ``<include/>`` tag), the system ignores the ``<merge />`` element and places the two text views directly in the layout, in place of the ``<include/>`` tag.
