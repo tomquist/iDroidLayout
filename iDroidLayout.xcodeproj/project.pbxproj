@@ -89,6 +89,13 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>612C221C0DFA5F8D8793E74A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>0BEC328CA92BF2305F205EEC</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
 		<key>68591BE15B6C48308F7AB629</key>
 		<dict>
 			<key>buildActionMask</key>
@@ -384,8 +391,7 @@ fi
 			<key>files</key>
 			<array>
 				<string>794BF81E182C4FF300A6DF05</string>
-				<string>9DA2E3DD65454F249078E5B1</string>
-				<string>91A84990139F163141043C0B</string>
+				<string>612C221C0DFA5F8D8793E74A</string>
 			</array>
 			<key>isa</key>
 			<string>PBXFrameworksBuildPhase</string>
@@ -4964,20 +4970,6 @@ fi
 			<string>Pods</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
-		</dict>
-		<key>91A84990139F163141043C0B</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0BEC328CA92BF2305F205EEC</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>9DA2E3DD65454F249078E5B1</key>
-		<dict>
-			<key>fileRef</key>
-			<string>A1E9516193244B7ABBCC38AC</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
 		</dict>
 		<key>9E59CE07804409ABE477E469</key>
 		<dict>
