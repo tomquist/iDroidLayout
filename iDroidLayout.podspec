@@ -18,7 +18,7 @@ In Android layouts can be defined in XML. Views automatically adjust their size 
 
   s.platform      = :ios, "6.0"
   s.source        = { :git => "https://github.com/tomquist/iDroidLayout.git", :tag => "v#{s.version}" }
-  non_arc_files   = 'iDroidLayout/Utils/NSObject+IDL_KVOObserver.m'
+  non_arc_files   = 'iDroidLayout/Utils/NSObject+IDL_KVOObserver.{h,m}'
   s.source_files  = 'iDroidLayout', 'iDroidLayout/**/*.{h,m}'
   s.exclude_files = non_arc_files
   s.framework     = 'QuartzCore', 'UIKit', 'CoreGraphics'
