@@ -5,8 +5,8 @@ xcode_workspace: iDroidLayout.xcworkspace
 xcode_scheme: iDroidLayout
 xcode_sdk: iphonesimulator8.1
 cache:
-  - bundler
-  - cocoapods
+  bundler: true
+  directories: Pods
 install:
   - bundle exec pod install
 script:
