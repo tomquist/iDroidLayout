@@ -282,7 +282,7 @@
 		79718B0516809FAE00414CCE /* UIView+IDLDrawable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+IDLDrawable.m"; sourceTree = "<group>"; };
 		79718B0A1680E10F00414CCE /* TBXML+IDL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TBXML+IDL.h"; sourceTree = "<group>"; };
 		79718B0B1680E10F00414CCE /* TBXML+IDL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TBXML+IDL.m"; sourceTree = "<group>"; };
-		79718B0E1681DE5200414CCE /* IDLNinePatchDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IDLNinePatchDrawable.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		79718B0E1681DE5200414CCE /* IDLNinePatchDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IDLNinePatchDrawable.h; sourceTree = "<group>"; };
 		79718B0F1681DE5300414CCE /* IDLNinePatchDrawable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLNinePatchDrawable.m; sourceTree = "<group>"; };
 		79718B121681FF1100414CCE /* UIImage+IDLNinePatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+IDLNinePatch.h"; sourceTree = "<group>"; };
 		79718B131681FF1100414CCE /* UIImage+IDLNinePatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+IDLNinePatch.m"; sourceTree = "<group>"; };
@@ -297,12 +297,12 @@
 		7981410A166ABABB00A63480 /* IDLResourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLResourceManager.h; sourceTree = "<group>"; };
 		7981410E166BD65800A63480 /* NSDictionary+IDL_ResourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+IDL_ResourceManager.h"; sourceTree = "<group>"; };
 		7981410F166BD65800A63480 /* NSDictionary+IDL_ResourceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+IDL_ResourceManager.m"; sourceTree = "<group>"; };
-		79B2A98B1704EF67001E4C6E /* IDLResourceManager+IDL_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "IDLResourceManager+IDL_Internal.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		79B5BFA4169B6A3600FA1D94 /* IDLClipDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IDLClipDrawable.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		79B2A98B1704EF67001E4C6E /* IDLResourceManager+IDL_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "IDLResourceManager+IDL_Internal.h"; sourceTree = "<group>"; };
+		79B5BFA4169B6A3600FA1D94 /* IDLClipDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IDLClipDrawable.h; sourceTree = "<group>"; };
 		79B5BFA5169B6A3700FA1D94 /* IDLClipDrawable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLClipDrawable.m; sourceTree = "<group>"; };
-		79B5BFBD16A2CFEF00FA1D94 /* IDLRotateDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IDLRotateDrawable.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		79B5BFBD16A2CFEF00FA1D94 /* IDLRotateDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IDLRotateDrawable.h; sourceTree = "<group>"; };
 		79B5BFBE16A2CFF100FA1D94 /* IDLRotateDrawable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLRotateDrawable.m; sourceTree = "<group>"; };
-		79B5BFC116A5D36100FA1D94 /* IDLShadowDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IDLShadowDrawable.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		79B5BFC116A5D36100FA1D94 /* IDLShadowDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IDLShadowDrawable.h; sourceTree = "<group>"; };
 		79B5BFC216A5D36300FA1D94 /* IDLShadowDrawable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLShadowDrawable.m; sourceTree = "<group>"; };
 		79B983381674D2F200F844DB /* IDLColorStateItem+IDL_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IDLColorStateItem+IDL_Internal.h"; sourceTree = "<group>"; };
 		79B983391674D2F200F844DB /* IDLColorStateItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLColorStateItem.h; sourceTree = "<group>"; };
@@ -330,7 +330,7 @@
 		79CEF933182D6D7E005E2FD1 /* IDLResourceManager+IDL_Internal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IDLResourceManager+IDL_Internal.m"; sourceTree = "<group>"; };
 		79DE0ABB1684AFF200EDACE3 /* NSObject+IDL_KVOObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+IDL_KVOObserver.h"; sourceTree = "<group>"; };
 		79DE0ABC1684AFF200EDACE3 /* NSObject+IDL_KVOObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+IDL_KVOObserver.m"; sourceTree = "<group>"; };
-		79DE0BEC1690C87100EDACE3 /* IDLDrawableLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IDLDrawableLayer.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		79DE0BEC1690C87100EDACE3 /* IDLDrawableLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IDLDrawableLayer.h; sourceTree = "<group>"; };
 		79DE0BED1690C87200EDACE3 /* IDLDrawableLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLDrawableLayer.m; sourceTree = "<group>"; };
 		79DE0BF81695FC5C00EDACE3 /* button_disabled.9@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_disabled.9@2x.png"; sourceTree = "<group>"; };
 		79DE0BF91695FC5C00EDACE3 /* button_pressed.9@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_pressed.9@2x.png"; sourceTree = "<group>"; };

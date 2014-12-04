@@ -24,19 +24,19 @@
     }*/
     
     [super setupFromAttributes:attrs];
-    NSString *text = [attrs objectForKey:@"text"];
+    NSString *text = attrs[@"text"];
     if ([[IDLResourceManager currentResourceManager] isValidIdentifier:text]) {
         NSString *title = [[IDLResourceManager currentResourceManager] stringForIdentifier:text];
         [self setTitle:title forState:UIControlStateNormal];
     } else {
         [self setTitle:text forState:UIControlStateNormal];
     }
-    NSString *textColor = [attrs objectForKey:@"textColor"];
+    NSString *textColor = attrs[@"textColor"];
     if ([textColor length] > 0) {
         IDLColorStateList *colorStateList = [[IDLResourceManager currentResourceManager] colorStateListForIdentifier:textColor];
         if (colorStateList != nil) {
             for (NSInteger i=[colorStateList.items count]-1; i>=0; i--) {
-                IDLColorStateItem *item = [colorStateList.items objectAtIndex:i];
+                IDLColorStateItem *item = (colorStateList.items)[i];
                 [self setTitleColor:item.color forState:item.controlState];
             }
         } else {
@@ -47,8 +47,8 @@
         }
     }
     
-    NSString *fontName = [attrs objectForKey:@"font"];
-    NSString *textSize = [attrs objectForKey:@"textSize"];
+    NSString *fontName = attrs[@"font"];
+    NSString *textSize = attrs[@"textSize"];
     if (fontName != nil) {
         CGFloat size = self.titleLabel.font.pointSize;
         if (textSize != nil) size = [textSize floatValue];
@@ -75,12 +75,12 @@
         }
     }*/
     
-    NSString *imageString = [attrs objectForKey:@"image"];
+    NSString *imageString = attrs[@"image"];
     if ([imageString length] > 0) {
         IDLDrawableStateList *drawableStateList = [[IDLResourceManager currentResourceManager] drawableStateListForIdentifier:imageString];
         if (drawableStateList != nil) {
             for (NSInteger i=[drawableStateList.items count]-1; i>=0; i--) {
-                IDLDrawableStateItem *item = [drawableStateList.items objectAtIndex:i];
+                IDLDrawableStateItem *item = (drawableStateList.items)[i];
                 [self setBackgroundImage:item.image forState:item.controlState];
             }
         }

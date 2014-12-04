@@ -81,7 +81,7 @@ static char matchParentChildrenKey;
     childState.widthState = IDLLayoutMeasuredStateNone;
     
     for (int i = 0; i < count; i++) {
-        UIView *child = [self.subviews objectAtIndex:i];
+        UIView *child = (self.subviews)[i];
         if ([NSStringFromClass([child class]) isEqualToString:@"UIWebDocumentView"]) {
             continue;
         }
@@ -117,7 +117,7 @@ static char matchParentChildrenKey;
     count = [matchParentChildren count];
     if (count > 1) {
         for (int i = 0; i < count; i++) {
-            UIView *child = [matchParentChildren objectAtIndex:i];
+            UIView *child = matchParentChildren[i];
             
             if ([NSStringFromClass([child class]) isEqualToString:@"UIWebDocumentView"]) {
                 continue;
@@ -179,7 +179,7 @@ static char matchParentChildrenKey;
     CGFloat maxX = 0;
     CGFloat maxY = 0;
     for (int i = 0; i < count; i++) {
-        UIView *child = [self.subviews objectAtIndex:i];
+        UIView *child = (self.subviews)[i];
         
         if (child.visibility != IDLViewVisibilityGone && ![NSStringFromClass([child class]) isEqualToString:@"UIWebDocumentView"]) {
             IDLFrameLayoutLayoutParams *lp = (IDLFrameLayoutLayoutParams *)child.layoutParams;

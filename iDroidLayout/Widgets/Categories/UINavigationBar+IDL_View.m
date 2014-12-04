@@ -19,11 +19,11 @@
     if (tintColor != nil) {
         self.tintColor = tintColor;
     }
-    NSString *barStyle = [attrs objectForKey:@"barStyle"];
+    NSString *barStyle = attrs[@"barStyle"];
     if (barStyle != nil) {
         self.barStyle = UIBarStyleFromString(barStyle);
     }
-    NSString *translucent = [attrs objectForKey:@"translucent"];
+    NSString *translucent = attrs[@"translucent"];
     if (translucent != nil) {
         self.translucent = BOOLFromString(translucent);
     }

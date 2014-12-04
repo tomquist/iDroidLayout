@@ -97,10 +97,10 @@ iDroid-Layout contains an advanced resource resolution framework. It allows you 
 ##### Resource-Identifier Syntax
 The syntax of a resource identifier is the following:
 ``[<bundle-identifier>:]<resource-type>/<resource-name>[.<resource-subname>]``
-- ``<bundle-identifier>`` is the identifier of the bundle which contains the resource. If the bunde-identifier is ommitted, the resource will be searched within the main bundle. To use bundles other than the main bundle, you have to load the bundle at least once before a resource identifier whith this bundle is used.
-- ``<resource-type>`` is the resource type (one of ``string``, ``layout``, ``drawable``, ``color`` or ``style``)
-- ``<resource-name>`` is the name of te resource file
-- ``<resource-subname>`` is an identifier of the specific resource within the resource file. This is only used for some resource types which act as a resource container.
+- ``<bundle-identifier>`` identifier of the bundle which contains the resource. If the bunde-identifier is ommitted, the resource will be searched within the main bundle. To use bundles other than the main bundle, you have to load a bundle at least once before resource identifiers whith this bundle can be used.
+- ``<resource-type>`` resource type (one of ``string``, ``layout``, ``drawable``, ``color`` or ``style``)
+- ``<resource-name>`` name of the resource file
+- ``<resource-subname>`` identifier of the specific resource within the resource file. This is only used for some resource types which act as a resource container.
 
 Drawables
 ---------

@@ -11,13 +11,16 @@
 #import "UIView+IDL_Layout.h"
 #import "IDLRelativeLayoutLayoutParams.h"
 
-@implementation IDLDependencyGraph
+@implementation IDLDependencyGraph {
+    NSMutableArray *_nodes;
+    NSMutableArray *_roots;
+}
 
 @synthesize keyNodes = _keyNodes;
 
 
 
-- (id)init {
+- (instancetype)init {
 	self = [super init];
 	if (self != nil) {
 		_keyNodes = [[NSMutableDictionary alloc] init];
@@ -31,7 +34,7 @@
     NSUInteger count = [_nodes count];
     
     for (int i = 0; i < count; i++) {
-        IDLDependencyGraphNode *node = [_nodes objectAtIndex:i];
+        IDLDependencyGraphNode *node = _nodes[i];
         [node releaseNode];
     }
     [_nodes removeAllObjects];
@@ -44,7 +47,7 @@
     IDLDependencyGraphNode *node = [IDLDependencyGraphNode acquireView:view];
     
     if (identifier != nil) {
-        [_keyNodes setObject:node forKey:identifier];
+        _keyNodes[identifier] = node;
     }
     
     [_nodes addObject:node];
@@ -67,14 +70,14 @@
     // Find roots can be invoked several times, so make sure to clear
     // all dependents and dependencies before running the algorithm
     for (int i = 0; i < count; i++) {
-        IDLDependencyGraphNode *node = [nodes objectAtIndex:i];
+        IDLDependencyGraphNode *node = nodes[i];
         [node.dependents removeAllObjects];
         [node.dependencies removeAllObjects];
     }
     
     // Builds up the dependents and dependencies for each node of the graph
     for (int i = 0; i < count; i++) {
-        IDLDependencyGraphNode *node = [nodes objectAtIndex:i];
+        IDLDependencyGraphNode *node = nodes[i];
         
         IDLRelativeLayoutLayoutParams *layoutParams = (IDLRelativeLayoutLayoutParams *)node.view.layoutParams;
         NSArray *rules = layoutParams.rules;
@@ -83,11 +86,11 @@
         // Look only the the rules passed in parameter, this way we build only the
         // dependencies for a specific set of rules
         for (int j = 0; j < rulesCount; j++) {
-            NSNumber *ruleId = [rulesFilter objectAtIndex:j];
-            id rule = [rules objectAtIndex:[ruleId integerValue]];
+            NSNumber *ruleId = rulesFilter[j];
+            id rule = rules[[ruleId integerValue]];
             if (rule != [NSNull null] && [rule isKindOfClass:[NSString class]]) {
                 // The node this node depends on
-                IDLDependencyGraphNode *dependency = [keyNodes objectForKey:rule];
+                IDLDependencyGraphNode *dependency = keyNodes[rule];
                 // Skip unknowns and self dependencies
                 if (dependency == nil || dependency == node) {
                     continue;
@@ -95,7 +98,7 @@
                 // Add the current node as a dependent
                 [dependency.dependents addObject:node];
                 // Add a dependency to the current node
-                [node.dependencies setObject:dependency forKey:rule];
+                (node.dependencies)[rule] = dependency;
             }
         }
     }
@@ -105,7 +108,7 @@
     
     // Finds all the roots in the graph: all nodes with no dependencies
     for (int i = 0; i < count; i++) {
-        IDLDependencyGraphNode *node = [nodes objectAtIndex:i];
+        IDLDependencyGraphNode *node = nodes[i];
         if ([node.dependencies count] == 0) [roots addObject:node];
     }
     
@@ -127,12 +130,12 @@
     NSInteger index = 0;
     
     while ([roots count] > 0) {
-        IDLDependencyGraphNode *node = [roots objectAtIndex:0];
+        IDLDependencyGraphNode *node = roots[0];
         [roots removeObjectAtIndex:0];
         UIView *view = node.view;
         NSString *key = view.identifier;
         
-        [sorted replaceObjectAtIndex:index++ withObject:view];
+        sorted[index++] = view;
         
         NSMutableSet *dependents = node.dependents;
         for (IDLDependencyGraphNode *dependent in dependents) {

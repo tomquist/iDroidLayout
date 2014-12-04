@@ -65,7 +65,7 @@
     return self;
 }
 
-- (id)init {
+- (instancetype)init {
     return [self initWithState:nil];
 }
 
@@ -80,7 +80,7 @@
 - (void)inflateWithElement:(TBXMLElement *)element {
     [super inflateWithElement:element];
     NSMutableDictionary *attrs = [TBXML attributesFromXMLElement:element reuseDictionary:nil];
-    NSString *colorString = [attrs objectForKey:@"color"];
+    NSString *colorString = attrs[@"color"];
     if (colorString != nil) {
         UIColor *color = [[IDLResourceManager currentResourceManager] colorForIdentifier:colorString];
         if (color == nil) {

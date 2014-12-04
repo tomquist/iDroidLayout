@@ -15,7 +15,7 @@
 - (instancetype)initWithAttributes:(NSDictionary *)attrs {
     self = [super initWithAttributes:attrs];
     if (self) {
-        NSString *gravityString = [attrs objectForKey:@"layout_gravity"];
+        NSString *gravityString = attrs[@"layout_gravity"];
         _gravity = [IDLGravity gravityFromAttribute:gravityString];
     }
     return self;

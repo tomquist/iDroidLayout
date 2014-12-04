@@ -51,8 +51,8 @@
 - (instancetype)initWithAttributes:(NSDictionary *)attrs {
     self = [super init];
     if (self) {
-        NSString *widthAttr = [attrs objectForKey:@"layout_width"];
-        NSString *heightAttr = [attrs objectForKey:@"layout_height"];
+        NSString *widthAttr = attrs[@"layout_width"];
+        NSString *heightAttr = attrs[@"layout_height"];
         if (widthAttr == nil || heightAttr == nil) {
             NSLog(@"You have to set the layout_width and laypit_height parameters.");
             return nil;

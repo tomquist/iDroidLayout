@@ -14,7 +14,7 @@
     self.drawable = nil;
 }
 
-- (id)init {
+- (instancetype)init {
     self = [super init];
     if (self) {
         self.contentsScale = [UIScreen mainScreen].scale;
@@ -30,7 +30,7 @@
     return self;
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
         self.contentsScale = [UIScreen mainScreen].scale;
@@ -50,7 +50,7 @@
     return nil;
 }
 
-- (id)initWithLayer:(id)layer {
+- (instancetype)initWithLayer:(id)layer {
     self = [super initWithLayer:layer];
     if (self) {
         self.contentsScale = [UIScreen mainScreen].scale;

@@ -14,7 +14,7 @@
 
 - (void)setupFromAttributes:(NSDictionary *)attrs {
     [super setupFromAttributes:attrs];
-    NSString *imageRes = [attrs objectForKey:@"src"];
+    NSString *imageRes = attrs[@"src"];
     IDLDrawableStateList *drawableStateList = [[IDLResourceManager currentResourceManager] drawableStateListForIdentifier:imageRes];
     if (drawableStateList != nil) {
         self.image = [drawableStateList imageForControlState:UIControlStateNormal];
@@ -24,7 +24,7 @@
         }
     }
     
-    NSString *scaleType = [attrs objectForKey:@"scaleType"];
+    NSString *scaleType = attrs[@"scaleType"];
     if (scaleType != nil) {
         if ([scaleType isEqualToString:@"center"]) {
             self.contentMode = UIViewContentModeCenter;

@@ -38,8 +38,8 @@
 - (instancetype)initWithAttributes:(NSDictionary *)attrs {
     self = [super initWithAttributes:attrs];
     if (self) {
-        _gravity = [IDLGravity gravityFromAttribute:[attrs objectForKey:@"layout_gravity"]];
-        _weight = [[attrs objectForKey:@"layout_weight"] floatValue];
+        _gravity = [IDLGravity gravityFromAttribute:attrs[@"layout_gravity"]];
+        _weight = [attrs[@"layout_weight"] floatValue];
     }
     return self;
 }

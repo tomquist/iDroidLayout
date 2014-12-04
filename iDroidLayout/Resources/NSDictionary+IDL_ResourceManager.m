@@ -14,7 +14,7 @@
 
 - (NSString *)stringFromIDLValueForKey:(NSString *)key {
     NSString *ret = nil;
-    NSString *text = [self objectForKey:key];
+    NSString *text = self[key];
     if ([[IDLResourceManager currentResourceManager] isValidIdentifier:text]) {
         NSString *textFromResouces = [[IDLResourceManager currentResourceManager] stringForIdentifier:text];
         ret = textFromResouces;
@@ -26,7 +26,7 @@
 
 - (UIColor *)colorFromIDLValueForKey:(NSString *)key {
     UIColor *ret = nil;
-    id value = [self objectForKey:key];
+    id value = self[key];
     if ([value isKindOfClass:[NSString class]]) {
         NSString *string = value;
         if ([[IDLResourceManager currentResourceManager] isValidIdentifier:string]) {
@@ -40,7 +40,7 @@
 
 - (IDLColorStateList *)colorStateListFromIDLValueForKey:(NSString *)key {
     IDLColorStateList *ret = nil;
-    id value = [self objectForKey:key];
+    id value = self[key];
     if ([value isKindOfClass:[NSString class]]) {
         NSString *string = value;
         ret = [[IDLResourceManager currentResourceManager] colorStateListForIdentifier:string];
@@ -54,7 +54,7 @@
 
 - (CGFloat)dimensionFromIDLValueForKey:(NSString *)key defaultValue:(CGFloat)defaultValue {
     CGFloat ret = 0;
-    id value = [self objectForKey:key];
+    id value = self[key];
     if (value == nil) {
         ret = defaultValue;
     } else if ([value isKindOfClass:[NSString class]]) {
@@ -75,7 +75,7 @@
 
 - (float)fractionValueFromIDLValueForKey:(NSString *)key defaultValue:(CGFloat)defaultValue {
     float ret = defaultValue;
-    id value = [self objectForKey:key];
+    id value = self[key];
     if (value == nil) {
         ret = defaultValue;
     } else if ([value isKindOfClass:[NSString class]]) {
@@ -96,7 +96,7 @@
 
 - (BOOL)isFractionIDLValueForKey:(NSString *)key {
     BOOL ret = FALSE;
-    id value = [self objectForKey:key];
+    id value = self[key];
     if (value == nil) {
         ret = FALSE;
     } else if ([value isKindOfClass:[NSString class]]) {
@@ -119,7 +119,7 @@
 
 - (BOOL)boolFromIDLValueForKey:(NSString *)key defauleValue:(BOOL)defaultValue {
     BOOL ret = defaultValue;
-    id value = [self objectForKey:key];
+    id value = self[key];
     if (value == nil) {
         ret = defaultValue;
     } else if ([value isKindOfClass:[NSString class]]) {

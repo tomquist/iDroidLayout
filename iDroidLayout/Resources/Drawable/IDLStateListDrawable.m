@@ -42,9 +42,9 @@
             NSInteger count = MIN([self.drawables count], [state.items count]);
             NSMutableArray *items = [[NSMutableArray alloc] initWithCapacity:count];
             for (NSInteger i = 0; i<count; i++) {
-                IDLStateListDrawableItem *origItem = [state.items objectAtIndex:i];
+                IDLStateListDrawableItem *origItem = (state.items)[i];
                 IDLStateListDrawableItem *item = [[IDLStateListDrawableItem alloc] init];
-                item.drawable = [self.drawables objectAtIndex:i];
+                item.drawable = (self.drawables)[i];
                 item.state = origItem.state;
                 [items addObject:item];
             }
@@ -85,7 +85,7 @@
     return self;
 }
 
-- (id)init {
+- (instancetype)init {
     return [self initWithState:nil];
 }
 
@@ -104,7 +104,7 @@
     NSInteger ret = -1;
     NSInteger count = [self.internalConstantState.items count];
     for (NSInteger i = 0; i < count; i++) {
-        IDLStateListDrawableItem *item = [self.internalConstantState.items objectAtIndex:i];
+        IDLStateListDrawableItem *item = (self.internalConstantState.items)[i];
         if ((item.state & state) == item.state) {
             ret = i;
             break;
@@ -140,7 +140,7 @@
     NSMutableDictionary *attrs = [TBXML attributesFromXMLElement:element reuseDictionary:nil];
     
     
-    self.internalConstantState.constantSize = BOOLFromString([attrs objectForKey:@"constantSize"]);
+    self.internalConstantState.constantSize = BOOLFromString(attrs[@"constantSize"]);
     
     TBXMLElement *child = element->firstChild;
     while (child != NULL) {
@@ -149,12 +149,12 @@
             attrs = [TBXML attributesFromXMLElement:child reuseDictionary:attrs];
             UIControlState state = UIControlStateNormal;
             for (NSString *attrName in [attrs allKeys]) {
-                BOOL value = BOOLFromString([attrs objectForKey:attrName]);
+                BOOL value = BOOLFromString(attrs[attrName]);
                 if (value) {
                     state |= [self controlStateForAttribute:attrName];
                 }
             }
-            NSString *drawableResId = [attrs objectForKey:@"drawable"];
+            NSString *drawableResId = attrs[@"drawable"];
             IDLDrawable *drawable = nil;
             if (drawableResId != nil) {
                 drawable = [[IDLResourceManager currentResourceManager] drawableForIdentifier:drawableResId];

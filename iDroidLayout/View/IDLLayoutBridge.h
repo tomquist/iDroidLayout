@@ -8,11 +8,7 @@
 
 #import "IDLLinearLayout.h"
 
-@interface IDLLayoutBridge : IDLViewGroup {
-    CGRect _lastFrame;
-    BOOL _resizeOnKeyboard;
-    BOOL _scrollToTextField;
-}
+@interface IDLLayoutBridge : IDLViewGroup
 
 @property (nonatomic, assign, getter = isResizingOnKeyboard) BOOL resizeOnKeyboard;
 @property (nonatomic, assign, getter = isScrollingToTextField) BOOL scrollToTextField;

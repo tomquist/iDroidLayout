@@ -8,9 +8,7 @@
 
 #import "IDLLayoutParams.h"
 
-@interface IDLMarginLayoutParams : IDLLayoutParams {
-    UIEdgeInsets _margin;
-}
+@interface IDLMarginLayoutParams : IDLLayoutParams
 
 @property (nonatomic, assign) UIEdgeInsets margin;
 

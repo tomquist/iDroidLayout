@@ -13,7 +13,7 @@
 
 - (void)setupFromAttributes:(NSDictionary *)attrs {
     [super setupFromAttributes:attrs];
-    NSString *src = [attrs objectForKey:@"src"];
+    NSString *src = attrs[@"src"];
     if (src != nil) {
         NSURL *url = [NSURL URLWithString:src];
         [self loadRequest:[NSURLRequest requestWithURL:url]];

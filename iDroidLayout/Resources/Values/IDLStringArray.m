@@ -37,7 +37,7 @@
 }
 
 - (id)objectAtIndex:(NSUInteger)index {
-    id value = [self.content objectAtIndex:index];
+    id value = (self.content)[index];
     if (value == [NSNull null]) {
         value = nil;
     }
@@ -46,9 +46,9 @@
         if ([resMgr isValidIdentifier:value]) {
             value = [resMgr stringForIdentifier:value];
             if (value == nil) {
-                [self.content replaceObjectAtIndex:index withObject:[NSNull null]];
+                (self.content)[index] = [NSNull null];
             } else {
-                [self.content replaceObjectAtIndex:index withObject:value];
+                (self.content)[index] = value;
             }
         }
         CFBitVectorFlipBitAtIndex(_resolvedInfo, index);

@@ -8,9 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IDLEditText : UITextField {
-    UIControlContentVerticalAlignment _contentVerticalAlignment;
-}
+@interface IDLEditText : UITextField
 
 @property (nonatomic, assign) UIControlContentVerticalAlignment contentVerticalAlignment;
 

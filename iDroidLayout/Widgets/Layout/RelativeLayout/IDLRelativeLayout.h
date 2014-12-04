@@ -11,19 +11,7 @@
 #import "IDLDependencyGraph.h"
 #import "IDLRelativeLayoutLayoutParams.h"
 
-@interface IDLRelativeLayout : IDLViewGroup {
-    IDLViewContentGravity _gravity;
-    NSString *_ignoreGravity;
-    NSMutableArray *_sortedVerticalChildren;
-    NSMutableArray *_sortedHorizontalChildren;
-    IDLDependencyGraph *_graph;
-    UIView *_baselineView;
-    CGRect _selfBounds;
-    CGRect _contentBounds;
-    
-    BOOL _dirtyHierarchy;
-    BOOL _hasBaselineAlignedChild;
-}
+@interface IDLRelativeLayout : IDLViewGroup
 
 @property (nonatomic, assign) IDLViewContentGravity gravity;
 @property (nonatomic, copy) NSString *ignoreGravity;

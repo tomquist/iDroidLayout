@@ -38,7 +38,7 @@
 + (instancetype)createWithSingleColorIdentifier:(NSString *)colorIdentifier {
     IDLColorStateList *list = [[self alloc] init];
     IDLColorStateItem *item = [[IDLColorStateItem alloc] initWithControlState:UIControlStateNormal colorResourceIdentifier:colorIdentifier];
-    list.internalItems = [NSArray arrayWithObject:item];
+    list.internalItems = @[item];
     return list;
 }
 

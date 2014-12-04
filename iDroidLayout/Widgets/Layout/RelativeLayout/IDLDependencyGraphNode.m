@@ -60,7 +60,7 @@
 
 
 
-- (id) init {
+- (instancetype) init {
 	self = [super init]; 
 	if (self != nil) {
         _dependents = [[NSMutableSet alloc] init];

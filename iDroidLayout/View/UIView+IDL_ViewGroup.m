@@ -139,7 +139,7 @@
 -(void)measureChildrenWithWidthMeasureSpec:(IDLLayoutMeasureSpec)widthMeasureSpec heightMeasureSpec:(IDLLayoutMeasureSpec)heightMeasureSpec {
     NSUInteger size = [self.subviews count];
     for (int i = 0; i < size; ++i) {
-        UIView *child = [self.subviews objectAtIndex:i];
+        UIView *child = (self.subviews)[i];
         if (child.visibility != IDLViewVisibilityGone) {
             [self measureChild:child withParentWidthMeasureSpec:widthMeasureSpec parentHeightMeasureSpec:heightMeasureSpec];
         }
@@ -155,7 +155,7 @@
     NSInteger len = [where count];
     
     for (NSInteger i = 0; i < len; i++) {
-        UIView *v = [where objectAtIndex:i];
+        UIView *v = where[i];
         
         v = [v findViewById:identifier];
         if (v != nil) {
@@ -232,7 +232,7 @@
 - (void)removeViewAtIndex:(NSUInteger)index {
     NSArray *subviews = self.subviews;
     if (index < [subviews count]) {
-        [self removeView:[subviews objectAtIndex:index]];
+        [self removeView:subviews[index]];
     }
 }
 

@@ -36,15 +36,15 @@
 - (instancetype)initWithAttributes:(NSDictionary *)attrs {
     self = [super initWithAttributes:attrs];
     if (self) {
-        NSString *marginString = [attrs objectForKey:@"layout_margin"];
+        NSString *marginString = attrs[@"layout_margin"];
         if (marginString != nil) {
             CGFloat margin = [marginString floatValue];
             _margin = UIEdgeInsetsMake(margin, margin, margin, margin);
         } else {
-            NSString *marginLeftString = [attrs objectForKey:@"layout_marginLeft"];
-            NSString *marginTopString = [attrs objectForKey:@"layout_marginTop"];
-            NSString *marginBottomString = [attrs objectForKey:@"layout_marginBottom"];
-            NSString *marginRightString = [attrs objectForKey:@"layout_marginRight"];
+            NSString *marginLeftString = attrs[@"layout_marginLeft"];
+            NSString *marginTopString = attrs[@"layout_marginTop"];
+            NSString *marginBottomString = attrs[@"layout_marginBottom"];
+            NSString *marginRightString = attrs[@"layout_marginRight"];
             _margin = UIEdgeInsetsMake([marginTopString floatValue], [marginLeftString floatValue], [marginBottomString floatValue], [marginRightString floatValue]);
         }
     }

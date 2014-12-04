@@ -8,9 +8,14 @@
 
 #import "IDLFinitePool.h"
 
-@implementation IDLFinitePool
-
-
+@implementation IDLFinitePool {
+    NSUInteger _limit;
+    BOOL _infinite;
+    NSUInteger _poolCount;
+    
+    id<IDLPoolableManager> _manager;
+    id<IDLPoolable> _root;
+}
 
 - (instancetype)initWithPoolableManager:(id<IDLPoolableManager>)manager {
 	self = [super init];

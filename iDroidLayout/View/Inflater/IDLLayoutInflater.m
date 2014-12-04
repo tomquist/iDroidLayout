@@ -28,14 +28,14 @@
 + (NSMutableDictionary *)attributesFromXMLElement:(TBXMLElement *)element reuseDictionary:(NSMutableDictionary *)dict actionTarget:(id)actionTarget {
     dict = [TBXML attributesFromXMLElement:element reuseDictionary:dict];
     // Apply style
-    NSString *styleAttribute = [dict objectForKey:@"style"];
+    NSString *styleAttribute = dict[@"style"];
     if ([styleAttribute length] > 0) {
         IDLStyle *style = [[IDLResourceManager currentResourceManager] styleForIdentifier:styleAttribute];
         if (style != nil) {
             NSDictionary *styleAttributes = style.attributes;
             for (NSString *name in [styleAttributes allKeys]) {
-                if ([dict objectForKey:name] == nil) {
-                    [dict setObject:[styleAttributes objectForKey:name] forKey:name];
+                if (dict[name] == nil) {
+                    dict[name] = styleAttributes[name];
                 }
             }
         }
@@ -50,7 +50,7 @@
 }
 
 
-- (id)init {
+- (instancetype)init {
     self = [super init];
     if (self) {
         _viewFactory = [[IDLBaseViewFactory alloc] init];
@@ -60,7 +60,7 @@
 
 - (UIView *)createViewFromTag:(NSString *)name withAttributes:(NSDictionary *)attrs intoParentView:(UIView *)parent {
     if ([name isEqualToString:@"view"]) {
-        name = [attrs objectForKey:@"class"];
+        name = attrs[@"class"];
     }
     UIView *ret = nil;
     @try {
@@ -79,7 +79,7 @@
         return;
     }
     
-    NSString *layoutToInclude = [attrs objectForKey:INCLUDE_ATTRIBUTE_LAYOUT];
+    NSString *layoutToInclude = attrs[INCLUDE_ATTRIBUTE_LAYOUT];
     NSError *error = nil;
     if (layoutToInclude == nil) {
         NSLog(@"You must specifiy a layout in the include tag: <include layout=\"@layout/layoutName\" />");
@@ -126,13 +126,13 @@
                     
                     // Attempt to override the included layout's id with the
                     // one set on the <include /> tag itself.
-                    NSString *overwriteIdentifier = [attrs objectForKey:@"id"];
+                    NSString *overwriteIdentifier = attrs[@"id"];
                     if (overwriteIdentifier != nil) {
                         temp.identifier = overwriteIdentifier;
                     }
                     
                     // While we're at it, let's try to override visibility.
-                    NSString *overwriteVisibility = [attrs objectForKey:@"visibility"];
+                    NSString *overwriteVisibility = attrs[@"visibility"];
                     if (overwriteVisibility != nil) {
                         temp.visibility = IDLViewVisibilityFromString(overwriteVisibility);
                     }

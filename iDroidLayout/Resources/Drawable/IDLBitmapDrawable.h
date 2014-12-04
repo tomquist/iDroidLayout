@@ -11,7 +11,7 @@
 
 @interface IDLBitmapDrawable : IDLDrawable
 
-- (instancetype)initWithImage:(UIImage *)image;
+- (instancetype)initWithImage:(UIImage *)image NS_DESIGNATED_INITIALIZER;
 
 @end
 

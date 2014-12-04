@@ -36,7 +36,7 @@
 }
 
 - (UIButton *)onCreateUIButtonWithAttributes:(NSDictionary *)attrs {
-    NSString *type = [attrs objectForKey:@"type"];
+    NSString *type = attrs[@"type"];
     UIButtonType buttonType = [self buttonTypeFromTypeAttribute:type];
     UIButton *button = [UIButton buttonWithType:buttonType];
     [button setupFromAttributes:attrs];

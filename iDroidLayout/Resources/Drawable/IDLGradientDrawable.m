@@ -177,7 +177,7 @@ BOOL IDLGradientDrawableCornerRadiusEqualsCornerRadius(IDLGradientDrawableCorner
     return self;
 }
 
-- (id)init {
+- (instancetype)init {
     return [self initWithState:nil];
 }
 
@@ -314,7 +314,7 @@ BOOL IDLGradientDrawableCornerRadiusEqualsCornerRadius(IDLGradientDrawableCorner
     [super inflateWithElement:element];
     IDLGradientDrawableConstantState *state = self.internalConstantState;
     NSMutableDictionary *attrs = [TBXML attributesFromXMLElement:element reuseDictionary:nil];
-    NSString *shape = [attrs objectForKey:@"shape"];
+    NSString *shape = attrs[@"shape"];
     state.shape = IDLGradientDrawableShapeFromString(shape);
     
     if (state.shape == IDLGradientDrawableShapeRing) {
@@ -334,21 +334,21 @@ BOOL IDLGradientDrawableCornerRadiusEqualsCornerRadius(IDLGradientDrawableCorner
         if ([name isEqualToString:@"gradient"]) {
             attrs = [TBXML attributesFromXMLElement:child reuseDictionary:attrs];
             
-            state.gradientType = IDLGradientDrawableGradientTypeFromString([attrs objectForKey:@"type"]);
+            state.gradientType = IDLGradientDrawableGradientTypeFromString(attrs[@"type"]);
             
             CGPoint gradientCenter = CGPointMake(.5f, .5f);
-            NSString *centerX = [attrs objectForKey:@"centerX"];
+            NSString *centerX = attrs[@"centerX"];
             if (centerX != nil) {
                 gradientCenter.x = [centerX floatValue];
             }
-            NSString *centerY = [attrs objectForKey:@"centerY"];
+            NSString *centerY = attrs[@"centerY"];
             if (centerY != nil) {
                 gradientCenter.y = [centerY floatValue];
             }
             
             if (state.gradientType == IDLGradientDrawableGradientTypeRadial) {
                 
-                if ([attrs objectForKey:@"gradientRadius"] == nil) {
+                if (attrs[@"gradientRadius"] == nil) {
                     state.gradientRadius = 1;
                     state.gradientRadiusIsRelative = TRUE;
                 } else {
@@ -385,20 +385,20 @@ BOOL IDLGradientDrawableCornerRadiusEqualsCornerRadius(IDLGradientDrawableCorner
         } else if ([name isEqualToString:@"padding"]) {
             attrs = [TBXML attributesFromXMLElement:child reuseDictionary:attrs];
             UIEdgeInsets padding = UIEdgeInsetsZero;
-            padding.left = [[attrs objectForKey:@"left"] floatValue];
-            padding.top = [[attrs objectForKey:@"top"] floatValue];
-            padding.right = [[attrs objectForKey:@"right"] floatValue];
-            padding.bottom = [[attrs objectForKey:@"bottom"] floatValue];
+            padding.left = [attrs[@"left"] floatValue];
+            padding.top = [attrs[@"top"] floatValue];
+            padding.right = [attrs[@"right"] floatValue];
+            padding.bottom = [attrs[@"bottom"] floatValue];
             state.padding = padding;
             state.hasPadding = TRUE;
         } else if ([name isEqualToString:@"corners"]) {
             IDLGradientDrawableCornerRadius radius =  IDLGradientDrawableCornerRadiusZero;
             attrs = [TBXML attributesFromXMLElement:child reuseDictionary:attrs];
-            radius.topLeft = radius.topRight = radius.bottomLeft = radius.bottomRight = [[attrs objectForKey:@"radius"] floatValue];
-            NSString *topLeftRadius = [attrs objectForKey:@"topLeftRadius"];
-            NSString *topRightRadius = [attrs objectForKey:@"topRightRadius"];
-            NSString *bottomLeftRadius = [attrs objectForKey:@"bottomLeftRadius"];
-            NSString *bottomRightRadius = [attrs objectForKey:@"bottomRightRadius"];
+            radius.topLeft = radius.topRight = radius.bottomLeft = radius.bottomRight = [attrs[@"radius"] floatValue];
+            NSString *topLeftRadius = attrs[@"topLeftRadius"];
+            NSString *topRightRadius = attrs[@"topRightRadius"];
+            NSString *bottomLeftRadius = attrs[@"bottomLeftRadius"];
+            NSString *bottomRightRadius = attrs[@"bottomRightRadius"];
             if (topLeftRadius != nil) radius.topLeft = [topLeftRadius floatValue];
             if (topRightRadius != nil) radius.topRight = [topRightRadius floatValue];
             if (bottomLeftRadius != nil) radius.bottomLeft = [bottomLeftRadius floatValue];

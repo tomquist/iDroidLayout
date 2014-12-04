@@ -10,16 +10,9 @@
 #import "IDLPool.h"
 #import "IDLPoolableManager.h"
 
-@interface IDLFinitePool : NSObject <IDLPool> {
-    NSUInteger _limit;
-    BOOL _infinite;
-    NSUInteger _poolCount;
-    
-    id<IDLPoolableManager> _manager;
-    id<IDLPoolable> _root;
-}
+@interface IDLFinitePool : NSObject <IDLPool>
 
-- (instancetype)initWithPoolableManager:(id<IDLPoolableManager>)manager;
-- (instancetype)initWithPoolableManager:(id<IDLPoolableManager>)manager limit:(NSUInteger)limit;
+- (instancetype)initWithPoolableManager:(id<IDLPoolableManager>)manager NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithPoolableManager:(id<IDLPoolableManager>)manager limit:(NSUInteger)limit NS_DESIGNATED_INITIALIZER;
 
 @end

@@ -67,7 +67,7 @@
     return self;
 }
 
-- (id)init {
+- (instancetype)init {
     return [self initWithState:nil];
 }
 
@@ -104,7 +104,7 @@
     state.blur = ABS([attrs dimensionFromIDLValueForKey:@"blur" defaultValue:0]);
     state.shadowColor = [attrs colorFromIDLValueForKey:@"shadowColor"];
     
-    NSString *drawableResId = [attrs objectForKey:@"drawable"];
+    NSString *drawableResId = attrs[@"drawable"];
     IDLDrawable *drawable = nil;
     if (drawableResId != nil) {
         drawable = [[IDLResourceManager currentResourceManager] drawableForIdentifier:drawableResId];

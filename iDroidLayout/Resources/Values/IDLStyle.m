@@ -52,7 +52,7 @@
             }
             NSString *value = [TBXML textForElement:child];
             if (name != nil && [name length] > 0 && value != nil) {
-                [attributes setObject:value forKey:name];
+                attributes[name] = value;
             }
         }
         child = child->nextSibling;
@@ -69,9 +69,9 @@
             if (!self.includesParentStyleAttributes) {
                 NSDictionary *parentAttributes = self.parentStyle.attributes;
                 for (NSString *name in [parentAttributes allKeys]) {
-                    if ([self.internalAttributes objectForKey:name] == nil) {
-                        id value = [parentAttributes objectForKey:name];
-                        [self.internalAttributes setObject:value forKey:name];
+                    if ((self.internalAttributes)[name] == nil) {
+                        id value = parentAttributes[name];
+                        (self.internalAttributes)[name] = value;
                     }
                 }
                 self.includesParentStyleAttributes = TRUE;

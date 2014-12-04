@@ -129,7 +129,7 @@
     return self;
 }
 
-- (id)init {
+- (instancetype)init {
     return [self initWithState:nil];
 }
 
@@ -179,12 +179,12 @@
             attrs = [TBXML attributesFromXMLElement:child reuseDictionary:attrs];
             
             UIEdgeInsets insets = UIEdgeInsetsZero;
-            insets.left = [[attrs objectForKey:@"left"] floatValue];
-            insets.top = [[attrs objectForKey:@"top"] floatValue];
-            insets.right = [[attrs objectForKey:@"right"] floatValue];
-            insets.bottom = [[attrs objectForKey:@"bottom"] floatValue];
+            insets.left = [attrs[@"left"] floatValue];
+            insets.top = [attrs[@"top"] floatValue];
+            insets.right = [attrs[@"right"] floatValue];
+            insets.bottom = [attrs[@"bottom"] floatValue];
             
-            NSString *drawableResId = [attrs objectForKey:@"drawable"];
+            NSString *drawableResId = attrs[@"drawable"];
             IDLDrawable *drawable = nil;
             if (drawableResId != nil) {
                 drawable = [[IDLResourceManager currentResourceManager] drawableForIdentifier:drawableResId];

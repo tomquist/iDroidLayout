@@ -9,10 +9,11 @@
 #import "IDLLayoutViewController.h"
 #import "IDLLayoutInflater.h"
 
-@implementation IDLLayoutViewController
+@implementation IDLLayoutViewController {
+    NSURL *_layoutUrl;
+}
 
-
-- (id)init {
+- (instancetype)init {
     self = [super init];
     if (self) {
         

@@ -53,13 +53,13 @@
             if ([resourceName length] > 0) {
                 if ([tagName isEqualToString:@"style"]) {
                     IDLStyle *style = [IDLStyle createFromXMLElement:child];
-                    [mutableValues setObject:style forKey:resourceName];
+                    mutableValues[resourceName] = style;
                 } else if ([tagName isEqualToString:@"string"]) {
                     NSString *string = [[TBXML textForElement:child] stringByTrimmingCharactersInSet:whiteSpaceCharSet];
-                    [mutableValues setObject:string forKey:resourceName];
+                    mutableValues[resourceName] = string;
                 } else if([tagName isEqualToString:@"string-array"]) {
                     NSArray *stringArray = [self parseStringArrayFromElement:child];
-                    [mutableValues setObject:stringArray forKey:resourceName];
+                    mutableValues[resourceName] = stringArray;
                 }
             }
             child = child->nextSibling;
@@ -89,7 +89,7 @@
 
 - (IDLStyle *)styleForName:(NSString *)name {
     IDLStyle *ret = nil;
-    id value = [self.values objectForKey:name];
+    id value = (self.values)[name];
     if ([value isKindOfClass:[IDLStyle class]]) {
         ret = value;
     }
@@ -98,7 +98,7 @@
 
 - (NSString *)stringForName:(NSString *)name {
     NSString *ret = nil;
-    id value = [self.values objectForKey:name];
+    id value = (self.values)[name];
     if ([value isKindOfClass:[NSString class]]) {
         ret = value;
         IDLResourceManager *resourceManager = [IDLResourceManager currentResourceManager];
@@ -111,7 +111,7 @@
 
 - (NSArray *)stringArrayForName:(NSString *)name {
     NSArray *ret = nil;
-    id value = [self.values objectForKey:name];
+    id value = (self.values)[name];
     if ([value isKindOfClass:[IDLStringArray class]]) {
         ret = value;
     }

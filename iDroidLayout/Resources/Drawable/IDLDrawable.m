@@ -43,7 +43,7 @@ NSUInteger const IDLDrawableMaxLevel = 10000;
     return self;
 }
 
-- (id)init {
+- (instancetype)init {
     self = [super init];
     if (self) {
         

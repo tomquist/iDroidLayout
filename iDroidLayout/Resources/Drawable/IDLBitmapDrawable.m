@@ -74,7 +74,7 @@
     return self;
 }
 
-- (id)init {
+- (instancetype)init {
     return [self initWithState:nil];
 }
 
@@ -131,7 +131,7 @@
     IDLBitmapDrawableConstantState *state = self.internalConstantState;
     [super inflateWithElement:element];
     NSMutableDictionary *dictionary = [TBXML attributesFromXMLElement:element reuseDictionary:nil];
-    NSString *bitmapIdentifier = [dictionary objectForKey:@"src"];
+    NSString *bitmapIdentifier = dictionary[@"src"];
     if (bitmapIdentifier != nil) {
         IDLResourceManager *resMgr = [IDLResourceManager currentResourceManager];
         UIImage *image = [resMgr imageForIdentifier:bitmapIdentifier];
@@ -140,7 +140,7 @@
         NSLog(@"<bitmap> requires a valid src attribute");
     }
     
-    NSString *gravityValue = [dictionary objectForKey:@"gravity"];
+    NSString *gravityValue = dictionary[@"gravity"];
     if (gravityValue != nil) {
         state.gravity = [IDLGravity gravityFromAttribute:gravityValue];
     }

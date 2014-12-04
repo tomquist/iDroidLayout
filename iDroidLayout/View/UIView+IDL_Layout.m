@@ -62,7 +62,7 @@ static char visibilityKey;
 - (void)setupFromAttributes:(NSDictionary *)attrs {
     
     // visibility
-    NSString *visibilityString = [attrs objectForKey:@"visibility"];
+    NSString *visibilityString = attrs[@"visibility"];
     self.visibility = IDLViewVisibilityFromString(visibilityString);
     
     // background
@@ -70,23 +70,23 @@ static char visibilityKey;
     if (background != nil) {
         self.backgroundColor = background;
     }*/
-    NSString *backgroundString = [attrs objectForKey:@"background"];
+    NSString *backgroundString = attrs[@"background"];
     if (backgroundString != nil) {
         self.backgroundDrawable = [[IDLResourceManager currentResourceManager] drawableForIdentifier:backgroundString];
     }
     
     // padding
-    NSString *paddingString = [attrs objectForKey:@"padding"];
+    NSString *paddingString = attrs[@"padding"];
     if (paddingString != nil) {
         CGFloat padding = [paddingString floatValue];
         self.padding = UIEdgeInsetsMake(padding, padding, padding, padding);
     } else {
         UIEdgeInsets padding = self.padding;
         UIEdgeInsets initialPadding = padding;
-        NSString *paddingTopString = [attrs objectForKey:@"paddingTop"];
-        NSString *paddingLeftString = [attrs objectForKey:@"paddingLeft"];
-        NSString *paddingBottomString = [attrs objectForKey:@"paddingBottom"];
-        NSString *paddingRightString = [attrs objectForKey:@"paddingRight"];
+        NSString *paddingTopString = attrs[@"paddingTop"];
+        NSString *paddingLeftString = attrs[@"paddingLeft"];
+        NSString *paddingBottomString = attrs[@"paddingBottom"];
+        NSString *paddingRightString = attrs[@"paddingRight"];
         if ([paddingTopString length] > 0) padding.top = [paddingTopString floatValue];
         if ([paddingLeftString length] > 0) padding.left = [paddingLeftString floatValue];
         if ([paddingBottomString length] > 0) padding.bottom = [paddingBottomString floatValue];
@@ -97,19 +97,19 @@ static char visibilityKey;
     }
     
     // alpha
-    NSString *alphaString = [attrs objectForKey:@"alpha"];
+    NSString *alphaString = attrs[@"alpha"];
     if (alphaString != nil) {
         CGFloat alpha = MIN(1.0, MAX(0.0, [alphaString floatValue]));
         self.alpha = alpha;
     }
     
     // minSize
-    CGFloat minWidth = [[attrs objectForKey:@"minWidth"] floatValue];
-    CGFloat minHeight = [[attrs objectForKey:@"minHeight"] floatValue];
+    CGFloat minWidth = [attrs[@"minWidth"] floatValue];
+    CGFloat minHeight = [attrs[@"minHeight"] floatValue];
     self.minSize = CGSizeMake(minWidth, minHeight);
     
     // identifier
-    NSString *identifier = [attrs objectForKey:@"id"];
+    NSString *identifier = attrs[@"id"];
     if (identifier != nil) {
         NSRange range = [identifier rangeOfString:@"@id/"];
         if (range.location == NSNotFound) {
@@ -122,7 +122,7 @@ static char visibilityKey;
     }
     
     // border
-    NSString *borderWidth = [attrs objectForKey:@"borderWidth"];
+    NSString *borderWidth = attrs[@"borderWidth"];
     if (borderWidth != nil) {
         self.layer.borderWidth = [borderWidth floatValue];
     }
@@ -130,7 +130,7 @@ static char visibilityKey;
     if (borderColor != nil) {
         self.layer.borderColor = borderColor.CGColor;
     }
-    NSString *cornerRadius = [attrs objectForKey:@"cornerRadius"];
+    NSString *cornerRadius = attrs[@"cornerRadius"];
     if (cornerRadius != nil) {
         self.layer.cornerRadius = [cornerRadius floatValue];
     }

@@ -8,9 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IDLTextArea : UITextView {
-    UIControlContentVerticalAlignment _contentVerticalAlignment;
-}
+@interface IDLTextArea : UITextView
 
 @property (nonatomic, assign) UIControlContentVerticalAlignment contentVerticalAlignment;
 

@@ -9,13 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "IDLLayoutBridge.h"
 
-@interface IDLTableViewCell : UITableViewCell {
-    IDLLayoutBridge *__weak _layoutBridge;
-}
+@interface IDLTableViewCell : UITableViewCell
 
 @property (weak, nonatomic, readonly) IDLLayoutBridge *layoutBridge;
 
-- (instancetype)initWithLayoutResource:(NSString *)resource reuseIdentifier:(NSString *)reuseIdentifier;
-- (instancetype)initWithLayoutURL:(NSURL *)url reuseIdentifier:(NSString *)reuseIdentifier;
+- (instancetype)initWithLayoutResource:(NSString *)resource reuseIdentifier:(NSString *)reuseIdentifier NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithLayoutURL:(NSURL *)url reuseIdentifier:(NSString *)reuseIdentifier NS_DESIGNATED_INITIALIZER;
 
 @end

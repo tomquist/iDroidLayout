@@ -9,9 +9,7 @@
 #import "IDLMarginLayoutParams.h"
 #import "IDLGravity.h"
 
-@interface IDLFrameLayoutLayoutParams : IDLMarginLayoutParams {
-    IDLViewContentGravity _gravity;
-}
+@interface IDLFrameLayoutLayoutParams : IDLMarginLayoutParams
 
 @property (nonatomic, assign) IDLViewContentGravity gravity;
 

@@ -10,9 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "IDLViewFactory.h"
 
-@interface IDLLayoutInflater : NSObject {
-    id<IDLViewFactory> _viewFactory;
-}
+@interface IDLLayoutInflater : NSObject
 
 @property (nonatomic, strong) id<IDLViewFactory> viewFactory;
 @property (nonatomic, weak) id actionTarget;

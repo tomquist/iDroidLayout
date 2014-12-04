@@ -10,14 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "IDLPoolable.h"
 
-@interface IDLDependencyGraphNode : NSObject<IDLPoolable> {
-    UIView *_view;
-    NSMutableSet *_dependents;
-    NSMutableDictionary *_dependencies;
-    
-    IDLDependencyGraphNode *_next;
-    BOOL _isPooled;
-}
+@interface IDLDependencyGraphNode : NSObject<IDLPoolable>
 
 @property (nonatomic, strong) UIView *view;
 @property (nonatomic, readonly) NSMutableSet *dependents;

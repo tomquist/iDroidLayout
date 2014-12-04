@@ -38,8 +38,8 @@
     
     self.text = [attrs stringFromIDLValueForKey:@"text"];
     
-    self.gravity = [IDLGravity gravityFromAttribute:[attrs objectForKey:@"gravity"]];
-    NSString *lines = [attrs objectForKey:@"lines"];
+    self.gravity = [IDLGravity gravityFromAttribute:attrs[@"gravity"]];
+    NSString *lines = attrs[@"lines"];
     self.numberOfLines = [lines integerValue];
     
     IDLColorStateList *textColorStateList = [attrs colorStateListFromIDLValueForKey:@"textColor"];
@@ -56,8 +56,8 @@
         }
     }
     
-    NSString *fontName = [attrs objectForKey:@"font"];
-    NSString *textSize = [attrs objectForKey:@"textSize"];
+    NSString *fontName = attrs[@"font"];
+    NSString *textSize = attrs[@"textSize"];
     if (fontName != nil) {
         CGFloat size = self.font.pointSize;
         if (textSize != nil) size = [textSize floatValue];

@@ -21,7 +21,7 @@
         if (prefixRange.location != NSNotFound) {
             attributeName = [attributeName substringFromIndex:(prefixRange.location+1)];
         }
-        [dict setObject:attributeValue forKey:attributeName];
+        dict[attributeName] = attributeValue;
     }];
     return dict;
 }

@@ -18,7 +18,15 @@
 
 @end
 
-@implementation IDLRelativeLayoutLayoutParams
+@implementation IDLRelativeLayoutLayoutParams {
+    BOOL _alignParentLeft;
+    BOOL _alignParentTop;
+    BOOL _alignParentRight;
+    BOOL _alignParentBottom;
+    BOOL _centerInParent;
+    BOOL _centerHorizontal;
+    BOOL _centerVertical;
+}
 
 @synthesize rules = _rules;
 @synthesize left = _left;
@@ -28,30 +36,29 @@
 @synthesize alignWithParent = _alignWithParent;
 
 
-- (id) initWithAttributes:(NSDictionary *)attrs {
+- (instancetype) initWithAttributes:(NSDictionary *)attrs {
 	self = [super initWithAttributes:attrs];
 	if (self != nil) {
-		NSString *leftOf = [attrs objectForKey:@"layout_toLeftOf"];
-        NSString *rightOf = [attrs objectForKey:@"layout_toRightOf"];
-        NSString *above = [attrs objectForKey:@"layout_above"];
-        NSString *below = [attrs objectForKey:@"layout_below"];
-        NSString *alignBaseline = [attrs objectForKey:@"layout_alignBaseline"];
-        NSString *alignLeft = [attrs objectForKey:@"layout_alignLeft"];
-        NSString *alignTop = [attrs objectForKey:@"layout_alignTop"];
-        NSString *alignRight = [attrs objectForKey:@"layout_alignRight"];
-        NSString *alignBottom = [attrs objectForKey:@"layout_alignBottom"];
+		NSString *leftOf = attrs[@"layout_toLeftOf"];
+        NSString *rightOf = attrs[@"layout_toRightOf"];
+        NSString *above = attrs[@"layout_above"];
+        NSString *below = attrs[@"layout_below"];
+        NSString *alignBaseline = attrs[@"layout_alignBaseline"];
+        NSString *alignLeft = attrs[@"layout_alignLeft"];
+        NSString *alignTop = attrs[@"layout_alignTop"];
+        NSString *alignRight = attrs[@"layout_alignRight"];
+        NSString *alignBottom = attrs[@"layout_alignBottom"];
         
-        _alignParentLeft = BOOLFromString([attrs objectForKey:@"layout_alignParentLeft"]);
-        _alignParentTop = BOOLFromString([attrs objectForKey:@"layout_alignParentTop"]);
-        _alignParentRight = BOOLFromString([attrs objectForKey:@"layout_alignParentRight"]);
-        _alignParentBottom = BOOLFromString([attrs objectForKey:@"layout_alignParentBottom"]);
-        _centerInParent = BOOLFromString([attrs objectForKey:@"layout_centerInParent"]);
-        _centerHorizontal = BOOLFromString([attrs objectForKey:@"layout_centerHorizontal"]);
-        _centerVertical = BOOLFromString([attrs objectForKey:@"layout_centerVertical"]);
+        _alignParentLeft = BOOLFromString(attrs[@"layout_alignParentLeft"]);
+        _alignParentTop = BOOLFromString(attrs[@"layout_alignParentTop"]);
+        _alignParentRight = BOOLFromString(attrs[@"layout_alignParentRight"]);
+        _alignParentBottom = BOOLFromString(attrs[@"layout_alignParentBottom"]);
+        _centerInParent = BOOLFromString(attrs[@"layout_centerInParent"]);
+        _centerHorizontal = BOOLFromString(attrs[@"layout_centerHorizontal"]);
+        _centerVertical = BOOLFromString(attrs[@"layout_centerVertical"]);
         
         NSNull *null = [NSNull null];
-        _rules = [[NSArray alloc] initWithObjects:
-                  (leftOf==nil?null:leftOf),
+        _rules = @[(leftOf==nil?null:leftOf),
                   (rightOf==nil?null:rightOf),
                   (above==nil?null:above),
                   (below==nil?null:below),
@@ -66,7 +73,7 @@
                   @(_alignParentBottom),
                   @(_centerInParent),
                   @(_centerHorizontal),
-                  @(_centerVertical), nil];
+                  @(_centerVertical)];
 	}
 	return self;
 }

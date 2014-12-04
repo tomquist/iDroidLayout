@@ -34,7 +34,7 @@ IDLResourceType IDLResourceTypeFromString(NSString *typeString);
 @property (nonatomic, strong) id cachedObject;
 @property (nonatomic, strong) NSString *valueIdentifier;
 
-- (instancetype)initWithString:(NSString *)string;
+- (instancetype)initWithString:(NSString *)string NS_DESIGNATED_INITIALIZER;
 + (BOOL)isResourceIdentifier:(NSString *)string;
 
 @end

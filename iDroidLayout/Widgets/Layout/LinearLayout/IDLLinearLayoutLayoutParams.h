@@ -10,10 +10,7 @@
 #import "IDLViewGroup.h"
 #import "IDLGravity.h"
 
-@interface IDLLinearLayoutLayoutParams : IDLMarginLayoutParams {
-    IDLViewContentGravity _gravity;
-    float _weight;
-}
+@interface IDLLinearLayoutLayoutParams : IDLMarginLayoutParams
 
 @property (nonatomic, assign) IDLViewContentGravity gravity;
 @property (nonatomic, assign) float weight;

@@ -14,7 +14,7 @@
 
 - (void)setupFromAttributes:(NSDictionary *)attrs {
     [super setupFromAttributes:attrs];
-    id delegate = [attrs objectForKey:IDLViewAttributeActionTarget];
+    id delegate = attrs[IDLViewAttributeActionTarget];
     if (delegate != nil) {
         NSString *onClickKeyPath = [attrs stringFromIDLValueForKey:@"onClickKeyPath"];
         NSString *onClickSelector = [attrs stringFromIDLValueForKey:@"onClick"];

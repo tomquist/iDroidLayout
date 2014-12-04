@@ -29,7 +29,7 @@
     return Instance;
 }
 
-- (id)init {
+- (instancetype)init {
     self = [super init];
     if (self) {
         self.cache = [[NSCache alloc] init];

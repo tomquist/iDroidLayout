@@ -9,11 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface IDLDependencyGraph : NSObject {
-    NSMutableArray *_nodes;
-    NSMutableDictionary *_keyNodes;
-    NSMutableArray *_roots;
-}
+@interface IDLDependencyGraph : NSObject
 
 @property (nonatomic, readonly) NSMutableDictionary *keyNodes;
 

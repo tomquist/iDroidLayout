@@ -9,13 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "IDLPool.h"
 
-@interface IDLSynchronizedPool : NSObject <IDLPool> {
-    BOOL _hasBlockOwnership;
-    id<IDLPool> _pool;
-    id _lock;
-}
+@interface IDLSynchronizedPool : NSObject <IDLPool>
 
-- (instancetype)initWithPool:(id<IDLPool>)pool lock:(id)lock takeLockOwnership:(BOOL)takeLockOwnership;
+- (instancetype)initWithPool:(id<IDLPool>)pool lock:(id)lock takeLockOwnership:(BOOL)takeLockOwnership NS_DESIGNATED_INITIALIZER;
 - (instancetype)initWithPool:(id<IDLPool>)pool;
 
 @end

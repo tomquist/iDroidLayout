@@ -8,7 +8,11 @@
 
 #import "IDLSynchronizedPool.h"
 
-@implementation IDLSynchronizedPool
+@implementation IDLSynchronizedPool {
+    BOOL _hasBlockOwnership;
+    id<IDLPool> _pool;
+    id _lock;
+}
 
 
 - (instancetype)initWithPool:(id<IDLPool>)pool lock:(id)lock takeLockOwnership:(BOOL)takeLockOwnership {

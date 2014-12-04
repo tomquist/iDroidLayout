@@ -23,7 +23,7 @@
 @synthesize internalItems = _internalItems;
 
 
-- (id)init {
+- (instancetype)init {
     self = [super init];
     if (self) {
         self.internalItems = [[NSMutableArray alloc] init];

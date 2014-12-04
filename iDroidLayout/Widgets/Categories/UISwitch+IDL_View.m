@@ -36,7 +36,7 @@
         }
     }
     
-    NSString *isOn = [attrs objectForKey:@"isOn"];
+    NSString *isOn = attrs[@"isOn"];
     if (isOn != nil) {
         self.on = BOOLFromString(isOn);
     }

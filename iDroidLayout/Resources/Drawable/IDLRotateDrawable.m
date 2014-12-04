@@ -70,7 +70,7 @@
     return self;
 }
 
-- (id)init {
+- (instancetype)init {
     return [self initWithState:nil];
 }
 
@@ -111,13 +111,13 @@
     BOOL pivotYRelative = TRUE;
     if ([attrs isFractionIDLValueForKey:@"pivotX"]) {
         pivot.x = [attrs fractionValueFromIDLValueForKey:@"pivotX"];
-    } else if ([attrs objectForKey:@"pivotX"] != nil) {
+    } else if (attrs[@"pivotX"] != nil) {
         pivot.x = [attrs dimensionFromIDLValueForKey:@"pivotX" defaultValue:0.5f];
         pivotXRelative = FALSE;
     }
     if ([attrs isFractionIDLValueForKey:@"pivotY"]) {
         pivot.y = [attrs fractionValueFromIDLValueForKey:@"pivotY"];
-    } else if ([attrs objectForKey:@"pivotY"] != nil) {
+    } else if (attrs[@"pivotY"] != nil) {
         pivot.y = [attrs dimensionFromIDLValueForKey:@"pivotY" defaultValue:0.5f];
         pivotYRelative = FALSE;
     }
@@ -132,7 +132,7 @@
     state.fromDegrees = state.currentDegrees = fromDegrees;
     state.toDegrees = toDegrees;
     
-    NSString *drawableResId = [attrs objectForKey:@"drawable"];
+    NSString *drawableResId = attrs[@"drawable"];
     IDLDrawable *drawable = nil;
     if (drawableResId != nil) {
         drawable = [[IDLResourceManager currentResourceManager] drawableForIdentifier:drawableResId];

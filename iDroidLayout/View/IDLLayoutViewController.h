@@ -9,9 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "IDLLayoutBridge.h"
 
-@interface IDLLayoutViewController : UIViewController {
-    NSURL *_layoutUrl;
-}
+@interface IDLLayoutViewController : UIViewController
 
 @property (nonatomic, strong) IDLLayoutBridge *view;
 

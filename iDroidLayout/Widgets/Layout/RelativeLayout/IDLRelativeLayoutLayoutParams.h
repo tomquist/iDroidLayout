@@ -85,23 +85,7 @@ typedef NS_ENUM(NSUInteger ,IDLRelativeLayoutRule) {
     IDLRelativeLayoutRuleCenterVertical = 15
 };
 
-@interface IDLRelativeLayoutLayoutParams : IDLMarginLayoutParams {
-    BOOL _alignParentLeft;
-    BOOL _alignParentTop;
-    BOOL _alignParentRight;
-    BOOL _alignParentBottom;
-    BOOL _centerInParent;
-    BOOL _centerHorizontal;
-    BOOL _centerVertical;
-    
-    NSArray *_rules;
-    
-    CGFloat _left;
-    CGFloat _right;
-    CGFloat _top;
-    CGFloat _bottom;
-    BOOL _alignWithParent;
-}
+@interface IDLRelativeLayoutLayoutParams : IDLMarginLayoutParams
 
 @property (nonatomic, readonly) NSArray *rules;
 @property (nonatomic, assign) BOOL alignWithParent;

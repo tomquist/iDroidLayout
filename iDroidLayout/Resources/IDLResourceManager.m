@@ -60,7 +60,7 @@ static IDLResourceManager *currentResourceManager;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (id)init {
+- (instancetype)init {
     self = [super init];
     if (self) {
         self.resourceIdentifierCache = [NSMutableDictionary dictionary];
@@ -91,12 +91,12 @@ static IDLResourceManager *currentResourceManager;
 }
 
 - (IDLResourceIdentifier *)resourceIdentifierForString:(NSString *)identifierString {
-    IDLResourceIdentifier *identifier = [self.resourceIdentifierCache objectForKey:identifierString];
+    IDLResourceIdentifier *identifier = (self.resourceIdentifierCache)[identifierString];
     if (identifier == nil) {
         identifier = [[IDLResourceIdentifier alloc] initWithString:identifierString];
         if (identifier != nil) {
-            [self.resourceIdentifierCache setObject:identifier forKey:identifierString];
-            [self.resourceIdentifierCache setObject:identifier forKey:[identifier description]];
+            (self.resourceIdentifierCache)[identifierString] = identifier;
+            (self.resourceIdentifierCache)[[identifier description]] = identifier;
         }
     }
     return identifier;

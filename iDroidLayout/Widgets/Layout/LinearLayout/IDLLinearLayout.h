@@ -21,23 +21,7 @@ typedef NS_ENUM(NSInteger, LinearLayoutOrientation) {
     LinearLayoutOrientationVertical
 };
 
-@interface IDLLinearLayout : IDLViewGroup {
-    LinearLayoutOrientation _orientation;
-    IDLViewContentGravity _gravity;
-    CGFloat _totalLength;
-    
-    /**
-     * Whether the children of this layout are baseline aligned.  Only applicable
-     * if _orientation is horizontal.
-     */
-    BOOL _baselineAligned;
-    int _maxAscent[VERTICAL_GRAVITY_COUNT];
-    int _maxDescent[VERTICAL_GRAVITY_COUNT];
-    NSInteger _baselineAlignedChildIndex;
-    CGFloat _baselineChildTop;
-    BOOL _useLargestChild;
-    float _weightSum;
-}
+@interface IDLLinearLayout : IDLViewGroup
 
 @property (nonatomic, assign) LinearLayoutOrientation orientation;
 @property (nonatomic, assign) IDLViewContentGravity gravity;

@@ -70,7 +70,7 @@ IDLClipDrawableOrientation IDLClipDrawableOrientationFromString(NSString *string
     return self;
 }
 
-- (id)init {
+- (instancetype)init {
     return [self initWithState:nil];
 }
 
@@ -109,15 +109,15 @@ IDLClipDrawableOrientation IDLClipDrawableOrientationFromString(NSString *string
     IDLClipDrawableConstantState *state = self.internalConstantState;
     
     NSDictionary *attrs = [TBXML attributesFromXMLElement:element reuseDictionary:nil];
-    NSString *orientationString = [attrs objectForKey:@"clipOrientation"];
+    NSString *orientationString = attrs[@"clipOrientation"];
     state.orientation = IDLClipDrawableOrientationFromString(orientationString);
     
-    NSString *gravityString = [attrs objectForKey:@"gravity"];
+    NSString *gravityString = attrs[@"gravity"];
     if (gravityString != nil) {
         state.gravity = [IDLGravity gravityFromAttribute:gravityString];
     }
     
-    NSString *drawableResId = [attrs objectForKey:@"drawable"];
+    NSString *drawableResId = attrs[@"drawable"];
     IDLDrawable *drawable = nil;
     if (drawableResId != nil) {
         drawable = [[IDLResourceManager currentResourceManager] drawableForIdentifier:drawableResId];

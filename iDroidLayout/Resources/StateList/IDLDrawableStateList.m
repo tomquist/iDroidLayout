@@ -16,7 +16,7 @@
 
 @property (nonatomic, strong) IDLColorStateItem *colorStateItem;
 
-- (instancetype)initWithColorStateItem:(IDLColorStateItem *)colorStateItem;
+- (instancetype)initWithColorStateItem:(IDLColorStateItem *)colorStateItem NS_DESIGNATED_INITIALIZER;
 
 @end
 
@@ -58,7 +58,7 @@
 + (instancetype)createWithSingleDrawableIdentifier:(NSString *)imageIdentifier {
     IDLDrawableStateList *list = [[self alloc] init];
     IDLDrawableStateItem *item = [[IDLDrawableStateItem alloc] initWithControlState:UIControlStateNormal drawableResourceIdentifier:imageIdentifier];
-    list.internalItems = [NSArray arrayWithObject:item];
+    list.internalItems = @[item];
     return list;
 }
 
