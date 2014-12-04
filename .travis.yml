@@ -12,4 +12,4 @@ install:
 script:
   - bundle exec xcodebuild -workspace iDroidLayout.xcworkspace -scheme iDroidLayout -sdk iphonesimulator clean build test GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES | xcpretty -c; test ${PIPESTATUS[0]} -eq 0
 after_success:
-  - bundle exec slather coverage iDroidLayout.xcodeproj
+  - bundle exec slather coverage -t
