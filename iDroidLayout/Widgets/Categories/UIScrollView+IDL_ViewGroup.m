@@ -191,14 +191,15 @@ static char matchParentChildrenKey;
             CGFloat childLeft;
             CGFloat childTop;
             
-            IDLViewContentGravity gravity = lp.gravity;
+            NSInteger gravity = lp.gravity;
             if (gravity == -1) {
                 gravity = DEFAULT_CHILD_GRAVITY;
             }
             
             IDLViewContentGravity verticalGravity = gravity & VERTICAL_GRAVITY_MASK;
+            IDLViewContentGravity horizontalGravity = gravity & HORIZONTAL_GRAVITY_MASK;
             
-            switch (gravity & HORIZONTAL_GRAVITY_MASK) {
+            switch (horizontalGravity) {
                 case IDLViewContentGravityLeft:
                     childLeft = parentLeft + lpMargin.left;
                     break;

@@ -67,9 +67,11 @@ BOOL IDLGradientDrawableCornerRadiusEqualsCornerRadius(IDLGradientDrawableCorner
 @property (nonatomic, assign) IDLGradientDrawableShape shape;
 @property (nonatomic, assign) IDLGradientDrawableCornerRadius corners;
 @property (nonatomic, assign) CGSize size;
+@property (nonatomic, assign) CGFloat gradientAngle;
 
 @property (nonatomic, assign) CGColorSpaceRef colorSpace;
 @property (nonatomic, assign) CGGradientRef gradient;
+
 
 @end
 
@@ -120,6 +122,7 @@ BOOL IDLGradientDrawableCornerRadiusEqualsCornerRadius(IDLGradientDrawableCorner
             self.shape = state.shape;
             self.corners = state.corners;
             self.size = state.size;
+            self.gradientAngle = state.gradientAngle;
             _colorSpace = CGColorSpaceRetain(state.colorSpace);
             _gradient = CGGradientRetain(state.gradient);
             self.relativeGradientCenter = state.relativeGradientCenter;
@@ -190,20 +193,21 @@ BOOL IDLGradientDrawableCornerRadiusEqualsCornerRadius(IDLGradientDrawableCorner
             CGContextMoveToPoint(context, rect.origin.x, rect.origin.y + corners.topLeft);
             CGContextAddLineToPoint(context, rect.origin.x, rect.origin.y + rect.size.height - corners.bottomLeft);
             if (corners.bottomLeft > 0) {
-                CGContextAddArc(context, rect.origin.x + corners.bottomLeft, rect.origin.y + rect.size.height - corners.bottomLeft, corners.bottomLeft, M_PI / 4, M_PI / 2, true);
+                CGContextAddArc(context, rect.origin.x + corners.bottomLeft, rect.origin.y + rect.size.height - corners.bottomLeft, corners.bottomLeft, (CGFloat) M_PI, (CGFloat) (M_PI / 2), true);
             }
             CGContextAddLineToPoint(context, rect.origin.x + rect.size.width - corners.bottomRight, rect.origin.y + rect.size.height);
             if (corners.bottomRight > 0) {
-                CGContextAddArc(context, rect.origin.x + rect.size.width - corners.bottomRight, rect.origin.y + rect.size.height - corners.bottomRight, corners.bottomRight, M_PI / 2, 0.0f, true);
+                CGContextAddArc(context, rect.origin.x + rect.size.width - corners.bottomRight, rect.origin.y + rect.size.height - corners.bottomRight, corners.bottomRight, (CGFloat) (M_PI / 2), 0.0f, true);
             }
             CGContextAddLineToPoint(context, rect.origin.x + rect.size.width, rect.origin.y + corners.topRight);
             if (corners.topRight > 0) {
-                CGContextAddArc(context, rect.origin.x + rect.size.width - corners.topRight, rect.origin.y + corners.topRight, corners.topRight, 0.0f, -M_PI / 2, true);
+                CGContextAddArc(context, rect.origin.x + rect.size.width - corners.topRight, rect.origin.y + corners.topRight, corners.topRight, 0.0f, (CGFloat) (-M_PI / 2), true);
             }
             CGContextAddLineToPoint(context, rect.origin.x + corners.topLeft, rect.origin.y);
             if (corners.topLeft > 0) {
-                CGContextAddArc(context, rect.origin.x + corners.topLeft, rect.origin.y + corners.topLeft, corners.topLeft, - M_PI / 2, M_PI, true);
+                CGContextAddArc(context, rect.origin.x + corners.topLeft, rect.origin.y + corners.topLeft, corners.topLeft, (CGFloat) (- M_PI / 2), (CGFloat) M_PI, true);
             }
+            CGContextClosePath(context);
             break;
         case IDLGradientDrawableShapeOval:
             CGContextAddEllipseInRect(context, rect);
@@ -249,7 +253,13 @@ BOOL IDLGradientDrawableCornerRadiusEqualsCornerRadius(IDLGradientDrawableCorner
             
             if (state.gradientType == IDLGradientDrawableGradientTypeLinear) {
                 CGGradientRef gradient = [state currentGradient];
-                CGContextDrawLinearGradient(context, gradient, rect.origin, CGPointMake(rect.origin.x + rect.size.width, rect.origin.y), 0);
+                float cos = cosf(state.gradientAngle);
+                float sin = sinf(state.gradientAngle);
+                CGFloat halfWidth = CGRectGetWidth(rect)/2.f;
+                CGFloat halfHeight = CGRectGetHeight(rect)/2.f;
+                CGPoint startPoint = CGPointMake(rect.origin.x + halfWidth - cos * halfWidth, rect.origin.y + halfHeight + sin * halfHeight);
+                CGPoint endPoint = CGPointMake(rect.origin.x + halfWidth + cos * halfWidth, rect.origin.y + halfHeight - sin * halfHeight);
+                CGContextDrawLinearGradient(context, gradient, startPoint, endPoint, 0);
             } else if (state.gradientType == IDLGradientDrawableGradientTypeRadial) {
                 CGGradientRef gradient = [state currentGradient];
                 CGPoint relativeCenterPoint = state.relativeGradientCenter;
@@ -265,24 +275,24 @@ BOOL IDLGradientDrawableCornerRadiusEqualsCornerRadius(IDLGradientDrawableCorner
                 float r=dim/4;
                 float R=dim/2;
                 
-                float halfinteriorPerim = M_PI*r;
-                float halfexteriorPerim = M_PI*R;
-                float smallBase= halfinteriorPerim/subdiv;
-                float largeBase= halfexteriorPerim/subdiv;
-                
+                CGFloat halfinteriorPerim = (CGFloat) (M_PI*r);
+                CGFloat halfexteriorPerim = (CGFloat) (M_PI*R);
+                CGFloat smallBase= halfinteriorPerim/subdiv;
+                CGFloat largeBase= halfexteriorPerim/subdiv;
+
                 UIBezierPath *cell = [UIBezierPath bezierPath];
                 CGContextMoveToPoint(context, - smallBase/2, r);
                 CGContextAddLineToPoint(context, + smallBase/2, r);
                 CGContextAddLineToPoint(context, largeBase /2 , R);
                 CGContextAddLineToPoint(context, -largeBase /2,  R);
                 CGContextClosePath(context);
-                
-                float incr = M_PI / subdiv;
+
+                CGFloat incr = (CGFloat) (M_PI / subdiv);
                 CGContextRef ctx = context;
                 CGContextTranslateCTM(ctx, +self.bounds.size.width/2, +self.bounds.size.height/2);
                 
                 CGContextScaleCTM(ctx, 0.9, 0.9);
-                CGContextRotateCTM(ctx, M_PI/2);
+                CGContextRotateCTM(ctx, (CGFloat) (M_PI/2));
                 CGContextRotateCTM(ctx,-incr/2);
                 
                 for (int i=0;i<subdiv;i++) {
@@ -362,6 +372,10 @@ BOOL IDLGradientDrawableCornerRadiusEqualsCornerRadius(IDLGradientDrawableCorner
                 }
                 
                 state.relativeGradientCenter = gradientCenter;
+            }
+            else if (state.gradientType == IDLGradientDrawableGradientTypeLinear)
+            {
+                state.gradientAngle = (CGFloat) ([attrs[@"angle"] doubleValue] * M_PI / 180.f);
             }
             
             

@@ -21,7 +21,7 @@
 
 - (instancetype)initWithWidth:(CGFloat)width height:(CGFloat)height {
 	self = [super init];
-	if (self != nil) {
+	if (self) {
 		_width = width;
         _height = height;
 	}
@@ -30,7 +30,7 @@
 
 - (instancetype)initWithLayoutParams:(IDLLayoutParams *)layoutParams {
     self = [self initWithWidth:layoutParams.width height:layoutParams.height];
-	if (self != nil) {
+	if (self) {
 		
 	}
 	return self;
@@ -54,7 +54,7 @@
         NSString *widthAttr = attrs[@"layout_width"];
         NSString *heightAttr = attrs[@"layout_height"];
         if (widthAttr == nil || heightAttr == nil) {
-            NSLog(@"You have to set the layout_width and laypit_height parameters.");
+            NSLog(@"You have to set the layout_width and layout_height parameters.");
             return nil;
         }
         _width = [IDLLayoutParams sizeForLayoutSizeAttribute:widthAttr];

@@ -1,0 +1,33 @@
+<LinearLayout
+    layout_width="match_parent"
+    layout_height="wrap_content"
+    layout_margin="10"
+    orientation="vertical"
+    >
+    <TextView
+        id="title"
+        layout_width="match_parent"
+        layout_height="wrap_content"
+        gravity="top|left"
+        lines="0"
+        font="Helvetica-Bold"
+        textSize="15"
+        />
+    <TextView
+        id="subtitle"
+        layout_width="match_parent"
+        layout_height="wrap_content"
+        gravity="top|left"
+        lines="0"
+        font="Helvetica-Bold"
+        textSize="10"
+        />
+    <TextView
+        id="description"
+        layout_width="match_parent"
+        layout_height="wrap_content"
+        layout_marginTop="10"
+        gravity="top|left"
+        lines="0"
+        />
+</LinearLayout>

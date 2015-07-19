@@ -45,6 +45,8 @@
 @property (nonatomic, strong) IDLBitmapDrawableConstantState *internalConstantState;
 @property (nonatomic, strong) UIImage *scaledImageCache;
 
+- (instancetype)initWithState:(IDLBitmapDrawableConstantState *)state NS_DESIGNATED_INITIALIZER;
+
 @end
 
 @implementation IDLBitmapDrawable
@@ -86,15 +88,11 @@
     return self.internalConstantState.image;
 }
 
-- (UIImage *)resizeImage:(UIImage *)image toWidth:(NSInteger)width height:(NSInteger)height {
+- (UIImage *)resizeImage:(UIImage *)image toWidth:(CGFloat)width height:(CGFloat)height {
     CGSize size = CGSizeMake(width, height);
     UIGraphicsBeginImageContextWithOptions(size, NO, 0);
     
     CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    // Flip the context because UIKit coordinate system is upside down to Quartz coordinate system
-    CGContextTranslateCTM(context, 0.0, height);
-    CGContextScaleCTM(context, 1.0, -1.0);
     
     // Draw the original image to the context
     CGContextSetBlendMode(context, kCGBlendModeCopy);
@@ -116,10 +114,11 @@
     
     [IDLGravity applyGravity:state.gravity width:image.size.width height:image.size.height containerRect:&containerRect outRect:&dstRect];
     if (self.scaledImageCache == nil) {
-        self.scaledImageCache = [self resizeImage:image toWidth:dstRect.size.width height:dstRect.size.height];
+        //self.scaledImageCache = [self resizeImage:image toWidth:dstRect.size.width height:dstRect.size.height];
     }
     UIGraphicsPushContext(context);
-    [self.scaledImageCache drawInRect:dstRect];
+    //[self.scaledImageCache drawInRect:dstRect];
+    [image drawInRect:dstRect];
     UIGraphicsPopContext();
 }
 

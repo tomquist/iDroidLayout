@@ -16,4 +16,6 @@
 - (instancetype)initWithLayoutResource:(NSString *)resource reuseIdentifier:(NSString *)reuseIdentifier NS_DESIGNATED_INITIALIZER;
 - (instancetype)initWithLayoutURL:(NSURL *)url reuseIdentifier:(NSString *)reuseIdentifier NS_DESIGNATED_INITIALIZER;
 
+- (CGFloat)requiredHeightInView:(UIView *)view;
+
 @end

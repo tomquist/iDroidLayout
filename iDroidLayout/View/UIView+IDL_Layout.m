@@ -120,6 +120,19 @@ static char visibilityKey;
         }
         self.identifier = identifier;
     }
+
+    // nuiClass (if available)
+    static BOOL nuiAvailable;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        nuiAvailable = NSClassFromString(@"NUISettings") != nil;
+    });
+    if (nuiAvailable) {
+        NSString *nuiClass = attrs[@"nuiClass"];
+        if ([nuiClass length] > 0) {
+            [self setValue:nuiClass forKey:@"nuiClass"];
+        }
+    }
     
     // border
     NSString *borderWidth = attrs[@"borderWidth"];
@@ -212,15 +225,12 @@ static char visibilityKey;
                              &identifierKey,
                              identifier,
                              OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    static int hasPixate;
-    if (hasPixate == 0) {
-        if (NSClassFromString(@"PXEngine") != NULL) {
-            hasPixate = 1;
-            [self setValue:identifier forKey:@"styleId"];
-        } else {
-            hasPixate = -1;
-        }
-    } else if (hasPixate > 0) {
+    static BOOL hasPixateFreestyle;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        hasPixateFreestyle = (NSClassFromString(@"PixateFreestyle") != NULL);
+    });
+    if (hasPixateFreestyle) {
         [self setValue:identifier forKey:@"styleId"];
     }
 }

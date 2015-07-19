@@ -1,7 +1,9 @@
 <LinearLayout
     layout_width="match_parent"
     layout_height="match_parent"
-    orientation="vertical">
+    orientation="vertical"
+    background="#ffffff"
+    paddingTop="64">
     <include
         layout="@layout/includeChild1"
         layout_width="wrap_content"

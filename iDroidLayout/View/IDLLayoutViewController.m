@@ -13,6 +13,8 @@
     NSURL *_layoutUrl;
 }
 
+@dynamic view;
+
 - (instancetype)init {
     self = [super init];
     if (self) {

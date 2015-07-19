@@ -10,6 +10,7 @@
 #import "UIView+IDL_Layout.h"
 #import "IDLMarginLayoutParams.h"
 #import "IDLLayoutInflater.h"
+#import "IDLLayoutBridgeLayoutParams.h"
 
 @implementation UIView (IDLLayoutBridge)
 
@@ -70,6 +71,25 @@
     return self;
 }
 
+- (CGSize)sizeThatFits:(CGSize)size {
+    UIView *lastChild = self.subviews.lastObject;
+    IDLMarginLayoutParams *layoutParams = (IDLMarginLayoutParams *)lastChild.layoutParams;
+    IDLLayoutMeasureSpec widthSpec;
+    IDLLayoutMeasureSpec heightSpec;
+    widthSpec.mode = IDLLayoutMeasureSpecModeUnspecified;
+    widthSpec.size = size.width;
+    heightSpec.mode = IDLLayoutMeasureSpecModeUnspecified;
+    heightSpec.size = size.height;
+    if (layoutParams.width == IDLLayoutParamsSizeMatchParent) {
+        widthSpec.mode = IDLLayoutMeasureSpecModeExactly;
+    }
+    if (layoutParams.height == IDLLayoutParamsSizeMatchParent) {
+        heightSpec.mode = IDLLayoutMeasureSpecModeExactly;
+    }
+    [self onMeasureWithWidthMeasureSpec:widthSpec heightMeasureSpec:heightSpec];
+    return self.measuredSize;
+}
+
 - (void)addSubview:(UIView *)view {
     for (UIView *subviews in [self subviews]) {
         [subviews removeFromSuperview];
@@ -88,36 +108,51 @@
 }
 
 - (void)onMeasureWithWidthMeasureSpec:(IDLLayoutMeasureSpec)widthMeasureSpec heightMeasureSpec:(IDLLayoutMeasureSpec)heightMeasureSpec {
-    NSUInteger size = [self.subviews count];
-    for (int i = 0; i < size; ++i) {
-        UIView *child = (self.subviews)[i];
-        if (child.visibility != IDLViewVisibilityGone) {
-            [self measureChildWithMargins:child parentWidthMeasureSpec:widthMeasureSpec widthUsed:0 parentHeightMeasureSpec:heightMeasureSpec heightUsed:0];
+    CGSize lastChildSize = CGSizeZero;
+    UIView *lastChild = self.subviews.lastObject;
+    if (lastChild.visibility != IDLViewVisibilityGone)
+    {
+        [self measureChildWithMargins:lastChild parentWidthMeasureSpec:widthMeasureSpec widthUsed:0 parentHeightMeasureSpec:heightMeasureSpec heightUsed:0];
+        lastChildSize = lastChild.measuredSize;
+        IDLLayoutParams *layoutParams = lastChild.layoutParams;
+        if ([layoutParams isKindOfClass:[IDLMarginLayoutParams class]])
+        {
+            IDLMarginLayoutParams *marginParams = (IDLMarginLayoutParams *)layoutParams;
+            lastChildSize.width += marginParams.margin.left + marginParams.margin.right;
+            lastChildSize.height += marginParams.margin.top + marginParams.margin.bottom;
         }
     }
-    
-    //[self measureChildrenWithWidthMeasureSpec:widthMeasureSpec heightMeasureSpec:heightMeasureSpec];
+    IDLLayoutMeasuredDimension width;
+    IDLLayoutMeasuredDimension height;
+    width.state = IDLLayoutMeasuredStateNone;
+    height.state = IDLLayoutMeasuredStateNone;
+    UIEdgeInsets padding = self.padding;
+    width.size = lastChildSize.width + padding.left + padding.right;
+    height.size = lastChildSize.height + padding.top + padding.bottom;
+    [self setMeasuredDimensionSize:IDLLayoutMeasuredSizeMake(width, height)];
 }
 
 - (IDLLayoutParams *)generateDefaultLayoutParams {
-    IDLMarginLayoutParams *lp = [[IDLMarginLayoutParams alloc] initWithWidth:IDLLayoutParamsSizeMatchParent height:IDLLayoutParamsSizeMatchParent];
+    IDLLayoutBridgeLayoutParams *lp = [[IDLLayoutBridgeLayoutParams alloc] initWithWidth:IDLLayoutParamsSizeMatchParent height:IDLLayoutParamsSizeMatchParent];
     lp.width = IDLLayoutParamsSizeMatchParent;
     lp.height = IDLLayoutParamsSizeMatchParent;
-    return lp;;
+    return lp;
 }
 
 -(IDLLayoutParams *)generateLayoutParamsFromLayoutParams:(IDLLayoutParams *)layoutParams {
-    return [[IDLMarginLayoutParams alloc] initWithLayoutParams:layoutParams];
+    return [[IDLLayoutBridgeLayoutParams alloc] initWithLayoutParams:layoutParams];
 }
 
 - (IDLLayoutParams *)generateLayoutParamsFromAttributes:(NSDictionary *)attrs {
-    return [[IDLMarginLayoutParams alloc] initWithAttributes:attrs];
+    return [[IDLLayoutBridgeLayoutParams alloc] initWithAttributes:attrs];
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
     if (!CGRectEqualToRect(self.frame, _lastFrame) || self.isLayoutRequested) {
-        NSDate *methodStart = [NSDate date];
+#ifdef DEBUG
+        CFTimeInterval methodStart = CACurrentMediaTime();
+#endif
         _lastFrame = self.frame;
         IDLLayoutMeasureSpec widthMeasureSpec;
         IDLLayoutMeasureSpec heightMeasureSpec;
@@ -127,9 +162,11 @@
         heightMeasureSpec.mode = IDLLayoutMeasureSpecModeExactly;
         [self measureWithWidthMeasureSpec:widthMeasureSpec heightMeasureSpec:heightMeasureSpec];
         [self layoutWithFrame:self.frame];
-        NSDate *methodFinish = [NSDate date];
-        NSTimeInterval executionTime = [methodFinish timeIntervalSinceDate:methodStart];
+#ifdef DEBUG
+        NSTimeInterval methodFinish = CACurrentMediaTime();
+        NSTimeInterval executionTime = methodFinish - methodStart;
         NSLog(@"Relayout took %.2fms", executionTime*1000);
+#endif
     }
 }
 

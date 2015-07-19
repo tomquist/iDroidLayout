@@ -1,38 +1,39 @@
+<LinearLayout
+    layout_width="match_parent"
+    layout_height="match_parent"
+    orientation="vertical"
+    padding="10"
+    layout_marginTop="64"
+    background="#ffffff">
     <LinearLayout
         layout_width="match_parent"
         layout_height="wrap_content"
-        orientation="vertical"
-        padding="10"
-        layout_marginTop="64">
-        <LinearLayout
-            layout_width="match_parent"
+        orientation="horizontal">
+        <TextView
+            id="text"
+            layout_width="wrap_content"
             layout_height="wrap_content"
-            orientation="horizontal">
-            <TextView
-                id="text"
-                layout_width="wrap_content"
-                layout_height="wrap_content"
-                padding="10"
-                text="Short text"
-                textColor="#ffffff"
-                background="#80000000"/>
-            <TextView
-                id="otherText"
-                layout_width="match_parent"
-                layout_height="match_parent"
-                padding="10"
-                textColor="#ffffff"
-                background="#ff0000"
-                gravity="right"
-                text="Some other text"/>
-        </LinearLayout>
-        <UIButton
-            id="button"
+            padding="10"
+            text="Short text"
+            textColor="#ffffff"
+            background="#80000000"/>
+        <TextView
+            id="otherText"
+            layout_width="match_parent"
+            layout_height="match_parent"
+            padding="10"
+            textColor="#ffffff"
             background="#ff0000"
-            layout_width="100"
-            layout_height="30"
-            layout_gravity="center_horizontal"
-            layout_marginTop="10"
-            onClick="didPressButton"
-            text="Click me"/>
+            gravity="right"
+            text="Some other text"/>
     </LinearLayout>
+    <UIButton
+        id="button"
+        background="#ff0000"
+        layout_width="100"
+        layout_height="30"
+        layout_gravity="center_horizontal"
+        layout_marginTop="10"
+        onClick="didPressButton"
+        text="Click me"/>
+</LinearLayout>

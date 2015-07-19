@@ -217,7 +217,7 @@
 }
 
 - (UIView *)inflateURL:(NSURL *)url intoRootView:(UIView *)rootView attachToRoot:(BOOL)attachToRoot {
-    NSDate *methodStart = [NSDate date];
+    CFTimeInterval methodStart = CACurrentMediaTime();
     NSError *error = nil;
     TBXML *xml = [[IDLResourceManager currentResourceManager].xmlCache xmlForUrl:url error:&error];
     //[[TBXML newTBXMLWithXMLData:[NSData dataWithContentsOfURL:url] error:&error] autorelease];
@@ -226,7 +226,8 @@
         return nil;
     }
     UIView *ret = [self inflateParser:xml intoRootView:rootView attachToRoot:attachToRoot];
-    NSTimeInterval executionTime = [[NSDate date] timeIntervalSinceDate:methodStart];
+    NSTimeInterval methodFinish = CACurrentMediaTime();
+    NSTimeInterval executionTime = methodFinish - methodStart;
     NSLog(@"Inflation of %@ took %.2fms", [url absoluteString], executionTime*1000);
     return ret;
 

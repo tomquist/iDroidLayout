@@ -11,6 +11,7 @@
 #import "FormularViewController.h"
 #import "LayoutAnimationsViewController.h"
 #import "IDLResourceManager.h"
+#import "CollectionViewExampleViewController.h"
 
 @implementation MainViewController
 
@@ -46,6 +47,13 @@
     _descriptions = nil;
 }
 
+- (void)setupCell:(IDLTableViewCell *)cell forRow:(NSInteger)row {
+    UILabel *titleLabel = (UILabel *)[cell.layoutBridge findViewById:@"title"];
+    UILabel *descriptionLabel = (UILabel *)[cell.layoutBridge findViewById:@"description"];
+    titleLabel.text = [_titles objectAtIndex:row];
+    descriptionLabel.text = [_descriptions objectAtIndex:row];
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -57,23 +65,27 @@
     IDLTableViewCell *cell = (IDLTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[IDLTableViewCell alloc] initWithLayoutURL:_tableCellLayoutURL reuseIdentifier:CellIdentifier];
-        cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-    UILabel *titleLabel = (UILabel *)[cell.layoutBridge findViewById:@"title"];
-    UILabel *descriptionLabel = (UILabel *)[cell.layoutBridge findViewById:@"description"];
-    titleLabel.text = [_titles objectAtIndex:indexPath.row];
-    descriptionLabel.text = [_descriptions objectAtIndex:indexPath.row];
-    
+    [self setupCell:cell forRow:indexPath.row];
     return cell;
 }
 
 #pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 114;
+    static IDLTableViewCell *prototypeCell;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        prototypeCell = [[IDLTableViewCell alloc] initWithLayoutURL:_tableCellLayoutURL reuseIdentifier:nil];
+        prototypeCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    });
+    [self setupCell:prototypeCell forRow:indexPath.row];
+    return [prototypeCell requiredHeightInView:tableView];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:TRUE];
     UIViewController *vc = nil;
     switch (indexPath.row) {
         case 0:
@@ -95,6 +107,12 @@
         case 4:
             vc = [[IDLLayoutViewController alloc] initWithLayoutName:@"includeContainer" bundle:nil];
             break;
+        case 5: {
+            UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+            layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+            vc = [[CollectionViewExampleViewController alloc] initWithCollectionViewLayout:layout];
+            break;
+        }
         default:
             break;
     }

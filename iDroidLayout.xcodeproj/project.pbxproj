@@ -109,6 +109,7 @@
 		79DE0BFD1695FC5C00EDACE3 /* button_pressed.9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79DE0BF91695FC5C00EDACE3 /* button_pressed.9@2x.png */; };
 		79DE0BFE1695FC5C00EDACE3 /* button_normal.9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79DE0BFA1695FC5C00EDACE3 /* button_normal.9@2x.png */; };
 		A7090EAA19D0CE89002D9FC0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7090EA919D0CE89002D9FC0 /* Images.xcassets */; };
+		A71E2CCE1A33585E003C865E /* IDLCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A71E2CCD1A33585E003C865E /* IDLCollectionViewCell.m */; };
 		A7434E1D1A29EEC100A74D40 /* button_color.xml in Resources */ = {isa = PBXBuildFile; fileRef = A7434E0D1A29EEC100A74D40 /* button_color.xml */; };
 		A7434E1E1A29EEC100A74D40 /* background1.xml in Resources */ = {isa = PBXBuildFile; fileRef = A7434E0F1A29EEC100A74D40 /* background1.xml */; };
 		A7434E1F1A29EEC100A74D40 /* button_background.xml in Resources */ = {isa = PBXBuildFile; fileRef = A7434E101A29EEC100A74D40 /* button_background.xml */; };
@@ -124,6 +125,11 @@
 		A7434E291A29EEC100A74D40 /* values.xml in Resources */ = {isa = PBXBuildFile; fileRef = A7434E1C1A29EEC100A74D40 /* values.xml */; };
 		A7434E2D1A29EF6200A74D40 /* LayoutFromIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7434E2C1A29EF6200A74D40 /* LayoutFromIB.xib */; };
 		A744922219BFA61900E88C18 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A744922119BFA61900E88C18 /* Default-568h@2x.png */; };
+		A754C7441B5C230000B379D4 /* IDLLayoutBridgeLayoutParams.m in Sources */ = {isa = PBXBuildFile; fileRef = C24B61D80AEEB43A32B766B8 /* IDLLayoutBridgeLayoutParams.m */; };
+		C24B65BECE55050973834B5F /* CollectionViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C24B65B1D3F8631C0A3B006A /* CollectionViewItem.m */; };
+		C24B694F961B16134DFDC707 /* collectionViewCell.xml in Resources */ = {isa = PBXBuildFile; fileRef = C24B691B9FB628381AB96864 /* collectionViewCell.xml */; };
+		C24B6A3DFBC2B6CC072C23FF /* ExampleCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C24B69C2D9B7B7C48CA585BA /* ExampleCollectionViewCell.m */; };
+		C24B6F682473E017A82D0E3B /* CollectionViewExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C24B6AC201F21ECF0F7B380F /* CollectionViewExampleViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -141,6 +147,7 @@
 /* Begin PBXFileReference section */
 		0BEC328CA92BF2305F205EEC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F4DA7618F4472EFB5E3AEFD /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		4BE5E24CC5B4A1927E2E97EB /* libPods-iDroidLayoutExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iDroidLayoutExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		56BBF0B37C9E59FE57393545 /* Pods-iDroidLayout.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iDroidLayout.release.xcconfig"; path = "Pods/Target Support Files/Pods-iDroidLayout/Pods-iDroidLayout.release.xcconfig"; sourceTree = "<group>"; };
 		79269318167D03FE0078EE37 /* IDLResourceValueSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLResourceValueSet.h; sourceTree = "<group>"; };
 		79269319167D03FE0078EE37 /* IDLResourceValueSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLResourceValueSet.m; sourceTree = "<group>"; };
@@ -349,6 +356,8 @@
 		9E59CE07804409ABE477E469 /* Pods-test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test.release.xcconfig"; path = "Pods/Target Support Files/Pods-test/Pods-test.release.xcconfig"; sourceTree = "<group>"; };
 		A1E9516193244B7ABBCC38AC /* libPods-iDroidLayout.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iDroidLayout.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7090EA919D0CE89002D9FC0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A71E2CCC1A33585E003C865E /* IDLCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLCollectionViewCell.h; sourceTree = "<group>"; };
+		A71E2CCD1A33585E003C865E /* IDLCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLCollectionViewCell.m; sourceTree = "<group>"; };
 		A72BE4321A2953D30021D5E1 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		A7434E0D1A29EEC100A74D40 /* button_color.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = button_color.xml; sourceTree = "<group>"; };
 		A7434E0F1A29EEC100A74D40 /* background1.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = background1.xml; sourceTree = "<group>"; };
@@ -367,6 +376,15 @@
 		A744922119BFA61900E88C18 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		ACEF216E1FD53171368A9187 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B3466C4187E343C8965C60D0 /* libPods-test.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-test.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C24B6064095F34698E35E44F /* IDLLayoutBridgeLayoutParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLLayoutBridgeLayoutParams.h; sourceTree = "<group>"; };
+		C24B61D80AEEB43A32B766B8 /* IDLLayoutBridgeLayoutParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLLayoutBridgeLayoutParams.m; sourceTree = "<group>"; };
+		C24B62D8CE211974B0F3A25E /* CollectionViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewItem.h; sourceTree = "<group>"; };
+		C24B65B1D3F8631C0A3B006A /* CollectionViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewItem.m; sourceTree = "<group>"; };
+		C24B68236F664C4B9EC59FDE /* CollectionViewExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewExampleViewController.h; sourceTree = "<group>"; };
+		C24B691B9FB628381AB96864 /* collectionViewCell.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = collectionViewCell.xml; sourceTree = "<group>"; };
+		C24B69C2D9B7B7C48CA585BA /* ExampleCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleCollectionViewCell.m; sourceTree = "<group>"; };
+		C24B6AC201F21ECF0F7B380F /* CollectionViewExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewExampleViewController.m; sourceTree = "<group>"; };
+		C24B6B1E1C730BF52EBCAD36 /* ExampleCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleCollectionViewCell.h; sourceTree = "<group>"; };
 		CBE74CB85776E59394A12EA5 /* Pods-iDroidLayout.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iDroidLayout.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iDroidLayout/Pods-iDroidLayout.debug.xcconfig"; sourceTree = "<group>"; };
 		CE5AE02A60FF0464DE8F3699 /* Pods-test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test.debug.xcconfig"; path = "Pods/Target Support Files/Pods-test/Pods-test.debug.xcconfig"; sourceTree = "<group>"; };
 		ECD90B80D62044CD8D222D68 /* libPods-framework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-framework.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -524,6 +542,7 @@
 				B3466C4187E343C8965C60D0 /* libPods-test.a */,
 				A1E9516193244B7ABBCC38AC /* libPods-iDroidLayout.a */,
 				0BEC328CA92BF2305F205EEC /* libPods.a */,
+				4BE5E24CC5B4A1927E2E97EB /* libPods-iDroidLayoutExample.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -568,6 +587,12 @@
 				79642CCB1603C5DB0095D5A2 /* MainViewController.m */,
 				79642C1E1603C4E80095D5A2 /* Supporting Files */,
 				A7090EA919D0CE89002D9FC0 /* Images.xcassets */,
+				C24B6AC201F21ECF0F7B380F /* CollectionViewExampleViewController.m */,
+				C24B68236F664C4B9EC59FDE /* CollectionViewExampleViewController.h */,
+				C24B69C2D9B7B7C48CA585BA /* ExampleCollectionViewCell.m */,
+				C24B6B1E1C730BF52EBCAD36 /* ExampleCollectionViewCell.h */,
+				C24B62D8CE211974B0F3A25E /* CollectionViewItem.h */,
+				C24B65B1D3F8631C0A3B006A /* CollectionViewItem.m */,
 			);
 			path = iDroidLayoutExample;
 			sourceTree = "<group>";
@@ -612,6 +637,8 @@
 		79642C3E1603C5500095D5A2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A71E2CCC1A33585E003C865E /* IDLCollectionViewCell.h */,
+				A71E2CCD1A33585E003C865E /* IDLCollectionViewCell.m */,
 				79642C3F1603C5500095D5A2 /* IDLGravity.h */,
 				79642C401603C5500095D5A2 /* IDLGravity.m */,
 				79642C411603C5500095D5A2 /* IDLLayoutBridge.h */,
@@ -631,6 +658,8 @@
 				79642C541603C5500095D5A2 /* UIView+IDL_Layout.m */,
 				79642C551603C5500095D5A2 /* UIView+IDL_ViewGroup.h */,
 				79642C561603C5500095D5A2 /* UIView+IDL_ViewGroup.m */,
+				C24B61D80AEEB43A32B766B8 /* IDLLayoutBridgeLayoutParams.m */,
+				C24B6064095F34698E35E44F /* IDLLayoutBridgeLayoutParams.h */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -881,6 +910,7 @@
 				A7434E181A29EEC100A74D40 /* layoutFromIB.xml */,
 				A7434E191A29EEC100A74D40 /* mainCell.xml */,
 				A7434E1A1A29EEC100A74D40 /* scrollviews.xml */,
+				C24B691B9FB628381AB96864 /* collectionViewCell.xml */,
 			);
 			path = layouts;
 			sourceTree = "<group>";
@@ -966,7 +996,7 @@
 		79642BDC1603C4A20095D5A2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "Tom Quist";
 				TargetAttributes = {
 					794BF829182C4FF300A6DF05 = {
@@ -1032,6 +1062,7 @@
 				79DE0BFD1695FC5C00EDACE3 /* button_pressed.9@2x.png in Resources */,
 				79DE0BFE1695FC5C00EDACE3 /* button_normal.9@2x.png in Resources */,
 				A7434E221A29EEC100A74D40 /* formular~ipad.xml in Resources */,
+				C24B694F961B16134DFDC707 /* collectionViewCell.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1051,6 +1082,7 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-test/Pods-test-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		68591BE15B6C48308F7AB629 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1131,6 +1163,7 @@
 				794BF84B182C508600A6DF05 /* IDLShadowDrawable.m in Sources */,
 				794BF84C182C508600A6DF05 /* IDLStateListDrawable.m in Sources */,
 				794BF84D182C508600A6DF05 /* UIView+IDLDrawable.m in Sources */,
+				A754C7441B5C230000B379D4 /* IDLLayoutBridgeLayoutParams.m in Sources */,
 				794BF84F182C508600A6DF05 /* NSDictionary+IDL_ResourceManager.m in Sources */,
 				794BF850182C508600A6DF05 /* IDLColorStateItem.m in Sources */,
 				794BF851182C508600A6DF05 /* IDLColorStateList.m in Sources */,
@@ -1165,6 +1198,7 @@
 				794BF86C182C508600A6DF05 /* UIView+IDL_ViewGroup.m in Sources */,
 				794BF86D182C508600A6DF05 /* UIButton+IDL_View.m in Sources */,
 				79CEF934182D6D7E005E2FD1 /* IDLResourceManager+IDL_Internal.m in Sources */,
+				A71E2CCE1A33585E003C865E /* IDLCollectionViewCell.m in Sources */,
 				794BF86E182C508600A6DF05 /* UIControl+IDL_View.m in Sources */,
 				794BF86F182C508600A6DF05 /* UIImageView+IDL_View.m in Sources */,
 				794BF870182C508600A6DF05 /* UILabel+IDL_View.m in Sources */,
@@ -1210,6 +1244,9 @@
 				79642CD21603C5DB0095D5A2 /* IDLAppDelegate.m in Sources */,
 				79642CD31603C5DB0095D5A2 /* LayoutAnimationsViewController.m in Sources */,
 				79642CD51603C5DB0095D5A2 /* MainViewController.m in Sources */,
+				C24B6F682473E017A82D0E3B /* CollectionViewExampleViewController.m in Sources */,
+				C24B6A3DFBC2B6CC072C23FF /* ExampleCollectionViewCell.m in Sources */,
+				C24B65BECE55050973834B5F /* CollectionViewItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1393,6 +1430,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1426,6 +1464,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;

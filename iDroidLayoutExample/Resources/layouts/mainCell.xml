@@ -1,7 +1,7 @@
 <RelativeLayout
     layout_width="match_parent"
-    layout_height="match_parent"
-    padding="10">
+    layout_height="wrap_content"
+    layout_margin="10">
     <TextView
         id="title"
         layout_width="match_parent"
@@ -15,8 +15,7 @@
         layout_width="match_parent"
         layout_height="wrap_content"
         layout_below="title"
-        layout_alignParentBottom="true"
         layout_marginTop="10"
         gravity="top|left"
-        lines="3"/>
+        lines="0"/>
 </RelativeLayout>
